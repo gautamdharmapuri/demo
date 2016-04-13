@@ -1,0 +1,110 @@
+/* CSS Document */
+
+#av_widget_148{ width:148px; overflow:visible; font-family:Arial, Helvetica, sans-serif;display:block;line-height:15px;}
+.haeder{ width:144px; height:75px;}
+.ddmmyy{width:144px; height:43px;}
+.dateday {width:48px; height:43px;}
+.date{width:48px; height:26px;  }
+.date_p{width:4px; height:26px;  }
+.date_dd{width:40px; height:26px; line-height:27px; font-size:28px;   }
+.date_n{width:4px; height:26px;  }
+.day{width:48px; height:16px;  font-size:14px; color:#F00  }
+.month {width:45px; height:43px;}
+.month_p{width:45px; height:6px; font-size:6px;}
+.month_n{width:45px; height:6px; font-size:6px;}
+.month_mm{width:45px; height:28px; line-height:28px;}
+.year{color:#F00; font-size:20px; line-height:38px;}
+.place{ width:144px; height:19px;overflow:hidden;}
+.calnstar{ width:144px; height:98px;}
+.calnstar_1{ width:144px; height:29px;}
+.calnstar_2{ width:144px; height:31px;}
+.calnstar_3{ width:144px; height:45px; }
+.calnstar_head{ width:144px; height:13px; }
+.calnstar_text{ width:144px; height:18px; }
+.calnstar_star{ width:144px; height:31px; }
+.calnstar_sname{ width:141px; height:13px;}
+.linkboxold{width:140px; height:15px; border:2px solid #000;}
+.linkbox{width:auto; height:15px;}
+.linkboxrev{width:140px; height:15px; border:2px solid #000;background-color:black;}
+
+
+
+
+.resultbox{ width:144px; height:95px;}
+.resultbox_head{ width:144px; height:15px; background:#000; color:#FFF;}
+.resultbox_text{ width:141px; height:12px;}
+
+.special_text{ width:138px; margin:auto; padding:3px; height:auto;}
+
+.resultbox_prf{ width:144px; height:190px; border:2px solid #000;}
+
+
+.fr{float:right;}
+.fl{float:left;}
+.cb{clear:both;}
+.ac{text-align:center;}
+.ar{text-align:right;}
+.b{font-weight:bold;}
+#astro_widget_content .fa{font-family:Arial, Helvetica, sans-serif;}
+.bred{border:1px solid red; }
+.bblk{border:1px solid #aaa; }
+.bbblk{border-bottom:1px solid #000; }
+.pt12{ font-size:12px;}
+.pt11{ font-size:11px;}
+.pt14{ font-size:14px;}
+.pt10{ font-size:10px;}
+.red{color:#F00;}
+.blk{color:#000;}
+.wht{color:#fff;}
+.w60{ width:60px; }
+.grey{color:#666;}
+.shim1px{height:1px; width:100px; font-size:1px; display:block;}
+.shim2px{height:2px; width:100px; font-size:2px; display:block;}
+.pl3{padding-left:3px;}
+.pr4{padding-right:4px;}
+.padt10{padding-top:10px;}
+.padt4{padding-top:4px;}
+.tal{ text-align:left;}
+.tac{ text-align:center;}
+.ml5{ margin-left:5px;}
+
+.cp{cursor:pointer;}
+#back_link{ text-decoration:none;color:#2155ec;}
+.back_link{ text-decoration:none;color:#2155ec;}
+.avw_loading{ background:url('images/loading.gif') no-repeat center center; width:148px; height:50px; float:left;z-index:200;}
+.floatimage{ width:220px;height:220px;position:absolute;z-index:2000;float:left;display:none;border:1px solid #000;background:#fff;}
+.caldate{ border:1px solid #fff; width:17px;height:17px;}
+.wcaption{ border:1px solid #fff; width:17px;height:17px;}
+.block{ border:1px solid #000; color:#bbb;}
+.caldate:hover{border:1px solid #f00;}
+.bgrey{ background:#f00; color:#fff; }
+
+.src_link{ background:#ddd; color:#000; margin-right:5px; width:120px; overflow:hidden; border:1px solid #fff; height:16px; }
+
+.prf_tbox{ border:1px solid #aaa; width:110px; height:16px;margin-left:3px; color:#888;}
+.prf_sel{ border:1px solid #aaa; width:110px; height:18px; color:#888;}
+
+.src_result{ height:140px;overflow:auto;}
+.bttn{ margin:auto; background:#cdcdcd;border:1px solid #888;width:65px;height:16px;}
+.uaaceess{ height:282px;background:#ccc; text-align:center;border:2px solid #000;}
+.shim80px{ height:80px;} 
+
+#av_widget_260{ width:260px; overflow:visible; font-family:Arial, Helvetica, sans-serif;display:block;}
+
+.bbg{background-color:#000000;}
+.p5{padding:5px;}
+.pl5{padding-left:5px;}
+.pl6{padding-left:8px;}
+.plsix{padding-left:6px;}
+.shim5px{height:5px; font-size:5px;}
+.shim15px{height:10px; font-size:5px;}
+.shim4px{height:4px; font-size:5px;}
+.h96{height:108px;}
+.h91{height:91px;}
+
+.sunsignhead{border-top-width:0px;border-right-width:0px;border-left-width:0px;}
+.sunsign{width:62px;}
+.moonsign{width:62px;}
+.bbgrey{background-color:#cdcdcc;}
+.blue{color:#00afd5;}
+.pt13{ font-size:13px;}

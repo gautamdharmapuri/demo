@@ -1,0 +1,122 @@
+
+
+.login{
+background: #EBF4FB;
+width: 500px;
+border: solid 1px gray;
+margin: auto;
+min-height: 280px;
+postion: relative;
+}
+.signup{
+background: #EBF4FB;
+width: 500px;
+border: solid 1px gray;
+margin: auto;
+min-height: 370px;
+postion: relative;
+}}
+label {
+	width: 3em;
+	float: left;
+	margin-right: 0.5em;
+	display: block
+}
+
+form{
+margin-left: 10px;
+}
+
+#container label{
+	color: rgb(64, 92, 96);
+	position: relative;
+}
+#container p{
+	margin-bottom:15px;
+}
+
+#container p:first-child{
+	margin: 0px;
+}
+#container input[type="text"],
+#container input[type="email"],
+#container input[type="password"]
+{
+	width: 90%;
+	margin-top: 4px;
+	padding: 10px 5px 10px 32px;	
+	border: 1px solid rgb(178, 178, 178);
+	
+}
+[data-icon]:after {
+    content: attr(data-icon);
+    font-family: 'FontomasCustomRegular';
+    color: rgb(106, 159, 171);
+    position: absolute;
+    left: 10px;
+    top: 35px;
+	width: 30px;
+}
+
+@font-face {
+    font-family: 'FontomasCustomRegular';
+    src: url('fonts/fontomas-webfont.eot');
+    src: url('fonts/fontomas-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/fontomas-webfont.woff') format('woff'),
+         url('fonts/fontomas-webfont.ttf') format('truetype'),
+         url('fonts/fontomas-webfont.svg#FontomasCustomRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.btn{
+margin-right: 10px;
+cursor: pointer;
+float: right;
+background: rgb(61, 157, 179);
+	padding: 8px 5px;
+}
+
+.btn:hover{
+background: blue;}
+
+.success{
+margin: 0 auto;
+width: 50%;
+height: auto;
+text-align: center;
+color: green;
+font-size: 18px;
+padding:50px;
+margin-top:250px;
+background: #EBF4FB;
+font-weight: bold;
+border: 2px dotted #EBF4FB;
+line-height:30px;
+}
+
+.error{
+margin: 100px auto;
+width: 900px;
+height: 80px;
+text-align: center;
+color: red;
+background: #EBF4FB;
+font-size: 24px;
+font-weight: bold;
+padding-top: 30px;
+border: 2px solid #EBF4FB;
+}
+
+.dmail{
+font-weight: bold;
+color: blue;
+}
+.middle{
+text-align: center;}
+#myad{
+margin: 20px auto;
+width: 728px;
+position: relative;
+
+}
