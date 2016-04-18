@@ -259,7 +259,8 @@ else
             <div class="col-md-8" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Carpool >> Inter state Carpool</h4>
+	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Inter state Carpool</h4>
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>

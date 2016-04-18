@@ -199,30 +199,7 @@ mysql_query("update nris_talk set total_views='".$total_views."' where id = '".$
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -236,16 +213,49 @@ mysql_query("update nris_talk set total_views='".$total_views."' where id = '".$
             <!-- TOP BUTTONS ENDS-->
             
             <!-- FIRST TABLE -->
+			<?php
+$query_blog = "SELECT * FROM nris_talk WHERE id = ".$_GET['id'];
+$result = mysql_query($query_blog);
+$rs = mysql_fetch_array($result);
+?>
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>  <a href="<?php echo SITE_BASE_URL.'/discussion_room_data.php';?>" class="breadcumb_link">US National Forum</a> >> <?php echo ucfirst($rs['title']); ?></h4>
+	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
+	<a href="<?php echo SITE_BASE_URL.'/discussion_room.php';?>" class="breadcumb_link">Nri's Talk</a> >> <?php echo ucfirst($rs['title']); ?></h4>
 </div>    <br>
 
 <div style="border:1px solid #999999;width:100%;padding:10px;border-radius:5px;">
 <div style="font-size:18px;font-weight:bold;"><?php echo ucwords($rs['title']); ?></div>
 <div><?php echo ucwords($rs['description']); ?></div>
 <p>Posted by <?php echo ucwords($rs['fname']) ?>&nbsp;<?php echo ucwords($rs['lname']) ?>&nbsp;-&nbsp;<?php echo date("M d, Y",strtotime($rs['date'])); ?></p>
+
+<?php if (!empty($_SESSION['Nris_session']['id'])) { ?>
+	<?php
+	$user_id = $_SESSION['Nris_session']['id'];
+	$blog_id = $assoc_id = $rs['id'];
+	$type = 'nritalk';
+	$query_res = mysqli_query($con, 'SELECT like_val from likes where user_id = '.$user_id.' AND assoc_id = '.$assoc_id.'
+							  AND type="'.$type.'"');
+	$user_like_res = mysqli_fetch_assoc($query_res);
+
+	$like_cls = $disliked_cls = '';
+	if (isset($user_like_res['like_val'])) {
+		$like_cls = ($user_like_res['like_val'] == 1) ? 'liked' : '';
+		$disliked_cls = ($user_like_res['like_val'] == 1) ? '' : 'disliked';
+	}
+	?>
+	<div class="like_lnks_cnt">
+		<a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">Like</a>
+		<a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">DisLike</a>
+	</div>
+<?php } else { ?>
+	<div class="like_lnks_cnt">
+		<a href="javascript:;" class='like_dislike_lnk _like' data-toggle="modal" data-target="#myModal">Like</a>
+		<a href="javascript:;" class='like_dislike_lnk _dislike' data-toggle="modal" data-target="#myModal" style="margin : 0 10px">DisLike</a>
+	</div>
+<?php } ?>
+
 </div>
 		
 
@@ -254,9 +264,10 @@ mysql_query("update nris_talk set total_views='".$total_views."' where id = '".$
 
 <br><br><br>                    
 <?php
-$query_blog_cmnt = "select a.*, b.* from nris_talk_comment a, register b where a.member_id = b.id  and a.reply_status='0' order by a.cmnt_id desc" ;
+$query_blog_cmnt = "select a.*, b.* from nris_talk_comment a, register b where a.member_id = b.id
+					and a.reply_status='0' and thread_Pid = ".$_GET['id']." order by a.cmnt_id desc" ;
 $result_cmnt = mysql_query($query_blog_cmnt);
-if(mysql_num_rows($result_cmnt) > 0)
+if(mysql_numrows($result_cmnt) > 0)
 {
 ?>
 <bR><hr style="margin-bottom:30px;">
@@ -328,7 +339,7 @@ if(isset($_POST['cmdcomment']))
 </div>
 
 <div class="form-submit-buttons">
-<input type="hidden" name="postId" id="postId" value="<?php echo $rs['id'] ; ?>">
+<input type="hidden" name="postId" id="postId" value="<?php echo $_GET['id'] ; ?>">
 <input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">
 <input type="submit" name="cmdcomment" id="cmdcomment" class="btn btn-success"  style="float:right" value="Post Comment">
 </div>
@@ -347,30 +358,7 @@ if(isset($_POST['cmdcomment']))
         
         
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 
@@ -404,6 +392,7 @@ if(isset($_POST['cmdcomment']))
 <script src="js/jquery.min.js"></script>
 <script src="js/html5.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/like_dislike.js"></script>
 <!-- End js -->
 
 <?php include "config/social.php" ;  ?>

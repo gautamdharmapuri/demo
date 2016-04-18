@@ -184,30 +184,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -224,7 +201,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >>  US National Forum >> Threads >> Add Topic</h4>
+	<h4><a href="state.php" style="color:#0033FF;">Home</a> >>  <a href="discussion_room.php">Nri's Talk</a> >> Add Topic</h4>
 </div>    <br>
 
 
@@ -266,30 +243,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
         
         
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 

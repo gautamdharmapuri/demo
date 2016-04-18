@@ -331,30 +331,7 @@ function showDiv2(elem){
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -374,7 +351,7 @@ function showDiv2(elem){
 <div class="widget-temple">
 	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
 				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
-				<a href="<?php echo SITE_BASE_URL.'/intercarpool.php?code='.$state;?>" class="breadcumb_link">Carpool</a>
+				<a href="javascript:history.back()" class="breadcumb_link"> Local Carpool</a>
 				>> Create Carpool Post</h4>
 </div><br>
 
@@ -719,30 +696,7 @@ function showDiv2(elem){
         
         
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 

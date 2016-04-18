@@ -193,30 +193,7 @@ else
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -235,6 +212,156 @@ else
 <div class="widget-temple">
 	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Casinos Near Me</h4>
 </div>    <br>
+
+<div style="width: 100%; height: 300px; margin: 0 0 20px 0;" id="map_canvas"></div>
+<div id="loadingMap" class="text-center">Loading Map...</div>
+
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
+<script type="text/javascript" src="js/googlemap.js"></script>
+
+<?php
+
+$tableName="fam_near_casinos";		
+	$targetpage = "casinos_near.php"; 	
+	$limit = 20; 
+	
+	$query = "SELECT COUNT(*) as num FROM $tableName where state_code='".$_SESSION['state']."' order by total_views desc";
+	$total_pages = mysql_fetch_array(mysql_query($query));
+	$total_pages = $total_pages[num];
+	
+	$stages = 3;
+	$page = mysql_escape_string($_GET['page']);
+	if($page){
+		$start = ($page - 1) * $limit; 
+	}else{
+		$start = 0;	
+		}	
+	$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+    // Get page data
+	$query1 = "SELECT $tableName.*,cities.city FROM $tableName,cities
+				where $tableName.state_code='".$state."'
+				AND cities.id = $tableName.city_id
+				order by $tableName.id desc LIMIT 20";
+				//echo $query1;exit;
+	$result = mysql_query($query1);
+	
+	$address = $tempAddress = array();
+	$i = 0;
+	while($casinoData = mysql_fetch_array($result)) {
+		$tempAddress = array();
+		if($casinoData['address'] != '') {
+			$tempAddress[] = $casinoData['address'];
+		}
+		if($casinoData['city'] != '') {
+			$tempAddress[] = $casinoData['city'];
+		}
+		if($casinoData['state_code'] != '') {
+			$tempAddress[] = $casinoData['state_code'];
+		}
+		$address[] = implode(',',$tempAddress);
+	}
+	//echo json_encode($address);
+?>
+
+<script>
+    var location_details = '<?php echo json_encode($address);?>';
+	//alert(location_details);
+    var map;
+    function initialize() {
+        var latLng = new google.maps.LatLng(49.47805, -123.84716);
+        map = new google.maps.Map(document.getElementById('map_canvas'), {
+            zoom: 1,
+            minZoom: 2,
+            center: latLng,
+            mapTypeId: google.maps.MapTypeId.ROADMAP
+        });
+
+        $('#loadingMap').hide();
+    }
+    initialize();
+    geocoder = new google.maps.Geocoder();
+
+    function codeAddress(address) {
+        if (typeof address == 'undefined') {
+            return false;
+        }        
+    }
+
+    var markerArr = {};
+
+    iter = 0;
+	var location_detailsArr = $.parseJSON(location_details);
+    $.each(location_detailsArr, function(index,location_details1) {
+        address = location_details1;
+
+        geocoder.geocode({
+            'address': address
+        }, function (results, status) {
+            if (status == google.maps.GeocoderStatus.OK) {
+                //In this case it creates a marker, but you can get the lat and lng from the location.LatLng
+                map.setCenter(results[0].geometry.location);
+
+                var latitude = results[0].geometry.location.lat();
+                var longitude = results[0].geometry.location.lng();
+                
+                markerArr[iter] = new MarkerWithLabel({
+                   position: new google.maps.LatLng(latitude, longitude),
+                   draggable: false,
+                   raiseOnDrag: true,
+                   map: map,
+                   labelContent: address,
+                   labelAnchor: new google.maps.Point(22, 0),
+                   labelClass: "marker-label", // the CSS class for the label
+                   labelStyle: {opacity: 1.0}
+                });
+                markerArr[iter]['address'] = location_details.address;
+            } else {
+                console.log("Geocode was not successful for the following reason: (for address " + address +") " + status);
+                markerArr[iter] = null;
+            }
+
+            if (Object.keys(markerArr).length == Object.keys(location_details).length) {
+                if (typeof get_info_window_for_markers == 'function') {
+                    get_info_window_for_markers(markerArr);
+                }
+            }
+
+            iter++;
+        });
+
+    });
+
+    infowindowsObj = {};
+    function get_info_window_for_markers(markerArr) {
+        if (typeof markerArr == 'undefined') {
+            return false;
+        }
+
+        $.each(markerArr, function (key, markerObj) {
+            if (typeof markerObj != 'undefined' && markerObj != null) {
+                address = markerObj.address;
+
+                infowindowsObj[key] = new google.maps.InfoWindow({
+                    content: address
+                });
+
+                google.maps.event.addListener(markerObj, "click", function (e) { 
+                    closeAllInfoWindows();
+                    infowindowsObj[key].open(map, this);
+                });
+            }
+        })
+    }
+
+    function closeAllInfoWindows() {
+        $.each(infowindowsObj, function(i, infowindow) {
+            infowindow.close();
+        });
+    }
+
+</script> 
+
+
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
 
@@ -253,6 +380,7 @@ else
                                                                             
                                                                               <?php
 
+	
 	$tableName="fam_near_casinos";		
 	$targetpage = "casinos_near.php"; 	
 	$limit = 20; 
@@ -274,7 +402,6 @@ else
 				left join rating_casinos on rating_casinos.casino_id = $tableName.id and login_id = ".$_SESSION['Nris_session']['id']."
 				where state_code='".$_SESSION['state']."' order by total_views desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
-	
 	// Initial page num setup
 	if ($page == 0){$page = 1;}
 	$prev = $page - 1;	
@@ -426,30 +553,7 @@ else
         
         
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 
@@ -482,7 +586,7 @@ else
 <!-- js -->
 <script src="js/jquery.min.js"></script>
 <script src="js/html5.js"></script>
-<script src="js/custom.js"></script>
+<!--<script src="js/custom.js"></script>-->
 <!-- End js -->
 
 <?php include "config/social.php" ;  ?>

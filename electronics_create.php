@@ -36,9 +36,11 @@ if(isset($_POST['Submit']))
 
 		if($fileSize1<=200){			
 				
+				if($_FILES['my_file1']['name'] != '') {
 				$image1=$round."_".$_FILES['my_file1']['name'];
 				$img1="uploads/electronics/".$image1;
 				move_uploaded_file($_FILES['my_file1']['tmp_name'],$img1);
+				}
 		}
 		else
 		{
@@ -530,30 +532,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -953,30 +932,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
         
         
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 

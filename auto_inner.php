@@ -373,7 +373,17 @@ if(isset($_SESSION['Nris_session']))
 				while($rs=mysql_fetch_array($result))
 				{ ?> 
                     <tr>
-						<td><a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
+						<td>
+							<?php if($rs['Address'] != '') { ?>
+								<img src="images/map-icon.png">
+							<?php } ?>
+							<?php if($rs['image1'] != '') { ?>
+								<img src="images/image-icon.png">
+							<?php } ?>
+							
+							<a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+							onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+							<?php echo ucwords($rs['TitleAD']);?></a></td>
                 <td><a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                 <td><a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['model_name']);?></a></td>
                 <td><a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['City']);?></a></td>

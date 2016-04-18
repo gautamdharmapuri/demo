@@ -14,12 +14,6 @@ if (empty($_SESSION['Nris_session']['id'])) {
 	));exit;
 }
 
-if (isset($_REQUEST['like_type']) && !in_array($_REQUEST['like_type'], array('blog', 'forum', 'students_talk', 'forum_comment'))) {
-	echo json_encode(array(
-		'success' => 0,
-		'message' => 'You can like or dislike for blog/forum/students talk/Forum comments.'
-	));exit;
-}
 $like_type = $_REQUEST['like_type'];
 
 if (isset($_REQUEST['button_type']) && $_REQUEST['button_type'] == 'like') {

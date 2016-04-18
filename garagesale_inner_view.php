@@ -131,30 +131,7 @@ font-size:12px;
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -171,11 +148,80 @@ font-size:12px;
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
 
         <?php
+		
+			if(isset($_POST['comment_submit']) && $_POST['comment_submit'] != '') {
+				$postId = $_POST['post_id'];
+				$bid = $_POST['bid'];
+				$sessionData = $_SESSION['Nris_session'];
+				$commented_by = $sessionData['id'];
+				$comment = $_POST['comment'];
+				
+				$query = mysql_query("INSERT INTO garage_comments (post_id,comment,bid,commented_by)
+									 VALUES ('".$postId."','".$comment."','".$bid."','".$commented_by."')");
+				
+				$to = $_POST['to_email'];
+				$frm = $sessionData['email'];                
+				$subject = "Bid Deatilas of your classified";
+				$headers = "MIME-Version: 1.0\r\n";
+							$headers .= "Content-type: text/html; charset=iso-8859-1\r\n";
+				$headers .= 'From:' . $frm . "\r\n";            
+				$htmlmsg='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+							<html xmlns="http://www.w3.org/1999/xhtml">
+							<head>
+							<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+							</head>
+							<body style="background-color:#F6F6F6;">
+							<div id="container" style="width:600px;padding:0;margin:0 auto;height:auto;background-color:#FFF;">
+							<div id="head2" style="background:#325D88;height:18%;padding:4px;">
+							<div><img src="'.$config['siteurl'].'img/logo.png" width=350px height=100px/></div>
+							</div>
+							<div id="message" style="height:auto;border-bottom:1px solid #ccc;margin:10px;">
+							<h3>'.date('M d,Y').'</h3>
+							</div>
+							<div id="order" style="height:auto;border-bottom:1px solid #ccc;margin:10px;">                         
+							<p>You have got a response from usnris user</p>                        
+							<strong>Bid Amount :</strong><span>'.$bid.'</span>
+							<br>
+							</div>
+							<div id="footer" style="border-top:1px solid #ccc;margin:10px;text-align:center;">Copyright '.date('Y').' usnris, All rights reserved.</div>
+							</div>        
+							</body>
+							</html>';
+				mail($to, $subject, $htmlmsg, $headers);
+			}
+		
 			$query="select * from post_free_garage_sale where  md5(id) = '".$_GET['ViewId']."'"; 
 			$result=mysql_query($query);
 			$rs=mysql_fetch_array($result);	
 			$total_views = $rs['total_views'] + 1 ;
 			mysql_query("update post_free_garage_sale set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
+			
+			$query2 = "select city from cities where id = ".$rs['City'];
+			$result2 = mysql_query($query2);
+			$rs2 = mysql_fetch_array($result2);
+			$cityName = $rs2['city'];
+			
+			
+						if($rs['Address'] != '') {
+							$addArr[] = $rs['Address'];
+						}
+						if($cityName != '') {
+							$addArr[] = $cityName;
+						}
+						if($rs['state'] != '') {
+							$addArr[] = $rs['state'];
+						}
+						$addArr[] = 'US';
+						$address = urldecode(implode(',',$addArr));
+						$geocode=file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$address.'&sensor=false');
+
+						$output= json_decode($geocode); //Store values in variable
+						
+						if($output->status == 'OK'){ // Check if address is available or not
+						  $lat = $output->results[0]->geometry->location->lat; //Returns Latitude
+						  $lng = $output->results[0]->geometry->location->lng; // Returns Longitude
+						}
+			
 			?>               
                        
         <div class="widget-temple">
@@ -192,7 +238,9 @@ if(isset($_SESSION['Nris_session']))
 <?php } ?>     
 
 </div>    <br>
-                       
+            
+			
+			<div class="col-md-7" >    
             <table class="table table-bordered">
                                        
                                       
@@ -226,7 +274,7 @@ if(isset($_SESSION['Nris_session']))
 												{
 													if($items[$j]!='')
 													{
-														echo '<img src="admin/img/chk1.png"> '.ucwords($items[$j])." &nbsp;&nbsp;";
+														echo '<span style="clear:both;float:left;margin-bottom:3px;"><img src="admin/img/chk1.png"> '.ucwords($items[$j])." </span>";
 													}	
 												}
 											 
@@ -280,7 +328,7 @@ if(isset($_SESSION['Nris_session']))
                                      <thead>
                                        		<tr>
                                        		<th>City</th>                                         
-                                             <th> <?php    echo ucwords($rs['City']);   ?> </th>
+                                             <th> <?php    echo ucwords($cityName);   ?> </th>
                                          	</tr>
                                      </thead>
                                      
@@ -292,96 +340,151 @@ if(isset($_SESSION['Nris_session']))
                                              <th> <?php echo date("d M, Y",strtotime($rs['EndDate'])); ?> </th>
                                          	</tr>
                                        </thead>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <?php /*?><tr>
-                                            
-                                            <th colspan="2" align="center" style="text-align:center">
-
-											<?php   if (strpos($rs['image'],'.') !== false) {  ?>
-                             			   <img src="uploads/garage_sale/<?php echo $rs['image'];?>" width="300" height="auto"> 	<?php }  else {  ?>
-                                           <img src="admin/img/no_image.png" height="auto" width="300">
-                                           <?php } ?>
-                                           
-                                           
-                                          
-
-                                            </th>                                               
-                                        </tr><?php */?>
-                                 
-                                     
                                         
                                     </table>           
                        
                        
-                       
-                       
-
-
-					
- 
-
-                    
-<br><br><br><br><br>
-
-<?php /*?> <div class="dividerHeading">
-    <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
-</div>
-        
-            <form novalidate="novalidate" method="post" action="#" class="comment-form">               
-              <div class="form-div ">
-                    <div class="form-label">Message:</div>
-                    <div class="form-field">
-                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
-                    </div>            
-               </div>      
-             <div class="form-submit-buttons">               
-                <input name="comment_submit" value="Post Comment" class="no-comment btn btn-premium" type="submit" style="float:right">
-             </div>
-                <input class="form-control" name="post_id" value="623" type="hidden">
-                <input class="form-control" name="commented_by" value="" type="hidden"><br>
-           </form> <?php */?>
-<br><br><br><br><br><br><br><br><br>	
+            
+			</div>
 		
-            </div>
+		<div class="col-md-5" >
+		              
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+// Define the latitude and longitude positions
+var latitude = parseFloat("<?php echo $lat; ?>"); // Latitude get from above variable
+var longitude = parseFloat("<?php echo $lng; ?>"); // Longitude from same
+var latlngPos = new google.maps.LatLng(latitude, longitude);
+// Set up options for the Google map
+var myOptions = {
+zoom: 17,
+center: latlngPos,
+mapTypeId: google.maps.MapTypeId.ROADMAP,
+zoomControlOptions: true,
+zoomControlOptions: {
+style: google.maps.ZoomControlStyle.LARGE
+}
+};
+// Define the map
+map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+// Add the marker
+var marker = new google.maps.Marker({
+position: latlngPos,
+map: map,
+title: "Address"
+});
+});
+</script>
+<div id="googleMap" style="width:100%;height:300px;" ></div>
+		</div>
+
+			
+			
+			
+			</div>
             <!-- TOP BUTTONS ENDS-->
             
+			<?php
+				$query1 = "SELECT garage_comments.*,CONCAT(register.fname,' ',register.lname) as username
+							FROM garage_comments,register
+							WHERE post_id = ".$rs['id']." AND garage_comments.commented_by = register.id
+							GROUP BY garage_comments.id";
+				$result1 = mysql_query($query1);
+				if(mysql_numrows($result1)) {
+			?>
+				<div class="col-md-12" style="clear: both;margin-bottom: 15px;">
+				
+						<div class="dividerHeading">
+							<h4 style="background:#ccc;padding:4px;font-weight:bold;text-align:center;"><span>Comments</span></h4>
+						</div>
+						<table class="table table-bordered">
+							<tr>
+								<th>Name</th>
+								<th>Bid Amount</th>
+								<th>Comment</th>
+								<th>Date</th>
+							</tr>
+						<?php				
+							while($rs1 = mysql_fetch_array($result1)) {
+						?>
+							<tr>
+								<td><?php echo $rs1['username'];?></td>
+								<td><?php echo $rs1['bid'];?></td>
+								<td><?php echo $rs1['comment'];?></td>
+								<td><?php echo $rs1['created'];?></td>
+							</tr>
+						<?php } ?>
+						</table>
+					
+				</div>
+			<?php } ?>
+			<br><br>
+        <div class="col-md-12">
+
+ <div class="dividerHeading">
+    <h4 style="background:#ccc;padding:4px;font-weight:bold;text-align:center;"><span>Bid / Bargain </span></h4>
+</div>
+        
+            <form method="post" action="#" class="comment-form" autocomplete="off">  
+            <div>
+           <input type="text" style="float:left;width:250px;margin:10px;background-image:url('images/dollar-sign.gif');background-position: left;
+  background-size: 25px;  height: 28px;background-repeat: no-repeat;padding-left:30px;" placeholder="Enter your bid amount"  class="form-control" name="bid" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>
+               <input placeholder="Message" name="comment"  id="message" style="float:left;width:400px;margin:10px;height:28px;" required />
+					<div style="clear:both;width: 100%;display: inline-block;float: left !important;margin-left:312px;">
+						<div id="display_count" style="float: left !important;">100</div>
+						<div style="float: left !important;">&nbsp;words remaining</div>
+					</div>
+               </div>
+               <div style="clear:both"></div>
+               <div>
+              <p style="color:red;text-align: left;"> <b>Note: Negotiation should be wise and reasonable , non reasonable offers and offensive messages will be deleted by admin and after 10 repeated violations user will be terminated from this site permanently.</b></p>
+              </div>
+                      
+             <div class="form-submit-buttons">
+				<?php
+					$sessionData = $_SESSION['Nris_session'];
+				?>
+                <input   type="submit" name="comment_submit" value="Post Comment" class="<?php if(!isset($sessionData['id'])) { ?>no-comment<?php }?> btn btn-premium" />
+             </div>
+                <input class="form-control"   type="hidden" name="post_id" value="<?php echo $rs['id']; ?>"/>
+				<input class="form-control" type="hidden" name="to_email" value="<?php echo $rs['ConatctEmail']; ?>"/>
+           </form> 
+</div>                   
+ <script>
+     $('document').ready(function() {
+		
+        $('.no-comment').click(function() {
+            alert("Please Login");
+            return false;
+        }); 
+        //$('.comment-form').validate();
+		
+		var word_count = 100;
+		$(".comment-form #message").on('keyup',function() {
+
+			var words = $(this).val().length;
+			
+			if (words > word_count) {
+			  // Split the string on first 200 words and rejoin on spaces
+			  var trimmed = $(this).val().split(/\s+/, word_count).join(" ");
+			  // Add a space at the end to make sure more typing creates new words
+			  $(this).val(trimmed + " ");
+			}
+			else {
+			  $('#display_count').text(word_count-words);
+			  $('#message').text(word_count-words);
+			}
+		  });
+        
+     });
+     </script>
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         
         
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 

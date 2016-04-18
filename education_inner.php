@@ -312,7 +312,14 @@ if(isset($_SESSION['Nris_session']))
                                                                                 while($rs=mysql_fetch_array($result))
                                                                                 { ?> 
                                                                             <tr>                                                                             
-                                                <td><a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
+                                                <td>
+													<?php if($rs['City'] != '') { ?>
+								<img src="images/map-icon.png">
+							<?php } ?>
+							<?php if($rs['image'] != '') { ?>
+								<img src="images/image-icon.png">
+							<?php } ?>
+													<a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
                                                 <td><a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                                                <td><a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['City']);?></a></td>
                                                <td><a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
@@ -325,7 +332,14 @@ if(isset($_SESSION['Nris_session']))
                                                                                 while($rs=mysql_fetch_array($result))
                                                                                 { ?> 
                                                                             <tr>                                                                             
-                                                <td><a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
+                                                <td>
+													<?php if($rs['City'] != '') { ?>
+								<img src="images/map-icon.png">
+							<?php } ?>
+							<?php if($rs['image'] != '') { ?>
+								<img src="images/image-icon.png">
+							<?php } ?>
+													<a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
                                                 <td><a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                                                <td><a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['City']);?></a></td>
                                                <td><a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>

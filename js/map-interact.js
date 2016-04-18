@@ -122,7 +122,7 @@ function addEvent(id,relationId){
 			}
 		})
 		_Textobj.mousemove(function(e){
-			var x=e.pageX+10, y=e.pageY+15;
+			var x=e.pageX+10, y=e.pageY-20;
 			var tipw=$('#map-tip').outerWidth(), tiph=$('#map-tip').outerHeight(), 
 			x=(x+tipw>$(document).scrollLeft()+$(window).width())? x-tipw-(20*2) : x
 			y=(y+tiph>$(document).scrollTop()+$(window).height())? $(document).scrollTop()+$(window).height()-tiph-10 : y

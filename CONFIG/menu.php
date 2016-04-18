@@ -1,73 +1,136 @@
-<script type="text/javascript">
+ <script type="text/javascript">
 		var site_url = '<?php echo SITE_BASE_URL.'/';?>';
-	</script>
-<header id="header-top">
-<div class="header-top-wrap clearfix"  style="height: 35px;line-height: 35px;background-color: lightcoral;border-bottom: 1px solid #eae9e9;">
-    <div class="row">
-        <div class="col-md-6">
-            
-            
-        </div>
-        <div class="col-md-6">
-
-
-		<?php
-		if(isset($_SESSION['Nris_session']))	  
-	   { ?>
-            <div class="login"><a href="logout.php" style="color:#FFFFFF;">Logout</a></div>
-	        <div class="login"><i class="fa fa-user"></i><a href="#" style="color:#FFFFFF;">Profile</a></div>            
-	<?php } else { ?>            
-        
-        <div class="login"><a href="#" data-toggle="modal" data-target="#myModal" style="color:#FFFFFF;"><i class="fa fa-lock"></i>login</a></div>    
-        <div class="get-started" style="border:none;"><a href="register.php" style="color:#FFFFFF;">Get Started</a></div>
-       <?php } ?>     
-
-            
-        </div>
-    </div>
-</div><!-- End container -->
-</header><!-- End header -->
+	</script>   
 <header id="header" class="header-3">
 <div class="menu-wrap clearfix">
 
-    <div class="col-md-12 header-top-two">
 
-        <div class="logo"><a href="index.php"><img alt="" src="img/logo.png"></a></div>
+
+
+
+
+
+
+
+
+
+    <div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');">
+	   
+	   <div class="col-md-4">
+			  <div class="logo"><a href="index.php"><img alt="" src="img/logo.png"></a></div>
+	   </div>
+	   <div class="col-md-8">
+			  <?php
+					 if(isset($_SESSION['Nris_session'])) { ?>
+							<div class="new-uer-right-div">
+								   <a href="logout.php" class="reg">Logout</a>
+								   <a href="javascript:;" class="reg"><i class="fa fa-user"></i>&nbsp;Profile</a>
+							</div>          
+			  <?php  } else { ?>
+							<div class="new-uer-right-div">
+								  <a class="reg" href="javascript:;" data-toggle="modal" data-target="#myModal"><i class="fa fa-lock"></i>&nbsp;login</a>
+								  <a class="reg" href="register.php">Register</a>
+							</div>
+			  <?php  } ?> 
+	   </div>
         
-        <div class="advertise-header">
-            <a href="#">
-                <img src="img/ad-radio-khushi.jpg" alt="Advertisement-Radio-Khushi">
-            </a>
-            <a href="#">
-                <img src="img/ad-iphone.jpg" alt="Advertisement-Iphone">
-            </a>
+        
+		
+        <div class="advertise-header" style="display: none;">
+            
+               
+               <?php
+				$current_date = date('Y-m-d');
+			//	echo $current_date;
+				$home_ad_query1 = "select * from us_ads where ad_position='Home-Top-Small' and ad_position_no='1' and status='Active' order by id desc limit 1";
+			//	echo $home_ad_query1 ;
+				$home_ad_res1 = mysql_query($home_ad_query1);
+				//if(mysql_num_rows($home_ad_res1)>0)
+				$home_fs1 = mysql_fetch_array($home_ad_res1);
+				if($home_fs1['edate'] >= $current_date && $home_fs1['image'] != '')
+				{
+
+				$home_fs1['url'] = ($home_fs1['url'] != '') ? $home_fs1['url'] : 'javascript:;';
+				 echo '<a href="' . $home_fs1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_fs1['image'].'"></a>';
+				} else { 
+			?>		
+                <img src="img/home1.jpg" alt="Advertisement">
+                 <?php
+				 $home_ad_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Top-Small' and ad_position_no='1' and edate < '".$current_date."' ");
+				  } ?>
+          
+           
+           
+            
+             <?php
+
+				$home_ad_query2 = "select * from us_ads where ad_position='Home-Top-Large' and ad_position_no='1' and status='Active' order by id desc limit 1";
+			//	echo $home_ad_query2 ;
+				$home_ad_res2 = mysql_query($home_ad_query2);
+				$home_fs2 = mysql_fetch_array($home_ad_res2);
+				if($home_fs2['edate'] >= $current_date && $home_fs2['image'] != '')
+				{
+					$home_fs2['url'] = ($home_fs2['url'] != '') ? $home_fs2['url'] : 'javascript:;';	
+					echo '<a href="' . $home_fs2['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_fs2['image'].'"></a>';
+				} else { 
+				 $home_ad_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Top-Large' and ad_position_no='1' and edate < '".$current_date."' ");
+			?>		            
+                <a href="javascript:;"><img src="img/home2.jpg" alt="Advertisement"></a>
+               <?php } ?>
         </div>
     
-    </div>
-    <nav class="navigation">
+    
+	
+	</div>
+    
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	<nav class="navigation">
         <ul>
 
             
         <li><a href="index.php">Home</a></li>
         <li><a href="aboutus.php">About Us</a></li>
-        <li><a href="discussion_room_data.php">NRI's talk</a></li>
+        <li><a href="#" data-toggle="modal" data-target="#nri_post">NRI's talk</a></li>
         <li><a href="discussion_board_data.php">National Forum</a></li>
         <li><a href="realestate.php">National Real Estate</a></li>
         <li><a href="education.php">Education& Teaching</a></li>
         <li><a href="auto.php">National Autos</a></li>
         <li><a href="mypartner.php">My Partner</a></li>
        
-  <li><a href="#"> National Jobs</a>
+  <li><a href="javascript:;"> National Jobs</a>
             <ul class="subnav">
-            <li><a href="#">Medical Jobs  Jobs</a></li>
-            <li><a href="#">Accounting/Clerical  Jobs</a></li>
-            <li><a href="#">IT Jobs Jobs</a></li>
-            <li><a href="#">PartTime/ Hourly  Jobs</a></li>
-            <li><a href="#">HR/Management Jobs Jobs</a></li>
+			  <?php
+					 $jobQuery = "select * from  job_category order by id asc";
+					 $resultJob = mysql_query($jobQuery);                                                
+					 while($jobTop = mysql_fetch_array($resultJob)) {
+			  ?>
+					 <li><a href="national_jobs.php?type=<?php echo $jobTop['id'];?>"><?php echo rtrim($jobTop['name'],'Jobs');?> Jobs</a></li>
+			  <?php } ?>
             </ul>
         </li>
         
-  <li><a href="#">Best Visiting Spots</a>
+  <li><a href="javascript:;">Best Visiting Spots</a>
             <ul class="subnav">
             <li><a href="best_casinos.php">Casinos </a></li>
             <li><a href="best_restaurants.php">Restaurants </a></li>
@@ -76,7 +139,7 @@
              </ul>
         </li>
         <!-- <li id="famousTemples"><a href="#famousIndianTemples">Famous Indian Temples</a></li> -->
-        <li><a href="#">Carpool</a>
+        <li><a href="javascript:;">Carpool</a>
             <ul>
             <li><a href="carpool_data.php">Inter state Carpool</a></li>
             <li><a href="carpool_data.php">International carpool</a></li>		
@@ -90,115 +153,30 @@
 			$query_video_lang="select * from  video_languages order by id desc";
 			$result_video_lang=mysql_query($query_video_lang);                                                
 			while($rs_video_lang=mysql_fetch_array($result_video_lang))
-			{?>
-				
+			{?>				
             <li><a href="videos.php?lang=<?php echo $rs_video_lang['name'] ?>"><?php echo $rs_video_lang['name'] ?></a></li>
 			<?php } ?>
             </ul>
-  
-            <?php /*?><ul>
-            <li><a href="#">Telugu</a></li>
-            <li><a href="#">English</a></li>
-            <li><a href="#">Hindi</a></li>
-            <li><a href="#">Tamil</a></li>
-            <li><a href="#">Kanada</a></li>
-            <li><a href="#">Serials</a></li>
-            </ul><?php */?>
         </li>
         
         
-        
-        <li><a href="blog.php">Blog</a></li>
-         <li><a href="#"  data-toggle="modal" data-target="#free_post">Student's Talk</a>
-         <ul class="subnav">
-            <li><a href="#">Newyork State University</a>
-                    <ul class="subnav">
-                        <li><a href="#">Accommodation</a></li>
-                        <li><a href="#">Campus Jobs</a></li>
-                        <li><a href="#">Graduate Assistantship</a></li>
-                        <li><a href="#">General Talk</a></li>
-                    </ul>
-            </li>
-            <li><a href="#">Buffalo University</a></li>
-            <li><a href="#">Columbia University</a></li>
-            <li><a href="#">Request Us to add your University</a></li>
-        </ul>
+		<li><a href="blog.php">Blog</a></li>
+        <li>
+			  <a href="javascript:;"  data-toggle="modal" data-target="#student_talk">Student's Talk</a>
         </li>
         <li><a href="advertising.php">Advertise </a></li>
-        <li><a href="contact.php">Contact </a></li>
-        
-        
-        
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+        <li><a href="contact.php">Contact </a></li>      
       </ul>
     </nav><!-- End navigation -->
 </div>
 <!-- End container -->
 </header><!-- End header -->
 
-
-
-
-
-
-<?php /*?><script type="text/javascript">
-    function showUser(str)
-    {
-    myemail=document.getElementById('Loginemail').value;
-	mypassword=document.getElementById('LoginPassword').value;
-	if (str=="")
-    {
-    document.getElementById("myLoginuser").innerHTML="";
-    return;
-    }
-    if (window.XMLHttpRequest)
-    {// code for IE7+, Firefox, Chrome, Opera, Safari
-    xmlhttp=new XMLHttpRequest();
-    }
-    else
-    {// code for IE6, IE5
-    xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function()
-    {
-    if (xmlhttp.readyState==4 && xmlhttp.status==200)
-    {
-    document.getElementById("myLoginuser").innerHTML=xmlhttp.responseText;
-    if(xmlhttp.responseText=="Sucess")
-    {
-      // document.getElementById("formLogin").submit();
-	 alert('sdf');
-	 document.write("Hello World!");
-    }    
-    }
-    }
-    xmlhttp.open("GET","login.php?MyemailId="+myemail+"&MyPassword="+mypassword,true);
-    xmlhttp.send();
-    }
-    </script><?php */?>
-
-
 <!-- Modal -->
 
   <div class="modal fade" id="myModal" role="dialog">
     <div class="modal-dialog">
-
-<?php	$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";  ?>	
-    
+    <?php	$actual_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";  ?>	
       <!-- Modal content-->
       <div class="modal-content">
         <div class="modal-header">
@@ -213,23 +191,25 @@
             <div class="form-group">
     <label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Email Id</label>            
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Loginemail" name="Loginemail" placeholder="Enter E-mail" style="width:100%;" tabindex="1"  required="required" />
+		<input type="text" class="form-control" id="Loginemail" name="Loginemail" placeholder="Enter E-mail" style="width:100%;" tabindex="1"  required="required"  value="<?php if(isset($_COOKIE['username'])) echo $_COOKIE['username']; ?>" />
 	</div>
 </div>
 <div class="form-group">
     <label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Password</label>
 	<div class="col-sm-8">
-		<input type="password" class="form-control" id="LoginPassword" name="LoginPassword" placeholder="Enter Password" style="width:100%;" tabindex="2" required="required"  />
-        <input type="hidden" name="currentURL" id="currentURL" value="<?php echo $actual_link ; ?>" />
+		<input type="password" class="form-control" id="LoginPassword" name="LoginPassword" placeholder="Enter Password" style="width:100%;" tabindex="2" required="required"  value="<?php if(isset($_COOKIE['password'])) echo $_COOKIE['password']; ?>" />
 	</div>
-<div class="col-sm-8">
+	<div class="col-sm-8">
 		<input type="checkbox" name="remember" id="remember" <?php if(isset($_COOKIE['remember_me'])) { echo 'checked="checked"'; } else { echo ''; } ?> />&nbsp;Remember Me
 	</div>    
 </div>
 
+
 <div class="form-group">
 	<div class="col-sm-offset-2 col-sm-8">		
 		<!--<button type="button" class="btn btn-success" tabindex="3" style="float:right;" onclick="showUser();">Sign In</button>-->
+        <input type="hidden" name="currentURL" id="currentURL" value="<?php echo $actual_link ; ?>" />
+		&nbsp;&nbsp;<a href="forgot_password.php" class="read-btn-tab" style="float:right;">Forgot Password</a>
         <button type="submit" name="cmdLoginbtn" id="cmdLoginbtn" class="btn btn-success" tabindex="3" style="float:right;">Sign In</button>
 	</div>
 </div>
@@ -245,9 +225,6 @@
             ?>
             <h3>
                 <?php
-                // include_once("fb_login/includes/functions.php");
-                //destroy facebook session if user clicks reset
-                // var_dump($fbuser);exit;
                 if(!$fbuser){
                     $fbuser = null;
                     $loginUrl = $facebook->getLoginUrl(array('redirect_uri'=>$homeurl,'scope'=>$fbPermissions));
@@ -278,4 +255,45 @@
   </div>
 </form>  
 <!-- Modal -->
-
+<!-- Modal  Free Post  -->
+  <div class="modal fade" id="nri_post" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Nri's Talk</h4>
+        </div>
+        <div class="modal-body">
+          <p style="color:#000000;font-size:14px;">Select your State in the map to post an ad Locally or selective state or through out the united states.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>  
+  <!-- Modal  Free Post  End -->
+   <!-- Modal  Free Post  -->
+  <div class="modal fade" id="student_talk" role="dialog">
+    <div class="modal-dialog">
+    
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Student's Talk</h4>
+        </div>
+        <div class="modal-body">
+          <p style="color:#000000;font-size:14px;">Select your State in the map to post an ad Locally or selective state or through out the united states.</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+      
+    </div>
+  </div>  
+  <!-- Modal  Free Post  End -->

@@ -131,30 +131,7 @@ font-size:12px;
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -176,6 +153,32 @@ font-size:12px;
 			$rs=mysql_fetch_array($result);	
 			$total_views = $rs['total_views'] + 1 ;
 			mysql_query("update post_free_job set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
+			
+			$query2 = "select city from cities where id = ".$rs['City'];
+			$result2 = mysql_query($query2);
+			$rs2 = mysql_fetch_array($result2);
+			$cityName = $rs2['city'];
+			
+			
+						if($rs['Address'] != '') {
+							$addArr[] = $rs['Address'];
+						}
+						if($cityName != '') {
+							$addArr[] = $cityName;
+						}
+						if($rs['state'] != '') {
+							$addArr[] = $rs['state'];
+						}
+						$addArr[] = 'US';
+						$address = urldecode(implode(',',$addArr));
+						$geocode=file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$address.'&sensor=false');
+
+						$output= json_decode($geocode); //Store values in variable
+						
+						if($output->status == 'OK'){ // Check if address is available or not
+						  $lat = $output->results[0]->geometry->location->lat; //Returns Latitude
+						  $lng = $output->results[0]->geometry->location->lng; // Returns Longitude
+						}
 			?>               
                        
 <div class="widget-temple">
@@ -190,7 +193,8 @@ font-size:12px;
 <a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
 <?php } ?>   
 </div><br>
-                       
+           
+		   <div class="col-md-7" >            
         <table class="table table-bordered">
                                        
                                         <thead>
@@ -227,7 +231,7 @@ font-size:12px;
                                      <thead>
                                        		<tr>
                                        		<th>City</th>                                         
-                                             <th> <?php    echo ucwords($rs['City']);   ?> </th>
+                                             <th> <?php    echo ucwords($cityName);   ?> </th>
                                          	</tr>
                                      </thead>
                                        
@@ -306,57 +310,45 @@ font-size:12px;
                                        </thead>
                                     
                                     
-                                    
-                                    
-                                    
-                                        <?php /*?><tr>
-                                            
-                                            <th colspan="2" align="center" style="text-align:center">
-
-											<?php   if (strpos($rs['image1'],'.') !== false) {  ?>
-                             			   <img src="uploads/jobs/<?php echo $rs['image1'];?>" width="300" height="auto"> 	<?php }  else {  ?>
-                                           <img src="admin/img/no_image.png" height="auto" width="300">
-                                           <?php } ?>
-                                           
-                                          
-                                            </th>                                               
-                                        </tr><?php */?>
-                                 
-                                     
-                                        
                                     </table>               
                        
-                       
-                       
-                       
-
-
-					
- 
-
-                    
-<br><br><br><br><br>
-
- <?php /*?><div class="dividerHeading">
-    <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
-</div>
-        
-            <form novalidate="novalidate" method="post" action="#" class="comment-form">               
-              <div class="form-div ">
-                    <div class="form-label">Message:</div>
-                    <div class="form-field">
-                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
-                    </div>            
-               </div>      
-             <div class="form-submit-buttons">               
-                <input name="comment_submit" value="Post Comment" class="no-comment btn btn-premium" type="submit" style="float:right">
-             </div>
-                <input class="form-control" name="post_id" value="623" type="hidden">
-                <input class="form-control" name="commented_by" value="" type="hidden"><br>
-           </form> <?php */?>
-<br><br><br><br><br><br><br><br><br>	
+        </div>
 		
-            </div>
+		<div class="col-md-5" >
+		              
+<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
+<script type="text/javascript">
+$(document).ready(function () {
+// Define the latitude and longitude positions
+var latitude = parseFloat("<?php echo $lat; ?>"); // Latitude get from above variable
+var longitude = parseFloat("<?php echo $lng; ?>"); // Longitude from same
+var latlngPos = new google.maps.LatLng(latitude, longitude);
+// Set up options for the Google map
+var myOptions = {
+zoom: 17,
+center: latlngPos,
+mapTypeId: google.maps.MapTypeId.ROADMAP,
+zoomControlOptions: true,
+zoomControlOptions: {
+style: google.maps.ZoomControlStyle.LARGE
+}
+};
+// Define the map
+map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
+// Add the marker
+var marker = new google.maps.Marker({
+position: latlngPos,
+map: map,
+title: "Address"
+});
+});
+</script>
+<div id="googleMap" style="width:100%;height:300px;" ></div>
+		</div>
+
+		
+		
+		    </div>
             <!-- TOP BUTTONS ENDS-->
             
             
@@ -368,30 +360,7 @@ font-size:12px;
         
         
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 

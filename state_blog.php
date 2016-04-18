@@ -109,30 +109,7 @@
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -297,6 +274,30 @@
                 <?php echo substr($rs['blog_desc'],0,350)."..."; ?>
                 
                  </p>
+				<?php if (!empty($_SESSION['Nris_session']['id'])) { ?>
+		            <?php
+		            $user_id = $_SESSION['Nris_session']['id'];
+		            $blog_id = $assoc_id = $rs['id'];
+		            $type = 'blog';
+					$query_res = mysqli_query($con, 'SELECT like_val from likes where user_id = '.$user_id.' AND assoc_id = '.$assoc_id.' AND type="'.$type.'"');
+					$user_like_res = mysqli_fetch_assoc($query_res);
+
+					$like_cls = $disliked_cls = '';
+					if (isset($user_like_res['like_val'])) {
+						$like_cls = ($user_like_res['like_val'] == 1) ? 'liked' : '';
+						$disliked_cls = ($user_like_res['like_val'] == 1) ? '' : 'disliked';
+					}
+		            ?>
+		            <div class="like_lnks_cnt">
+		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">Like</a>
+		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">DisLike</a>
+		            </div>
+	            <?php } else { ?>
+					<div class="like_lnks_cnt">
+		                <a href="javascript:;" class='like_dislike_lnk _like' data-toggle="modal" data-target="#myModal">Like</a>
+		                <a href="javascript:;" class='like_dislike_lnk _dislike' data-toggle="modal" data-target="#myModal" style="margin : 0 10px">DisLike</a>
+		            </div>
+				<?php } ?>
                 <span style="float:right;"><a href="state_blog_details.php?viewId=<?php echo md5($rs['id']); ?>">Read More...</a></span>
                 <br>                        
             </div>
@@ -315,26 +316,6 @@
           
           <br><br><br>
         
-      <!--  <div class="blockquote">
-            <div class="quote">
-                <h5 style="margin-bottom:5px;">Institute Type : School & Hostel</h5>
-				<div style="color: #808080;font-weight: 300;line-height: 24px;margin-bottom: 12px;">Posted 06:12PM, 25 December 2015 by Admin / Category: Fashion, Dresses</div>
-                <p>
-                <img src="admin/uploads/blog/27695_a1.jpg" height="auto" width="200" style="float:left;margin: 0 10px 10px 0;"  class="imgframe">
-                
-                Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download </p>
-                <span style="float:right;"><a href="view_profile.php">Read More...</a></span>
-                <br>                        
-            </div>
-        </div>-->
-
-
-
-		
-        
-        
-        			
-			
             </div>
             <!-- TOP BUTTONS ENDS-->
             
@@ -347,30 +328,7 @@
         
         
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 
@@ -404,6 +362,7 @@
 <script src="js/jquery.min.js"></script>
 <script src="js/html5.js"></script>
 <script src="js/custom.js"></script>
+<script src="js/like_dislike.js"></script>
 <!-- End js -->
 
 <?php include "config/social.php" ;  ?>

@@ -47,7 +47,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                             <li><a href="events.php"><span class="fa fa-calendar"></span> Events</a></li>
                             <li><a href="batches.php"><span class="fa fa-cloud"></span> Batches</a></li>
                             <li><a href="student_talk.php"><span class="fa fa-users"></span> Student's Talk</a></li>
-                            <li><a href="#"><span class="fa fa-film"></span> Movies Top Cities</a></li>                            
+                            <li><a href="top_city_movies.php"><span class="fa fa-film"></span> Movies Top Cities</a></li>                            
                         </ul>
                     </li>
                     
@@ -252,7 +252,7 @@ if ($_SESSION['USNRIs_session']['category']=='Director' || $_SESSION['USNRIs_ses
                             <li><a href="events.php"><span class="fa fa-calendar"></span> Events</a></li>
                             <li><a href="batches.php"><span class="fa fa-cloud"></span> Batches</a></li>
                             <li><a href="student_talk.php"><span class="fa fa-users"></span> Student's Talk</a></li>
-                            <li><a href="#"><span class="fa fa-film"></span> Movies Top Cities</a></li>                            
+                            <li><a href="top_city_movies.php"><span class="fa fa-film"></span> Movies Top Cities</a></li>                            
                         </ul>
                     </li>
                     
@@ -385,7 +385,7 @@ if ($_SESSION['USNRIs_session']['category']=='Clerk')
                             <li><a href="events.php"><span class="fa fa-calendar"></span> Events</a></li>
                             <li><a href="batches.php"><span class="fa fa-cloud"></span> Batches</a></li>
                             <li><a href="student_talk.php"><span class="fa fa-users"></span> Student's Talk</a></li>
-                            <li><a href="#"><span class="fa fa-film"></span> Movies Top Cities</a></li>                            
+                            <li><a href="top_city_movies.php"><span class="fa fa-film"></span> Movies Top Cities</a></li>                            
                         </ul>
                     </li>
                     

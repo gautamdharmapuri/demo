@@ -1,4 +1,27 @@
 <script type="text/javascript" src="css-pop.js"></script>
+<script type="text/javascript">
+	 
+	 $(document).ready(function(){
+		$('input[type="file"]').change(function(){
+		  var thisId = $(this).attr('id');
+		  var progress = 0;
+		  if ($('#processeing_bar_'+thisId).length == 0) {
+			  $('#'+thisId).after('<div id="processeing_bar_'+thisId+'"><div style="background-color: red;width:0%;height: 2px;">&nbsp;</div></div>');
+		  }
+		  
+		  var refreshIntervalId = setInterval(function(){
+			  progress = progress + 20;
+			  $('#processeing_bar_'+thisId+' div').html('<center>'+progress+'%'+'</center>');
+			  $('#processeing_bar_'+thisId+' div').css('width',progress+'%');
+			  if (progress == 120) {
+				  clearInterval(refreshIntervalId);
+				  $('#processeing_bar_'+thisId).remove();
+			  }
+		  },200);
+	  });  
+	 });
+	 
+</script>
 <footer id="footer">
      <div class="footer-inner" style="width:100%;">
      	 <div class="social-ul-ftr">
@@ -125,5 +148,4 @@ ul.checks > li {
 
 #terms_conditions_popup a {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
 #terms_conditions_popup a:hover {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
-
 </style>

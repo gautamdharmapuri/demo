@@ -70,7 +70,7 @@ $current_date = date('Y-m-d');
                         speed:6000
                     });
 				   
-				   var tempVar = 0;
+				   var tempVar = 1;
 				   setInterval(function(){
 					    
 						if (tempVar > 2) {
@@ -79,8 +79,10 @@ $current_date = date('Y-m-d');
 						var randNum = tempVar;
 						j('#desi_movies_link li a').removeClass('selected');
 						j('#desi_movies_content li').removeClass('selected');
+						j('#desi_movies_content li div img').hide();
 						j('#desi_movies_link li a:eq('+randNum+')').addClass('selected');
 						j('#desi_movies_content li:eq('+randNum+')').addClass('selected');
+						j('#desi_movies_content li div img:eq('+randNum+')').show();
 						tempVar = randNum+1;
 			        },3000);
                 });
@@ -175,74 +177,121 @@ $current_date = date('Y-m-d');
                                                   <nav class="tab-head">
                                                       <ul class="cd-tabs-navigation" style="width:100%;">
                                                           <li class="tab-size tab-one" ><a style="" data-content="hot-list" class="selected" href="#0">Hot List Ads</a></li>
-                                                          <li class="tab-size tab-two" ><a data-content="post-ad" href="#0" style="" >Just Pay $2 and post your ad here</a></li>
-                                                           <li class="tab-size tab-three"><a data-content="relegious" href="#0" style="" >Religious</a></li>
+                                                          <li class="tab-size tab-two" ><a data-content="post-ad" href="#0" style="" >Most Viewed</a></li>
+                                                           <li class="tab-size tab-three"><a data-content="relegious" href="#0" style="" >Free Stuff for Pickup</a></li>
                                                       </ul> <!-- cd-tabs-navigation -->
                                                   </nav>
                                                   
                                                   <ul class="cd-tabs-content" style="height:300px;">
                                                       <li data-content="hot-list" class="selected">
                                                           <div class="content-tab">
-                                                              <p><a href="#">16 Mar<span> Ads title goes here</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Ads title goes here</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Ads title goes here</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Ads title goes here</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Ads title goes here</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Ads title goes here</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Ads title goes here</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Ads title goes here</span></a></p>
+															<?php
+																		
+																		$query = "(SELECT id,TitleAD,'auto' as type,image1 as image,Address as address FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_auto.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_baby_sitting.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_education.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_electronics.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_garage_sale.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_job.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_real_estate.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_roommates.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_stuff.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_mypart.id DESC LIMIT 1)";
+																		$result = mysql_query($query);
+																		$i=1;					
+																		while($rs=mysql_fetch_array($result)) {
+															?>
+                                                              <p>
+																		<a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+																					<?php if($rs['address'] != '') { ?>
+																					<img src="images/map-icon.png">
+																		<?php } ?>
+																		<?php if($rs['image'] != '') { ?>
+																					<img src="images/image-icon.png">
+																		<?php } ?>
+																					<span><?php echo $rs['TitleAD'];?></span>
+																		</a>
+															  </p>
+															<?php } ?>
                                                           </div>    
-                                                          <a href="#" class="read-btn-tab">View more</a>
                                                       </li>
                                                       
                                                       <li data-content="post-ad">
                                                       <div class="content-tab">
                                                              
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
+                                                              <?php
+																		
+																		$query = "(SELECT id,TitleAD,'auto' as type,image1 as image,Address as address  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_auto.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_baby_sitting.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address  FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_education.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_electronics.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_garage_sale.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address  FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_job.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_real_estate.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_roommates.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_stuff.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_mypart.total_views DESC LIMIT 1)";
+																		$result = mysql_query($query);
+																		$i=1;					
+																		while($rs=mysql_fetch_array($result)) {
+															?>
+                                                              <p><a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+																		<?php if($rs['address'] != '') { ?>
+																					<img src="images/map-icon.png">
+																		<?php } ?>
+																		<?php if($rs['image'] != '') { ?>
+																					<img src="images/image-icon.png">
+																		<?php } ?>
+																		<span><?php echo $rs['TitleAD'];?></span></a></p>
+															<?php } ?>
                                                         </div>    
-                                                          <a href="#" class="read-btn-tab">View more</a>
                                                       </li>
                                                       <li data-content="relegious">
                                                           <div class="content-tab">
-                                                             
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Loream Ispum</span></a></p>
+                                                             <?php
+															 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+															 $query = "SELECT * FROM post_free_stuff WHERE TitleAD != '' AND AdPostType = 'premium' AND States LIKE '%".$state."%' ORDER BY id desc LIMIT 8;";
+																		$result = mysql_query($query);
+																		$i=1;
+																		if(mysql_numrows($result) > 0) {
+																		while($rs=mysql_fetch_array($result)) {
+															 ?>
+                                                              <p><a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><span><?php if($rs['City'] != '') { ?>
+																					<img src="images/map-icon.png">
+																				<?php } ?>
+																				<?php if($rs['image'] != '') { ?>
+																					<img src="images/image-icon.png">
+																				<?php } ?><?php echo $rs['TitleAD'];?></span></a></p>
+															  
+															  <?php } } else { ?>
+																		<p><span>No Result found</span></p>
+															  <?php } ?>
                                                           </div>    
-                                                          <a href="#" class="read-btn-tab">View more</a>
                                                       </li>
                                                       
                                                   </ul> <!-- cd-tabs-content ends -->
                                                   
                             </div> <!-- cd-tabs ends-->
                             
-                            
-                           
-                            
-             
-                        
                     </div><!-- TOP SECTION LEFT ENDS -->
-                    
-                   
-
-
-                   
-
-                   
-                   
-                   
                    
                     <!-- TOP SECTION RIGHT STARTS -->
                     <div class="top-section-one-right">
@@ -258,38 +307,56 @@ $current_date = date('Y-m-d');
                             <div class="full-btn">
                                 <a href="#">Desi Movies</a>
                             </div>
+							<?php
+									$query = "SELECT fam_city_movies.*,cities.city as cityname FROM fam_city_movies,cities
+												WHERE image != '' AND status = 'Active'
+												AND cities.id = city_id
+												AND fam_city_movies.state_code LIKE '%".$state."%'
+												ORDER BY fam_city_movies.id desc LIMIT 3;";
+											   $result = mysql_query($query);
+											   $movieArr = array();
+												if(mysql_numrows($result) > 0) {
+															while($rs = mysql_fetch_array($result)) {
+																		$movieArr[] = $rs;	
+															}
+															if($movieArr == 3) {	
+															} else {
+																		for($t = 0 ; $t < 4-count($movieArr) ; $t++) {
+																					if(count($movieArr) < 3) {
+																								$movieArr[] = $movieArr[$t];	
+																					}
+																		}
+															}
+												}
+							?>
                         
-                                         <div class="cd-tabs" style="float:left;padding: 0 5px;width: 100%;margin-top:0;">
-                                                  <nav>
-                                                      <ul class="cd-tabs-navigation" style="width:100%;" id="desi_movies_link">
-                                                          <li style="width:84px;"><a data-content="chicago" class="selected" href="#0" style="font-size:9px;height:35px;text-align:center; background:#d9d9d9;color:#3c3c3c;">Chicago</a></li>
-                                                          <li  style="width:84px;"><a data-content="spring" href="#0" style="font-size:9px;height:35px;background:#d9d9d9;color:#3c3c3c;text-align:center;" >Spring Field</a></li>
-                                                           <li  style="width:84px;"><a data-content="chicago-2" href="#0" style="font-size:9px;height:35px;background:#d9d9d9;color:#3c3c3c;text-align:center;" >Chicago</a></li>
-                                                      </ul> <!-- cd-tabs-navigation -->
-                                                  </nav>
-                                                  
-                                                  <ul class="cd-tabs-content height-content" style="height:188px;" id="desi_movies_content">
-                                                      <li data-content="chicago" class="selected">
-                                                          <div class="content-tab">
-                                                              <img src="img/poster.jpg" alt="POSTER" width="100%" style="overflow:hidden;">
-                                                          </div>    
-                                                      </li>
-                                                      
-                                                      <li data-content="spring" >
-                                                      <div class="content-tab">
-                                                             <img src="img/poster.jpg" alt="POSTER" width="100%" style="overflow:hidden;">
-                                                        </div>    
-                                                          
-                                                      </li>
-                                                      <li data-content="chicago-2" >
-                                                          <div class="content-tab">
-                                                          <img src="img/poster.jpg" alt="POSTER" width="100%" style="overflow:hidden;">
-                                                          </div>    
-                                                      </li>
-                                                      
-                                                  </ul> <!-- cd-tabs-content ends -->
-                                                  
-                            </div> <!-- cd-tabs ends-->
+                                    <div class="cd-tabs" style="float:left;padding: 0 5px;width: 100%;margin-top:0;">
+												<?php if(count($movieArr) > 0) { $k = 0;?>
+															<nav>
+																<ul class="cd-tabs-navigation" style="width:100%;" id="desi_movies_link">
+																	<?php foreach($movieArr as $movie) { ?>
+																		<li style="width:84px;background-color:#87CEEB;">
+																			<a data-content="<?php echo ucfirst($movie['cityname']);?>" <?php if($k == 0) { ?>class="selected"<?php } ?> href="#<?php echo $k;?>" style="font-size:9px;height:35px;text-align:center; background:#d9d9d9;color:#3c3c3c;">
+																						<?php echo ucfirst($movie['cityname']);$k++;?>
+																			</a>
+																		</li>
+																	<?php } ?>
+																</ul> <!-- cd-tabs-navigation -->
+															</nav>
+															
+															<ul class="cd-tabs-content height-content" style="height:188px;" id="desi_movies_content">
+																		<?php $k = 0;foreach($movieArr as $movie) { ?>
+																					<li style="padding: 0px !important;" data-content="<?php echo ucfirst($movie['cityname']);?>" <?php if($k == 0) { ?>class="selected"<?php } ?>>
+																						<div style="padding: 0px !important;" class="content-tab">
+																							<img src="admin/uploads/city_movies/<?php echo $movie['image'];?>" alt="<?php echo ucfirst($movie['name']);?>" width="100%" <?php if($k++ == 0) { ?>style="overflow:hidden;height:186px;"<?php } else { ?>style="overflow:hidden;height:186px;display:none;"<?php } ?>>
+																						</div>    
+																					</li>
+																		<?php } ?>
+															</ul> <!-- cd-tabs-content ends -->
+												<?php } else { ?>
+															No Movies
+												<?php } ?>
+									</div> <!-- cd-tabs ends-->
                         </div><!-- MOVIES ends-->
                     
                     </div><!-- TOP SECTION RIGHT ENDS -->
@@ -306,49 +373,23 @@ $current_date = date('Y-m-d');
                  <!-- LEFT AD SECTION -->
                     <div class="right-ad">
                     	<div class="col-md-12 padding-no">
-                        
+									<?php
+												$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+												$query = "SELECT * FROM fam_advertisement
+															WHERE image != '' AND edate >= now() AND ad_position = 'Right Side'
+															AND state_code LIKE '%".$state."%'
+															ORDER BY ad_position_no asc LIMIT 10;";
+														   $result = mysql_query($query);
+														   $i=1;
+														   if(mysql_numrows($result) > 0) {
+														   while($rs=mysql_fetch_array($result)) {
+									?>
                                 <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                        
+                                    <a href="<?php echo ($rs['url'] != '') ? $rs['url'] : 'javascript:;';?>" target="_blank">
+                                        <img src="admin/uploads/advertisements/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
                                     </a>
                                 </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                        
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>	
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                        
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>	
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>	
-                                
-                               
+                                <?php } }?>
                       </div> 
                     </div><!-- LEFT AD SECTION ENDS--> 
 
@@ -376,9 +417,6 @@ $current_date = date('Y-m-d');
                     
                        <div class="left-table">
                        
-                       			<div class="state-l-head">
-                                    <h3>Free Clasified</h3>
-                                </div>
                                
                                         
                                         <?php
@@ -411,7 +449,7 @@ $current_date = date('Y-m-d');
              <div id="myLoginuser"></div>  
             <div>
            
-            <ul style="text-align:left;line-height:28px;">
+            <ul class="home_category_model_ul">
                 <li><a href="auto_create.php?code=<?php echo $_SESSION['state'] ?>">Auto</a></li>
                 <li><a href="baby_sitting_create.php?code=<?php echo $_SESSION['state'] ?>">Baby Sitting</a></li>  
                 <li><a href="education_create.php?code=<?php echo $_SESSION['state'] ?>">Education & Teaching</a></li>   
@@ -504,227 +542,110 @@ $current_date = date('Y-m-d');
                                                   <nav class="tab-head">
                                                       <ul class="cd-tabs-navigation" style="width:100%;">
                                                           <li class="tab-size tab-one"><a style="text-align:center;height: 40px;padding:11px 19px;" data-content="hot-list" class="selected" href="#0">Hot List Ads</a></li>
-                                                          <li class="tab-size tab-two"><a data-content="post-ad" href="#0" style="text-align:center;height: 40px;padding:11px 19px;width:auto;" >Just Pay $2 and post your ad here</a></li>
-                                                           <li class="tab-size tab-three"><a data-content="relegious" href="#0" style="text-align:center;height: 40px;padding:11px 19px;" >Religious</a></li>
+                                                          <li class="tab-size tab-two"><a data-content="post-ad" href="#0" style="text-align:center;height: 40px;padding:11px 19px;width:auto;" >Most Viewed</a></li>
+                                                           <li class="tab-size tab-three"><a data-content="relegious" href="#0" style="text-align:center;height: 40px;padding:11px 19px;" >Free Stuff for Pickup</a></li>
                                                       </ul> <!-- cd-tabs-navigation -->
                                                   </nav>
                                                   
                                                   <ul class="cd-tabs-content tab-content-size">
                                                       <li data-content="hot-list" class="selected">
                                                           <div class="content-tab">
-                                                              <div class="table-inner">
-
-                                                                        <table align="center" >
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>Title</th>
-                                                                                <th>Views</th>
-                                                                                <th>Replies</th>
-                                                                                <th>Catagories</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                           
-                                                                            
-                                                                            </tbody>
-                                                                        </table>
-                                                                    
-                                                                </div>	
-                                                          </div>    
-                                                          <a href="#" class="read-btn-tab">View more</a>
+															<?php
+																		
+																		$query = "(SELECT id,TitleAD,'auto' as type,image1 as image,Address as address  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_baby_sitting.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_education.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_electronics.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_garage_sale.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_job.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_real_estate.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_roommates.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_stuff.id DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_mypart.id DESC LIMIT 1)";
+																		$result = mysql_query($query);
+																		$i=1;					
+																		while($rs=mysql_fetch_array($result)) {
+															?>
+                                                              <p><a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+															  <?php if($rs['address'] != '') { ?>
+																					<img src="images/map-icon.png">
+																		<?php } ?>
+																		<?php if($rs['image'] != '') { ?>
+																					<img src="images/image-icon.png">
+																		<?php } ?>
+																		<span><?php echo $rs['TitleAD'];?></span></a></p>
+															<?php } ?>
+                                                          </div> 
                                                       </li>
                                                       
                                                       <li data-content="post-ad">
                                                       <div class="content-tab">
-                                                             
-                                                              <div class="table-inner">
-
-                                                                        <table align="center" >
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>Title</th>
-                                                                                <th>Views</th>
-                                                                                <th>Replies</th>
-                                                                                <th>Catagories</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                           
-                                                                            
-                                                                            </tbody>
-                                                                        </table>
-                                                                    
-                                                                </div>	
-                                                        </div>    
-                                                          <a href="#" class="read-btn-tab">View more</a>
+															<?php
+																		
+																		$query = "(SELECT id,TitleAD,'auto' as type,image1 as image,Address as address  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_baby_sitting.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_education.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_electronics.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_garage_sale.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_job.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_real_estate.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_roommates.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_stuff.total_views DESC LIMIT 1)
+																		UNION
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_mypart.total_views DESC LIMIT 1)";
+																		$result = mysql_query($query);
+																		$i=1;					
+																		while($rs=mysql_fetch_array($result)) {
+															?>
+                                                              <p><a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+															  <?php if($rs['address'] != '') { ?>
+																					<img src="images/map-icon.png">
+																		<?php } ?>
+																		<?php if($rs['image'] != '') { ?>
+																					<img src="images/image-icon.png">
+																		<?php } ?>
+																		<span><?php echo $rs['TitleAD'];?></span></a></p>
+															<?php } ?>
+                                                          </div> 
                                                       </li>
                                                       <li data-content="relegious">
                                                           <div class="content-tab">
-                                                             
-                                                             <div class="table-inner">
-
-                                                                        <table align="center" >
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>Title</th>
-                                                                                <th>Views</th>
-                                                                                <th>Replies</th>
-                                                                                <th>Catagories</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                                <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                            <tr>
-                                                                              <td>Hallow my dear Indians</td>
-                                                                                <td>views: 0</td>
-                                                                                <td>Replies: 0</td>
-                                                                                <td>None</td>
-                                                                            </tr>
-                                                                           
-                                                                            
-                                                                            </tbody>
-                                                                        </table>
-                                                                    
-                                                                </div>	
-                                                          </div>    
-                                                          <a href="#" class="read-btn-tab">View more</a>
+                                                             <?php
+															 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+															 $query = "SELECT * FROM post_free_stuff WHERE TitleAD != '' AND AdPostType != 'premium' AND States LIKE '%".$state."%' ORDER BY id desc LIMIT 8;";
+															 
+																		$result = mysql_query($query);
+																		if(mysql_numrows($result) > 0) {
+																		while($rs=mysql_fetch_array($result)) {
+															 ?>
+                                                              <p><a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><span><?php if($rs['City'] != '') { ?>
+																					<img src="images/map-icon.png">
+																				<?php } ?>
+																				<?php if($rs['image'] != '') { ?>
+																					<img src="images/image-icon.png">
+																				<?php } ?><?php echo $rs['TitleAD'];?></span></a></p>
+															  
+															  <?php } } else { ?>
+																		<p><span>No Result found</span></p>
+															  <?php } ?>
+                                                          </div>
                                                       </li>
                                                       
                                                   </ul> <!-- cd-tabs-content ends -->
@@ -845,46 +766,24 @@ $current_date = date('Y-m-d');
                     
                            <div class="padding-no">
                         
+                                <?php
+												$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+												$query = "SELECT * FROM fam_advertisement
+															WHERE image != '' AND edate >= now() AND ad_position = 'Left Side'
+															AND state_code LIKE '%".$state."%'
+															ORDER BY ad_position_no asc LIMIT 10;";
+														   $result = mysql_query($query);
+														   $i=1;
+														   if(mysql_numrows($result) > 0) {
+														   while($rs=mysql_fetch_array($result)) {
+									?>
                                 <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">          
+                                    <a href="<?php echo ($rs['url'] != '') ? $rs['url'] : 'javascript:;';?>" target="_blank">
+                                        <img src="admin/uploads/advertisements/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
                                     </a>
                                 </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                       
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">             
-                                    </a>
-                                </div>	
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                       
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                       <img src="img/2_x_1-ad.jpg" alt="ADVERT">                 
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                       <img src="img/2_x_1-ad.jpg" alt="ADVERT">                        
-                                    </a>
-                                </div>	
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                               
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                               
-                                    </a>
-                                </div>
+                                <?php } }?>
+                                
                             
                            </div> 
                             
@@ -1081,45 +980,8 @@ $current_date = date('Y-m-d');
                     	<div class="col-md-12 padding-no">
                         
                                 <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                        
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                        
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>	
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                        
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>	
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>
-                                <div class="advert-big">
-                                    <a href="#" >
-                                        <img src="img/2_x_1-ad.jpg" alt="ADVERT">                      
-                                    </a>
-                                </div>
+                                    
+                                </div>                                
                                
                       </div> 
                     </div><!-- LEFT AD SECTION ENDS-->

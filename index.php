@@ -2612,7 +2612,6 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
              <!-- 3 AD SECTION -->                                            
                             <div class="three-ad-wrap">
                                 <div class="thr-ad">
-                                	<a href="#">
 									<?php      
 									                              
                                     $home_bottom_query1 = "select * from us_ads where ad_position='Home-Bottom-Small' and ad_position_no='1' and status='Active' order by id desc limit 1";
@@ -2627,11 +2626,11 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                         
                                         <img src="images/ads1.gif" height="115" width="336" style="height:115px;" width="336px;">
                                           <?php } ?>
-                                    </a>
+                                    
                                 </div>
                                 
                                 <div class="thr-ad">
-                                	<a href="#">
+                                	
 									<?php                                    
                                     $home_bottom_query2 = "select * from us_ads where ad_position='Home-Bottom-Small' and ad_position_no='2' and status='Active' order by id desc limit 1";
                                     $home_bottom_ad_res2 = mysql_query($home_bottom_query2);
@@ -2646,11 +2645,11 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                         
                                        <img src="images/ads1.gif" height="115" width="336" style="height:115px;" width="336px;">
                                           <?php } ?>
-                                    </a>
+                                    
                                 </div>
                                 
                                 <div class="thr-ad">
-                                	<a href="#">
+                                	
 									<?php                                    
                                     $home_bottom_query3 = "select * from us_ads where ad_position='Home-Bottom-Small' and ad_position_no='3' and status='Active' order by id desc limit 1";
                                     $home_bottom_ad_res3 = mysql_query($home_bottom_query3);
@@ -2665,7 +2664,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                         
                                         <img src="images/ads1.gif" height="115" width="336" style="height:115px;" width="336px;">
                                           <?php } ?>
-                                    </a>
+                                    
                                 </div>
                             </div>
                             
@@ -2698,7 +2697,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                     	<div class="col-md-12 padding-no">
                         
                                 <div class="advert-big">
-                                    <a href="#" >
+                                    
                                        <?php                                    
                                     $home_right_query1 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='1' and status='Active' order by id desc limit 1";
                                     $home_right_ad_res1 = mysql_query($home_right_query1);
@@ -2712,7 +2711,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                         
                                          <img src="images/ads1.gif" height="96" width="192" style="height:96px;" width="192px;">
                                           <?php } ?>           
-                                    </a>
+                                    
                                 </div>
                               
                               

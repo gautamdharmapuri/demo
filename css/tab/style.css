@@ -112,7 +112,7 @@ Main components
   color: #fff
 }
 .cd-tabs-navigation a.selected {
-  background-color: #2db0fc !important;
+  background-color: #87CEEB !important;
   box-shadow: inset 0 2px 0 #f05451;
   color: #fff;
 }

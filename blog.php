@@ -110,30 +110,7 @@
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('home_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -341,24 +318,6 @@
           
           <br><br><br>
         
-      <!--  <div class="blockquote">
-            <div class="quote">
-                <h5 style="margin-bottom:5px;">Institute Type : School & Hostel</h5>
-				<div style="color: #808080;font-weight: 300;line-height: 24px;margin-bottom: 12px;">Posted 06:12PM, 25 December 2015 by Admin / Category: Fashion, Dresses</div>
-                <p>
-                <img src="admin/uploads/blog/27695_a1.jpg" height="auto" width="200" style="float:left;margin: 0 10px 10px 0;"  class="imgframe">
-                
-                Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download </p>
-                <span style="float:right;"><a href="view_profile.php">Read More...</a></span>
-                <br>                        
-            </div>
-        </div>-->
-
-
-
-		
-        
-        
         			
 			
             </div>
@@ -373,30 +332,7 @@
         
         
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 

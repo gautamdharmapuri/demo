@@ -299,7 +299,14 @@ else
 				while($rs=mysql_fetch_array($result))
 				{ ?> 
                     <tr>
-						<td><a href="roommates_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	                  
+						<td>
+							<?php if($rs['City'] != '') { ?>
+								<img src="images/map-icon.png">
+							<?php } ?>
+							<?php if($rs['image1'] != '') { ?>
+								<img src="images/image-icon.png">
+							<?php } ?>
+							<a href="roommates_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	                  
                     <td><a href="roommates_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	                  
                     <td><a href="roommates_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>

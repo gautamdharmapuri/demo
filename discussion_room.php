@@ -16,8 +16,9 @@ if(isset($_POST['cmdsave']))
 	
 	$date = date("Y-m-d");
 	$time = date("h:m:s");	
-				
-	$query_thread = "insert into  nris_talk(title,description,member_id,status,date,time) values('".$Titletxt."','".$msg."','".$mId."','".$status."','".$date."','".$time."')";		 
+	
+	$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+	$query_thread = "insert into  nris_talk(title,description,member_id,status,date,time,state_code) values('".$Titletxt."','".$msg."','".$mId."','".$status."','".$date."','".$time."','".$state."')";
 	$result_thread = mysql_query($query_thread);
 	$inseted_row = "Topic Saved Successfully";
 	
@@ -198,30 +199,7 @@ if(isset($_POST['cmdsave']))
         
         
         <!-- COLUMN LEFT -->	
-        <div class="col-md-2 inner-left">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -262,6 +240,8 @@ if(isset($_SESSION['Nris_session']))
                                                                             <tr>
                                                                                 <th>Title</th>
                                                                                 <th>Views</th>
+																				<th>Likes</th>
+																				<th>Replies</th>
                                                                                 <th>Last Post by</th>
                                                                             </tr>
                                                                             </thead>
@@ -274,7 +254,7 @@ if(isset($_SESSION['Nris_session']))
 	$targetpage = "discussion_room.php"; 	
 	$limit = 20; 
 	
-	$query = "SELECT COUNT(*) as num FROM $tableName where  status='1' order by total_views desc";
+	$query = "SELECT COUNT(*) as num FROM $tableName where state_code = '".$state."' AND status='1' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -287,7 +267,7 @@ if(isset($_SESSION['Nris_session']))
 		}	
 	
     // Get page data
-	$query1 = "SELECT * FROM $tableName where status='1' order by total_views desc LIMIT $start, $limit";
+	$query1 = "SELECT * FROM $tableName where state_code = '".$state."' AND status='1' order by total_views desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
 	
 	// Initial page num setup
@@ -394,15 +374,24 @@ if(isset($_SESSION['Nris_session']))
                                                                          
                          <tr>
                             <td><a href="discussion_room_view.php?id=<?php echo $rs['id']; ?>" style="color:#000" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#000'"><?php echo ucwords($rs['title']);  ?></a></td>
-                            <td align="left" style="text-align:left;">
-                            	Views : <?php echo $rs['total_views'] ;  ?><br>
-                                Post :
-                                 <?php 
-								$qss="select cmnt_id from nris_talk_comment where reply_status='0'";
-								$rss=mysql_query($qss);
-								  echo mysql_num_rows($rss);
-								?>
+                            <td>
+                            	<?php echo $rs['total_views'] ;  ?>
                             </td>
+							<td>
+								<?php 
+									$qss1 = "select count(id) as cnt from likes where type='nritalk' and like_val = 1 and assoc_id = ".$rs['id'];
+									$rss1 = mysql_query($qss1);
+									$rs_cmnt1 = mysql_fetch_array($rss1);
+									echo $rs_cmnt1['cnt'];
+								?>
+							</td>
+							<td>
+								<?php 
+									$qss="select cmnt_id from nris_talk_comment where reply_status='0'";
+									$rss=mysql_query($qss);
+									echo mysql_num_rows($rss);
+								?>
+							</td>
                           
                             <td style="text-align:left;">
                            <?php
@@ -445,30 +434,7 @@ if(isset($_SESSION['Nris_session']))
         
         
         <!-- COLUMN RIGHT -->	
-        <div class="col-md-2 inner-right">
-        	<div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            <div class="inner-left-ad-wrap">
-            	<img src="img/2_x_1-ad.jpg" alt="Advertisement">
-            </div>
-            
-        </div><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 

@@ -432,7 +432,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 
 <div class="form-submit-buttons">
 
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-success"  style="float:right">Post Comment</a>
+<input type="submit" class="btn btn-success"  style="float:right" value="Post Comment">
 </div>
 
 </form>                        
