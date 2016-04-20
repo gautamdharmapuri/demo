@@ -155,21 +155,23 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 
 <?php   include "config/menu_inner_state.php" ;  ?>
 
-
+<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
 <?php
 
 if(isset($_POST['cmdSubmit'])) {
-	$state_code = $defaultState;
-	$uni_name = $_POST['uni_name'];
-	$edu_field = $_POST['edu_field'];
-	$details = $_POST['details'];
-	$url = $_POST['url'];
-	$email_id = $_POST['email_id'];
 	
-	$insert_query = "INSERT INTO student_talk (state_code,uni_name,edu_field,details,url,email_id) VALUES
-					('".$state_code."','".$uni_name."','".$edu_field."','".$details."','".$url."','".$email_id."')";
+	$state_code = $state;
+	$universityId = $_GET['universityId'];
+	$title = $_POST['title'];
+	$message = $_POST['message'];
+	$type = $_POST['type'];
+	$addedBy = $_SESSION['Nris_session']['id'];
+	
+	$insert_query = "INSERT INTO university_student_talk (universityId,state_code,title,message,type,added_by) VALUES
+					('".$universityId."','".$state_code."','".$title."','".$message."','".$type."','".$addedBy."')";
+	//echo $insert_query;exit;
 	mysql_query($insert_query);
-	$msg = "<h3 class='sucess'>university added Successfully!..</h3>";
+	$msg = "<h3 class='sucess'>Topic added Successfully!..</h3>";
 }
 
 ?>
@@ -222,7 +224,7 @@ if(isset($_POST['cmdSubmit'])) {
    				
 
 <div class="widget-temple">
-				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Student's Talk >> Add University</h4>
+				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Add University Student Talk</h4>
 </div><br>
 
 
@@ -244,56 +246,30 @@ if(isset($_POST['cmdSubmit'])) {
 
 
 
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">University Name*</label>
-	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="uni_name" name="uni_name" placeholder="University Name" style="width:100%;margin-bottom:0px;" tabindex="1" value="" required/>
+<div class="form-group" style="clear:both;">
+	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Title*</label>
+	<div class="col-sm-10">
+    <input type="text" name="title" id="title" style="width: 100%;" required>
 	</div>
 </div>
-</div>
 
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">University Website Link</label>
-	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="url" name="url" placeholder="Website Link" style="width:100%;margin-bottom:0px;" tabindex="3" value="" />               		
+<div class="form-group" style="clear:both;">
+	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Topic*</label>
+	<div class="col-sm-10">
+		<select name="type" required>
+			<option value="">Select Topic</option>
+			<option value="Accommodation">Accommodation</option>
+			<option value="CampusJobs">Campus Jobs</option>
+			<option value="ChangeGroups">Changing Major/Study groups</option>
+			<option value="OtherTopics">Other Topics</option>
+		</select>
 	</div>
 </div>
-</div>
-
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Field of Education</label>
-	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="edu_field" name="edu_field" placeholder="Field of Education" style="width:100%;margin-bottom:0px;" tabindex="4" value="" />               		
-	</div>
-</div>
-</div>
-
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Email</label>
-	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="email_id" name="email_id" readonly placeholder="Contact Email" style="width:100%;margin-bottom:0px;" tabindex="5"  required value="<?php echo $_SESSION['Nris_session']['email'] ?> " />               		
-	</div>
-</div>
-</div>
-
-
 
 <div class="form-group" style="clear:both;">
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Description</label>
 	<div class="col-sm-10">
-    <textarea rows="5" cols="40" style="width:100%;" name="details" id="details" tabindex="6"></textarea>
+    <textarea rows="5" cols="40" style="width:100%;" name="message" id="message" tabindex="6" required></textarea>
 	</div>
 </div>
 
@@ -322,12 +298,8 @@ if(isset($_POST['cmdSubmit'])) {
 
 <div class="form-group">
 	<div class="col-sm-offset-5 col-sm-3">&nbsp;</div>
-	<div class="col-sm-offset-5 col-sm-7">
-
-
-    
-        <input type="hidden" name="id" id="id" value="<?php echo $_SESSION['Nris_session']['id']; ?>">    		
-		<button type="submit" class="button" name="cmdSubmit" id="cmdSubmit" tabindex="7">Send Message</button>
+	<div class="col-sm-offset-5 col-sm-7">   		
+		<button type="submit" class="button" name="cmdSubmit" id="cmdSubmit" tabindex="7">Add Topic</button>
 	</div>
 </div>
 

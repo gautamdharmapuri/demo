@@ -232,7 +232,7 @@ else
 
 	$tableName="fam_groceries";		
 	$targetpage = "groceries_inner.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where state_code='".$_SESSION['state']."' order by id desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));

@@ -250,7 +250,7 @@ else
 
 	$tableName="events";		
 	$targetpage = "events.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where edate >= '".$current_date."' and category='".$_SESSION['ViewId']."' and state_code ='".$_SESSION['state']."' and status='Active' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
@@ -265,7 +265,7 @@ else
 		}	
 	
     // Get page data
-	$query1 = "SELECT * FROM $tableName where edate >= '".$current_date."' and category='".$_SESSION['ViewId']."' and state_code ='".$_SESSION['state']."' and status='Active'  order by total_views desc LIMIT $start, $limit";
+	$query1 = "SELECT * FROM $tableName where state_code ='".$_SESSION['state']."' and status='Active'  order by total_views desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
 	
 	// Initial page num setup

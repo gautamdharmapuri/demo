@@ -20,7 +20,7 @@ if(isset($_POST['Submit']))
 		$pid = $_POST['id'];
 		
 
-		$City = test_input($_POST["City"]);			
+		$City = test_input($_POST["City1"]);			
 	
 		$EndDate = test_input($_POST["EndDate"]);		
 		
@@ -372,7 +372,7 @@ function showDiv2(elem){
  
 <form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">
 
-
+<input type="hidden" value="<?php echo $state?>" id="State">
 <div class="col-md-6">
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;">Carpool Type</label>
@@ -494,9 +494,9 @@ function showDiv2(elem){
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Going to</label>
 	<div class="col-sm-8">
-<div class="col-md-4"><input type="radio"  id="TitleAD" name="TitleAD" style="width:auto" checked/> US</div>
-<div class="col-md-4"><input type="radio"  id="TitleAD" name="TitleAD" style="width:auto"  /> Mexico</div>
-<div class="col-md-4"><input type="radio"  id="TitleAD" name="TitleAD" style="width:auto"  /> Canada</div>        
+<div class="col-md-4"><input type="radio"  id="TitleAD" name="goingTo" value="US" style="width:auto" checked/> US</div>
+<div class="col-md-4"><input type="radio"  id="TitleAD" name="goingTo" value="Mexico" style="width:auto"  /> Mexico</div>
+<div class="col-md-4"><input type="radio"  id="TitleAD" name="goingTo" value="Canada" style="width:auto"  /> Canada</div>        
 	</div>
 </div>
 </div>
@@ -524,7 +524,8 @@ function showDiv2(elem){
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Departure City</label>
 	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="City" name="City" placeholder="City" style="width:100%;margin-bottom:0px;" tabindex="8" required />               		
+    	<input type="text" class="form-control" id="city_auto1" name="DepartureCity" placeholder="City" style="width:100%;margin-bottom:0px;" tabindex="8" required />
+		<input type="hidden" name="City1" id="City1">
 	</div>
 </div>
 </div>
@@ -534,7 +535,8 @@ function showDiv2(elem){
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Arrival City</label>
 	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="City" name="City" placeholder="City" style="width:100%;margin-bottom:0px;" tabindex="8" required />               		
+    	<input type="text" class="form-control" id="city_auto2" name="ArrivalCity" placeholder="City" style="width:100%;margin-bottom:0px;" tabindex="8" required />
+		<input type="hidden" name="City2" id="City2">
 	</div>
 </div>
 </div>
@@ -546,7 +548,7 @@ function showDiv2(elem){
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Departure Date</label>
 	<div class="col-sm-8">
-        <input type="text" class="form-control" name="EndDate" id="EndDate" tabindex="9" required>
+        <input type="text" class="form-control" name="EndDate" id="EndDate" tabindex="9" required placeholder="Date">
 	</div>
 </div>
 </div>
@@ -558,7 +560,7 @@ function showDiv2(elem){
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Departure Time</label>
 	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="City" name="City" placeholder="City" style="width:100%;margin-bottom:0px;" tabindex="8" required />               		
+    	<input type="text" class="form-control" id="DepartureTime" name="DepartureTime" placeholder="Time" style="width:100%;margin-bottom:0px;" tabindex="8" required />               		
 	</div>
 </div>
 </div>
@@ -572,7 +574,7 @@ function showDiv2(elem){
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Date of return Journey</label>
 	<div class="col-sm-8">
-        <input type="text" class="form-control" name="EndDate2" id="EndDate2" tabindex="9" required>
+        <input type="text" class="form-control" name="EndDate2" id="EndDate2" tabindex="9" required placeholder="Date">
 	</div>
 </div>
 </div>
@@ -582,7 +584,7 @@ function showDiv2(elem){
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Time of return journey</label>
 	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="City" name="City" placeholder="City" style="width:100%;margin-bottom:0px;" tabindex="8" required />               		
+    	<input type="text" class="form-control" id="City" name="City" placeholder="Time" style="width:100%;margin-bottom:0px;" tabindex="8" required />               		
 	</div>
 </div>
 </div>
@@ -739,14 +741,56 @@ function showDiv2(elem){
   <script>
    $(function() {
     $( "#EndDate" ).datepicker({minDate: '0'});
+	$( "#EndDate2" ).datepicker({minDate: '0'});
+	
+	$( "#city_auto1" ).autocomplete({
+		source: function(request, response) {
+			$.getJSON("city_auto.php", { term: $('#city_auto1').val(),state:$('#State').val()},response);
+		},
+      minLength: 1,
+      select: function( event, ui ) {
+			$('#City1').val(ui.item.id);
+      }
+    });
+	$( "#city_auto2" ).autocomplete({
+		source: function(request, response) {
+			$.getJSON("city_auto.php", { term: $('#city_auto2').val(),state:$('#State').val()},response);
+		},
+      minLength: 1,
+      select: function( event, ui ) {
+			$('#City2').val(ui.item.id);
+      }
+    });
+	
+	$('#city_auto1').keyup(function(e){if(e.keyCode == 8)$('#city_auto1, #City1').val('');});
+	$('#city_auto2').keyup(function(e){if(e.keyCode == 8)$('#city_auto2, #City2').val('');});
+	
+	customRadio('goingTo');
+	customRadio('Citys');
+	customRadio('location');
+	customRadio('City');
+	
+	
+	function customRadio(radioName) {
+		var radioButton = $('input[name="' + radioName + '"]');
+		$(radioButton).each(function () {
+			$(this).wrap("<span class='custom-radio'></span>");
+			if ($(this).is(':checked')) {
+				$(this).parent().addClass("selected");
+			}
+		});
+		$(radioButton).click(function () {
+			if ($(this).is(':checked')) {
+				$(this).parent().addClass("selected");
+			}
+			$(radioButton).not(this).each(function () {
+				$(this).parent().removeClass("selected");
+			});
+		});
+	}
   });
   </script>
-  
-  <script>
-   $(function() {
-    $( "#EndDate2" ).datepicker({minDate: '0'});
-  });
-  </script>  
+    
 
 <?php include "config/social.php" ;  ?>
 

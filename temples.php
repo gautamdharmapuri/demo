@@ -224,7 +224,7 @@
 
 	$tableName="fam_temples";		
 	$targetpage = "temples.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 //	$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
 	$query = "SELECT DISTINCT  * FROM fam_temples LEFT OUTER JOIN rating_temple ON fam_temples.id = rating_temple.temple_id GROUP BY(fam_temples.id) order by rating_temple.rate desc, fam_temples.total_views desc";

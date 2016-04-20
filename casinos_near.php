@@ -213,8 +213,8 @@ else
 	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Casinos Near Me</h4>
 </div>    <br>
 
-<div style="width: 100%; height: 300px; margin: 0 0 20px 0;" id="map_canvas"></div>
-<div id="loadingMap" class="text-center">Loading Map...</div>
+<div style="width: 100%; height: 500px; margin: 0 0 20px 0;" id="map_canvas"></div>
+<div id="loadingMap" class="text-center"><center><img src="images/fancybox/fancybox_loading.gif"></center></div>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
 <script type="text/javascript" src="js/googlemap.js"></script>
@@ -223,7 +223,7 @@ else
 
 $tableName="fam_near_casinos";		
 	$targetpage = "casinos_near.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where state_code='".$_SESSION['state']."' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
@@ -249,6 +249,8 @@ $tableName="fam_near_casinos";
 	$i = 0;
 	while($casinoData = mysql_fetch_array($result)) {
 		$tempAddress = array();
+		
+		$tempAddress[] = $casinoData['name'];
 		if($casinoData['address'] != '') {
 			$tempAddress[] = $casinoData['address'];
 		}
@@ -270,7 +272,7 @@ $tableName="fam_near_casinos";
     function initialize() {
         var latLng = new google.maps.LatLng(49.47805, -123.84716);
         map = new google.maps.Map(document.getElementById('map_canvas'), {
-            zoom: 1,
+            zoom: 8,
             minZoom: 2,
             center: latLng,
             mapTypeId: google.maps.MapTypeId.ROADMAP
@@ -365,180 +367,7 @@ $tableName="fam_near_casinos";
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
 
-<table align="center" >
-                                                                            <thead>
-                                                                            <tr>
-                                                                                <th>Image</th>
-                                                                                <th>Title</th>
-                                                                                <th>City</th>
-																				<th>Rating</th>
-                                                                                <th>Views</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            
-                                                                            
-                                                                              <?php
 
-	
-	$tableName="fam_near_casinos";		
-	$targetpage = "casinos_near.php"; 	
-	$limit = 20; 
-	
-	$query = "SELECT COUNT(*) as num FROM $tableName where state_code='".$_SESSION['state']."' order by total_views desc";
-	$total_pages = mysql_fetch_array(mysql_query($query));
-	$total_pages = $total_pages[num];
-	
-	$stages = 3;
-	$page = mysql_escape_string($_GET['page']);
-	if($page){
-		$start = ($page - 1) * $limit; 
-	}else{
-		$start = 0;	
-		}	
-	
-    // Get page data
-	$query1 = "SELECT $tableName.*,rate FROM $tableName
-				left join rating_casinos on rating_casinos.casino_id = $tableName.id and login_id = ".$_SESSION['Nris_session']['id']."
-				where state_code='".$_SESSION['state']."' order by total_views desc LIMIT $start, $limit";
-	$result = mysql_query($query1);
-	// Initial page num setup
-	if ($page == 0){$page = 1;}
-	$prev = $page - 1;	
-	$next = $page + 1;							
-	$lastpage = ceil($total_pages/$limit);		
-	$LastPagem1 = $lastpage - 1;					
-	
-	
-	$paginate = '';
-	if($lastpage > 1)
-	{	
-	
-
-	
-	
-		$paginate .= "<div class='paginate'>";
-		// Previous
-		if ($page > 1){
-			$paginate.= "<a href='$targetpage?page=$prev'><i class='fa fa-angle-double-left'></i></a>";
-		}else{
-			$paginate.= "<span class='disabled'><i class='fa fa-angle-double-left'></i></span>";	}
-			
-
-		
-		// Pages	
-		if ($lastpage < 7 + ($stages * 2))	// Not enough pages to breaking it up
-		{	
-			for ($counter = 1; $counter <= $lastpage; $counter++)
-			{
-				if ($counter == $page){
-					$paginate.= "<span class='current'>$counter</span>";
-				}else{
-					$paginate.= "<a href='$targetpage?page=$counter'>$counter</a>";}					
-			}
-		}
-		elseif($lastpage > 5 + ($stages * 2))	// Enough pages to hide a few?
-		{
-			// Beginning only hide later pages
-			if($page < 1 + ($stages * 2))		
-			{
-				for ($counter = 1; $counter < 4 + ($stages * 2); $counter++)
-				{
-					if ($counter == $page){
-						$paginate.= "<span class='current'>$counter</span>";
-					}else{
-						$paginate.= "<a href='$targetpage?page=$counter'>$counter</a>";}					
-				}
-				$paginate.= "...";
-				$paginate.= "<a href='$targetpage?page=$LastPagem1'>$LastPagem1</a>";
-				$paginate.= "<a href='$targetpage?page=$lastpage'>$lastpage</a>";		
-			}
-			// Middle hide some front and some back
-			elseif($lastpage - ($stages * 2) > $page && $page > ($stages * 2))
-			{
-				$paginate.= "<a href='$targetpage?page=1'>1</a>";
-				$paginate.= "<a href='$targetpage?page=2'>2</a>";
-				$paginate.= "...";
-				for ($counter = $page - $stages; $counter <= $page + $stages; $counter++)
-				{
-					if ($counter == $page){
-						$paginate.= "<span class='current'>$counter</span>";
-					}else{
-						$paginate.= "<a href='$targetpage?page=$counter'>$counter</a>";}					
-				}
-				$paginate.= "...";
-				$paginate.= "<a href='$targetpage?page=$LastPagem1'>$LastPagem1</a>";
-				$paginate.= "<a href='$targetpage?page=$lastpage'>$lastpage</a>";		
-			}
-			// End only hide early pages
-			else
-			{
-				$paginate.= "<a href='$targetpage?page=1'>1</a>";
-				$paginate.= "<a href='$targetpage?page=2'>2</a>";
-				$paginate.= "...";
-				for ($counter = $lastpage - (2 + ($stages * 2)); $counter <= $lastpage; $counter++)
-				{
-					if ($counter == $page){
-						$paginate.= "<span class='current'>$counter</span>";
-					}else{
-						$paginate.= "<a href='$targetpage?page=$counter'>$counter</a>";}					
-				}
-			}
-		}
-					
-				// Next
-		if ($page < $counter - 1){ 
-			$paginate.= "<a href='$targetpage?page=$next'><i class='fa fa-angle-double-right'></i></a>";
-		}else{
-			$paginate.= "<span class='disabled'><i class='fa fa-angle-double-right'></i></span>";
-			}
-			
-		$paginate.= "</div>";		
-	
-	
-}
-
-				$i=1;					
-				if(mysql_num_rows($result)>0)
-				{
-				while($rs=mysql_fetch_array($result))
-				{ ?> 
-                                                                            <tr>
-                                                                                <td style="padding:5px;"><a href="casinos_near_view.php?ViewId=<?php echo md5($rs['id']);?>"> 
-                                                                                <img src="admin/uploads/casinos/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
-                                                                                <td style="text-align:left;"><a href="casinos_near_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
-                                                                                <td style="text-align:left;">
-                                                                                <a href="casinos_near_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
-                                                                                <?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
-															$rcity = mysql_fetch_array($query_city);
-															echo ucwords($rcity['city']);  ?></a>
-																				</td>
-																				<td>
-																					
-																					<?php 
-                        if($rs['rate']==5)  { echo "<img src='images/5.png'>" ; }
-                        if($rs['rate']==4)  { echo "<img src='images/4.png'>" ; }
-                        if($rs['rate']==3)  { echo "<img src='images/3.png'>" ; }
-                        if($rs['rate']==2)  { echo "<img src='images/2.png'>" ; }
-                        if($rs['rate']==1)  { echo "<img src='images/1.png'>" ; }
-                        if($rs['rate']==0)  { echo "<img src='images/0.png'>" ; }
-                        if($rs['rate']=='NULL')  { echo "<img src='images/0.png'>" ; }
-                        
-                        ?>
-																					
-																				</td>
-                                                                                <td><a href="casinos_near_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
-																				<?php echo $rs['total_views'];?></a></td>
-                                                                            </tr>
-                                                                            <?php } } else { ?>
-                                                                            <tr>
-                                                                            	<td colspan="4">No Records Found.</td>
-                                                                            </tr>
-                                                                            <?php } ?>
-                
-                                                                            
-                                                                            </tbody>
-                                                                        </table>
  <?php  echo "<br><br><center>".$paginate."</center>"; ?><br><br><br>
 			
             </div>

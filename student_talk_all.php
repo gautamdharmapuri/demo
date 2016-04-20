@@ -1,16 +1,5 @@
-<?php error_reporting(0);  include"config/connection.php";	  
-
-if(isset($_GET['id']))
-{
-	$_SESSION['cat_id']=$_GET['id'];
-}
-else
-{
-	$_SESSION['cat_id']=$_SESSION['cat_id'];
-	
-}
-
-?>
+<?php error_reporting(0);  include"config/connection.php";	
+  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -19,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Forum | NRIs</title>
+	<title>Student Talk <?php echo $_GET['type'];?> | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -161,7 +150,7 @@ else
 
 
 
-	<?php   include "config/menu.php" ;  ?>
+	<?php   include "config/menu_inner_state.php" ;  ?>
 	
 	<div class="clearfix"></div>
 
@@ -186,7 +175,7 @@ else
         
         
         <!-- COLUMN LEFT -->	
-        <?php include_once('home_common_left.php');?><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -203,31 +192,31 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="index.php" style="color:#0033FF;">Home</a> >> <a href="<?php echo SITE_BASE_URL.'/discussion_board_data.php';?>" class="breadcumb_link">Forum</a> >> 
-							<?php $query_inner = "select * from forum_sub_categories where md5(sub_id) ='".$_GET['id']."'";  
-							$result_inner = mysql_query($query_inner) ; 
-							$fs = mysql_fetch_array($result_inner) ;
-							
-							echo ucwords($fs['sub_cat_name']) ;
-							 ?> >> Threads</h4>
+	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> NRI's Talk</h4>
                              
                              
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="create_forum.php?cat=<?php echo $fs['sub_id']; ?>"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>    
+<a href="add_university_student_talk.php?universityId=<?php echo $_GET['universityId'];?>"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>    
   <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Topic <img src="images/arrow.gif"></a>   
+<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Topic &nbsp;<img src="images/arrow.gif"></a>   
 <?php } ?>                               
 </div>    <br>
 
 
-				
+			<?php	if($inseted_row!='') { ?>
+            <div style="background-color:#009933;border:1px solid #333333;padding:10px;width:100%;color:#FFFFFF;font-weight:bold;border-radius:5px;"><?php echo $inseted_row ; ?></div><br>
+            <?php } ?>
+        
+        
+        		
 				<table align="center" >
                                                                             <thead>
                                                                             <tr>
                                                                                 <th>Title</th>
-                                                                                <th>Replies / Views</th>
+																				<th>Type</th>
+																				<th>Posted By</th>
                                                                                 <th>Last Post by</th>
                                                                             </tr>
                                                                             </thead>
@@ -236,11 +225,13 @@ if(isset($_SESSION['Nris_session']))
                                                                             
                                                                               <?php
 
-	$tableName="forum_threads";		
-	$targetpage = "threads_data.php"; 	
+	$tableName="university_student_talk";		
+	$targetpage = "student_talk_all.php?universityId=".$_GET['universityId']."&type=".$_GET['type'].""; 	
 	$limit = 10; 
 	
-	$query = "SELECT COUNT(*) as num FROM $tableName where md5(category_id)='".$_SESSION['cat_id']."' and status='1' order by total_views desc";
+	$query = "SELECT COUNT(*) as num FROM $tableName where state_code = '".$state."' AND type='".$_GET['type']."'
+	AND universityId = ".$_GET['universityId']."
+	order by id desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -253,7 +244,9 @@ if(isset($_SESSION['Nris_session']))
 		}	
 	
     // Get page data
-	$query1 = "SELECT * FROM $tableName where md5(category_id)='".$_SESSION['cat_id']."' and status='1' order by total_views desc LIMIT $start, $limit";
+	$query1 = "SELECT $tableName.*,r.fname,r.lname FROM $tableName,register r
+	where r.id = added_by and state_code = '".$state."' AND type='".$_GET['type']."' AND universityId = ".$_GET['universityId']."
+	order by id desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
 	
 	// Initial page num setup
@@ -357,38 +350,17 @@ if(isset($_SESSION['Nris_session']))
 				{
 				while($rs=mysql_fetch_array($result))
 				{ ?> 
-                                                                         
                          <tr>
-                            <td><a href="forum_view_details.php?id=<?php echo $rs['id']; ?>" style="color:#000" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#000'"><?php echo ucwords($rs['title']);  ?></a></td>
-                            <td align="left" style="text-align:left;">
-                            	Views : <?php echo $rs['total_views'] ;  ?><br>
-                                Post :
-                                 <?php 
-								$qss="select cmnt_id from forum_thread_comment where sub_cat_id = '".$rs['category_id']."'  and reply_status='0'";
-								$rss=mysql_query($qss);
-								  echo mysql_num_rows($rss);
-								?>
-                            </td>
-                          
-                            <td style="text-align:left;">
-                           <?php
-						$query_blog_cmnt = "select a.*, b.* from forum_threads a, register b where a.member_id = b.id  and a.category_id  = '".$fs['sub_id']."' order by a.id desc limit 1" ;
-						$result_cmnt = mysql_query($query_blog_cmnt);
-						if(mysql_num_rows($result_cmnt) > 0)
-						{ 
-							$rs_cmnt=mysql_fetch_array($result_cmnt);
-						?>
-							Posted  <?php echo date("d M, Y",strtotime($rs_cmnt['date'])); ?> <br>by <?php echo ucfirst($rs_cmnt['fname']) ?>&nbsp;<?php echo ucfirst($rs_cmnt['lname']) ?>
-														
-						<?php }
-						else
-						{
-							echo "None";
-						}
-							?>
-                            </td>                                                                                                                                                        
+                            <td>
+								<a href="university_student_talk_view.php?id=<?php echo $rs['id']; ?>" style="color:#000"
+								onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#000'">
+								<?php echo ucwords($rs['title']);  ?>
+								</a>
+							</td>
+							<td><?php echo $rs['type'];  ?></td>
+							<td><?php echo $rs['fname'].' '.$rs['lname'];  ?></td>
+							<td><?php echo date("M d, Y",strtotime($rs['dateTime'])); ?></td>
                          </tr>
-                                                                         
 				<?php } } else { ?>
                         <tr>
                             <td colspan="3" style="color:#0000FF">No data found.</td>
@@ -411,7 +383,7 @@ if(isset($_SESSION['Nris_session']))
         
         
         <!-- COLUMN RIGHT -->	
-        <?php include_once('home_common_left.php');?><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 

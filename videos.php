@@ -1,4 +1,4 @@
-<?php  include"config/connection.php";	   ?>
+<?php  error_reporting(0); include"config/connection.php";	   ?>
 
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -118,19 +118,151 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 		<div class="col-md-12">
 				
               <?php if(isset($_GET['lang'])) { ?>
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  <?php
+			  $tableName="videos";		
+	$targetpage = "videos.php?lang=".$_GET['lang']; 	
+	$limit = 10; 
+	
+//	$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
+	$query = "SELECT DISTINCT  * FROM videos where status = 'Active' and language = '".$_GET['lang']."'";
+
+	$total_pages = mysql_query($query);
+	$total_pages = mysql_num_rows($total_pages);
+
+	
+//	$total_pages = $total_pages[num];
+	
+	$stages = 3;
+	$page = mysql_escape_string($_GET['page']);
+	if($page){
+		$start = ($page - 1) * $limit; 
+	}else{
+		$start = 0;	
+		}	
+	
+    // Get page data
+//	$query1 = "SELECT * FROM $tableName  order by total_views desc LIMIT $start, $limit";
+//	$query1 = "SELECT a.*,b.rate FROM fam_temples a , rating_temple b where a.id=b.temple_id  order by b.rate desc LIMIT $start, $limit";
+	
+	// Initial page num setup
+	if ($page == 0){$page = 1;}
+	$prev = $page - 1;	
+	$next = $page + 1;							
+	$lastpage = ceil($total_pages/$limit);		
+	$LastPagem1 = $lastpage - 1;					
+	
+	
+	$paginate = '';
+	if($lastpage > 1)
+	{	
+	
+
+	
+	
+		$paginate .= "<div class='paginate'>";
+		// Previous
+		if ($page > 1){
+			$paginate.= "<a href='$targetpage&page=$prev'><i class='fa fa-angle-double-left'></i></a>";
+		}else{
+			$paginate.= "<span class='disabled'><i class='fa fa-angle-double-left'></i></span>";	}
+			
+
+		
+		// Pages	
+		if ($lastpage < 7 + ($stages * 2))	// Not enough pages to breaking it up
+		{	
+			for ($counter = 1; $counter <= $lastpage; $counter++)
+			{
+				if ($counter == $page){
+					$paginate.= "<span class='current'>$counter</span>";
+				}else{
+					$paginate.= "<a href='$targetpage&page=$counter'>$counter</a>";}					
+			}
+		}
+		elseif($lastpage > 5 + ($stages * 2))	// Enough pages to hide a few?
+		{
+			// Beginning only hide later pages
+			if($page < 1 + ($stages * 2))		
+			{
+				for ($counter = 1; $counter < 4 + ($stages * 2); $counter++)
+				{
+					if ($counter == $page){
+						$paginate.= "<span class='current'>$counter</span>";
+					}else{
+						$paginate.= "<a href='$targetpage&page=$counter'>$counter</a>";}					
+				}
+				$paginate.= "...";
+				$paginate.= "<a href='$targetpage&page=$LastPagem1'>$LastPagem1</a>";
+				$paginate.= "<a href='$targetpage&page=$lastpage'>$lastpage</a>";		
+			}
+			// Middle hide some front and some back
+			elseif($lastpage - ($stages * 2) > $page && $page > ($stages * 2))
+			{
+				$paginate.= "<a href='$targetpage&page=1'>1</a>";
+				$paginate.= "<a href='$targetpage&page=2'>2</a>";
+				$paginate.= "...";
+				for ($counter = $page - $stages; $counter <= $page + $stages; $counter++)
+				{
+					if ($counter == $page){
+						$paginate.= "<span class='current'>$counter</span>";
+					}else{
+						$paginate.= "<a href='$targetpage&page=$counter'>$counter</a>";}					
+				}
+				$paginate.= "...";
+				$paginate.= "<a href='$targetpage&page=$LastPagem1'>$LastPagem1</a>";
+				$paginate.= "<a href='$targetpage&page=$lastpage'>$lastpage</a>";		
+			}
+			// End only hide early pages
+			else
+			{
+				$paginate.= "<a href='$targetpage&page=1'>1</a>";
+				$paginate.= "<a href='$targetpage&page=2'>2</a>";
+				$paginate.= "...";
+				for ($counter = $lastpage - (2 + ($stages * 2)); $counter <= $lastpage; $counter++)
+				{
+					if ($counter == $page){
+						$paginate.= "<span class='current'>$counter</span>";
+					}else{
+						$paginate.= "<a href='$targetpage&page=$counter'>$counter</a>";}					
+				}
+			}
+		}
+					
+				// Next
+		if ($page < $counter - 1){ 
+			$paginate.= "<a href='$targetpage&page=$next'><i class='fa fa-angle-double-right'></i></a>";
+		}else{
+			$paginate.= "<span class='disabled'><i class='fa fa-angle-double-right'></i></span>";
+			}
+			
+		$paginate.= "</div>";		
+	
+}?>
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
+			  
               
               
                 <div class="col-md-4" style="margin:0 auto;">
-            	
-                    <?php /*?><div class="nri-talk" style="width:80%;margin-left:20px;">
-                                <div class="heading-plain">
-                                <h3>Show Timings and Places</h3>
-                                </div>
-                                <ul style="padding:0px 9px;">
-                                    <li><a href="#">Loreal espum</a></li>
-                                    <li><a href="#">Loreal espum</a></li>
-                                </ul>                                   
-                            </div><?php */?>
+     
                             <div style="width:30%;float:left;">&nbsp;</div>
                             <div class="nri-talk" style="width:70%;">
                                           <div class="head-title-no-pad">
@@ -161,11 +293,11 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
                     <?php
 					if(isset($_GET['cat']))
 					{					
-						$query="select * from  videos where language='".trim($_GET['lang'])."' and  category='".trim($_GET['cat'])."' order by id desc";
+						$query="select * from  videos where language='".trim($_GET['lang'])."' and  category='".trim($_GET['cat'])."' order by id desc  LIMIT $start, $limit";
 					}
 					else	
 					{
-							$query="select * from  videos where language='".trim($_GET['lang'])."'  order by id desc";
+							$query="select * from  videos where language='".trim($_GET['lang'])."'  order by id desc  LIMIT $start, $limit";
 					}		
 					//	echo $query;
 						$result=mysql_query($query);						
@@ -174,7 +306,6 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 						{	?>	
                         
                 	<div class="col-md-2" style="padding:5px;margin:10px;">
-                    
                     	<a class="various fancybox.iframe" title="<?php echo ucfirst($rs['title']); ?>" href="http://www.youtube.com/v/<?php echo $rs['video_id']; ?>?fs=1&amp;autoplay=1"><img src="http://img.youtube.com/vi/<?php echo $rs['video_id']; ?>/0.jpg"></a>
 																				                    
                     </div>
@@ -203,7 +334,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
                 
                 </div>    
                 
-                
+                <?php  echo "<br><br><center>".$paginate."</center>"; ?><br><br><br>
                 
                 
                 

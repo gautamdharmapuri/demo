@@ -240,7 +240,7 @@ else
 
 	$tableName="desi_pages";		
 	$targetpage = "deshiads.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where md5(category_name) ='".$_SESSION['type']."' and state_code='".$_SESSION['state']."' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));

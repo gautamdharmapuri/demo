@@ -236,6 +236,20 @@ if(isset($_SESSION['Nris_session']))
 <?php } ?>     
 </div>
 <br>
+		<div class="col-md-12" >
+			<?php for($k=1;$k<16;$k++) { ?>
+				<div class="col-md-3" >
+					<?php if($rs['image'.$k] != '') { ?>
+						<div class="col-sm-12">
+							<a href="javascript:;">
+								<img class="myImageClass" src="<?php echo 'uploads/auto/'.$rs['image'.$k];?>" style="width:100%;height:140px;">
+							</a>
+						</div>
+					<?php } ?>
+				</div>
+			<?php } ?>
+		</div>
+		
         <div class="col-md-7" >
           <table class="table table-bordered">
                                        
@@ -606,6 +620,6 @@ title: "Address"
 <!-- End js -->
 
 <?php include "config/social.php" ;  ?>
-
+	
 </body>
 </html>

@@ -658,6 +658,19 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
  
 <form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">
 
+
+
+<div class="col-md-12">
+<div class="form-group">
+	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;">
+		Title (Ad title limited to 50 characters only)</label>
+	<div class="col-sm-8">
+    	<input type="text" pattern="[a-zA-Z0-9\s]+" required class="form-control" id="TitleAD" name="TitleAD" placeholder="Title Ad" style="width:100%;margin-bottom:0px;" maxlength="50" tabindex="20" onKeyUp="LimtCharacters(this,50,'lblcount');" />
+ <label id="lblcount" style="background-color:#E2EEF1;color:Red;font-weight:bold;">50 characters remaining</label><br/>        
+	</div>
+</div>
+</div>
+
 <div class="col-md-6">
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;">Make</label>
@@ -853,7 +866,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 						$incDate = date("Y", strtotime('+1 years'));
 					}
 				?>
-                <?php for($i=1955; $i<=$incDate; $i++)
+                <?php for($i=$incDate; $i>=1955; $i--)
 				{ ?>
                 <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
                 <?php } ?>
@@ -1089,24 +1102,6 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 
 
 
-
-
-
-
-
-
-
-
-<div class="col-md-12">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">
-		Title (Ad title limited to 50 characters only)</label>
-	<div class="col-sm-8">
-    	<input type="text" pattern="[a-zA-Z0-9\s]+" required class="form-control" id="TitleAD" name="TitleAD" placeholder="Title Ad" style="width:100%;margin-bottom:0px;" maxlength="50" tabindex="20" onKeyUp="LimtCharacters(this,50,'lblcount');" />
- <label id="lblcount" style="background-color:#E2EEF1;color:Red;font-weight:bold;">50 characters remaining</label><br/>        
-	</div>
-</div>
-</div>
 
 
 

@@ -225,7 +225,7 @@
 
 	$tableName="fam_casinos";		
 	$targetpage = "casinos.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 	/*$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));

@@ -117,7 +117,7 @@ font-style:italic;
                                                 <select class="form-control" name="state_filter" onchange="change_state();">
 													  <option value=''>Select state</option>
 													  <?php
-															$query1 = "SELECT a.state_code,s.state FROM fam_near_casinos a,states s WHERE a.state_code = s.state_code AND a.state_code != '' GROUP BY a.state_code ORDER BY a.state_code ASC";
+															$query1 = "SELECT a.state_code,s.state,count(a.id) as cnt FROM fam_near_casinos a,states s WHERE a.state_code = s.state_code AND a.state_code != '' GROUP BY a.state_code ORDER BY a.state_code ASC";
 															$result1 = mysql_query($query1);                                                
 															while($rs1 = mysql_fetch_array($result1))
 															{
@@ -126,7 +126,7 @@ font-style:italic;
 																		echo 'selected="selected"';
 																  ?>
 																  value="<?php echo ucwords($rs1['state_code']); ?>">
-																  <?php echo ucwords($rs1['state']); ?>
+																  <?php echo ucwords($rs1['state']).' ('.$rs1['cnt'].')'; ?>
 															</option>
 													  <?php } ?>
 												</select>

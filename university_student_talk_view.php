@@ -1,28 +1,5 @@
-<?php error_reporting(0);  include"config/connection.php";	
-$inseted_row ='';
-if(isset($_POST['cmdsave']))
-{
-	$mId = $_POST['memberId'];	
-	
-	$Titletxt = trim($_POST['Titletxt']);
-	$Titletxt=stripslashes($Titletxt);
-	$Titletxt=mysql_real_escape_string($Titletxt);
-	
-	$msg = trim($_POST['Message']);
-	$msg=stripslashes($msg);
-	$msg=mysql_real_escape_string($msg);
-	
-	$status = '1';
-	
-	$date = date("Y-m-d");
-	$time = date("h:m:s");	
-				
-	$query_thread = "insert into  nris_talk(title,description,member_id,status,date,time) values('".$Titletxt."','".$msg."','".$mId."','".$status."','".$date."','".$time."')";		 
-	$result_thread = mysql_query($query_thread);
-	$inseted_row = "Topic Saved Successfully";
-	
-}
-  ?>
+<?php error_reporting(0);  include"config/connection.php";	  
+?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -31,7 +8,7 @@ if(isset($_POST['cmdsave']))
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>NRI's Talk | NRIs</title>
+	<title>University Talk | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -166,6 +143,8 @@ if(isset($_POST['cmdsave']))
 	}
 
 	</style> 
+    
+     
 </head>
 <body>
 
@@ -173,7 +152,7 @@ if(isset($_POST['cmdsave']))
 
 
 
-	<?php   include "config/menu.php" ;  ?>
+	<?php   include "config/menu_inner_state.php" ;  ?>
 	
 	<div class="clearfix"></div>
 
@@ -213,38 +192,117 @@ if(isset($_POST['cmdsave']))
             
             <!-- FIRST TABLE -->
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
-   				
+   		<?php
+		
+		if(isset($_GET['id']))
+{
+$query_main = "select a.*, b.* from  university_student_talk a, register b
+where a.added_by = b.id and a.id = '".$_GET['id']."' ";
+//echo $query_main;exit;
+$result_main = mysql_query($query_main);
+$rs = mysql_fetch_array($result_main);
+}
+		?>
 <div class="widget-temple">
-		<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>  <a href="university_student_talk.php?universityId=<?php echo $rs['universityId'];?>">Student's Talk</a> >> <?php echo ucfirst($rs['title']); ?></h4>
+</div>    <br>
+<div style="border:1px solid #999999;width:100%;padding:10px;border-radius:5px;">
+<div style="font-size:18px;font-weight:bold;"><?php echo ucwords($rs['title']); ?></div>
+<div><?php echo ucwords($rs['message']); ?></div>
+<p>Posted by <?php echo ucwords($rs['fname']) ?>&nbsp;<?php echo ucwords($rs['lname']) ?>&nbsp;-&nbsp;<?php echo date("M d, Y",strtotime($rs['dateTime'])); ?></p>
+</div>
+		
 
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Carpool</h4>
-  
-	</div>		
-    
 
-<form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">
+
+
+<br><br><br>                    
+<?php
+$query_blog_cmnt = "select a.*, b.* from student_talk_comment a, register b where a.added_by = b.id  order by a.id desc" ;
+$result_cmnt = mysql_query($query_blog_cmnt);
+if(mysql_num_rows($result_cmnt) > 0)
+{
+?>
+<bR><hr style="margin-bottom:30px;">
+<h5 style="color:#828282;">Comments</h5>
+<?php
+while($rs_cmnt=mysql_fetch_array($result_cmnt))
+{?>
+
+<div class="blockquote">
+            <div class="quote" style="min-height:auto;">
+                <?php /*?><h5 style="margin-bottom:5px;color:#666666;"><?php echo ucfirst($rs_cmnt['fname']) ?>&nbsp;<?php echo ucfirst($rs_cmnt['lname']) ?></h5><?php */?>
+				
+                <p align="justify" style="color:#666666;">                
+                
+                <?php echo ucfirst($rs_cmnt['comment']) ?> 
+                <bR>
+                <span style="color: #999999;font-weight: 300;line-height: 24px;margin-bottom: 12px;">Posted <?php echo date("d M, Y",strtotime($rs_cmnt['dateTime'])); ?> by <?php echo ucfirst($rs_cmnt['fname']) ?>&nbsp;<?php echo ucfirst($rs_cmnt['lname']) ?></span>                
+                </p>
+
+            </div>
+
+			
+            </div>
+            
+<?php } }?>   
+
+
+
+
+
+
+
+<br><br><br><br><br>
+
+<?php
+if(isset($_POST['cmdcomment']))	
+{
+
+		$postId = $_GET['id'];
+		$mId = $_POST['memberId'];
+		
+		$msg = trim($_POST['Message']);
+		$a = stripslashes($msg);
+		$a = mysql_real_escape_string($a);
+		
+		
+		$query_cmt = "insert into  student_talk_comment(postId,added_by,comment)
+		values('".$postId."','".$_SESSION['Nris_session']['id']."','".$a."')";		 
+		$result=mysql_query($query_cmt);
+		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
+		header("location:university_student_talk_view.php?id='".$postId."'");
+
+}
+?>
+
+ <div class="dividerHeading">
+    <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
+</div>        
+        		
+<form class="form-horizontal" role="form" method="post" action="">
 
 <div class="form-group">
-	<div class="col-sm-3">
-		<input type="text" class="form-control" id="city_auto1" placeholder="Enter From City" style="width:100%;" tabindex="1" />
-		<input type="hidden" name="City1" id="City1">
+	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Comment</label>
+	<div class="col-sm-10">
+    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="1" required=''></textarea>
 	</div>
-
-
-
-	<div class="col-sm-3">
-		<input type="text" class="form-control" id="city_auto2" placeholder="Enter To City" style="width:100%;" tabindex="1" />
-		<input type="hidden" name="City2" id="City2">
-	</div>
-
-
-
-
-		<button type="submit"  name="Submit" id="Submit" tabindex="28">Search</button>
-
 </div>
 
-</form>    
+<div class="form-submit-buttons">
+<input type="hidden" name="postId" id="postId" value="<?php echo $rs['id'] ; ?>">
+<input type="hidden" name="subcatId" id="subcatId" value="<?php echo $rs['category_id'] ; ?>">
+<input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">
+<?php if($_SESSION['Nris_session']['id'] > 0) { ?>
+	<input type="submit" value="Comment" name="cmdcomment" class="btn btn-success" style="float:right;">
+<?php } else { ?>
+	<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right;" >Post Comment</a>
+<?php } ?>
+</div>
+
+</form>
+<br><br><br><br><br><br>	
             </div>
             <!-- TOP BUTTONS ENDS-->
             
@@ -292,41 +350,6 @@ if(isset($_POST['cmdsave']))
 <script src="js/html5.js"></script>
 <script src="js/custom.js"></script>
 <!-- End js -->
-
-<link rel="stylesheet" href="calender/jquery-ui.css">
-    <script src="calender/jquery-1.10.2.js"></script>
-    <script src="calender/jquery-ui.js"></script>
-  
-
-<script>
-   $(function() {
-   
-	
-	
-	$( "#city_auto1" ).autocomplete({
-		source: function(request, response) {
-			$.getJSON("city_auto.php", { term: $('#city_auto1').val()},response);
-		},
-      minLength: 1,
-      select: function( event, ui ) {
-			$('#City1').val(ui.item.id);
-      }
-    });
-	$( "#city_auto2" ).autocomplete({
-		source: function(request, response) {
-			$.getJSON("city_auto.php", { term: $('#city_auto2').val()},response);
-		},
-      minLength: 1,
-      select: function( event, ui ) {
-			$('#City2').val(ui.item.id);
-      }
-    });
-	
-	$('#city_auto1').keyup(function(e){if(e.keyCode == 8)$('#city_auto1, #City1').val('');});
-	$('#city_auto2').keyup(function(e){if(e.keyCode == 8)$('#city_auto2, #City2').val('');});
-	
-  });
-  </script>
 
 <?php include "config/social.php" ;  ?>
 

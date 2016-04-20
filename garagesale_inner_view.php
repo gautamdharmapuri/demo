@@ -240,7 +240,27 @@ if(isset($_SESSION['Nris_session']))
 </div>    <br>
             
 			
-			<div class="col-md-7" >    
+			<div class="col-md-12" >
+			<?php for($k=1;$k<16;$k++) { ?>
+				<div class="col-md-3" >
+					<?php
+						$tempVar = $k;
+						if($k == 1) {
+							$tempVar = '';
+						}
+						if($rs['image'.$tempVar] != '') { ?>
+							<div class="col-sm-12">
+								<a href="javascript:;">
+									<img class="myImageClass" src="<?php echo 'uploads/garage_sale/'.$rs['image'.$tempVar];?>" style="width:100%;height:140px;">
+								</a>
+							</div>
+					<?php } ?>
+				</div>
+			<?php } ?>
+		</div>
+            
+			<div class="col-md-7" style="padding-top: 10px;">
+				
             <table class="table table-bordered">
                                        
                                       

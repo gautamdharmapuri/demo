@@ -231,7 +231,7 @@ else
 
 	$tableName="announcement";		
 	$targetpage = "announcement.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where  state_code='".$_SESSION['state']."' and status='Active' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));

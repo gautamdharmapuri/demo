@@ -225,7 +225,7 @@
 
 	$tableName="fam_restaurants";		
 	$targetpage = "restaurants.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 	$query = "SELECT DISTINCT  * FROM fam_restaurants LEFT OUTER JOIN rating_restaurant ON fam_restaurants.id = rating_restaurant.res_id GROUP BY(fam_restaurants.id) order by rating_restaurant.rate desc, fam_restaurants.total_views desc";
 

@@ -217,12 +217,12 @@ $(".city").html(html);
 			return false;
 		}
 		
-		if (document.getElementById('Mobile').value=='')
+		/*if (document.getElementById('Mobile').value=='')
 		{
 			alert('Please Enter your Mobile Number');			
 			document.getElementById('Mobile').focus();
 			return false;
-		}
+		}*/
    
    
   		if (document.getElementById('DOB').value=='')
@@ -402,7 +402,7 @@ if(isset($_POST['Submit']))
 	$validator->addValidation("Lastname","req","Please Enter your Last Name");
     $validator->addValidation("Email","email","The input for Email should be a valid email value");
     $validator->addValidation("Email","req","Please fill in Email");
-	$validator->addValidation("Mobile","req","Please Enter your Contact Number");	
+	//$validator->addValidation("Mobile","req","Please Enter your Contact Number");	
 //	$validator->addValidation("DOB","req","Please Select your Date of Birth");	
 	$validator->addValidation("Password","req","Please Enter your Password");	
 	$validator->addValidation("CnfPassword","req","Please Enter your Confirm Password");		
@@ -587,7 +587,7 @@ if(true == $show_form)
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;font-size:12px;text-align:right;">Mobile Number :</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Mobile" name="Mobile" placeholder="Your Mobile Number" style="width:100%;" required="required" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
+		<input type="text" class="form-control" id="Mobile" name="Mobile" placeholder="Your Mobile Number" style="width:100%;" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
 	</div>
 </div>
 </div>
@@ -674,7 +674,7 @@ if(true == $show_form)
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-12 control-label" style="text-align:left;">
 		<input type="checkbox" name="terms" required="required">&nbsp;&nbsp;
-		<a href="#" onMouseOver="this.style.color='Red'" onMouseOut="this.style.color='black'">I Accept Terms & Conditions</a></label>
+		<a href="javascript:;" onclick="popup('popUpDiv');" onMouseOver="this.style.color='Red'" onMouseOut="this.style.color='black'">I Accept Terms & Conditions</a></label>
 </div>
 </div>
 
@@ -755,49 +755,54 @@ if(true == $show_form)
     <div id="blanket" style="display:none;"></div>
 	<div id="popUpDiv" style="display:none;">
     
+    	<a style="float:right;cursor: pointer;" onClick="popup('popUpDiv')">X</a>
     	<!--<a href="#" onClick="popup('popUpDiv')" >X</a>-->
        
 <center><h4>Terms And Conditions!</h4></center>
+
                     
-                        <p>Babysitting Only performed by licensed babysitters according to state law unless if the baby sitter is immediate next relation to that baby/kid, violators will be prosecuted according to state law.  
-                            By agreeing these terms and conditions means i have gone through the state babysitting regulations website and gained full knowledge to perform babysitting according to law 
-                            All income that is not specifically exempted from taxation by law is taxable income, and that includes money earned by babysitting. The same rules and regulations that apply to any other kind of income apply to babysitting income, which has pros and cons. For example, a teenager who earns money babysitting might have to pay federal income taxes, but she can also use that earned income to fund a tax-advantaged individual retirement account.
+                        <p class="mydata">
+							  Terms and conditions before registering with our site after entered all the info .Registration  terms and conditions guidelines 
                         </p>
 
                 <div class="col-lg-12 col-md-12 col-sm-12">   
-                <h3>FILING REQUIREMENTS</h3>              
-                    <p>Whether you have to file a federal income tax return on your babysitting earnings depends on a number of factors, including your filing status, your dependency status, and the total amount of your earned and unearned income from all sources. For example, if you are single, your parents claim you as a dependent and you have only earned income, you don't have to file an income tax return until your income reaches $5,800 as of the 2011 tax year. If you are a single adult, and no one claims you as a dependent, you don't have to file a federal income tax return until your income reaches $9,500.
-                    </p>
+					<ul class="checks">
+						 <li>
+							  I am responsible what ever the content I post at any section of this site ,to respect  that I do not  post any content, rate or reply/review that may be considered, abusive, vulgar,offensive,  obscene
+						 </li>
+						 <li>
+							 Site Management is not responsible for any violations as per law.  
+						 </li>
+						 <li>
+							 This site is for public for free use I always maintain courtesy, if i am a business person/organization, marketing person or any other soliciting person I oath for not repeated posts, if any, site management have right to find the IP address or delete the my ID and barred for future postings from this IP address 
+						 </li>
+						 <li>
+							  We respect Privacy according to US law, by agreeing these terms I honor that I never post others information like name phone numbers addresses etc.
+						 </li>
+						 <li>
+							 I oath i never do spamming, no repeated ads this sections with useless content, and i agree i am responsible to open any external links/URLs posted by other users and/or by Admin. 
+						 </li>
+						 <li>
+							  I am agreeing that after i accept these terms & conditions i solely responsible for whatever the content si post here or share here in public chat
+						 </li>
+						 <li>
+							  NRIS.com  Reserves all right to remove or delete any user permanantly with out any reason or prior notifcation.
+						 </li>
+						 <li>
+							  I am authorizing NRIS.com can track my IPaddress all the times for legal reasons. 
+						 </li>
+						 <li>
+							  I always respect all other users of this site and I expect the same from other users of this site
+						 </li>
+						 <li>
+							  I know that public chat is limited just to share the views of  political issues ,movies, sports and educational issues and i oath i never use unparliamentary, unlawful,abusive,vulgar words or phrases at any time.
+						 </li>
+					</ul>
+					<p class="mydata">
+						 We thank you in advance for your understanding and continued support.
+					</p>
+					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('popUpDiv')" class="btn btn-success" style="">Submit</button></span></p>
                 </div>
-                <div class="col-lg-12 col-md-12 col-sm-12">   
-                <h3>TAXABLE INCOME</h3>              
-                    <p>The Internal Revenue Service considers any income you receive in exchange for performing a personal service to be taxable income. It does not matter what the personal service is, or in what manner the income was paid. As long as the income was available to you, whether or not you actually have it in your possession, it is subject to federal income taxation. For example, if you receive cash in exchange for babysitting for a neighbor, that cash is taxable income. If the neighbor pays your way to the movies in exchange for your babysitting service, the IRS considers the value of the movie ticket to be taxable income.
-                    </p>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12">   
-                <h3>CHILD-CARE PROVIDERS</h3>              
-                    <p>The IRS considers babysitters, regardless of their age, to be child-care providers, and the same rules that apply to child-care providers apply to babysitters. The IRS does not make a distinction between where the child care is provided. You must include any compensation you received for providing child care, or babysitting, regardless of whether that care was provided in your home, in the child's home or at another location.
-                     </p>
-                </div>
-                <div class="col-lg-12 col-md-12 col-sm-12">  
-                <h3>BABYSITTER AS EMPLOYEE</h3>              
-                    <p>If the person you babysit for has the right to control what you do, when you do it and how you do it, the IRS might consider that person to be your employer. How your babysitting income is reported and taxed is different if you work as an employee than if you work as an independent contractor. If you work as an employee, the person you work for should provide you with a W-2 detailing how much you were paid during the year, as well as how much money was withheld for such things as Social Security, Medicare, retirement benefits and any other withholdings. You should report your babysitting earnings along with your other wages, salaries and W-2 earnings on Line 7 of Form 1040.
-                    </p>
-                </div>
-                 <div class="col-lg-12 col-md-12 col-sm-12">  
-                <h3>BABYSITTING AS INDEPENDENT CONTRACTOR</h3>              
-                    <p>If the person you babysit for has the right to control what you do, when you do it and how you do it, the IRS might consider that person to be your employer. How your babysitting income is reported and taxed is different if you work as an employee than if you work as an independent contractor. If you work as an employee, the person you work for should provide you with a W-2 detailing how much you were paid during the year, as well as how much money was withheld for such things as Social Security, Medicare, retirement benefits and any other withholdings. You should report your babysitting earnings along with your other wages, salaries and W-2 earnings on Line 7 of Form 1040.
-                    The IRS considers you to be an independent contractor if the person you babysit for does not have the right to control what you do, how you do it or when you do it, even if they have the right to direct the results of your work. If you babysit only on an irregular basis, you are likely an independent contractor. The person you babysat for would not withhold any money from your pay. If you earned more than $600 per year from one person, she should provide you with a Form 1099-MISC. You must report all of your income for babysitting as an independent contractor on Schedule C, Form 1040, regardless of the amount and regardless of whether you receive a Form 1099-MISC. As an independent contractor, you will be responsible for paying self-employment taxes as well as income taxes on your babysitting earnings.
-                    </p>
-                </div>
-                 <div class="col-lg-12 col-md-12 col-sm-12">  
-                <h3>SELF-EMPLOYMENT TAXES</h3>              
-                    <p>While your babysitting income might not be subject to federal income taxes, you might still have to pay self-employment taxes. According to the Internal Revenue Service, you must file Schedule SE and pay self-employment taxes if you had net earnings from self-employment of $400 or more. Self-employment tax rules apply regardless of your age.
-                    </p>
-                </div>
-<p> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('popUpDiv')" class="btn btn-success" style="">Submit</button></span></p>
-
-
 
 	</div>	
 <!-- / POPUP-->  

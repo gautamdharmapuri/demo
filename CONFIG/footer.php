@@ -2,23 +2,56 @@
 <script type="text/javascript">
 	 
 	 $(document).ready(function(){
-		$('input[type="file"]').change(function(){
-		  var thisId = $(this).attr('id');
-		  var progress = 0;
-		  if ($('#processeing_bar_'+thisId).length == 0) {
-			  $('#'+thisId).after('<div id="processeing_bar_'+thisId+'"><div style="background-color: red;width:0%;height: 2px;">&nbsp;</div></div>');
-		  }
 		  
-		  var refreshIntervalId = setInterval(function(){
-			  progress = progress + 20;
-			  $('#processeing_bar_'+thisId+' div').html('<center>'+progress+'%'+'</center>');
-			  $('#processeing_bar_'+thisId+' div').css('width',progress+'%');
-			  if (progress == 120) {
-				  clearInterval(refreshIntervalId);
-				  $('#processeing_bar_'+thisId).remove();
+		  $('.myImageClass').click(function(){
+			var thisSrc = $(this).attr('src');
+			$('#myImage').attr('src',thisSrc);
+			popup('images_popup');
+		});
+		  
+		  $('body').prepend('<a href="javascript:;" class="back-to-top">Back to Top</a>');
+		  var amountScrolled = 200;
+
+		  $(window).scroll(function() {
+			  if ( $(window).scrollTop() > amountScrolled ) {
+				  $('a.back-to-top').fadeIn('slow');
+			  } else {
+				  $('a.back-to-top').fadeOut('slow');
 			  }
-		  },200);
-	  });  
+		  });
+		  $('a.back-to-top').click(function() {
+			   $('html, body').animate({
+				   scrollTop: 0
+			   }, 700);
+			   return false;
+		  });
+		  
+		  $('input[type="file"]').change(function(){
+			
+			   var myFile = this.files[0]
+			   var sizeinKb = (myFile.size||myFile.fileSize)/1024;
+			   if (sizeinKb > 200) {
+					alert('Image size should not exceed 200KB');
+					$(this).val('');
+					return false;
+			   }
+			   
+			   var thisId = $(this).attr('id');
+			   var progress = 0;
+			   if ($('#processeing_bar_'+thisId).length == 0) {
+				   $('#'+thisId).after('<div id="processeing_bar_'+thisId+'"><div style="background-color: red;width:0%;height: 2px;">&nbsp;</div></div>');
+			   }
+			   
+			   var refreshIntervalId = setInterval(function(){
+					progress = progress + 20;
+					$('#processeing_bar_'+thisId+' div').html('<center>'+progress+'%'+'</center>');
+					$('#processeing_bar_'+thisId+' div').css('width',progress+'%');
+					if (progress == 120) {
+						clearInterval(refreshIntervalId);
+						$('#processeing_bar_'+thisId).remove();
+					}
+			   },200);
+		});  
 	 });
 	 
 </script>
@@ -45,7 +78,13 @@
      </div>
 		
 	</footer>
-<!--POPUP-->        
+<!--POPUP-->
+<div id="images_popup" style="display:none;">
+    <a style="float:right;cursor: pointer;" onClick="popup('images_popup')">X</a>
+				<div id="col-md-12">
+					<img src="" id="myImage">
+                </div>
+	</div>
     <div id="blanket" style="display:none;"></div>
 	<div id="terms_conditions_popup" style="display:none;">
     <a style="float:right;cursor: pointer;" onClick="popup('terms_conditions_popup')">X</a>
@@ -126,7 +165,7 @@ ul.checks > li {
    height:auto;
 }
 
-#terms_conditions_popup {
+#terms_conditions_popup , #images_popup{
 	position:absolute;	
 	width:50%;
 	height:500px;
@@ -141,11 +180,28 @@ ul.checks > li {
 	
 }
 
-#terms_conditions_popup h3
+#terms_conditions_popup h3, #images_popup h3
 {
 	font-size:14px;
 }
 
-#terms_conditions_popup a {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
-#terms_conditions_popup a:hover {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
+#terms_conditions_popup a, #images_popup a {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
+#terms_conditions_popup a:hover, #images_popup a:hover{top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
+a.back-to-top {
+	display: none;
+	width: 60px;
+	height: 60px;
+	text-indent: -9999px;
+	position: fixed;
+	z-index: 999;
+	right: 20px;
+	bottom: 20px;
+	background: #27AE61 url("images/up-arrow.png") no-repeat center 43%;
+	-webkit-border-radius: 30px;
+	-moz-border-radius: 30px;
+	border-radius: 30px;
+}
+a:hover.back-to-top {
+	background-color: #000;
+}
 </style>

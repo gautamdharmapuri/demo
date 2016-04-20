@@ -232,7 +232,7 @@ else
 
 	$tableName="fam_casinos";		
 	$targetpage = "top_rated_casinos.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 //	$query = "SELECT COUNT(*) as num FROM $tableName where state_code='".$_SESSION['state']."' order by total_views";
 	$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";

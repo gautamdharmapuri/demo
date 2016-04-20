@@ -252,7 +252,7 @@ if(isset($_SESSION['Nris_session']))
 
 	$tableName="nris_talk";		
 	$targetpage = "discussion_room.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where state_code = '".$state."' AND status='1' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));

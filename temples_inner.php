@@ -241,7 +241,7 @@ else
 
 	$tableName="fam_temples";		
 	$targetpage = "temples_inner.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 //	$query = "SELECT COUNT(*) as num FROM $tableName where temple_type='".$_SESSION['type']."' and state_code='".$_SESSION['state']."' order by total_views desc";
 	$query = "SELECT DISTINCT  * FROM fam_temples LEFT OUTER JOIN rating_temple ON fam_temples.id = rating_temple.temple_id where  fam_temples.temple_type='".$_SESSION['type']."' and fam_temples.state_code='".$_SESSION['state']."' GROUP BY(fam_temples.id) order by rating_temple.rate desc, fam_temples.total_views desc";

@@ -12,12 +12,22 @@ else
 	
 }
 ?>
-<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+<?php $defaultState = $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
 <header id="header" class="header-3">
 <div class="menu-wrap clearfix">
+		
+		<?php
 
-    <div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');">
-
+			$queryStateBanner = "select * from states where state_code = '".$defaultState."'";
+			$resultStateBannerTemp = mysql_query($queryStateBanner);
+			$resultStateBanner = mysql_fetch_array($resultStateBannerTemp);
+			if(mysql_numrows($resultStateBannerTemp) > 0)
+			{?>
+				<div class="col-md-12 header-top-two"
+					 style="background-image: url('admin/uploads/state/<?php echo $resultStateBanner['image'];?>');">
+		<?php } else { ?>
+				<div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');">
+		<?php } ?>
         <div class="col-md-4">
 			  <div class="logo"><a href="state.php?State=<?php echo $state;?>"><img alt="" src="img/logo.png"></a></div>
 	   </div>
@@ -172,20 +182,38 @@ else
             </ul>
         </li>
         
-        <li><a href="add_university.php">Student's Talk</a>
-         <ul class="subnav">
-            <li><a href="javascript:;">Newyork State University</a>
-                    <ul class="subnav">
-                        <li><a href="javascript:;">Accommodation</a></li>
-                        <li><a href="javascript:;">Campus Jobs</a></li>
-                        <li><a href="javascript:;">Graduate Assistantship</a></li>
-                        <li><a href="javascript:;">General Talk</a></li>
-                    </ul>
-            </li>
-            <li><a href="javascript:;">Buffalo University</a></li>
-            <li><a href="javascript:;">Columbia University</a></li>
-            <li><a href="javascript:;">Request Us to add your University</a></li>
-        </ul>
+        <li>
+				<?php
+						if(isset($_SESSION['Nris_session'])) {
+								echo '<a href="add_university.php">Student\'s Talk</a>';
+						} else {
+								echo '<a href="#"  data-toggle="modal" data-target="#myModal">Student\'s Talk</a>';
+						}
+				?>
+				<ul class="subnav">
+						<?php
+				
+							$queryStudentTalk = "select * from student_talk where state_code = '".$state."' order by uni_name asc";
+							$resultStudentTalk = mysql_query($queryStudentTalk);                                                
+							if(mysql_numrows($resultStudentTalk) > 0) {
+						?>
+						
+								<?php while($resStuTalk = mysql_fetch_array($resultStudentTalk)) { ?>		
+										<li><a href="university_student_talk.php?universityId=<?php echo $resStuTalk['id'];?>"><?php echo $resStuTalk['uni_name'];?></a></li>
+								<?php } ?>
+						<?php
+								}
+						?>
+						<li>
+								<?php
+										if(isset($_SESSION['Nris_session'])) {
+												echo '<a href="add_university.php">Request for University</a>';
+										} else {
+												echo '<a href="#"  data-toggle="modal" data-target="#myModal">Student\'s Talk</a>';
+										}
+								?>
+						</li>
+				</ul>
         </li>
         <li><a href="advertising_inner.php">Advertise </a></li>
         <li><a href="contact_inner.php">Contact </a></li>

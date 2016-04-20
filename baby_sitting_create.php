@@ -786,7 +786,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;">Upload Image</label>
 	<div class="col-sm-8">
-		<input type="file" class="form-control" id="my_file1" name="my_file1" placeholder="" tabindex="10" required accept="image/*"/>
+		<input type="file" class="form-control" id="my_file1" name="my_file1" placeholder="" tabindex="10" accept="image/*"/>
 	</div>
 </div>
 </div>

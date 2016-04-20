@@ -1,5 +1,6 @@
 <?php error_reporting(0);  include"config/connection.php";	  
 
+
 if(isset($_GET['ViewId']))
 {
 	$_SESSION['ViewId']=$_GET['ViewId'];
@@ -10,19 +11,10 @@ else
 	
 }
 
+	/*echo $_SESSION['state'];
+	echo $_SESSION['type'];		*/
 
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-$current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
-
-//	echo $_SESSION['state'];
+$current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -32,7 +24,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Temple View | NRIs</title>
+	<title><?php echo $_SESSION['state'];  ?> Desi movie details | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -61,16 +53,12 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/animate-custom.css">    
-    
-    <link rel='stylesheet' type='text/css' href='css/rate.css'>
-    
+    <link rel='stylesheet' type='text/css' href='css/rate.css'>  
     	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
 	<script src="js/tab/modernizr.js"></script> <!-- Modernizr -->
-    
-                <script src="css/modal/jquery.min.js"></script>            
-            <script src="css/modal/bootstrap.min.js"></script>
   <!--[if !IE]><!-->
-	
+	            <script src="css/modal/jquery.min.js"></script>            
+            <script src="css/modal/bootstrap.min.js"></script>
 	<!--<![endif]-->
 <style>
 .mydata { color:#000000;text-align:justify;line-height:22px; }
@@ -102,29 +90,12 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
      -moz-box-shadow: 3px 3px 3px #777;
           box-shadow: 3px 3px 3px #777;
 }
-</style>
-
-
-<script language="javascript" type="text/javascript">
-	function frmchk()
-	{
-		
-		
-		data  = document.getElementById('Comment').value;
-				 if (data.length < 5)	
-				{
-						alert('Please Enter your Comment');					
-						document.getElementById('Comment').focus();
-						return false;
-				}
-	
-		
-					
-		return true;
-	}
-</script>     
+</style>    
 </head>
 <body>
+
+
+
 
 
 <div id="fb-root"></div>
@@ -146,7 +117,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 
 
-		<?php   include "config/menu_inner_state.php" ;  ?>
+	<?php include "config/menu_inner_state.php" ;  ?>
 	
 	<div class="clearfix"></div>
 
@@ -163,7 +134,8 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
      
      
-
+    
+    
      
     
 <!-- Section-1 WRAP START-->	
@@ -191,27 +163,25 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
 
                        <br><?php 
-					  	 $query="select a.*, b.state from fam_temples a, states b where a.state_code = b.state_code and md5(a.id) = '".$_GET['ViewId']."'";							
-	
+					  	 $query="select a.*, b.state from fam_city_movies a, states b where a.state_code = b.state_code and md5(a.id) = '".$_GET['id']."'";
                                     $result=mysql_query($query);
                                     $rs=mysql_fetch_array($result);
-								//	echo ucwords($rs['temple_name']); 
-									$total_views = $rs['total_views'] + 1 ;
-									mysql_query("update fam_temples set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
+									//
+									//$total_views = $rs['total_views'] + 1 ;
+									//mysql_query("update fam_city_movies set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 					    ?>
+                        
 <div class="widget-temple">
 	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-		$type = urlencode($rs['temple_type']);
+		$type = urlencode($rs['rest_type']);
 	?>
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >>
-	<a href="<?php echo SITE_BASE_URL.'/temples_inner.php?type='.$type.'&code='.$state;?>" class="breadcumb_link"><?php echo $state;  ?> Temples</a> >> <?php echo ucwords($rs['temple_name']); ?></h4>
-</div>    <br>                          
-                        
-
+	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
+				<?php echo ucwords($rs['name']); ?></h4>
+</div>    <br>      
 
 <p class="mydata" align="center" style="text-align:center;">
 		<?php   if (strpos($rs['image'],'.') !== false) {  ?>
-        <img src="admin/uploads/temples/<?php echo $rs['image'];?>" width="80%" style="height:400px !important;" class="imgframe"> 	<?php }  else {  ?>
+        <img src="admin/uploads/city_movies/<?php echo $rs['image'];?>" width="80%" height="auto" class="imgframe"> 	<?php }  else {  ?>
         <img src="admin/img/no_image.png" height="auto" width="300" class="imgframe">
         <?php } ?>
 
@@ -224,23 +194,24 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 <bR>
 
 
-<p class="mydata"><b>Temple Name :</b> <?php echo ucwords($rs['temple_name']); ?></p>
-<p class="mydata"><b>Temple Type :</b> <?php echo ucwords($rs['temple_type']); ?></p>
-<p class="mydata"><b>Number  :</b> <?php echo ucwords($rs['contact']); ?></p>
-<p class="mydata"><b>Temple City  :</b> <?php 
+
+<p class="mydata"><b>Movie Name :</b> <?php echo ucwords($rs['name']); ?></p>
+<p class="mydata"><b>Url :</b> <?php echo ucwords($rs['url']); ?></p>
+<p class="mydata"><b>Restaurant City  :</b> <?php 
 $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
 															$rcity = mysql_fetch_array($query_city);
 															echo ucwords($rcity['city']); ?></p>
-<p class="mydata"><b>Temple Address  :</b> <a href="https://maps.google.com/maps?saddr=&daddr=<?php echo urlencode($rs['address']);?>" target="_blank" class="address_link">
+<?php $address = ucwords($rcity['city']).', '.$state;?>
+<p class="mydata"><b>Address  :</b> <a href="https://maps.google.com/maps?saddr=&daddr=<?php echo $address;?>" target="_blank" class="address_link">
 		<span class="glyphicon-map-marker"></span>
-		<?php echo ucwords($rs['address']); ?>
+		<?php echo ucwords($address); ?>
 	</a></p><br>
 
 
 					
-           
-           
-           
+                    
+
+                    
 <?php
 		if(isset($_SESSION['Nris_session']))	  
 	   { ?>
@@ -271,21 +242,21 @@ $lname =  $_SESSION['Nris_session']['lname'];
 $new_name = $fname." ".$lname;
 
 $date=date('Y-m-d');
-$query_rate_before = mysql_query("select * from rating_temple where login_id='".$myid."' and temple_id ='".$pro_id."'");
+$query_rate_before = mysql_query("select * from rating_top_city_movies where login_id='".$myid."' and movie_id ='".$pro_id."' ");
 
 if(mysql_num_rows($query_rate_before)>0)
 {
-		 $query_rate = "update rating_temple set temple_id = '".$pro_id."', rate='".$star."', login_id = '".$myid."', login_name = '".$new_name."', date = '".$date."' where login_id='".$myid."' and temple_id ='".$pro_id."'";		 
+		 $query_rate = "update rating_top_city_movies set movie_id = '".$pro_id."', rate='".$star."', login_id = '".$myid."', login_name = '".$new_name."', date = '".$date."' where login_id='".$myid."' and movie_id ='".$pro_id."'";		 
 		 $result_rate = mysql_query($query_rate);
 }
 else
 {
- $query_rate = "insert into rating_temple(temple_id,rate,login_id,login_name,date) values('".$pro_id."','".$star."','".$myid."','".$new_name."','".$date."')";		 
+ $query_rate = "insert into rating_top_city_movies(movie_id,rate,login_id,login_name,date) values('".$pro_id."','".$star."','".$myid."','".$new_name."','".$date."')";		 
  $result_rate = mysql_query($query_rate);
 }
 
 
-// $query_rate = "insert into rating_temple(temple_id,rate,login_id,login_name,date) values('".$pro_id."','".$star."','".$myid."','".$new_name."','".$date."')";		 
+// $query_rate = "insert into rating_top_city_movies(movie_id,rate,login_id,login_name,date) values('".$pro_id."','".$star."','".$myid."','".$new_name."','".$date."')";		 
 // $result_rate = mysql_query($query_rate);
 
 }
@@ -297,26 +268,26 @@ else
 Give your rating
 <a href="#" data-toggle="modal" data-target="#myModal"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">Click here to rate</a>
 </div>
-<?php }?>
+<?php }  ?>
 
 <?php 
-$star1 = "SELECT COUNT(id) AS star1Id FROM  rating_temple WHERE temple_id = '".$rs['id']."' and rate='1'";
+$star1 = "SELECT COUNT(id) AS star1Id FROM  rating_top_city_movies WHERE movie_id = '".$rs['id']."' and rate='1'";
 $result_start1 = mysql_query($star1);
 $star_fs1 = mysql_fetch_array($result_start1);
 
-$star2 = "SELECT COUNT(id) AS star2Id FROM  rating_temple WHERE temple_id = '".$rs['id']."' and rate='2'";
+$star2 = "SELECT COUNT(id) AS star2Id FROM  rating_top_city_movies WHERE movie_id = '".$rs['id']."' and rate='2'";
 $result_start2 = mysql_query($star2);
 $star_fs2 = mysql_fetch_array($result_start2);
 
-$star3 = "SELECT COUNT(id) AS star3Id FROM  rating_temple WHERE temple_id = '".$rs['id']."' and rate='3'";
+$star3 = "SELECT COUNT(id) AS star3Id FROM  rating_top_city_movies WHERE movie_id = '".$rs['id']."' and rate='3'";
 $result_start3 = mysql_query($star3);
 $star_fs3 = mysql_fetch_array($result_start3);
 
-$star4 = "SELECT COUNT(id) AS star4Id FROM  rating_temple WHERE temple_id = '".$rs['id']."' and rate='4'";
+$star4 = "SELECT COUNT(id) AS star4Id FROM  rating_top_city_movies WHERE movie_id = '".$rs['id']."' and rate='4'";
 $result_start4 = mysql_query($star4);
 $star_fs4 = mysql_fetch_array($result_start4);
 
-$star5 = "SELECT COUNT(id) AS star5Id FROM  rating_temple WHERE temple_id = '".$rs['id']."' and rate='5'";
+$star5 = "SELECT COUNT(id) AS star5Id FROM  rating_top_city_movies WHERE movie_id = '".$rs['id']."' and rate='5'";
 $result_start5 = mysql_query($star5);
 $star_fs5 = mysql_fetch_array($result_start5);
 ?>
@@ -365,7 +336,7 @@ $star_fs5 = mysql_fetch_array($result_start5);
 
 
 <?php
-$tmpl_cmnt = "select a.*, b.* from  comment_temple a, register b where a.member_id = b.id  and md5(a.temple_id) = '".$_SESSION['ViewId']."' order by a.cmnt_id desc" ;
+$tmpl_cmnt = "select a.*, b.* from  comment_restaurant a, register b where a.member_id = b.id  and md5(a.movie_id) = '".$_SESSION['ViewId']."' order by a.cmnt_id desc" ;
 
 $result_cmnt = mysql_query($tmpl_cmnt);
 if(mysql_num_rows($result_cmnt) > 0)
@@ -403,7 +374,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 
 <?php
 if(isset($_POST['cmdcomment']))	
-{ 
+{
 
 	$TMPId = $_POST['templeId'];
 	$mId = $_POST['memberId'];	
@@ -417,7 +388,7 @@ if(isset($_POST['cmdcomment']))
 	
 	$url_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 				
-	$query_cmt = "insert into comment_temple(temple_id,member_id,comment,cmnt_date,cmnt_time) values('".$TMPId."','".$mId."','".$a."','".$date."','".$time."')";		 
+	$query_cmt = "insert into comment_restaurant(movie_id,member_id,comment,cmnt_date,cmnt_time) values('".$TMPId."','".$mId."','".$a."','".$date."','".$time."')";		 
 	$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
 		echo "<script language='javascript' type='text/javascript'>document.location='".$url_link."';</script>";
@@ -425,30 +396,29 @@ if(isset($_POST['cmdcomment']))
 
 }
 ?>
-
-
-
-
+       
 
 
  <div class="dividerHeading" style="clear:both;">
     <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
 </div>
         
-            <form class="form-horizontal" role="form" method="post" onSubmit="return frmchk();">       
+          
+            <form class="form-horizontal" role="form" method="post" onSubmit="return frmchk();">
               <div class="form-div ">
                     <div class="form-label">Message:</div>
                     <div class="form-field">
-			    <textarea rows="5" cols="40" style="width:100%;" name="Comment" id="Comment" tabindex="2"  placeholder="Your comment" required=""></textarea>                    
+                    <textarea placeholder="Message" name="Comment" id="Comment" class="form-control tiny" required="required"></textarea>
                     </div>            
                </div>      
              <div class="form-submit-buttons">   
                         
 <?php
 if(isset($_SESSION['Nris_session']))	  
-{ ?>
+{  ?>
 <input type="hidden" name="templeId" id="templeId" value="<?php echo $rs['id'] ; ?>">
-<input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">             
+<input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">
+             
              <input type="submit" class="btn-danger" style="float:right;padding:5px;" name="cmdcomment" id="cmdcomment" value="Post Comment">
 
 <?php } else { ?>
@@ -459,10 +429,11 @@ if(isset($_SESSION['Nris_session']))
                 <input class="form-control" name="post_id" value="623" type="hidden">
                 <input class="form-control" name="commented_by" value="" type="hidden">
            </form> 
-<br><br><br><br><br><br><br><br><br>	
+<br><br><br><br><br><br><br><br><br>		
 		
             </div>
             <!-- TOP BUTTONS ENDS-->
+
             
             
         </div><!-- COLUMN MIDDLE ENDS -->	
@@ -512,4 +483,4 @@ if(isset($_SESSION['Nris_session']))
 <?php include "config/social.php" ;  ?>
 
 </body>
-</html>	
+</html>

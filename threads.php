@@ -238,7 +238,7 @@ if(isset($_SESSION['Nris_session']))
 
 	$tableName="forum_threads";		
 	$targetpage = "threads.php"; 	
-	$limit = 20; 
+	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where md5(category_id)='".$_SESSION['cat_id']."' and status='1' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
