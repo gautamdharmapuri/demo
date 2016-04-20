@@ -2988,3 +2988,12 @@ text-align:justify;
 
 .liked {color : green !important; font-weight: bolder;border: 4px solid green !important;}
 .disliked {color : red !important; font-weight: bolder;border: 4px solid red !important;}*/
+.like_lnks_cnt button {
+    font-weight: bold;
+}
+.like_lnks_cnt .liked button{
+    border: 2px solid green;
+}
+.like_lnks_cnt .disliked button{
+    border: 2px solid red;
+}

@@ -36,9 +36,9 @@
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="css/settings.css">
     <link rel="stylesheet" href="css/animate-custom.css">    
-    
     	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
 	<script src="js/tab/modernizr.js"></script> <!-- Modernizr -->
+	<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <!--[if !IE]><!-->
 	  <script src="css/modal/jquery.min.js"></script>            
             <script src="css/modal/bootstrap.min.js"></script>
@@ -274,11 +274,23 @@
                 <?php echo substr($rs['blog_desc'],0,350)."..."; ?>
                 
                  </p>
-				<?php if (!empty($_SESSION['Nris_session']['id'])) { ?>
+				<?php
+					
+					$blog_id = $assoc_id = $rs['id'];
+		            $type = 'blog';
+					$likeQuery = mysqli_query($con, 'SELECT COUNT(id) as cnt from likes
+					where assoc_id = '.$assoc_id.' AND type="'.$type.'" AND like_val = 1');
+					$likeQueryRes1 = mysqli_fetch_assoc($likeQuery);
+					$likeQueryRes = $likeQueryRes1['cnt'];
+
+					$dislikeQuery = mysqli_query($con, 'SELECT COUNT(id) as cnt from likes
+					where assoc_id = '.$assoc_id.' AND type="'.$type.'" AND like_val = 0');
+					$dislikeQueryRes1 = mysqli_fetch_assoc($dislikeQuery);
+					$dislikeQueryRes = $dislikeQueryRes1['cnt'];
+				
+				if (!empty($_SESSION['Nris_session']['id'])) { ?>
 		            <?php
 		            $user_id = $_SESSION['Nris_session']['id'];
-		            $blog_id = $assoc_id = $rs['id'];
-		            $type = 'blog';
 					$query_res = mysqli_query($con, 'SELECT like_val from likes where user_id = '.$user_id.' AND assoc_id = '.$assoc_id.' AND type="'.$type.'"');
 					$user_like_res = mysqli_fetch_assoc($query_res);
 
@@ -289,13 +301,28 @@
 					}
 		            ?>
 		            <div class="like_lnks_cnt">
-		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">Like</a>
-		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">DisLike</a>
+		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
+						<button type="button" class="btn btn-default btn-sm">
+							<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
+						</button></a>
+		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
+							<button type="button" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
+							</button>
+						</a>
 		            </div>
 	            <?php } else { ?>
 					<div class="like_lnks_cnt">
-		                <a href="javascript:;" class='like_dislike_lnk _like' data-toggle="modal" data-target="#myModal">Like</a>
-		                <a href="javascript:;" class='like_dislike_lnk _dislike' data-toggle="modal" data-target="#myModal" style="margin : 0 10px">DisLike</a>
+		                <a href="javascript:;" class='like_dislike_lnk _like' data-toggle="modal" data-target="#myModal">
+							<button type="button" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
+							</button>
+						</a>
+		                <a href="javascript:;" class='like_dislike_lnk _dislike' data-toggle="modal" data-target="#myModal" style="margin : 0 10px">
+							<button type="button" class="btn btn-default btn-sm">
+								<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
+							</button>
+						</a>
 		            </div>
 				<?php } ?>
                 <span style="float:right;"><a href="state_blog_details.php?viewId=<?php echo md5($rs['id']); ?>">Read More...</a></span>
