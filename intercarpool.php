@@ -196,12 +196,12 @@ else
                                 <br> <h4 class="cat_heading" style="color:#0066FF;">Search</h4>
                                 </div>
                                                 <div class="bord-cla">
-                                            <form name="form" id="form" method="post" style="margin:20px auto;width:90%;">
+                                            <form name="form" id="form" method="get" style="margin:20px auto;width:90%;">
                                             
                                             <table border="0" cellpadding="0" cellspacing="10" style="width:100%;">
                                             	<tr  style="background-color:#FFFFFF;">                                                
                                                     <td style="vertical-align:middle;">
-                                                            <select name="JourneyType" id="JourneyType" required=""  class="form-control" tabindex="1" >         
+                                                            <select name="country" id="JourneyType" required=""  class="form-control" tabindex="1" >         
                                                              <option VALUE="" >Select Country </option>
                                                              <option VALUE="us" >Unites States </option>
                            									 <option VALUE="mexico" >Mexico </option> 
@@ -216,6 +216,9 @@ else
 							                <br>
                                             
                                             <input type="submit" value="Submit" name="cmdsubmit" id="cmdsubmit" class="btn btn-success">
+											<a href="intercarpool.php">
+													<input type="button" value="Reset" name="reset" id="reset" class="btn btn-success">
+												</a>
                                             </form>
                                               </div>
                        
@@ -238,27 +241,81 @@ else
    				
 <div class="widget-temple">
 		<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> International Carpool</h4>
+	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> <a href="intercarpool.php">International Carpool</a></h4>
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="localcarpool_add.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="localcarpool_add.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Carpool<img src="images/arrow.gif"></a>    
   <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Carpool<img src="images/arrow.gif"></a>
 <?php } ?>     
 
 
 </div>    <br>
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
+                                                                            
+             <table align="center" >
+					<thead>
+						<tr>
+							<th>Country</th>
+							<th>From City</th>
+							<th>To City</th>
+							<th>Start Date</th>
+							<th>Start Time</th>
+						</tr>
+					</thead>
+					<tbody>                                                               
+<?php
+		$where = '';
+		if(isset($_GET['country']) && $_GET['country'] != '') {
+			$where = " AND carpool.country = '".$_GET['country']."'";
+		}
+	$query1 = "SELECT carpool.*,c1.city as from_cityname,c2.city as to_cityname FROM carpool,cities c1, cities as c2
+				WHERE type = 'international'
+				AND c1.id = from_city AND c2.id = to_city $where";
 
-No Records Found.
-
-
-                                                          
-
-			
-            </div>
+			$result = mysql_query($query1);
+			if(mysql_numrows($result) > 0) { ?>
+			 	
+						<?php	
+							while($data = mysql_fetch_assoc($result)) {?>
+								<tr>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['country']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['from_cityname']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['to_cityname']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['start_date']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['start_time']; ?>
+										</a>
+									</td>
+								</tr>
+						<?php } ?>
+					
+				<!-- <div id="pagination"></div> -->
+                    <?php  } else { ?>
+						<tr><td colspan="4">No data available</td></tr>
+				<?php } ?>
+				</tbody>
+				</table>
+			</div>
             <!-- TOP BUTTONS ENDS-->
             
             

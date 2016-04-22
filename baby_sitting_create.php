@@ -3,6 +3,179 @@
 //echo $_GET['type'];
 ?>
 
+
+
+<!DOCTYPE html>
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+
+	<!-- Basic Page Needs -->
+	<meta charset="utf-8">
+	<title><?php echo $_SESSION['state'] ?> - Baby Sitting Create Ad | NRIs</title>
+	<meta name="description" content="NRIs">
+	<meta name="author" content="NRIs">
+	
+	<!-- Mobile Specific Metas -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	<link rel="shortcut icon" href="img/favicon.png">
+	<!-- Main Style -->
+	<link rel="stylesheet" href="css/style.css">
+	
+	<!-- Skins -->
+	<link rel="stylesheet" href="css/skins/skins.css">
+	
+	<!-- Responsive Style -->
+	<link rel="stylesheet" href="css/responsive.css">
+	
+	<!-- Favicons -->
+	<link rel="shortcut icon" href="images/favicon.png">
+    
+    <link href='https://fonts.googleapis.com/css?family=Roboto|Montserrat' rel='stylesheet' type='text/css'>
+    
+    <link rel="stylesheet" href="css/bootstrap.css"><!--
+    <link rel="stylesheet" href="css/tab.css">-->
+  	<link rel="stylesheet" href="css/base.css">
+    <link rel="stylesheet" href="css/lists.css">
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css/settings.css">
+    <link rel="stylesheet" href="css/animate-custom.css">    
+    
+    	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
+	<script src="js/tab/modernizr.js"></script> <!-- Modernizr -->
+    
+                <script src="css/modal/jquery.min.js"></script>            
+            <script src="css/modal/bootstrap.min.js"></script>
+  <!--[if !IE]><!-->
+	
+	<!--<![endif]-->
+<style>
+.mydata { color:#000000;text-align:justify;line-height:22px; }
+
+.famous_btn
+{
+	background: #f73040 none repeat scroll 0 0;
+    border-radius: 5px;
+    color: #fff;    
+    font-family: "Montserrat",sans-serif;
+    font-size: 11px;
+    font-weight: 500;
+    height: auto;
+    margin: 5px 15px;
+    padding: 10px 5px;
+	color:#FFFFFF;	
+    width: auto !important;
+	text-align:center;
+}
+.famous_btn a
+{ color:#FFFFFF;
+}
+
+</style>    
+
+<style>
+.button {
+  display: inline-block;
+  padding: 10px 15px;
+  font-size: 18px;
+  cursor: pointer;
+  text-align: center;	
+  text-decoration: none;
+  outline: none;
+  color: #fff;
+  background-color: #4CAF50;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 9px #999;
+}
+
+.button:hover {background-color: #3e8e41}
+
+.button:active {
+  background-color: #3e8e41;
+  box-shadow: 0 5px #666;
+  transform: translateY(4px);
+}
+.error
+{
+color:#FFFFFF;font-weight:bold;clear:both;background-color:#FF0000;font-weight:bold;padding:10px 10px;
+border-radius: 5px;
+}
+
+/*.sucess
+{
+background-color:#009933;
+padding:5px;
+color:#FFFFFF;
+width:100%;
+font-weight:bold;
+}
+
+*/
+.sucess
+{
+color:#FFFFFF;font-weight:bold;clear:both;background-color:#009900;font-weight:bold;padding:10px 10px;
+border-radius: 5px;
+}
+
+/*STYLES FOR CSS POPUP*/
+
+
+#blanket {
+   background-color:#111;
+   opacity: 0.65;
+   position:absolute;
+   z-index: 9001;
+   top:0px;
+   left:0px;
+   width:100%;
+   height:auto;
+}
+
+#popUpDiv {
+	position:absolute;	
+	width:50%;
+	height:500px;
+	border:5px solid #000;
+	z-index: 9002;
+	background-color:#FFFFFF;
+	top:0%;
+	overflow: auto;
+	padding:10px;
+	left:25% !important;
+	top:25% !important;	
+	
+}
+
+#popUpDiv h3
+{
+	font-size:14px;
+}
+
+#popUpDiv a {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
+#popUpDiv a:hover {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
+
+</style>
+
+
+
+ <script type="text/javascript">
+function LimtCharacters(txtMsg, CharLength, indicator) {
+chars = txtMsg.value.length;
+document.getElementById(indicator).innerHTML = CharLength - chars + ' characters remaining';
+if (chars > CharLength) {
+txtMsg.value = txtMsg.value.substring(0, CharLength);
+}
+}
+</script>
+<script type="text/javascript" src="css-pop.js"></script>
+</head>
+<body  <?php if(!isset($_POST['Submit']))
+{ ?>onload="popup('popUpDiv')"<?php }?>>
+
+
 <?php
 if(isset($_POST['Submit']))
 {
@@ -321,12 +494,49 @@ if(isset($_POST['Submit']))
 			$query=mysql_query("insert into post_free_baby_sitting (TitleAD,Message,AdsCat,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,City,EndDate,image,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$AdsCat."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$City."','".$EndDate."','".$image1."','".$date."','".$time."','".$state."')");
 			}
 			$msg = "<h3 class='sucess'>Baby Sitting Ads Created Successfully!..</h3>";
+		if($_GET['type'] == 'premium') {
+				
+				$type = 'baby_sitting';
+				$table_name = 'post_free_baby_sitting';
+				?>
+				
+				<form  action="https://www.sandbox.paypal.com/cgi-bin/webscr"  method="post" name="paypal_form" id="paypal_form" >
+				<input type="hidden" name="image_url" value="img/logo.png">		
+				<input type="hidden" name="cmd" value="_cart">
+				<input type="hidden" name="upload" value="1">
+				<input type="hidden" name="business" value="<?php echo 'mailnris@gmail.com';?>" >
+                <input name = "rm" value = "2" type = "hidden">
+                <input name="custom" value="<?php echo $post_id; ?>" type="hidden">
+                <input name="custom2" value="test" type="hidden">
+                
+                <input type="hidden" class='bg'  size="5"  width="211" height="25"  name="amount_1"  value="2" >
+				<input type="hidden" name="item_name_1" value="Premium Ad">                
+                <input type="hidden" name="item_number_1" value="<?php echo $post_id; ?>">
+               <input name = "shipping" value = "0" type = "hidden">
+			   <input type="hidden" name="currency_code" value="USD">
+			   <input type="hidden" name="button_subtype" value="Free Ads">
+			   <input type="hidden" name="no_note" value="0">
+			   <input type="hidden" value="img/logo.png" name="cpp_header_image">
+				<input type="hidden" value="img/logo.png" name="image_url">
+				<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>" />
+			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>">
+			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success">			
+</form>
+<script>
+$('document').ready(function() {
+$('#paypal_form').submit();
+});
+</script>
+				
+				<?php
+				exit;
+			}
 		}
 		else
 		{
 			$Error = $Error;
 		}
-		
 		
 
 }
@@ -344,175 +554,6 @@ function test_input($data) {
 }
 ?>
 
-<!DOCTYPE html>
-<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
-<!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
-<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
-
-	<!-- Basic Page Needs -->
-	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'] ?> - Baby Sitting Create Ad | NRIs</title>
-	<meta name="description" content="NRIs">
-	<meta name="author" content="NRIs">
-	
-	<!-- Mobile Specific Metas -->
-	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-	<link rel="shortcut icon" href="img/favicon.png">
-	<!-- Main Style -->
-	<link rel="stylesheet" href="css/style.css">
-	
-	<!-- Skins -->
-	<link rel="stylesheet" href="css/skins/skins.css">
-	
-	<!-- Responsive Style -->
-	<link rel="stylesheet" href="css/responsive.css">
-	
-	<!-- Favicons -->
-	<link rel="shortcut icon" href="images/favicon.png">
-    
-    <link href='https://fonts.googleapis.com/css?family=Roboto|Montserrat' rel='stylesheet' type='text/css'>
-    
-    <link rel="stylesheet" href="css/bootstrap.css"><!--
-    <link rel="stylesheet" href="css/tab.css">-->
-  	<link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/lists.css">
-    <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/settings.css">
-    <link rel="stylesheet" href="css/animate-custom.css">    
-    
-    	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
-	<script src="js/tab/modernizr.js"></script> <!-- Modernizr -->
-    
-                <script src="css/modal/jquery.min.js"></script>            
-            <script src="css/modal/bootstrap.min.js"></script>
-  <!--[if !IE]><!-->
-	
-	<!--<![endif]-->
-<style>
-.mydata { color:#000000;text-align:justify;line-height:22px; }
-
-.famous_btn
-{
-	background: #f73040 none repeat scroll 0 0;
-    border-radius: 5px;
-    color: #fff;    
-    font-family: "Montserrat",sans-serif;
-    font-size: 11px;
-    font-weight: 500;
-    height: auto;
-    margin: 5px 15px;
-    padding: 10px 5px;
-	color:#FFFFFF;	
-    width: auto !important;
-	text-align:center;
-}
-.famous_btn a
-{ color:#FFFFFF;
-}
-
-</style>    
-
-<style>
-.button {
-  display: inline-block;
-  padding: 10px 15px;
-  font-size: 18px;
-  cursor: pointer;
-  text-align: center;	
-  text-decoration: none;
-  outline: none;
-  color: #fff;
-  background-color: #4CAF50;
-  border: none;
-  border-radius: 10px;
-  box-shadow: 0 9px #999;
-}
-
-.button:hover {background-color: #3e8e41}
-
-.button:active {
-  background-color: #3e8e41;
-  box-shadow: 0 5px #666;
-  transform: translateY(4px);
-}
-.error
-{
-color:#FFFFFF;font-weight:bold;clear:both;background-color:#FF0000;font-weight:bold;padding:10px 10px;
-border-radius: 5px;
-}
-
-/*.sucess
-{
-background-color:#009933;
-padding:5px;
-color:#FFFFFF;
-width:100%;
-font-weight:bold;
-}
-
-*/
-.sucess
-{
-color:#FFFFFF;font-weight:bold;clear:both;background-color:#009900;font-weight:bold;padding:10px 10px;
-border-radius: 5px;
-}
-
-/*STYLES FOR CSS POPUP*/
-
-
-#blanket {
-   background-color:#111;
-   opacity: 0.65;
-   position:absolute;
-   z-index: 9001;
-   top:0px;
-   left:0px;
-   width:100%;
-   height:auto;
-}
-
-#popUpDiv {
-	position:absolute;	
-	width:50%;
-	height:500px;
-	border:5px solid #000;
-	z-index: 9002;
-	background-color:#FFFFFF;
-	top:0%;
-	overflow: auto;
-	padding:10px;
-	left:25% !important;
-	top:25% !important;	
-	
-}
-
-#popUpDiv h3
-{
-	font-size:14px;
-}
-
-#popUpDiv a {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
-#popUpDiv a:hover {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
-
-</style>
-
-
-
- <script type="text/javascript">
-function LimtCharacters(txtMsg, CharLength, indicator) {
-chars = txtMsg.value.length;
-document.getElementById(indicator).innerHTML = CharLength - chars + ' characters remaining';
-if (chars > CharLength) {
-txtMsg.value = txtMsg.value.substring(0, CharLength);
-}
-}
-</script>
-<script type="text/javascript" src="css-pop.js"></script>
-</head>
-<body  <?php if(!isset($_POST['Submit']))
-{ ?>onload="popup('popUpDiv')"<?php }?>>
 
 <!--POPUP-->        
     <div id="blanket" style="display:none;"></div>

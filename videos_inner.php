@@ -118,7 +118,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 			  <?php
 			  $tableName="videos";		
 	$targetpage = "videos_inner.php?lang=".$_GET['lang']; 	
-	$limit = 10; 
+	$limit = 15; 
 	
 //	$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
 	$query = "SELECT DISTINCT  * FROM videos where status = 'Active' and language = '".$_GET['lang']."'";

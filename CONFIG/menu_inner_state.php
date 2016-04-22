@@ -18,15 +18,15 @@ else
 		
 		<?php
 
-			$queryStateBanner = "select * from states where state_code = '".$defaultState."'";
+			$queryStateBanner = "select * from states where state_code = '".$defaultState."' and image != ''";
 			$resultStateBannerTemp = mysql_query($queryStateBanner);
 			$resultStateBanner = mysql_fetch_array($resultStateBannerTemp);
 			if(mysql_numrows($resultStateBannerTemp) > 0)
 			{?>
 				<div class="col-md-12 header-top-two"
-					 style="background-image: url('admin/uploads/state/<?php echo $resultStateBanner['image'];?>');">
+					 style="background-image: url('admin/uploads/state/<?php echo $resultStateBanner['image'];?>');background-position: 0px 0px;background-repeat: no-repeat;background-size: 100% 116px;">
 		<?php } else { ?>
-				<div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');">
+				<div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');background-position: 0px 0px;background-repeat: no-repeat;background-size: 100% 116px;">
 		<?php } ?>
         <div class="col-md-4">
 			  <div class="logo"><a href="state.php?State=<?php echo $state;?>"><img alt="" src="img/logo.png"></a></div>

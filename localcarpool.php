@@ -196,23 +196,30 @@ else
                                 <br> <h4 class="cat_heading" style="color:#0066FF;">Search</h4>
                                 </div>
                                                 <div class="bord-cla">
-                                            <form name="form" id="form" method="post" style="margin:20px auto;width:90%;">
+                                            <form name="form" id="form" method="get" style="margin:20px auto;width:90%;">
                                             
                                             <table border="0" cellpadding="0" cellspacing="10" style="width:100%;">
                                             	<tr  style="background-color:#FFFFFF;">
                                                 	<td style="vertical-align:top;">Departure City</td>
-                                                    <td style="vertical-align:middle;"><input type="text" name="Departure" id="Departure" placeholder="Departure City" style="width:150px;"></td>
+                                                    <td style="vertical-align:middle;"><input type="text" name="Departure" id="city_auto1" placeholder="Departure City" style="width:150px;">
+													<input type="hidden" name="City1" id="City1"></td>
                                                 </tr>
                                             	<tr>
                                                 	<td style="vertical-align:top;">Arrival City</td>
-                                                    <td style="vertical-align:middle;"><input type="text" name="Arrival" id="Arrival" placeholder="Arrival City" style="width:150px;"></td>
+                                                    <td style="vertical-align:middle;">
+														<input type="text" name="Arrival" id="city_auto2" placeholder="Arrival City" style="width:150px;">
+														<input type="hidden" name="City2" id="City2">
+													</td>
                                                 </tr>                                                
                                             </table>
                                             
                                          
 							                <br>
                                             
-                                            <input type="submit" value="Submit" name="cmdsubmit" id="cmdsubmit" class="btn btn-success">
+												<input type="submit" value="Submit" name="cmdsubmit" id="cmdsubmit" class="btn btn-success">
+												<a href="localcarpool.php">
+													<input type="button" value="Reset" name="reset" id="reset" class="btn btn-success">
+												</a>
                                             </form>
                                               </div>
                        
@@ -234,21 +241,73 @@ else
             <div class="col-md-8" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Local Carpool</h4>
+	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>  <a href="localcarpool.php">Local Carpool</a></h4>
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="localcarpool_add.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="localcarpool_add.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Carpool<img src="images/arrow.gif"></a>    
   <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Carpool<img src="images/arrow.gif"></a>
 <?php } ?>     
 
 
 </div>    <br>
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
+<table align="center" >
+					<thead>
+						<tr>
+							<th>From City</th>
+							<th>To City</th>
+							<th>Start Date</th>
+							<th>Start Time</th>
+						</tr>
+					</thead>
+					<tbody>
+<?php
+		
+	$where = '';
+	if(isset($_GET['City1']) && $_GET['City1'] > 0 && isset($_GET['City2']) && $_GET['City2'] > 0) {
+		$where = ' AND (carpool.from_city = "'.$_GET['City1'].'" AND carpool.to_city = "'.$_GET['City2'].'")';
+	}
+	$query1 = "SELECT carpool.*,c1.city as from_cityname,c2.city as to_cityname FROM carpool,cities c1, cities as c2
+				WHERE type = 'local'
+				AND c1.id = from_city AND c2.id = to_city $where";
 
-
-No Records Found.
+			$result = mysql_query($query1);
+			if(mysql_numrows($result) > 0) { ?>
+						<?php	
+							while($data = mysql_fetch_assoc($result)) {?>
+								<tr>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['from_cityname']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['to_cityname']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['start_date']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['start_time']; ?>
+										</a>
+									</td>
+								</tr>
+						<?php } ?>
+                    <?php  } else { ?>
+						<tr><td colspan="4">No data available</td></tr>
+				<?php } ?>
+				</tbody>
+				</table>
+			</div>
+            <!-- TOP BUTTONS ENDS-->
 
 
                                                           
@@ -276,16 +335,36 @@ No Records Found.
             <script>
             (adsbygoogle = window.adsbygoogle || []).push({});
             </script>     </div>
-            </div>           
+            </div>
+	   
+	   <link rel="stylesheet" href="calender/jquery-ui.css">
+    <script src="calender/jquery-1.10.2.js"></script>
+    <script src="calender/jquery-ui.js"></script>
+	   
             <script>
-            $("#premium_btn").hover(function(e) {
-            $('#Premium_message').css({
-            left: e.pageX - 30,
-            top: e.pageY - 30
-            }).stop().show(100);
-            }, function() {
-            $('#Premium_message').hide();
-            });
+            
+	
+	$( "#city_auto1" ).autocomplete({
+		source: function(request, response) {
+			$.getJSON("city_auto.php", { term: $('#city_auto1').val()},response);
+		},
+      minLength: 1,
+      select: function( event, ui ) {
+			$('#City1').val(ui.item.id);
+      }
+    });
+	$( "#city_auto2" ).autocomplete({
+		source: function(request, response) {
+			$.getJSON("city_auto.php", { term: $('#city_auto2').val()},response);
+		},
+      minLength: 1,
+      select: function( event, ui ) {
+			$('#City2').val(ui.item.id);
+      }
+    });
+	
+	$('#city_auto1').keyup(function(e){if(e.keyCode == 8)$('#city_auto1, #City1').val('');});
+	$('#city_auto2').keyup(function(e){if(e.keyCode == 8)$('#city_auto2, #City2').val('');});
             </script>
          </div>
         <!-- COLUMN RIGHT ENDS -->	

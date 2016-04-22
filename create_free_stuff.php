@@ -2,96 +2,6 @@
 //echo $_SESSION['state'];
 ?>
 
-<?php
-if(isset($_POST['Submit']))
-{
-	$Error ='';
-	$msg = '';
-	
-
-	
-		$TitleAD = test_input($_POST["TitleAD"]);		
-		$Desrp = test_input($_POST["Message"]);		
-	
-
-		$ConatctNAME = test_input($_POST["ConatctNAME"]);						
-		$ConatctNumber = test_input($_POST["ConatctNumber"]);								
-		$ConatctEmail = test_input($_POST["ConatctEmail"]);
-		$pid = $_POST['id'];
-		
-
-		$City = test_input($_POST["City"]);			
-	
-		$EndDate = test_input($_POST["EndDate"]);		
-		
-		
-		
-		$round=rand(1000,100000);
-		$fileName1=$_FILES["my_file1"]["name"];
-		$fileSize1=$_FILES["my_file1"]["size"]/1024;
-		$fileType1=$_FILES["my_file1"]["type"];
-		$fileTmpName1=$_FILES["my_file1"]["tmp_name"];  
-		
-
-		if($fileSize1<=200){			
-				
-				if($_FILES['my_file1']['name'] != '') {
-					$image1=$round."_".$_FILES['my_file1']['name'];
-					$img1="uploads/free_stuff/".$image1;
-					move_uploaded_file($_FILES['my_file1']['tmp_name'],$img1);	
-				}
-				
-		}
-		else
-		{
-  			$Error .= "Maximum upload file size limit is 200 kb.<br>";
-		}
-		
-		
-	//	echo $Error;
-			
-		
-		$adPosttype = test_input($_POST["adPosttype"]);	
-											
-		$date = date("Y-m-d");
-		$time = date("h:m:s");	
-		
-	
-		if ($Error=='')
-		{
-			$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-			if($adPosttype!='')	
-			{
-					
-					$query=mysql_query("insert into post_free_stuff (TitleAD,Message,image,AdPostType,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,City,EndDate,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$image1."','".$adPosttype."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$City."','".$EndDate."','".$date."','".$time."','".$state."')");			
-			}
-			else
-			{
-			$query=mysql_query("insert into post_free_stuff (TitleAD,Message,image,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,City,EndDate,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$image1."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$City."','".$EndDate."','".$date."','".$time."','".$state."')");
-			}
-			$msg = "<h3 class='sucess'>Free Stuff Ads Created Successfully!..</h3>";
-		}
-		else
-		{
-			$Error = $Error;
-		}
-		
-		
-
-}
-
-
-
-
-
-
-function test_input($data) {
-   $data = trim($data);
-   $data = stripslashes($data);
-   $data = htmlspecialchars($data);
-   return $data;
-}
-?>
 
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -231,6 +141,134 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 
 
 
+<?php
+if(isset($_POST['Submit']))
+{
+	$Error ='';
+	$msg = '';
+	
+
+	
+		$TitleAD = test_input($_POST["TitleAD"]);		
+		$Desrp = test_input($_POST["Message"]);		
+	
+
+		$ConatctNAME = test_input($_POST["ConatctNAME"]);						
+		$ConatctNumber = test_input($_POST["ConatctNumber"]);								
+		$ConatctEmail = test_input($_POST["ConatctEmail"]);
+		$pid = $_POST['id'];
+		
+
+		$City = test_input($_POST["City"]);			
+	
+		$EndDate = test_input($_POST["EndDate"]);		
+		
+		
+		
+		$round=rand(1000,100000);
+		$fileName1=$_FILES["my_file1"]["name"];
+		$fileSize1=$_FILES["my_file1"]["size"]/1024;
+		$fileType1=$_FILES["my_file1"]["type"];
+		$fileTmpName1=$_FILES["my_file1"]["tmp_name"];  
+		
+
+		if($fileSize1<=200){			
+				
+				if($_FILES['my_file1']['name'] != '') {
+					$image1=$round."_".$_FILES['my_file1']['name'];
+					$img1="uploads/free_stuff/".$image1;
+					move_uploaded_file($_FILES['my_file1']['tmp_name'],$img1);	
+				}
+				
+		}
+		else
+		{
+  			$Error .= "Maximum upload file size limit is 200 kb.<br>";
+		}
+		
+		
+	//	echo $Error;
+			
+		
+		$adPosttype = test_input($_POST["adPosttype"]);	
+											
+		$date = date("Y-m-d");
+		$time = date("h:m:s");	
+		
+	
+		if ($Error=='')
+		{
+			$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+			if($adPosttype!='')	
+			{
+					
+					$query=mysql_query("insert into post_free_stuff (TitleAD,Message,image,AdPostType,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,City,EndDate,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$image1."','".$adPosttype."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$City."','".$EndDate."','".$date."','".$time."','".$state."')");			
+			}
+			else
+			{
+			$query=mysql_query("insert into post_free_stuff (TitleAD,Message,image,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,City,EndDate,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$image1."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$City."','".$EndDate."','".$date."','".$time."','".$state."')");
+			}
+			$msg = "<h3 class='sucess'>Free Stuff Ads Created Successfully!..</h3>";
+		if($_GET['type'] == 'premium') {
+				
+				$type = 'free_stuff';
+				$table_name = 'post_free_stuff';
+				?>
+				
+				<form  action="https://www.sandbox.paypal.com/cgi-bin/webscr"  method="post" name="paypal_form" id="paypal_form" >
+				<input type="hidden" name="image_url" value="img/logo.png">		
+				<input type="hidden" name="cmd" value="_cart">
+				<input type="hidden" name="upload" value="1">
+				<input type="hidden" name="business" value="<?php echo 'mailnris@gmail.com';?>" >
+                <input name = "rm" value = "2" type = "hidden">
+                <input name="custom" value="<?php echo $post_id; ?>" type="hidden">
+                <input name="custom2" value="test" type="hidden">
+                
+                <input type="hidden" class='bg'  size="5"  width="211" height="25"  name="amount_1"  value="2" >
+				<input type="hidden" name="item_name_1" value="Premium Ad">                
+                <input type="hidden" name="item_number_1" value="<?php echo $post_id; ?>">
+               <input name = "shipping" value = "0" type = "hidden">
+			   <input type="hidden" name="currency_code" value="USD">
+			   <input type="hidden" name="button_subtype" value="Free Ads">
+			   <input type="hidden" name="no_note" value="0">
+			   <input type="hidden" value="img/logo.png" name="cpp_header_image">
+				<input type="hidden" value="img/logo.png" name="image_url">
+				<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>" />
+			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>">
+			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success">			
+</form>
+<script>
+$('document').ready(function() {
+$('#paypal_form').submit();
+});
+</script>
+				
+				<?php
+				exit;
+			}
+		}
+		else
+		{
+			$Error = $Error;
+		}
+		
+		
+
+}
+
+
+
+
+
+
+function test_input($data) {
+   $data = trim($data);
+   $data = stripslashes($data);
+   $data = htmlspecialchars($data);
+   return $data;
+}
+?>
 
 
 
