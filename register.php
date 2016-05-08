@@ -318,6 +318,7 @@ var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 }	
 
 </script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
 <body  <?php if(!isset($_POST['Submit']))
 { ?>onload="popup('popUpDiv')"<?php }?>>
@@ -396,6 +397,7 @@ $show_form=true;
 if(isset($_POST['Submit']))
 {// The form is submitted
 
+
     //Setup Validations
     $validator = new FormValidator();
     $validator->addValidation("Firstname","req","Please Enter your First Name");
@@ -412,9 +414,18 @@ if(isset($_POST['Submit']))
     //Now, validate the form
     if($validator->ValidateForm())
     {
-        
-		
-		
+        $recaptcha = $_POST['g-recaptcha-response'];
+		if(!empty($recaptcha))
+		{
+			include("getCurlData.php");
+			$google_url="https://www.google.com/recaptcha/api/siteverify";
+			$secret='6Lf4DR4TAAAAACj9eqhxKvDuBCjMbyncjipZlu8Q';
+			$ip=$_SERVER['REMOTE_ADDR'];
+			$url=$google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
+			$res=getCurlData($url);
+			$res= json_decode($res, true);
+			if($res['success'])
+			{
 				$fname=trim($_POST['Firstname']);
 				$a=stripslashes($fname);
 				$a=mysql_real_escape_string($a);
@@ -516,14 +527,21 @@ mail($email, $subject, $message, $headers);
 
                 echo '<br><br><div class="sucess">A confirmation email
 has been sent to <b>'. $email.' </b><br>Please click on the Activate Button to Activate your account </div><br>';
+			} else {
+				echo '<div class="error">Please verify with captcha</div>';
+			}
+		}else{
+		echo '<div class="error">Email already registered</div>';}
+		
+				
 
 
-            } else { 
+        } else { 
                 echo '<div class="error">Error Occured</div>';
             }
 		}
 		else{
-		echo '<div class="error">Email already registered</div>';}
+		echo '<div class="error">Please verify with captcha. Please register again <a href="'.SITE_BASE_URL.'/register.php">Here</a></div>';}
 				
 				
 				
@@ -668,7 +686,14 @@ if(true == $show_form)
 </div>
 </div>
 
-
+<div class="col-md-12">
+<div class="form-group">
+	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:left;font-weight:bold;">Captcha :*</label>
+	<div class="col-sm-8">
+		<div class="g-recaptcha" data-sitekey="6Lf4DR4TAAAAALfi4a1EjtaCVkZDKi9BzWHXJ83d"></div>
+	</div>
+</div>
+</div>
 
 <div class="col-md-12">
 <div class="form-group">

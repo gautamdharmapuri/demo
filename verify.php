@@ -1,4 +1,5 @@
 <?php
+error_reporting(0);
 include"config/connection.php";	
 if(isset($_POST['cmdLoginbtn']))
 	{
@@ -28,7 +29,10 @@ if(isset($_POST['cmdLoginbtn']))
 				echo '<center><img src="img/loading.gif"></center>'	;				
 
 				$Lrow=mysql_fetch_array($Lresult);
-				$_SESSION['Nris_session']=$Lrow;					
+				$_SESSION['Nris_session']=$Lrow;
+				
+				mysql_query("UPDATE register SET login_status = 'Y' where email ='".$email."' and password='".$pass."' and isactive = 1");
+				
 				if($current_URL!='')		
 				{
 					echo "<script language='javascript' type='text/javascript'>document.location='".$current_URL."';</script>";

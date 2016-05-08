@@ -500,7 +500,7 @@ if(isset($_POST['Submit']))
 				$table_name = 'post_free_baby_sitting';
 				?>
 				
-				<form  action="https://www.sandbox.paypal.com/cgi-bin/webscr"  method="post" name="paypal_form" id="paypal_form" >
+				<form  action="https://www.paypal.com/cgi-bin/webscr"  method="post" name="paypal_form" id="paypal_form" >
 				<input type="hidden" name="image_url" value="img/logo.png">		
 				<input type="hidden" name="cmd" value="_cart">
 				<input type="hidden" name="upload" value="1">

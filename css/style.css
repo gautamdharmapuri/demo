@@ -106,6 +106,8 @@ input,textarea {
 	content: "|";
 	margin-right: 15px;
 }
+.text_map input{border:1px solid #aaa; border-radius:5px; padding:5px 10px;color: #2aaefa !important;font-weight: 800;}
+
 .phone-email i {
 	margin-right: 10px;
 }
@@ -2997,3 +2999,6 @@ text-align:justify;
 .like_lnks_cnt .disliked button{
     border: 2px solid red;
 }
+#advert-grp li{display:none;}
+.text_map{ display: none;}
+.text_map input{border:1px solid #aaa !important; border-radius:5px; padding:5px 10px;}

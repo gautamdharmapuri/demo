@@ -262,10 +262,11 @@ $tableName="fam_near_casinos";
 		}
 		$address[] = implode(',',$tempAddress);
 	}
-	//echo json_encode($address);
+	
 ?>
 
 <script>
+	
     var location_details = '<?php echo json_encode($address);?>';
 	//alert(location_details);
     var map;
@@ -293,6 +294,7 @@ $tableName="fam_near_casinos";
 
     iter = 0;
 	var location_detailsArr = $.parseJSON(location_details);
+
     $.each(location_detailsArr, function(index,location_details1) {
         address = location_details1;
 
@@ -332,6 +334,7 @@ $tableName="fam_near_casinos";
         });
 
     });
+	
 
     infowindowsObj = {};
     function get_info_window_for_markers(markerArr) {

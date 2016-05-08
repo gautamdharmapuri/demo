@@ -1,60 +1,62 @@
 <script type="text/javascript" src="css-pop.js"></script>
+<script type="text/javascript" src="js/blab.js"></script>
 <script type="text/javascript">
 	 
-	 $(document).ready(function(){
+	 jQuery(document).ready(function(){
 		  
-		  $('.myImageClass').click(function(){
-			var thisSrc = $(this).attr('src');
-			$('#myImage').attr('src',thisSrc);
+		  jQuery('.myImageClass').click(function(){
+			var thisSrc = jQuery(this).attr('src');
+			jQuery('#myImage').attr('src',thisSrc);
 			popup('images_popup');
 		});
 		  
-		  $('body').prepend('<a href="javascript:;" class="back-to-top">Back to Top</a>');
+		  jQuery('body').prepend('<a href="javascript:;" class="back-to-top">Back to Top</a>');
 		  var amountScrolled = 200;
 
-		  $(window).scroll(function() {
-			  if ( $(window).scrollTop() > amountScrolled ) {
-				  $('a.back-to-top').fadeIn('slow');
+		  jQuery(window).scroll(function() {
+			  if ( jQuery(window).scrollTop() > amountScrolled ) {
+				  jQuery('a.back-to-top').fadeIn('slow');
 			  } else {
-				  $('a.back-to-top').fadeOut('slow');
+				  jQuery('a.back-to-top').fadeOut('slow');
 			  }
 		  });
-		  $('a.back-to-top').click(function() {
-			   $('html, body').animate({
+		  jQuery('a.back-to-top').click(function() {
+			   jQuery('html, body').animate({
 				   scrollTop: 0
 			   }, 700);
 			   return false;
 		  });
 		  
-		  $('input[type="file"]').change(function(){
+		  jQuery('input[type="file"]').change(function(){
 			
 			   var myFile = this.files[0]
 			   var sizeinKb = (myFile.size||myFile.fileSize)/1024;
 			   if (sizeinKb > 200) {
 					alert('Image size should not exceed 200KB');
-					$(this).val('');
+					jQuery(this).val('');
 					return false;
 			   }
 			   
-			   var thisId = $(this).attr('id');
+			   var thisId = jQuery(this).attr('id');
 			   var progress = 0;
-			   if ($('#processeing_bar_'+thisId).length == 0) {
-				   $('#'+thisId).after('<div id="processeing_bar_'+thisId+'"><div style="background-color: red;width:0%;height: 2px;">&nbsp;</div></div>');
+			   if (jQuery('#processeing_bar_'+thisId).length == 0) {
+				   jQuery('#'+thisId).after('<div id="processeing_bar_'+thisId+'"><div style="background-color: red;width:0%;height: 2px;">&nbsp;</div></div>');
 			   }
 			   
 			   var refreshIntervalId = setInterval(function(){
 					progress = progress + 20;
-					$('#processeing_bar_'+thisId+' div').html('<center>'+progress+'%'+'</center>');
-					$('#processeing_bar_'+thisId+' div').css('width',progress+'%');
+					jQuery('#processeing_bar_'+thisId+' div').html('<center>'+progress+'%'+'</center>');
+					jQuery('#processeing_bar_'+thisId+' div').css('width',progress+'%');
 					if (progress == 120) {
 						clearInterval(refreshIntervalId);
-						$('#processeing_bar_'+thisId).remove();
+						jQuery('#processeing_bar_'+thisId).remove();
 					}
 			   },200);
 		});  
 	 });
 	 
 </script>
+
 <footer id="footer">
      <div class="footer-inner" style="width:100%;">
      	 <div class="social-ul-ftr">
@@ -66,10 +68,17 @@
 						</ul>
 					</div>
           <div class="link-ftr" style="width:100%;text-align:center;color:#FFFFFF;">
-          
-            	<a href="aboutus.php" style="color:#FFFFFF;font-weight:bold;">About Us</a>&nbsp;|&nbsp;
+			   <?php $state = ($_GET['State'] != '') ? $_GET['State'] : $_GET['code'];
+					$aboutus = 'aboutus.php';
+					$disclaimer = 'disclaimer.php';
+					if($state != '') {
+						$aboutus .= '?State='.$state;
+						$disclaimer .= '?State='.$state; 
+					}
+			   ?>
+            	<a href="<?php echo $aboutus;?>" style="color:#FFFFFF;font-weight:bold;">About Us</a>&nbsp;|&nbsp;
                 <a href="javascript:;" onclick="popup('terms_conditions_popup');" style="color:#FFFFFF;font-weight:bold;">Terms &amp; Condition</a> &nbsp;|&nbsp;
-               <a href="disclaimer.php"  style="color:#FFFFFF;font-weight:bold;">Disclaimer</a>
+               <a href="<?php echo $disclaimer;?>"  style="color:#FFFFFF;font-weight:bold;">Disclaimer</a>
          
           </div>         
          <div class="copyright-n">
@@ -78,6 +87,7 @@
      </div>
 		
 	</footer>
+   
 <!--POPUP-->
 <div id="images_popup" style="display:none;">
     <a style="float:right;cursor: pointer;" onClick="popup('images_popup')">X</a>
@@ -133,7 +143,7 @@
 					<p class="mydata">
 						 We thank you in advance for your understanding and continued support.
 					</p>
-					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('popUpDiv')" class="btn btn-success" style="">Submit</button></span></p>
+					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('terms_conditions_popup')" class="btn btn-success" style="">Submit</button></span></p>
                 </div>
 	</div>	
 <!-- / POPUP-->

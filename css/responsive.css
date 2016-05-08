@@ -265,13 +265,16 @@
 
 }
 
-@media(max-width:767px) {
+@media(max-width:768px) {
 	.section-1{
 	width:700px;
 	padding:0;
 	float:none;
 	margin:0 auto;
 	}
+	.text_map{ display: block;}
+	#mapwrapper{ display: none;}
+	.right-section-map-wrap{ height:65px;}
 }
 @media(max-width:540px) {
 	.section-1{
@@ -388,6 +391,9 @@
 	.section-inner-page{
 	width:470px !important;
 	}
+	.text_map{ display: block;}
+	#mapwrapper{ display: none;}
+	.right-section-map-wrap{ height:65px;}
 }
 @media(max-width:440px) {
 	.section-1{

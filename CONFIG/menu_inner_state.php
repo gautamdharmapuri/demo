@@ -12,7 +12,7 @@ else
 	
 }
 ?>
-<?php $defaultState = $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+<?php $_SESSION['state'] = $defaultState = $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
 <header id="header" class="header-3">
 <div class="menu-wrap clearfix">
 		

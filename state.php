@@ -67,7 +67,10 @@ $current_date = date('Y-m-d');
                         slideMargin: 10,
                         pager: false,
 						moveSlides:3,
-                        speed:6000
+                        speed:6000,
+						onSliderLoad: function(){
+									j(".bx-viewport #advert-grp li").css("display", "block");
+								}
                     });
 				   
 				   var tempVar = 1;
@@ -165,16 +168,16 @@ $current_date = date('Y-m-d');
                             while ($home_dm1 = mysql_fetch_array($home_middle_res1)) {
                         ?>
                         <li>
-                                <a href="#" >
+                                
 									<?php
                                     if($home_dm1['edate'] >= $current_date) {
                                         echo '<a href="' . $home_dm1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_dm1 ['image'].'"></a>';
                                     } else { 
                                         $home_middle_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Top-Center-4' and ad_position_no='1' and edate < '".$current_date."' "); 
                                     ?>		            
-                                        <img src="img/middle.jpg" alt="Advertisement">
+                                        <a href="javascript:;" ><img src="img/middle.jpg" alt="Advertisement"></a>
                                     <?php } ?>                      
-                                </a>
+                                
                             </li>	
                         <?php } ?>
                     	
@@ -199,47 +202,58 @@ $current_date = date('Y-m-d');
                                                       </ul> <!-- cd-tabs-navigation -->
                                                   </nav>
                                                   
-                                                  <ul class="cd-tabs-content" style="height:300px;">
+                                                  <ul class="cd-tabs-content" style="height:382px;">
                                                       <li data-content="hot-list" class="selected">
                                                           <div class="content-tab">
 															<?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_auto.id DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_auto.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_education.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_education.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_electronics.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_electronics.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_garage_sale.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_garage_sale.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_job.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_job.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_real_estate.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_real_estate.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_roommates.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_roommates.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_stuff.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_stuff.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_mypart.id DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_mypart.id DESC LIMIT 12)) s
 																		ORDER BY date DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;	
 																		while($rs=mysql_fetch_array($result)) {
-																					
+																				$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		}
 															?>
-                                                              <p>
-																		<a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: #E6E6E6 !important;border: 1px solid white;">
-																					<?php if($rs['address'] != '') { ?>
+																		<a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																		onMouseMove="this.style.color='red'"
+																		onMouseOut="this.style.color='black'"
+																		style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+																		<div class="col-md-12" style="padding: 0px;">
+																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
 																		<?php } ?>
 																		<?php if($rs['image'] != '') { ?>
 																					<img src="images/image-icon.png">
 																		<?php } ?>
-																					<span style="color:black !important;"><?php echo $rs['TitleAD'];?></span>
+																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
+																				<div class="col-md-3" style="padding: 1px;"><span><?php echo $rs['category'];?></span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['totViews'];?></span></div>
+																		</div>
 																		</a>
-															  </p>
+                                                             
 															<?php } ?>
                                                           </div>    
                                                       </li>
@@ -249,38 +263,49 @@ $current_date = date('Y-m-d');
                                                              
                                                               <?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_auto.total_views DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_auto.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,total_views  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_baby_sitting.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,total_views,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_baby_sitting.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,total_views  FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_education.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,total_views,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_education.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,total_views  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_electronics.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,total_views,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_electronics.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,total_views  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_garage_sale.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,total_views,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_garage_sale.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,total_views  FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_job.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,total_views,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_job.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,total_views  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_real_estate.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,total_views,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_real_estate.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,total_views  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_roommates.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,total_views,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_roommates.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,total_views  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_stuff.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,total_views,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_stuff.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,total_views  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_mypart.total_views DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,total_views,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_mypart.total_views DESC LIMIT 12)) s
 																		ORDER BY total_views DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;					
 																		while($rs=mysql_fetch_array($result)) {
+																					$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		}
 															?>
-                                                              <p><a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'" style="background-color: #E6E6E6 !important;border: 1px solid white;">
-																		<?php if($rs['address'] != '') { ?>
+                                                              <a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+																		<div class="col-md-12" style="padding: 0px;">
+																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
 																		<?php } ?>
 																		<?php if($rs['image'] != '') { ?>
 																					<img src="images/image-icon.png">
 																		<?php } ?>
-																		<span style="color:black !important;"><?php echo $rs['TitleAD'];?></span></a></p>
+																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
+																				<div class="col-md-3" style="padding: 1px;"><span><?php echo $rs['category'];?></span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['totViews'];?></span></div>
+																		</div>
+																		</a>
 															<?php } ?>
                                                         </div>    
                                                       </li>
@@ -293,13 +318,26 @@ $current_date = date('Y-m-d');
 																		$i=1;
 																		if(mysql_numrows($result) > 0) {
 																		while($rs=mysql_fetch_array($result)) {
+																					$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		} 
 															 ?>
-                                                              <p><a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'" style="background-color: #E6E6E6 !important;border: 1px solid white;"><span style="color:black !important;"><?php if($rs['City'] != '') { ?>
+                                                              <a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+																		<div class="col-md-12" style="padding: 0px;">
+																				<div class="col-md-7" style="padding: 2px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
-																				<?php } ?>
-																				<?php if($rs['image'] != '') { ?>
+																		<?php } ?>
+																		<?php if($rs['image'] != '') { ?>
 																					<img src="images/image-icon.png">
-																				<?php } ?><?php echo $rs['TitleAD'];?></span></a></p>
+																		<?php } ?>
+																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
+																				<div class="col-md-3" style="padding: 1px;"><span>Free Stuff</span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['total_views'];?></span></div>
+																		</div>
+																		</a>
 															  
 															  <?php } } else { ?>
 																		<p><span>No Result found</span></p>
@@ -356,7 +394,7 @@ $current_date = date('Y-m-d');
 																<ul class="cd-tabs-navigation" style="width:100%;" id="desi_movies_link">
 																	<?php foreach($movieArr as $movie) { ?>
 																		<li style="width:84px;background-color:#87CEEB;">
-																			<a data-content="<?php echo ucfirst($movie['cityname']);?>" <?php if($k == 0) { ?>class="selected"<?php } ?> href="#<?php echo $k;?>" style="font-size:9px;height:35px;text-align:center; background:#d9d9d9;color:#3c3c3c;">
+																			<a data-content="<?php echo ucfirst($movie['cityname']);?>" <?php if($k == 0) { ?>class="selected"<?php } ?> href="#<?php echo $k;?>" style="font-size:9px;height:35px;text-align:center; color:#3c3c3c;">
 																						<?php echo ucfirst($movie['cityname']);$k++;?>
 																			</a>
 																		</li>
@@ -578,38 +616,49 @@ $current_date = date('Y-m-d');
                                                           <div class="content-tab">
 															<?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.id DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_education.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_education.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_electronics.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_electronics.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_garage_sale.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_garage_sale.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_job.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_job.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_real_estate.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_real_estate.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_roommates.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_roommates.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_stuff.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_stuff.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_mypart.id DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_mypart.id DESC LIMIT 12)) s
 																		ORDER BY date DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;					
 																		while($rs=mysql_fetch_array($result)) {
+																					$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		}
 															?>
-                                                              <p><a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'" style="background-color: #E6E6E6 !important;border: 1px solid white;">
-															  <?php if($rs['address'] != '') { ?>
+                                                             <a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+																		<div class="col-md-12" style="padding: 0px;">
+																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
 																		<?php } ?>
 																		<?php if($rs['image'] != '') { ?>
 																					<img src="images/image-icon.png">
 																		<?php } ?>
-																		<span style="color:black !important;"><?php echo $rs['TitleAD'];?></span></a></p>
+																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
+																				<div class="col-md-3" style="padding: 1px;"><span><?php echo $rs['category'];?></span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['totViews'];?></span></div>
+																		</div>
+																		</a>
 															<?php } ?>
                                                           </div> 
                                                       </li>
@@ -618,38 +667,49 @@ $current_date = date('Y-m-d');
                                                       <div class="content-tab">
 															<?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.total_views DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,total_views  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_baby_sitting.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,total_views,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_baby_sitting.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,total_views  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_education.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,total_views,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_education.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,total_views  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_electronics.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,total_views,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_electronics.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,total_views  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_garage_sale.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,total_views,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_garage_sale.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,total_views  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_job.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,total_views,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_job.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,total_views  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_real_estate.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,total_views,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_real_estate.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,total_views  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_roommates.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,total_views,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_roommates.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,total_views  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_stuff.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,total_views,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_stuff.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,total_views  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_mypart.total_views DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,total_views,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_mypart.total_views DESC LIMIT 12)) s
 																		ORDER BY total_views DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;					
 																		while($rs=mysql_fetch_array($result)) {
+																					$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		}
 															?>
-                                                              <p><a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'" style="background-color: #E6E6E6 !important;border: 1px solid white;">
-															  <?php if($rs['address'] != '') { ?>
+                                                              <a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+																		<div class="col-md-12" style="padding: 0px;">
+																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
 																		<?php } ?>
 																		<?php if($rs['image'] != '') { ?>
 																					<img src="images/image-icon.png">
 																		<?php } ?>
-																		<span style="color:black !important;"><?php echo $rs['TitleAD'];?></span></a></p>
+																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
+																				<div class="col-md-3" style="padding: 1px;"><span><?php echo $rs['category'];?></span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['totViews'];?></span></div>
+																		</div>
+																		</a>
 															<?php } ?>
                                                           </div> 
                                                       </li>
@@ -662,13 +722,26 @@ $current_date = date('Y-m-d');
 																		$result = mysql_query($query);
 																		if(mysql_numrows($result) > 0) {
 																		while($rs=mysql_fetch_array($result)) {
+																					$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		}
 															 ?>
-                                                              <p><a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'" style="background-color: #E6E6E6 !important;border: 1px solid white;"><span  style="color:black !important;"><?php if($rs['City'] != '') { ?>
+                                                              <a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+																		<div class="col-md-12" style="padding: 0px;">
+																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
-																				<?php } ?>
-																				<?php if($rs['image'] != '') { ?>
+																		<?php } ?>
+																		<?php if($rs['image'] != '') { ?>
 																					<img src="images/image-icon.png">
-																				<?php } ?><?php echo $rs['TitleAD'];?></span></a></p>
+																		<?php } ?>
+																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
+																				<div class="col-md-3" style="padding: 1px;"><span>Free Stuff</span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['total_views'];?></span></div>
+																		</div>
+																		</a>
 															  
 															  <?php } } else { ?>
 																		<p><span>No Result found</span></p>
@@ -1119,11 +1192,7 @@ $current_date = date('Y-m-d');
 
 
 <!-- End js -->
-<div class="fixed-side-social-container">
-<a class="social-icon twitter-icon" href="https://twitter.com/nrisnetwork" target="new" title="Follow us on Twitter"><span></span></a>
-<a class="social-icon facebook-icon" href="https://www.facebook.com/us.nris" target="new" title="Like us on Facebook"><span></span></a>
-<a class="social-icon google-icon" href="https://plus.google.com/?cbp=awesc55e6nju&cid=5&soc-app=115&soc-platform=1" target="new" title="Follow us on Google+"><span></span></a>
-</div>
+<?php include "config/social.php" ;  ?>
 
 
 <!-- Modal  Switch State  Start-->

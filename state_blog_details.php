@@ -518,6 +518,10 @@ if(isset($_POST['cmdcomment']))
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Comment</label>
 	<div class="col-sm-10">
     <textarea rows="5" cols="40" style="width:100%;" name="Comment" id="Comment" tabindex="2"  placeholder="Your comment" required=""></textarea>
+	<div style="clear:both;width: 100%;display: inline-block;float: left !important;margin-left:312px;">
+						<div id="display_count" style="float: left !important;">200</div>
+						<div style="float: left !important;">&nbsp;words remaining</div>
+					</div>
 	</div>
 </div>
 
@@ -596,7 +600,33 @@ if(isset($_POST['cmdcomment']))
     <div style="clear:both;"></div>
     	
 	
-    
+    <script>
+     $('document').ready(function() {
+		
+        $('.no-comment').click(function() {
+            alert("Please Login");
+            return false;
+        }); 
+        //$('.comment-form').validate();
+		
+		var word_count = 200;
+		$("#Comment").on('keydown',function() {
+
+			var words = $(this).val().length;
+			
+			if (words > word_count) {
+				//var trimmed = $(this).val().split(/\s+/, word_count).join(" ");
+				//$(this).val(trimmed + " ");
+				return false;
+			}
+			else {
+			  $('#display_count').text(word_count-words);
+			  $('#message').text(word_count-words);
+			}
+		  });
+        
+     });
+     </script>
     
     
 	

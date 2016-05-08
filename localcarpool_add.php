@@ -291,7 +291,7 @@ function showDiv2(elem){
    				
 
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+	<?php $defaultState = $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
 				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
 				<a href="javascript:history.back()" class="breadcumb_link"> Local Carpool</a>
 				>> Create Carpool Post</h4>
@@ -393,7 +393,7 @@ function showDiv2(elem){
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;">Departure State</label>
 	<div class="col-sm-8">
-		<select name="from_state" id="JourneyType" required=""  class="form-control" tabindex="6" >         
+		<select name="from_state" id="from_state" required=""  class="form-control" tabindex="6" >         
              		 <option value="0">Please Select</option>
 			<?php
             $qy_state_res = mysql_query("select state,state_code from states order by state");
@@ -414,7 +414,7 @@ function showDiv2(elem){
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;">Arrival State</label>
 	<div class="col-sm-8">
-		<select name="to_state" id="JourneyType" required=""  class="form-control" tabindex="6" >         
+		<select name="to_state" id="to_state" required=""  class="form-control" tabindex="6" >         
              		 <option value="0">Please Select</option>
 			<?php
             $qy_state_res = mysql_query("select state,state_code from states order by state");
@@ -695,9 +695,24 @@ function showDiv2(elem){
     $( "#EndDate" ).datepicker({minDate: '0'});
 	$( "#EndDate2" ).datepicker({minDate: '0'});
 	
+	$('#from_state').change(function(){
+		$('#city_auto1').val('');
+	});
+	$('#to_state').change(function(){
+		$('#city_auto2').val('');
+	});
+	
 	$( "#city_auto1" ).autocomplete({
 		source: function(request, response) {
-			$.getJSON("city_auto.php", { term: $('#city_auto1').val(),state:$('#State').val()},response);
+			var stateType = $('#CarpoolType option:selected').val();
+			var stateVal = '<?php echo $defaultState;?>';
+			if (stateType == 'international') {
+                stateVal = 'all';
+            }
+			if (stateType == 'interstate') {
+                stateVal = $('#from_state option:selected').val();
+            }
+			$.getJSON("city_auto.php", { term: $('#city_auto1').val(),state:stateVal},response);
 		},
       minLength: 1,
       select: function( event, ui ) {
@@ -706,7 +721,15 @@ function showDiv2(elem){
     });
 	$( "#city_auto2" ).autocomplete({
 		source: function(request, response) {
-			$.getJSON("city_auto.php", { term: $('#city_auto2').val(),state:$('#State').val()},response);
+			var stateType = $('#CarpoolType option:selected').val();
+			var stateVal = '<?php echo $defaultState;?>';
+			if (stateType == 'international') {
+                stateVal = 'all';
+            }
+			if (stateType == 'interstate') {
+                stateVal = $('#to_state option:selected').val();
+            }
+			$.getJSON("city_auto.php", { term: $('#city_auto2').val(),state:stateVal},response);
 		},
       minLength: 1,
       select: function( event, ui ) {

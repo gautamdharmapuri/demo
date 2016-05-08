@@ -188,6 +188,7 @@ font-size:12px;
 							</body>
 							</html>';
 				mail($to, $subject, $htmlmsg, $headers);
+				echo "<script type='text/javascript'>alert('Good luck your price has been submitted');</script>";
 			}
 		
 			$query="select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.Brand = b.id and md5(a.id) = '".$_GET['ViewId']."' group by a.id ";
@@ -562,15 +563,14 @@ title: "Address"
         //$('.comment-form').validate();
 		
 		var word_count = 100;
-		$(".comment-form #message").on('keyup',function() {
+		$(".comment-form #message").on('keydown',function() {
 
 			var words = $(this).val().length;
 			
 			if (words > word_count) {
-			  // Split the string on first 200 words and rejoin on spaces
-			  var trimmed = $(this).val().split(/\s+/, word_count).join(" ");
-			  // Add a space at the end to make sure more typing creates new words
-			  $(this).val(trimmed + " ");
+				//var trimmed = $(this).val().split(/\s+/, word_count).join(" ");
+				//$(this).val(trimmed + " ");
+				return false;
 			}
 			else {
 			  $('#display_count').text(word_count-words);

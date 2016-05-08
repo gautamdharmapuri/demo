@@ -169,7 +169,18 @@ if(isset($_POST['cmdSubmit'])) {
 	$insert_query = "INSERT INTO student_talk (state_code,uni_name,edu_field,details,url,email_id) VALUES
 					('".$state_code."','".$uni_name."','".$edu_field."','".$details."','".$url."','".$email_id."')";
 	mysql_query($insert_query);
+	$universityId = mysql_insert_id();
 	$msg = "<h3 class='sucess'>university added Successfully!..</h3>";
+	
+	$subject = 'New University Added';
+
+	$email = 'kbknaidu@gmail.com';
+	$headers = "From: ".$email_id." \r\n";
+	$headers .= "MIME-Version: 1.0\r\n";
+	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+	$url = 'university_student_talk.php?universityId='.$universityId;
+	$message ='<h1>NRIs.com</h1><h3>University Added</h3><p>Please click on this <a href="'.$url.'">Link</a> to check for the newely added university</p>';
+	mail($email, $subject, $message, $headers);
 }
 
 ?>

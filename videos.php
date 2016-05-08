@@ -40,6 +40,7 @@
     
     	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
 	<script src="js/tab/modernizr.js"></script> <!-- Modernizr -->
+		<link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <!--[if !IE]><!-->
 	
     
@@ -284,9 +285,50 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
                             </div>
                 </div>        
 				
-                
-                
-                
+                <div class="col-md-8" style="border: 2px double red;outline: 2px solid green;margin-top: 14px;">
+					<div class="col-md-12">
+					   <div class="col-md-12" style="margin-top: 15px;">
+						   <center><h4>Movie of the Day</h4></center>
+					   </div>
+					</div>
+					<?php
+					$sql2 = "SELECT * FROM videos WHERE language = '".trim($_GET['lang'])."'
+										   ORDER BY rand(".date('Ymd').") LIMIT 1";
+							   //echo $sql2;
+							   $result2 = mysql_query($sql2);		
+							   $rs2 = mysql_fetch_array($result2);
+					?>
+					<div class="col-md-12">
+					   <div class="col-md-6">
+						   <?php
+							   if(mysql_num_rows($result2) > 0) {
+							   ?>
+							   
+							   <div class="col-md-6" style="padding:5px;margin:10px;padding-right: 0px;margin-right: 0px;">
+						   <a class="various fancybox.iframe" title="<?php echo ucfirst($rs2['title']); ?>"
+						   href="http://www.youtube.com/v/<?php echo $rs2['video_id']; ?>?fs=1&amp;autoplay=1">
+						   <img src="http://img.youtube.com/vi/<?php echo $rs2['video_id']; ?>/0.jpg" title="<?php echo $rs2['title'];?>">
+						   </a>
+					   </div>
+					   <div class="col-md-5" style="padding-left:0px;">
+							<div style="float:left; clear:both;text-align: left;padding-left:0px;">
+							   <b><?php
+							   $strlen = 20;
+							   if(strlen($rs2['title']) > $strlen) {
+								   echo substr($rs2['title'],0,$strlen).'..';
+							   } else {
+								   echo $rs2['title'];
+							   } ?></b>
+						   </div>
+					   </div><?php } else { ?>
+									<div class="col-md-7" style="padding:5px;margin:10px;">
+										<h4>No Videos Found.</h4>
+									</div>
+							   <?php }
+						   ?>
+					   </div>
+					</div>
+				</div>
                 
                 <div class="col-md-8"><br><br>
                 	
@@ -306,8 +348,70 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 						{	?>	
                         
                 	<div class="col-md-2" style="padding:5px;margin:10px;">
-                    	<a class="various fancybox.iframe" title="<?php echo ucfirst($rs['title']); ?>" href="http://www.youtube.com/v/<?php echo $rs['video_id']; ?>?fs=1&amp;autoplay=1"><img src="http://img.youtube.com/vi/<?php echo $rs['video_id']; ?>/0.jpg"></a>
-																				                    
+						<div style="float:left; width:100%;clear:both;">
+							<?php
+							$strlen = 16;
+							if(strlen($rs['title']) > $strlen) {
+								echo substr($rs['title'],0,$strlen).'..';
+							} else {
+								echo $rs['title'];
+							} ?>
+						</div>
+                    	<a class="various fancybox.iframe" title="<?php echo ucfirst($rs['title']); ?>"
+						href="http://www.youtube.com/v/<?php echo $rs['video_id']; ?>?fs=1&amp;autoplay=1">
+						<img src="http://img.youtube.com/vi/<?php echo $rs['video_id']; ?>/0.jpg" title="<?php echo $rs['title'];?>">
+						</a>
+								<?php
+							
+							$blog_id = $assoc_id = $rs['id'];
+							$type = 'video';
+							$likeQuery = mysqli_query($con, 'SELECT COUNT(id) as cnt from likes
+							where assoc_id = '.$assoc_id.' AND type="'.$type.'" AND like_val = 1');
+							$likeQueryRes1 = mysqli_fetch_assoc($likeQuery);
+							$likeQueryRes = $likeQueryRes1['cnt'];
+		
+							$dislikeQuery = mysqli_query($con, 'SELECT COUNT(id) as cnt from likes
+							where assoc_id = '.$assoc_id.' AND type="'.$type.'" AND like_val = 0');
+							$dislikeQueryRes1 = mysqli_fetch_assoc($dislikeQuery);
+							$dislikeQueryRes = $dislikeQueryRes1['cnt'];
+							
+							if (!empty($_SESSION['Nris_session']['id'])) { ?>
+							<?php
+							$user_id = $_SESSION['Nris_session']['id'];
+							$query_res = mysqli_query($con, 'SELECT like_val from likes where user_id = '.$user_id.' AND assoc_id = '.$assoc_id.' AND type="'.$type.'"');
+							$user_like_res = mysqli_fetch_assoc($query_res);
+		
+							$like_cls = $disliked_cls = '';
+							if (isset($user_like_res['like_val'])) {
+								$like_cls = ($user_like_res['like_val'] == 1) ? 'liked' : '';
+								$disliked_cls = ($user_like_res['like_val'] == 1) ? '' : 'disliked';
+							}
+							?>
+							<div class="like_lnks_cnt">
+								<a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
+								<button type="button" class="btn btn-default btn-sm">
+									<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
+								</button></a>
+								<a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
+									<button type="button" class="btn btn-default btn-sm">
+										<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
+									</button>
+								</a>
+							</div>
+						<?php } else { ?>
+							<div class="like_lnks_cnt">
+								<a href="javascript:;" class='like_dislike_lnk _like' data-toggle="modal" data-target="#myModal">
+									<button type="button" class="btn btn-default btn-sm">
+										<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
+									</button>
+								</a>
+								<a href="javascript:;" class='like_dislike_lnk _dislike' data-toggle="modal" data-target="#myModal" style="margin : 0 10px">
+									<button type="button" class="btn btn-default btn-sm">
+										<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
+									</button>
+								</a>
+							</div>
+						<?php } ?>
                     </div>
                     
                     <?php }  } else { 
@@ -383,7 +487,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
         <script src="js/fancybox/jquery.easing-1.3.pack.js"></script>
 		<script src="js/fancybox/jquery.mousewheel-3.0.6.pack.js"></script>
         
-
+<script src="js/like_dislike.js"></script>
         
 
         

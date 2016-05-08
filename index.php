@@ -73,7 +73,10 @@ $current_date = date('Y-m-d');
                         slideMargin: 10,
                         pager: false,
 						moveSlides:3,
-                        speed:6000
+                        speed:6000,
+						onSliderLoad: function(){
+            $("#advert-grp li").css("display", "block");
+        }
                     });
                 });
             </script>
@@ -156,7 +159,9 @@ $current_date = date('Y-m-d');
                 
                <!-- MIDDLE MAP SECTION -->                
 				<div class="right-section-map-wrap">
-                
+				  <div class="text_map">
+						<input type="text" name="responsive_auto_states" id="responsive_auto_states" value="" placeholder="Choose State"/>
+				  </div>
                    
                    <span id="map-tip"></span>
 <div id="mapwrapper">
@@ -2839,16 +2844,26 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 
 	 <?php include "config/footer.php" ; ?>
      <!--End footer -->
-
+<link rel="stylesheet" href="calender/jquery-ui.css">
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->
 
+    <script src="calender/jquery-ui.js"></script>
 <script type="text/javascript">
     $(document).ready(function(){
         setTimeout(function(){
             $('.wbiscroller').find('a').attr('target','_blank');
         },500);
+		
+		$( "#responsive_auto_states" ).autocomplete({
+      source: "state_auto.php",
+      minLength: 1,
+      select: function( event, ui ) {
+			//$('#State').val(ui.item.id);
+			window.location.href = site_url+'state.php?State='+ui.item.id;
+      }
+    });
 		
 		$.ajax({
 				url : 'weather.php',
