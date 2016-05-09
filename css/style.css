@@ -3002,3 +3002,32 @@ text-align:justify;
 #advert-grp li{display:none;}
 .text_map{ display: none;}
 .text_map input{border:1px solid #aaa !important; border-radius:5px; padding:5px 10px;}
+
+.right-imgs{
+	text-align:center;
+	width: 192px !important;	
+	float:right !important;
+	padding-left:0 !important;
+}
+.left-imgs{
+	text-align:center;
+	width: 192px !important;	
+	float:left;
+	padding-right:0 !important;
+	margin-right:5px;
+
+}
+.adv-big{
+	width:192px;
+	height:96px;
+	padding:0;
+	margin:5px 0;
+	float:left;
+	text-align:center;
+}
+.adv-big img{
+	width:192px;
+	height:96px;
+	padding:0;
+	margin:0;
+}

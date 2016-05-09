@@ -13,7 +13,7 @@
 			?>
 		<div class="inner-left-ad-wrap">
 			<a href="<?php echo ($rs['url'] != '') ? $rs['url'] : 'javascript:;';?>" target="_blank">
-				<img src="admin/uploads/advertisements/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
+				<img src="admin/uploads/myadimg/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
 			</a>
 		</div>
 		<?php } } else { ?>

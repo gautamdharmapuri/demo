@@ -9,7 +9,7 @@
 		$run=mysql_query($temp);
 		$ans=mysql_fetch_array($run);
 	
-		unlink('uploads/advertisements/'.$ans['image']);
+		unlink('uploads/myadimg/'.$ans['image']);
 		$qy="delete from fam_advertisement where id='".$_GET['delId']."'";
 		mysql_query($qy);
 		

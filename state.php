@@ -135,7 +135,7 @@ $current_date = date('Y-m-d');
             
 <!-- WEATHER WIDGET -->
 				<!-- RIGHT AD SECTION -->
-                <div class="left-ad">
+                <div class="left-imgs">
                     
                     
                            <div class="padding-no">
@@ -429,7 +429,7 @@ $current_date = date('Y-m-d');
 
 
                  <!-- LEFT AD SECTION -->
-                    <div class="right-ad">
+                    <div class="right-imgs">
                     	<div class="col-md-12 padding-no">
 									<?php
 												$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
@@ -442,13 +442,13 @@ $current_date = date('Y-m-d');
 														   if(mysql_numrows($result) > 0) {
 														   while($rs=mysql_fetch_array($result)) {
 									?>
-                                <div class="advert-big">
+                                <div class="adv-big">
                                     <a href="<?php echo ($rs['url'] != '') ? $rs['url'] : 'javascript:;';?>" target="_blank">
-                                        <img src="admin/uploads/advertisements/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
+                                        <img src="admin/uploads/myadimg/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
                                     </a>
                                 </div>
                                 <?php } } else { ?>
-									<div class="advert-big">
+									<div class="adv-big">
 												<a href="<?php echo ($rs['url'] != '') ? $rs['url'] : 'javascript:;';?>" target="_blank">
 													<img src="img/2_x_1-ad.jpg">
 												</a>
@@ -862,7 +862,7 @@ $current_date = date('Y-m-d');
                 <div class="section-new-2">
                 
                 <!-- RIGHT AD SECTION -->
-                <div class="left-ad">
+                <div class="left-imgs">
                     
                     
                            <div class="padding-no">
@@ -878,9 +878,9 @@ $current_date = date('Y-m-d');
 														   if(mysql_numrows($result) > 0) {
 														   while($rs=mysql_fetch_array($result)) {
 									?>
-                                <div class="advert-big">
+                                <div class="adv-big">
                                     <a href="<?php echo ($rs['url'] != '') ? $rs['url'] : 'javascript:;';?>" target="_blank">
-                                        <img src="admin/uploads/advertisements/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
+                                        <img src="admin/uploads/myadimg/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
                                     </a>
                                 </div>
                                 <?php } }?>
@@ -941,7 +941,10 @@ $current_date = date('Y-m-d');
 																$result_SAP=mysql_query($query_Nation_tran_SAP);                                                
 																if(mysql_num_rows($result_SAP) > 0) {
 																while($rs_SAP=mysql_fetch_array($result_SAP))
-																{?>												
+																{
+																		
+																		
+																		?>												
                                                       
                                                           <p><a href="batches.php?ViewId=<?php echo $rsfs['id'] ; ?>&State=<?php echo $_SESSION['state']; ?>">
 														  <?php echo date("d M ",strtotime($rs_SAP['date'])); ?><span>&nbsp; <?php echo ucwords($rs_SAP['title']);?></span></a></p>
@@ -976,9 +979,17 @@ $current_date = date('Y-m-d');
 										order by id desc limit 5";																
                                         $result_Groceries=mysql_query($query_groceries);                                                
                                         if(mysql_num_rows($result_Groceries) > 0) {
+												$i = 0;
                                         while($fs_gro=mysql_fetch_array($result_Groceries))
-                                        {?>		
-                                        <li><a href="grocery_view.php?ViewId=<?php echo md5($fs_gro['id']);?>"><?php echo ucwords($fs_gro['title']);?></a></li>
+                                        {
+												$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		}
+												?>		
+                                        <li style="background-color: <?php echo $color;?>"><a href="grocery_view.php?ViewId=<?php echo md5($fs_gro['id']);?>"><?php echo ucwords($fs_gro['title']);?></a></li>
                                         <?php } } else {  ?>
                                                         <li><h4>No Data Found.</h4></li>
                                                         <?php } ?>
@@ -997,16 +1008,31 @@ $current_date = date('Y-m-d');
                                  <ul style="padding-left:5px;padding-right:5px;">
                                  <?php
                                     $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-									
-									$query_Gro = "SELECT fam_groceries.*,rate FROM fam_groceries
+									if($_SESSION['Nris_session']['id'] > 0) {
+												$query_Gro = "SELECT fam_groceries.*,rate FROM fam_groceries
 									left join rating_grocery on rating_grocery.grocery_id = fam_groceries.id and login_id = ".$_SESSION['Nris_session']['id']."
 									where  state_code='".$state."' and status = 'Active' order by id desc LIMIT 5";
+									} else {
+												$query_Gro = "SELECT fam_groceries.*,rate FROM fam_groceries
+									left join rating_grocery on rating_grocery.grocery_id = fam_groceries.id 
+									where  state_code='".$state."' and status = 'Active' order by id desc LIMIT 5";
+									}
+									
 									//echo $query_Gro;
 									$result_Gro = mysql_query($query_Gro);
 									if(mysql_num_rows($result_Gro) > 0) 
-									{ 
-										while($rs_Gro = mysql_fetch_array($result_Gro)) {  ?>                                 
-                                       <li>
+									{
+												$i = 0;
+										while($rs_Gro = mysql_fetch_array($result_Gro)) {
+												$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		}
+												
+												?>                                 
+                                       <li style="background-color: <?php echo $color;?>">
 												<a href="groceries_view.php?ViewId=<?php echo md5($rs_Gro['id']);?>">
 															<?php echo ucwords($rs_Gro['name']);?>
 												</a>
@@ -1062,8 +1088,16 @@ $current_date = date('Y-m-d');
 									$query_anc = "SELECT * FROM announcement where  state_code='".$state."' and status='Active' order by total_views desc LIMIT 5";
 									$result_anc = mysql_query($query_anc);
 									if(mysql_num_rows($result_anc) > 0) 
-									{  while($rs_anc = mysql_fetch_array($result_anc)) {  ?>  
-                                         <li><a href="announcement_view.php?ViewId=<?php echo md5($rs_anc['id']);?>"><?php echo ucwords($rs_anc['title']);?></a></li>
+									{$i = 0;
+												while($rs_anc = mysql_fetch_array($result_anc)) {
+												$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		}
+												?>  
+                                         <li style="background-color: <?php echo $color;?>"><a href="announcement_view.php?ViewId=<?php echo md5($rs_anc['id']);?>"><?php echo ucwords($rs_anc['title']);?></a></li>
                                     <?php } } else { ?> 
                                    <li>No Records Found.</li>
                                    <?php } ?>
@@ -1077,10 +1111,10 @@ $current_date = date('Y-m-d');
                          </div><!-- MIDDLE SECTION ENDS -->
                     
                      <!-- LEFT AD SECTION -->
-                    <div class="right-ad">
+                    <div class="right-imgs">
                     	<div class="col-md-12 padding-no">
                         
-                                <div class="advert-big">
+                                <div class="adv-big">
                                     <?php include_once('state_common_right.php');?>
                                 </div>                                
                                

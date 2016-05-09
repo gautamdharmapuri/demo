@@ -205,7 +205,7 @@
                                             <th colspan="2" align="center" style="text-align:center">
 
 											<?php   if (strpos($rs['image'],'.') !== false) {  ?>
-                             			   <img src="uploads/advertisements/<?php echo $rs['image'];?>" width="300" height="auto"> 	<?php }  else {  ?>
+                             			   <img src="uploads/myadimg/<?php echo $rs['image'];?>" width="300" height="auto"> 	<?php }  else {  ?>
                                            <img src="img/no_image.png" height="auto" width="300">
                                            <?php } ?>
 

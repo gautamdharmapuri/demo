@@ -100,7 +100,7 @@ ul.checks > li {
 
 
 
-	<?php include "config/menu.php" ;  ?>
+	<?php include "config/menu_inner_state.php" ;  ?>
 	
 	<div class="clearfix"></div>
 

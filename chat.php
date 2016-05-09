@@ -7,6 +7,7 @@ $state_id=$state;
 	$today=date('Y-m-d',strtotime(date('Y-m-d') .'+1 days'));           
 		$query="select * from `dt_chat` WHERE DATE(created) ='$today'";
 		$result=mysql_query($query);
+		$data = array();
 		while($row=mysql_fetch_assoc($result)) {
 			$data[]=$row;
 		}

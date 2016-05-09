@@ -97,10 +97,10 @@ if(isset($_POST['submit']))
 				$round=rand(1000,100000);
 				if($_FILES['txtimage']['name'] !=''){
 				$image=$round."_".$_FILES['txtimage']['name'];
-				$img="uploads/advertisements/".$image;
+				$img="uploads/myadimg/".$image;
 				move_uploaded_file($_FILES['txtimage']['tmp_name'],$img);		
 				$img=$_FILES['txtimage']['name'];	
-				if($img != ''){unlink('uploads/advertisements/'.$_POST['imgId']);}
+				if($img != ''){unlink('uploads/myadimg/'.$_POST['imgId']);}
 				if($img == ''){$img=$_POST['imgId'];}
 				}else
 				$image=$_POST['imgId'];				
@@ -187,7 +187,7 @@ if(isset($_POST['submit']))
 				$round=rand(1000,100000);
 				
 				$image=$round."_".$_FILES['txtimage']['name'];
-				$img="uploads/advertisements/".$image;
+				$img="uploads/myadimg/".$image;
 				move_uploaded_file($_FILES['txtimage']['tmp_name'],$img);
 				$img=$_FILES['txtimage']['name'];		
 		
@@ -611,7 +611,7 @@ if(isset($_POST['submit']))
                                         <div class="col-md-6 col-xs-12">
                                    <input type="file" class="fileinput btn-primary" name="txtimage" id="txtimage" title="Browse file"/>
                                              <?php   if (strpos($rs['image'],'.') !== false) {  ?>
-                                <img src="uploads/advertisements/<?php echo $rs['image'];?>" height="60" width="auto" style="padding:5px 5px 5px 5px;">	<?php }   ?>
+                                <img src="uploads/myadimg/<?php echo $rs['image'];?>" height="60" width="auto" style="padding:5px 5px 5px 5px;">	<?php }   ?>
                                             <span class="help-block">Advertisement Image</span>                                        </div> 
                                     
                                     
