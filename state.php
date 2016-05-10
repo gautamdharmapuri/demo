@@ -196,15 +196,20 @@ $current_date = date('Y-m-d');
                              <div class="cd-tabs">
                                                   <nav class="tab-head">
                                                       <ul class="cd-tabs-navigation" style="width:100%;">
-                                                          <li class="tab-size tab-one" ><a style="" data-content="hot-list" class="selected" href="#0">Hot List Ads</a></li>
-                                                          <li class="tab-size tab-two" style="width:42%;"><a data-content="post-ad" href="#0" style="" >Just pay $2 for premium visibility</a></li>
-                                                           <li class="tab-size tab-three" style="width:28%;"><a data-content="relegious" href="#0" style="" >10 Images/ad</a></li>
+                                                          <li class="tab-size" style="width:100%;"><a style="" data-content="hot-list" class="selected" href="#0">Hot List Ads (Just pay $2 for premium visibility)</a></li>
+                                                          <!--<li class="tab-size tab-two" style="width:42%;"><a data-content="post-ad" href="#0" style="" >Just pay $2 for premium visibility</a></li>
+                                                           <li class="tab-size tab-three" style="width:28%;"><a data-content="relegious" href="#0" style="" >10 Images/ad</a></li>-->
                                                       </ul> <!-- cd-tabs-navigation -->
                                                   </nav>
                                                   
                                                   <ul class="cd-tabs-content" style="height:382px;">
                                                       <li data-content="hot-list" class="selected">
                                                           <div class="content-tab">
+																		<div class="col-md-12" style="padding: 0px;font-weight: bold;">
+																				<div class="col-md-6" style="padding: 1px;">Title</div>
+																				<div class="col-md-3" style="padding: 1px;"><span>Category</span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;">Views</span></div>
+																		</div>
 															<?php
 																		
 																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_auto.id DESC LIMIT 12)
@@ -614,6 +619,11 @@ $current_date = date('Y-m-d');
                                                   <ul class="cd-tabs-content tab-content-size">
                                                       <li data-content="hot-list" class="selected">
                                                           <div class="content-tab">
+															<div class="col-md-12" style="padding: 0px;font-weight: bold;">
+																				<div class="col-md-6" style="padding: 1px;">Title</div>
+																				<div class="col-md-3" style="padding: 1px;"><span>Category</span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;">Views</span></div>
+																		</div>
 															<?php
 																		
 																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.id DESC LIMIT 12)
@@ -665,6 +675,11 @@ $current_date = date('Y-m-d');
                                                       
                                                       <li data-content="post-ad">
                                                       <div class="content-tab">
+															<div class="col-md-12" style="padding: 0px;font-weight: bold;">
+																				<div class="col-md-6" style="padding: 1px;">Title</div>
+																				<div class="col-md-3" style="padding: 1px;"><span>Category</span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;">Views</span></div>
+																		</div>
 															<?php
 																		
 																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.total_views DESC LIMIT 12)
@@ -715,6 +730,11 @@ $current_date = date('Y-m-d');
                                                       </li>
                                                       <li data-content="relegious">
                                                           <div class="content-tab">
+															<div class="col-md-12" style="padding: 0px;font-weight: bold;">
+																				<div class="col-md-6" style="padding: 1px;">Title</div>
+																				<div class="col-md-3" style="padding: 1px;"><span>Category</span></div>
+																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;">Views</span></div>
+																		</div>
                                                              <?php
 															 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 															 $query = "SELECT * FROM post_free_stuff WHERE TitleAD != '' AND AdPostType != 'premium' AND States LIKE '%".$state."%' ORDER BY id desc LIMIT 8;";

@@ -218,7 +218,7 @@ font-weight:bold;
             
               
               
-                <div class="col-md-4" style="margin:0 auto;">
+                <div class="col-md-3" style="margin:0 auto;">
             	
                     <?php /*?><div class="nri-talk" style="width:80%;margin-left:20px;">
                                 <div class="heading-plain">
@@ -239,7 +239,7 @@ font-weight:bold;
                                                       
                                                        
                                                         <li><img src="img/list.jpg">&nbsp;<a href="profile.php">My Profile</a></li>
-                                                        <li><img src="img/list.jpg">&nbsp;<a href="#>">My Ads</a></li>
+                                                        <li><img src="img/list.jpg">&nbsp;<a href="myads.php">My Ads</a></li>
                                                         <li style="border-bottom:none;"><img src="img/list.jpg">&nbsp;<a href="profile.php?action=edit">Edit Profile</a></li>                                                                                                                
                                                       
                                                         
@@ -254,7 +254,7 @@ font-weight:bold;
 				{ ?>
 
 
-							 <div class="col-md-8"><br><br>
+							 <div class="col-md-9"><br><br>
 
 
 
@@ -273,7 +273,7 @@ if(isset($_POST['Submit']))
     $validator->addValidation("Firstname","req","Please Enter your First Name");
 	$validator->addValidation("Lastname","req","Please Enter your Last Name");
 	$validator->addValidation("Mobile","req","Please Enter your Mobile");	
-	$validator->addValidation("Password","req","Please Enter your Password");		
+	//$validator->addValidation("Password","req","Please Enter your Password");		
     //Now, validate the form
     if($validator->ValidateForm())
     {
@@ -297,9 +297,9 @@ if(isset($_POST['Submit']))
 				$c=mysql_real_escape_string($c);
 				
 								
-				$pass=trim($_POST['Password']);
-				$d=stripslashes($pass);
-				$d=mysql_real_escape_string($d);
+				//$pass=trim($_POST['Password']);
+				//$d=stripslashes($pass);
+				//$d=mysql_real_escape_string($d);
 				
 				
 				
@@ -311,7 +311,7 @@ if(isset($_POST['Submit']))
 								
 				
 		
-		 $query="update register set fname='".$a."',lname='".$b."',mobile='".$c."',password='".$d."' where id='".$_SESSION['Nris_session']['id']."' ";		 
+		 $query="update register set fname='".$a."',lname='".$b."',mobile='".$c."' where id='".$_SESSION['Nris_session']['id']."' ";		 
 		 $result=mysql_query($query);
 		
 		
@@ -355,12 +355,12 @@ if(true == $show_form)
 	</div>
 </div>
 
-<div class="form-group">
+<!--<div class="form-group">
 	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;font-weight:bold;">Confirm Password:</label>
 	<div class="col-sm-8">
 		<input type="text" class="form-control" id="CnfPassword" name="CnfPassword" placeholder="Confirm Password:" style="width:100%;" tabindex="5" required="required"  />
 	</div>
-</div>
+</div>-->
 
 
 
@@ -384,12 +384,12 @@ if(true == $show_form)
 </div>
 
 
-<div class="form-group">
+<!--<div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Change Password</label>
 	<div class="col-sm-8">
 		<input type="text" class="form-control" id="Password" name="Password" placeholder="Change Password" style="width:100%;" tabindex="4" required="required" />
 	</div>
-</div>
+</div>-->
 
 
 <div class="form-group">
@@ -424,9 +424,8 @@ if(true == $show_form)
                              
 
                 <?php  } else { ?>
-                <div class="col-md-8"><br><br>
-                	
-                    <div class="col-md-2">   </div>     
+                <div class="col-md-9"><br><br>
+                	    
                      <div class="col-md-8">   
 
                        <div class="profile-details">

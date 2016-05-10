@@ -199,6 +199,13 @@ $(".city").html(html);
 			document.getElementById('Firstname').focus();
 			return false;
 		}
+		
+		re = /[A-Za-z]/;
+      if(!re.test(form.Firstname.value)) {
+        alert("First Name contains alhpabets only");
+        form.Firstname.focus();
+        return false;
+      }
 		if (document.getElementById('Lastname').value=='')
 		{
 			alert('Please Enter your Last Name');			
@@ -572,18 +579,18 @@ if(true == $show_form)
 
 <div class="col-md-6">
 <div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">First Name :*</label>
+	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">First Name :*<br>(A-Z)</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Firstname" name="Firstname" placeholder="Your First Name" style="width:100%;" required="required" />
+		<input type="text" class="form-control" id="Firstname" name="Firstname" placeholder="Your First Name" style="width:100%;" required="required" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'/>		
 	</div>
 </div>
 </div>
 
 <div class="col-md-6">
 <div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;text-align:right;">Last Name :*</label>
+	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;text-align:right;">Last Name :*<br>(A-Z)</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Your Last Name" style="width:100%;" required="required"  />
+		<input type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Your Last Name" style="width:100%;" required="required" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'/>		
 	</div>
 </div>
 </div>

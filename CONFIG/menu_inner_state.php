@@ -36,7 +36,7 @@ else
 					 if(isset($_SESSION['Nris_session'])) { ?>
 							<div class="new-uer-right-div">
 								   <a href="logout.php" class="reg">Logout</a>
-								   <a href="javascript:;" class="reg"><i class="fa fa-user"></i>&nbsp;Profile</a>
+								   <a href="profile.php" class="reg"><i class="fa fa-user"></i>&nbsp;Profile</a>
 							</div>          
 			  <?php  } else { ?>
 							<div class="new-uer-right-div">
