@@ -5,7 +5,7 @@ $state = ($_GET['State'] != '') ? $_GET['State'] : $_GET['code'];
 //$chats=$obj->get_chat_msg();
 $state_id=$state; 
 	$today=date('Y-m-d',strtotime(date('Y-m-d') .'+1 days'));           
-		$query="select * from `dt_chat` WHERE DATE(created) ='$today'";
+		$query="SELECT * FROM `dt_homechat` WHERE DATE(created) ='$today' AND state_code = '".$state."'";
 		$result=mysql_query($query);
 		$data = array();
 		while($row=mysql_fetch_assoc($result)) {
@@ -40,7 +40,8 @@ var auto_refresh = setInterval(function ()
   if (typeof(last_id) == 'undefined') {
     last_id = 0;
   }
-jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id,function(data)
+  var chat_topic = jQuery('#chat_topic option:selected').val();
+jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id+"&State=<?php echo $state;?>&chat_topic="+chat_topic,function(data)
 {
 jQuery.each(data, function(i,data)
 {
@@ -54,7 +55,7 @@ jQuery('#shout_message').val('');
 }
 });
 });
-}, 5000);
+}, 3000);
 
 // Inserting records into chat table
 jQuery(document).ready(function()
@@ -86,11 +87,12 @@ if(boxval.length > 0)
 					popup('terms_conditions_popup');
 					return false;
 
-	}	
+	}
+	var chat_topic = jQuery('#chat_topic option:selected').val();
 jQuery.ajax({
 type: "POST",
 url: "chatajax.php",
-data: {user:user,msg:msg_text},
+data: {user:user,msg:msg_text,State:'<?php echo $state;?>',chat_topic:chat_topic},
 cache: false,
 success: function(html)
 { 
@@ -109,7 +111,16 @@ return false;
 <div class="shout_box">
    
 <div class="chat_header">NRI'S <?php if($state != '') echo $state;else echo 'National';?> Chat (<?php echo $online_users;?> users online)  <div class="open_btn">&nbsp;</div></div>
+
   <div class="toggle_chat" style="display:none;">
+	<div style="padding: 5px;">
+	Choose Topic
+	<select id="chat_topic" onchange="jQuery('.message_box').empty();">
+		<option value="General">General Chat</option>
+		<option value="Jobs">Jobs Chat</option>
+		<option value="Students">Student's Chat</option>
+	</select>
+</div>
   <div class="message_box">
   <?php if(is_array($chats) && count($chats)>0)  
   {

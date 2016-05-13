@@ -3,11 +3,14 @@ error_reporting(0);
 include "config/connection.php";
 if($_POST)
 {
-$user=htmlentities($_POST['user']);
-$msg=addslashes($_POST['msg']);
+$user = htmlentities($_POST['user']);
+$msg = addslashes($_POST['msg']);
 
-mysql_query("insert into dt_homechat(`user_name`,`msg`)values('$user','$msg')");
-$sql=mysql_query("select id from `dt_homechat` where user_name='$user' order by id desc limit 1");
+$state = ($_POST['State'] != '') ? $_POST['State'] : '';
+$chat_topic = ($_POST['chat_topic'] != '') ? $_POST['chat_topic'] : 'General';
+
+mysql_query("INSERT INTO dt_homechat(`user_name`,`msg`,`state_code`,`chat_topic`) VALUES ('$user','$msg','$state','$chat_topic')");
+$sql=mysql_query("SELECT id FROM `dt_homechat` WHERE user_name='".$user."' AND state_code = '".$state."' AND chat_topic = '".$chat_topic."' ORDER BY id DESC LIMIT 1");
 
 $row=mysql_fetch_array($sql);
 $id=$row['id'];

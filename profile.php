@@ -156,7 +156,7 @@ font-weight:bold;
         form.Password.focus();
         return false;
       }
-    } else {
+    } else if(form.Password.value != "" && form.Password.value != form.CnfPassword.value) {
       alert("Error: Please check that you've entered and confirmed your password!");
       form.Password.focus();
       return false;
@@ -220,15 +220,6 @@ font-weight:bold;
               
                 <div class="col-md-3" style="margin:0 auto;">
             	
-                    <?php /*?><div class="nri-talk" style="width:80%;margin-left:20px;">
-                                <div class="heading-plain">
-                                <h3>Show Timings and Places</h3>
-                                </div>
-                                <ul style="padding:0px 9px;">
-                                    <li><a href="#">Loreal espum</a></li>
-                                    <li><a href="#">Loreal espum</a></li>
-                                </ul>                                   
-                            </div><?php */?>
                             <div style="width:30%;float:left;">&nbsp;</div>
                             <div class="nri-talk" style="width:70%;">
                                           <div class="head-title-no-pad">
@@ -296,10 +287,13 @@ if(isset($_POST['Submit']))
 				$c=stripslashes($Mobile);
 				$c=mysql_real_escape_string($c);
 				
-								
-				//$pass=trim($_POST['Password']);
-				//$d=stripslashes($pass);
-				//$d=mysql_real_escape_string($d);
+				$d = '';
+				if($_POST['Password'] != '') {
+					$pass=trim($_POST['Password']);
+					$d = stripslashes($pass);
+					$d = mysql_real_escape_string($d);	
+				}
+				
 				
 				
 				
@@ -311,7 +305,10 @@ if(isset($_POST['Submit']))
 								
 				
 		
-		 $query="update register set fname='".$a."',lname='".$b."',mobile='".$c."' where id='".$_SESSION['Nris_session']['id']."' ";		 
+		 $query="update register set fname='".$a."',lname='".$b."',mobile='".$c."' where id='".$_SESSION['Nris_session']['id']."' ";
+		 if($d != '') {
+			$query="update register set fname='".$a."',lname='".$b."',mobile='".$c."',password='".$d."' where id='".$_SESSION['Nris_session']['id']."' ";
+		 }
 		 $result=mysql_query($query);
 		
 		
@@ -355,12 +352,12 @@ if(true == $show_form)
 	</div>
 </div>
 
-<!--<div class="form-group">
+<div class="form-group">
 	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;font-weight:bold;">Confirm Password:</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="CnfPassword" name="CnfPassword" placeholder="Confirm Password:" style="width:100%;" tabindex="5" required="required"  />
+		<input type="text" class="form-control" id="CnfPassword" name="CnfPassword" placeholder="Confirm Password:" style="width:100%;" tabindex="5"/>
 	</div>
-</div>-->
+</div>
 
 
 
@@ -384,12 +381,12 @@ if(true == $show_form)
 </div>
 
 
-<!--<div class="form-group">
+<div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Change Password</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Password" name="Password" placeholder="Change Password" style="width:100%;" tabindex="4" required="required" />
+		<input type="text" class="form-control" id="Password" name="Password" placeholder="Change Password" style="width:100%;" tabindex="4" />
 	</div>
-</div>-->
+</div>
 
 
 <div class="form-group">
