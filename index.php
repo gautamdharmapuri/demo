@@ -2539,18 +2539,26 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                             </div><!-- EVENTS ENDS -->
             
             <!-- DESI MARKET SECTION -->                
-                            <div class="market col-md-6">
-                                  <div class="head-title-w">
+                            <div class="nri-talk col-md-6">
+                                  <div class="head-title-no-pad">
                                       <h3>Desi Market</h3>
                                   </div>
                                     <ul>
 										<?php
                                         $query_groceries="select  * from  fam_groceries order by id desc limit 5";																
-                                        $result_Groceries=mysql_query($query_groceries);                                                
+                                        $result_Groceries=mysql_query($query_groceries);
+										$i = 0;
                                         if(mysql_num_rows($result_Groceries) > 0) {
                                         while($fs_gro=mysql_fetch_array($result_Groceries))
-                                        {?>		
-                                        <li><a href="grocery_view.php?ViewId=<?php echo md5($fs_gro['id']);?>"><?php echo ucwords($fs_gro['name']);?></a></li>
+                                        {
+												$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		} 
+												?>		
+                                        <li style="background-color: <?php echo $color;?> !important;border: 1px solid white;"><a href="grocery_view.php?ViewId=<?php echo md5($fs_gro['id']);?>" ><?php echo ucwords($fs_gro['name']);?></a></li>
                                         <?php } } else {  ?>
                                                         <li><h4>No Data Found.</h4></li>
                                                         <?php } ?>
@@ -2601,15 +2609,25 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                       <h3>National NRI's Talk</h3>
                                 </div>
                                  <ul>
-                                        <li><a href="#">Glover Park Market</a></li>
-                                        <li><a href="#">Orient Foods</a></li>
-                                        <li><a href="#">Spice Merchant</a></li>
-                                        <li><a href="#">India House</a></li>
-                                        <li><a href="#">Bombay Bazaar</a></li>
-                                        <li><a href="#">Kassar Food & Gifts</a></li>
-                                        
-                                    </ul>    
-                                      <a href="#" class="read-btn-b">View more</a>
+										<?php
+                                        $query_nritalk="select  * from  nris_talk where title != '' order by id desc limit 5";																
+                                        $result_nritalk=mysql_query($query_nritalk);
+										$i = 0;
+                                        if(mysql_num_rows($result_nritalk) > 0) {
+                                        while($fs_gro=mysql_fetch_array($result_nritalk))
+                                        {
+												$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		} 
+												?>	
+                                        <li style="background-color: <?php echo $color;?> !important;border: 1px solid white;"><a href="discussion_room_view.php?id=<?php echo $fs_gro['id'];?>" ><?php echo ucwords($fs_gro['title']);?></a></li>
+                                        <?php } } else {  ?>
+                                                        <li><h4>No Data Found.</h4></li>
+                                                        <?php } ?>
+                                    </ul>
                              </div>
                             
                             
@@ -2853,7 +2871,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 <script type="text/javascript">
     $(document).ready(function(){
         setTimeout(function(){
-            $('.wbiscroller').find('a').attr('target','_blank');
+            $('.wbiscroller').find('a').attr('href','javascript:;');
         },500);
 		
 		$( "#responsive_auto_states" ).autocomplete({

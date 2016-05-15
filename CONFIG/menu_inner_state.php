@@ -53,7 +53,7 @@ else
             
         <li><a href="state.php?State=<?php echo $state;?>">Home</a></li>
         <li><a href="yellowpages.php">Desi Pages</a></li>
-        <li><a href="discussion_board.php">National Forum</a></li>
+        <li><a href="discussion_board.php">Forum</a></li>
        
 		<li><a href="javascript:;"> Free Ads</a>
             <ul class="subnav">

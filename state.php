@@ -330,7 +330,7 @@ $current_date = date('Y-m-d');
 																				$color = '#CCC';	
 																		} 
 															 ?>
-                                                              <a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+                                                              <a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'" style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
 																		<div class="col-md-12" style="padding: 0px;">
 																				<div class="col-md-7" style="padding: 2px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
@@ -492,10 +492,10 @@ $current_date = date('Y-m-d');
                                         if(isset($_SESSION['Nris_session']))	  
                                         { ?>
                                         <a href="#"  data-toggle="modal" data-target="#PostFreeAd" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif"></a>                                        
-                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-target="#PostPremiumAd"  class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/arrow.gif"></a>
+                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-target="#PostPremiumAd"  class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>
                                         <?php } else { ?> 
                                          <a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif"></a>                                        
-                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-toggle="modal" data-target="#myModal" class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/arrow.gif"></a>   
+                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-toggle="modal" data-target="#myModal" class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
 
                                          <?php } ?>   <br>  
                                
@@ -927,9 +927,9 @@ $current_date = date('Y-m-d');
                                                    <?php
 															$query_cat="select * from batch_category order by name";
 															$result_cat = mysql_query($query_cat);
-															$edudata = 1;
+															$edudata = 1;;
 															while($rsfs = mysql_fetch_array($result_cat))
-															{ 
+															{
 															if($edudata==1) { ?>
                                                             <li><a data-content="<?php echo $rsfs['id'] ; ?>" class="selected" href=""><?php echo $rsfs['name'] ; ?></a></li>
                                                             <?php } else { ?>
@@ -945,8 +945,16 @@ $current_date = date('Y-m-d');
 													$query_cat="select * from batch_category order by name";
 													$result_cat = mysql_query($query_cat);													
 													$edudata = 1;
+													$i = 0;
 													while($rsfs = mysql_fetch_array($result_cat))
-													{  
+													{
+															
+																		$color = '';	
+																		if($i++%2 == 0) {
+																				$color = '#E6E6E6';	
+																		} else {
+																				$color = '#CCC';	
+																		} 
 														if($edudata==1) { ?>  
                                                       <li data-content="<?php echo $rsfs['id'] ; ?>" class="selected">
                                                     	<?php } else { ?>
@@ -954,9 +962,9 @@ $current_date = date('Y-m-d');
                                                     	 <?php } ?>
                                                      
                                                      
-                                                      <div class="content-tab">
+                                                      <div class="content-tab" style="background-color: <?php echo $color;?> !important;">
                                                        <?php
-                                                                $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+                                                                $state = ($_ET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 																$query_Nation_tran_SAP="select  * from  batches where expdate>='".$current_date."' and category = '".$rsfs['id']."' and state_code ='".$state."'  and status='Active' order by id desc limit 5";
 																$result_SAP=mysql_query($query_Nation_tran_SAP);                                                
 																if(mysql_num_rows($result_SAP) > 0) {
@@ -989,33 +997,32 @@ $current_date = date('Y-m-d');
             <!-- DESI MARKET SECTION -->                
                             <div class="nri-talk col-md-6">
                                   <div class="head-title-no-pad">
-                                      <h3>Desi Market</h3>
+                                      <h3>NRI's talk</h3>
                                 </div>
                                 <div class="bord-cla">
                                  <ul style="padding-left:5px;padding-right:5px;">
                                        <?php
-                                        $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-                                        $query_groceries="select  * from  desi_pages where state_code ='".$state."'
-										order by id desc limit 5";																
-                                        $result_Groceries=mysql_query($query_groceries);                                                
-                                        if(mysql_num_rows($result_Groceries) > 0) {
-												$i = 0;
-                                        while($fs_gro=mysql_fetch_array($result_Groceries))
+									   $state = ($_ET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+                                        $query_nritalk="select  * from  nris_talk where title != '' and state_code = '".$state."' order by id desc limit 5";																
+                                        $result_nritalk=mysql_query($query_nritalk);
+										$i = 0;
+                                        if(mysql_num_rows($result_nritalk) > 0) {
+                                        while($fs_gro=mysql_fetch_array($result_nritalk))
                                         {
 												$color = '';	
 																		if($i++%2 == 0) {
 																				$color = '#E6E6E6';	
 																		} else {
 																				$color = '#CCC';	
-																		}
-												?>		
-                                        <li style="background-color: <?php echo $color;?>"><a href="grocery_view.php?ViewId=<?php echo md5($fs_gro['id']);?>"><?php echo ucwords($fs_gro['title']);?></a></li>
+																		} 
+												?>	
+                                        <li style="background-color: <?php echo $color;?> !important;border: 1px solid white;"><a href="discussion_room_view.php?id=<?php echo $fs_gro['id'];?>" ><?php echo ucwords($fs_gro['title']);?></a></li>
                                         <?php } } else {  ?>
                                                         <li><h4>No Data Found.</h4></li>
                                                         <?php } ?>
                                         
                               </ul>    
-                                      <a href="#" class="read-btn-b">View more</a>
+                                      <a href="discussion_room.php?State=<?php echo $state;?>" class="read-btn-b">View more</a>
                               </div>        
                             </div>
                             
@@ -1084,15 +1091,33 @@ $current_date = date('Y-m-d');
                                 </div>
                                 <div class="bord-cla">
                                  <ul style="padding-left:5px;padding-right:5px;">
-                                  <li><a href="#">Glover Park Market</a></li>
-                                        <li><a href="#">Orient Foods</a></li>
-                                        <li><a href="#">Spice Merchant</a></li>
-                                        <li><a href="#">India House</a></li>
-                                        <li><a href="#">Bombay Bazaar</a></li>
-                                        <li><a href="#">Kassar Food & Gifts</a></li>
+									<?php
+									$query = "SELECT DISTINCT  * FROM fam_restaurants
+									LEFT OUTER JOIN rating_restaurant
+									ON fam_restaurants.id = rating_restaurant.res_id
+									WHERE fam_restaurants.state_code='".$state."'
+									GROUP BY(fam_restaurants.id)
+									ORDER BY rating_restaurant.rate desc LIMIT 6";
+									$result = mysql_query($query);
+									if(mysql_num_rows($result) > 0) 
+									{$i = 0;
+												while($rs = mysql_fetch_array($result)) {
+												$color = '';	
+												if($i++%2 == 0) {
+														$color = '#E6E6E6';	
+												} else {
+														$color = '#CCC';	
+												}
+												?>  
+                                         <li style="background-color: <?php echo $color;?>">
+										 <a href="restaurant_inner_view.php?ViewId=<?php echo md5($rs['id']);?>">
+										 <?php echo ucwords($rs['rest_name']);?></a></li>
+                                    <?php } } else { ?> 
+                                   <li>No Records Found.</li>
+                                   <?php } ?>
                                         
                               </ul>    
-                                      <a href="#" class="read-btn-b">View more</a>
+                                      <a href="restaurants_inner.php?type=Top%20Rated%20Restaurants&code=<?php echo $state;?>" class="read-btn-b">View more</a>
                               </div>  
                             </div>
                             

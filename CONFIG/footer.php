@@ -96,6 +96,63 @@
                 </div>
 	</div>
     <div id="blanket" style="display:none;"></div>
+	
+	<!-- Modal  Switch State  Start-->
+<div class="modal fade" id="change_state" role="dialog">
+<div class="modal-dialog">
+
+<!-- Modal content-->
+<div class="modal-content">
+<div class="modal-header">
+<button type="button" class="close" data-dismiss="modal">&times;</button>
+<h4 class="modal-title">Switch State</h4>
+</div>
+<div class="modal-body">
+
+<table border="0" cellpadding="2" cellspacing="1" width="100%" style="line-height:28px;">
+           
+         	<?php 
+			$cnt=0;
+			$qy_state_res = mysql_query("select state,state_code from states order by state");
+			while($fs_state = mysql_fetch_array($qy_state_res))
+			{ 	
+			
+				if($cnt%3==0){						
+				echo "<tr>";
+				}
+					?>
+
+            <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
+            <a href="auto_create.php?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+            <?php if($fs_state['state_code']==$_SESSION['state']) { 
+			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
+			else { 	echo $fs_state['state'];  } ?>
+            </a>
+            </td>
+          <?php 
+		 					  if($cnt%3==0 && $cnt != 0){
+                                    echo "</tr>";						
+                                    }
+                                    $cnt++;
+                                    if($cnt==3)
+                                    {
+                                        $cnt=0;
+                                    }
+		 } ?>
+            
+                </tr>
+            </table>
+
+</div>
+<div class="modal-footer">
+<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+</div>
+</div>
+
+</div>
+</div>  
+<!-- Modal  Switch State  End --> 
+	
 	<div id="terms_conditions_popup" style="display:none;">
     <a style="float:right;cursor: pointer;" onClick="popup('terms_conditions_popup')">X</a>
     	<!--<a href="#" onClick="popup('popUpDiv')" >X</a>-->

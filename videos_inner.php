@@ -261,40 +261,52 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
                             </div>
                 </div>        
 				
-                <div class="col-md-8" style="border: 2px double red;outline: 2px solid green;margin-top: 14px;">
+                <div class="col-md-8" style="border: 10px solid transparent;border-image: url('images/border.png') 30 round;margin-top: 14px;">
 					<div class="col-md-12">
-					   <div class="col-md-12" style="margin-top: 15px;">
-						   <center><h4>Movie of the Day</h4></center>
+					   <div class="col-md-12">
+						   <center><h3 style="margin-top: 10px;">Movie of the Day</h3></center>
 					   </div>
 					</div>
 					<?php
-					$sql2 = "SELECT * FROM videos WHERE language = '".trim($_GET['lang'])."'
+					$sql2 = "SELECT * FROM videos 
 										   ORDER BY rand(".date('Ymd').") LIMIT 1";
 							   //echo $sql2;
 							   $result2 = mysql_query($sql2);		
 							   $rs2 = mysql_fetch_array($result2);
 					?>
 					<div class="col-md-12">
-					   <div class="col-md-6">
+					   <div class="col-md-7">
 						   <?php
 							   if(mysql_num_rows($result2) > 0) {
 							   ?>
 							   
-							   <div class="col-md-6" style="padding:5px;margin:10px;padding-right: 0px;margin-right: 0px;">
+							   <div class="col-md-6" style="padding:5px;margin:10px;padding-right: 20px;margin-right: 0px;border-right:2px solid lightgrey;">
 						   <a class="various fancybox.iframe" title="<?php echo ucfirst($rs2['title']); ?>"
 						   href="http://www.youtube.com/v/<?php echo $rs2['video_id']; ?>?fs=1&amp;autoplay=1">
 						   <img src="http://img.youtube.com/vi/<?php echo $rs2['video_id']; ?>/0.jpg" title="<?php echo $rs2['title'];?>">
 						   </a>
 					   </div>
 					   <div class="col-md-5" style="padding-left:0px;">
-							<div style="float:left; clear:both;text-align: left;padding-left:0px;">
-							   <b><?php
-							   $strlen = 20;
-							   if(strlen($rs2['title']) > $strlen) {
-								   echo substr($rs2['title'],0,$strlen).'..';
-							   } else {
-								   echo $rs2['title'];
-							   } ?></b>
+							<div style="float:left; clear:both;text-align: left;padding-left:20px;padding-top: 16px;">
+							   <b style="font-size: 18px;color: #9445A2;"><?php
+							   echo $rs2['title'];?></b>
+							   <br>
+							   <?php
+									$blog_id = $assoc_id = $rs2['id'];
+									$type = 'video';
+									$likeQuery = mysqli_query($con, 'SELECT COUNT(id) as cnt from likes
+									where assoc_id = '.$assoc_id.' AND type="'.$type.'" AND like_val = 1');
+									$likeQueryRes1 = mysqli_fetch_assoc($likeQuery);
+									$likeQueryRes = (isset($likeQueryRes1['cnt'])) ? $likeQueryRes1['cnt'] : 0;
+				
+									$dislikeQuery = mysqli_query($con, 'SELECT COUNT(id) as cnt from likes
+									where assoc_id = '.$assoc_id.' AND type="'.$type.'" AND like_val = 0');
+									$dislikeQueryRes1 = mysqli_fetch_assoc($dislikeQuery);
+									$dislikeQueryRes = (isset($dislikeQueryRes1['cnt'])) ? $dislikeQueryRes1['cnt'] : 0;
+							   ?>
+							   <?php echo $rs2['language'].' ('.$rs2['category'].')';?>
+							   <br><br>
+							   <p style="color: #9445A2"><?php echo 'Likes '.$likeQueryRes.'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Dislikes '.$dislikeQueryRes;?></p>
 						   </div>
 					   </div><?php } else { ?>
 									<div class="col-md-7" style="padding:5px;margin:10px;">
@@ -322,13 +334,14 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 					//	echo $query;
 						$result=mysql_query($query);						
 						if(mysql_num_rows($result) > 0) {
+							$i = 0;
 						while($rs=mysql_fetch_array($result))
 						{	?>	
                         
-                	<div class="col-md-2" style="padding:5px;margin:10px;">
+                	<div class="col-md-2" style="padding:8px;float: left !important;<?php if($i++ % 6 == 0) { ?>clear:both;<?php } ?>">
 						<div style="float:left; width:100%;clear:both;">
 							<?php
-							$strlen = 16;
+							$strlen = 14;
 							if(strlen($rs['title']) > $strlen) {
 								echo substr($rs['title'],0,$strlen).'..';
 							} else {

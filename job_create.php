@@ -116,6 +116,29 @@ font-weight:bold;
 color:#FFFFFF;font-weight:bold;clear:both;background-color:#009900;font-weight:bold;padding:10px 10px;
 border-radius: 5px;
 }
+
+#warning_popup , #images_popup{
+	position:absolute;	
+	height:auto !important;
+	border:5px solid #000;
+	z-index: 9002;
+	background-color:#FFFFFF;
+	top:0%;
+	overflow: auto;
+	padding:10px;
+	left:25% !important;
+	top:0% !important;	
+	
+}
+
+#warning_popup h3, #images_popup h3
+{
+	font-size:14px;
+}
+.mydata { color:#000000;text-align:justify;line-height:22px;font-family: 'Roboto', sans-serif;font-size:16px;line-height:26px; }
+
+#warning_popup a, #images_popup a {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
+#warning_popup a:hover, #images_popup a:hover{top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
 </style>
 
 <script type="text/javascript">
@@ -150,22 +173,20 @@ border-radius: 5px;
     xmlhttp.send();
 	
     }
-    </script>
-
-<?php /*?><script language="javascript">
+	
 function showstate(str)
 {
-	//	alert(str);
 	if(str=='ALL')
 	{
-		
+		popup('warning_popup');
 	}
 	if(str=='multiple')
 	{
-		
+		document.getElementById('multiple_state').click();
 	}
 }
-</script><?php */?>
+    </script>
+
 
 
  <script type="text/javascript">
@@ -686,7 +707,7 @@ function test_input($data) {
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Title (Ad title limited to 50 characters only)</label>
 	<div class="col-sm-8">
-    	<input type="text" class="form-control" pattern="[a-zA-Z0-9\s]+" required id="TitleAD" name="TitleAD" placeholder="Title Ad" style="width:100%;margin-bottom:0px;" maxlength="50" tabindex="1" onKeyUp="LimtCharacters(this,50,'lblcount');" required />               		
+    	<input type="text" class="form-control" pattern="[a-zA-Z0-9\s]+" required id="" name="TitleAD" placeholder="Title Ad" style="width:100%;margin-bottom:0px;" maxlength="50" tabindex="1" onKeyUp="LimtCharacters(this,50,'lblcount');" required />               		
  <label id="lblcount" style="background-color:#E2EEF1;color:Red;font-weight:bold;">50 characters remaining</label><br/>        
 	</div>
 </div>
@@ -1140,6 +1161,21 @@ function test_input($data) {
 
 
 
+<div id="warning_popup" style="display:none;">
+    <a style="float:right;cursor: pointer;" onClick="popup('warning_popup')">X</a>
+       
+<center><h4>Alert!</h4></center>
+
+                <div class="col-lg-12 col-md-12 col-sm-12">   
+					<p class="mydata">
+						 NOTE: NRIS.COM OFFERING THIS SERVICE FOR CONVINIENCE OF CUSTOME TO POST ON ALL STATES IN UNITED STATES IN A SINGLE CLICK , IF YOU DOESN NOT OBEY  FAIR USE POLICY YOUR USER ACCEESS TO THIS WEBSITE WILL BE TERMINATED PERMENTLEY AND IP ADDRESS WILL BE TAGGED
+					</p>
+                </div>
+	</div>
+
+
+
+
 
 
 
@@ -1148,6 +1184,7 @@ function test_input($data) {
 
 
 <!-- multiple States  Modal -->
+<a href="javasccript:;" id="multiple_state" data-toggle="modal" data-target="#multiple"></a>
   <div class="modal fade" id="multiple" role="dialog">
     <div class="modal-dialog">
     

@@ -139,9 +139,9 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 <script type="text/javascript">
 function add_sub(el){
 if (el.checked)
-el.form.elements['Message'].value+=el.value+" ";
+el.form.elements['Message'].value+=el.value+",";
 else{
-var re=new RegExp('(.*)'+el.value+'(.*)$');
+var re=new RegExp('(.*)'+el.value+',(.*)$');
 el.form.elements['Message'].value=el.form.elements['Message'].value.replace(re,'$1$2');
 }
 }
@@ -656,7 +656,7 @@ function test_input($data) {
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Title (Ad title limited to 50 characters only)</label>
 	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="TitleAD" pattern="[a-zA-Z0-9\s]+" required name="TitleAD" placeholder="Title Ad" style="width:100%;margin-bottom:0px;" maxlength="50" tabindex="1" onKeyUp="LimtCharacters(this,50,'lblcount');" />               		
+    	<input type="text" class="form-control" id="" pattern="[a-zA-Z0-9\s]+" required name="TitleAD" placeholder="Title Ad" style="width:100%;margin-bottom:0px;" maxlength="50" tabindex="1" onKeyUp="LimtCharacters(this,50,'lblcount');" />               		
  <label id="lblcount" style="background-color:#E2EEF1;color:Red;font-weight:bold;">50 characters remaining</label><br/>        
 	</div>
 </div>

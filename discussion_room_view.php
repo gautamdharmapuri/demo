@@ -189,7 +189,28 @@ mysql_query("update nris_talk set total_views='".$total_views."' where id = '".$
         </div>     
 	
 	
+<?php
+if(isset($_POST['cmdcomment']))	
+{
 
+		$blogId = $_POST['postId'];
+		$mId = $_POST['memberId'];	
+		
+		$msg = trim($_POST['Message']);
+		$a=stripslashes($msg);
+		$a=mysql_real_escape_string($a);
+		
+		$date = date("Y-m-d");
+		$time = date("h:m:s");	
+		
+		$query_cmt = "insert into  nris_talk_comment(thread_Pid,member_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."')";		 
+		$result=mysql_query($query_cmt);
+		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
+		header("location:discussion_room_view.php?id='".$_SESSION['threadId']."'");
+		/*		echo"<script language='javascript' type='text/javascript'>document.location='state_blog_details.php?viewId=.$_SESSION['viewId'].';</script>";*/
+
+}
+?>
      
     
 <!-- Section-1 WRAP START-->	
@@ -330,28 +351,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 
 <br><br><br><br><br>
 
-<?php
-if(isset($_POST['cmdcomment']))	
-{
 
-		$blogId = $_POST['postId'];
-		$mId = $_POST['memberId'];	
-		
-		$msg = trim($_POST['Message']);
-		$a=stripslashes($msg);
-		$a=mysql_real_escape_string($a);
-		
-		$date = date("Y-m-d");
-		$time = date("h:m:s");	
-		
-		$query_cmt = "insert into  nris_talk_comment(thread_Pid,member_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."')";		 
-		$result=mysql_query($query_cmt);
-		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:discussion_room_view.php?id='".$_SESSION['threadId']."'");
-		/*		echo"<script language='javascript' type='text/javascript'>document.location='state_blog_details.php?viewId=.$_SESSION['viewId'].';</script>";*/
-
-}
-?>
 
  <div class="dividerHeading">
     <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
@@ -373,7 +373,13 @@ if(isset($_POST['cmdcomment']))
 <div class="form-submit-buttons">
 <input type="hidden" name="postId" id="postId" value="<?php echo $_GET['id'] ; ?>">
 <input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">
+<?php
+if(isset($_SESSION['Nris_session']))	  
+{ ?>
 <input type="submit" name="cmdcomment" id="cmdcomment" class="btn btn-success"  style="float:right" value="Post Comment">
+<?php } else { ?>
+	<input data-toggle="modal" data-target="#myModal" type="button" name="cmdcomment" id="cmdcomment" class="btn btn-success"  style="float:right" value="Post Comment">
+<?php } ?>
 </div>
 
 </form>

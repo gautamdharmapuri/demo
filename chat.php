@@ -110,7 +110,7 @@ return false;
 </script>
 <div class="shout_box">
    
-<div class="chat_header">NRI'S <?php if($state != '') echo $state;else echo 'National';?> Chat (<?php echo $online_users;?> users online)  <div class="open_btn">&nbsp;</div></div>
+<div class="chat_header"><?php if($state != '') echo $state;else echo 'National';?> NRI'S Chat (<?php echo $online_users;?> users online)  <div class="open_btn">&nbsp;</div></div>
 
   <div class="toggle_chat" style="display:none;">
 	<div style="padding: 5px;">

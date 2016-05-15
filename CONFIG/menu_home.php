@@ -112,7 +112,7 @@
         <li><a href="index.php">Home</a></li>
         <li><a href="aboutus.php">About Us</a></li>
         <li><a href="#" data-toggle="modal" data-target="#nri_post">NRI's talk</a></li>
-        <li><a href="discussion_board_data.php">National Forum</a></li>
+        <li><a href="discussion_board_data.php">Forum</a></li>
         <li><a href="realestate.php">National Real Estate</a></li>
         <li><a href="education.php">Education& Teaching</a></li>
         <li><a href="auto.php">National Autos</a></li>

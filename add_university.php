@@ -179,7 +179,11 @@ if(isset($_POST['cmdSubmit'])) {
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 	$url = 'university_student_talk.php?universityId='.$universityId;
-	$message ='<h1>NRIs.com</h1><h3>University Added</h3><p>Please click on this <a href="'.$url.'">Link</a> to check for the newely added university</p>';
+	$message ='<h1>NRIs.com</h1><h3>University Added</h3>
+				<p>
+				Name : '.$uni_name.'
+				Field Of Education : '.$edu_field.'
+				<br>Please click on this <a href="'.$url.'">Link</a> to check for the newely added university</p>';
 	mail($email, $subject, $message, $headers);
 }
 
