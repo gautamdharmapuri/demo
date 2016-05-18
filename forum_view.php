@@ -12,16 +12,9 @@ else
 
 
 
-if(isset($_GET['id']))
-{
-$query_main = "select a.*, b.* from  forum_threads a, register b where a.member_id = b.id and a.id = '".$_SESSION['threadId']."' ";
-$result_main = mysql_query($query_main);
-$rs = mysql_fetch_array($result_main);
-$total_views = $rs['total_views'] + 1 ;
-mysql_query("update forum_threads set total_views='".$total_views."' where id = '".$_SESSION['threadId']."'");	
-}
 
 ?>
+
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -216,6 +209,22 @@ mysql_query("update forum_threads set total_views='".$total_views."' where id = 
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
+	<?php
+	
+	
+if(isset($_GET['id']))
+{
+$query_main = "select a.*, b.* from  forum_threads a, register b where a.member_id = b.id and a.id = '".$_SESSION['threadId']."' ";
+//echo $query_main;
+$result_main = mysql_query($query_main);
+$rs = mysql_fetch_array($result_main);
+
+$total_views = $rs['total_views'] + 1 ;
+mysql_query("update forum_threads set total_views='".$total_views."' where id = '".$_SESSION['threadId']."'");	
+}
+	
+	?>
+	
 	<h4><a href="state.php" style="color:#0033FF;">Home</a> >>  US National Forum >> <?php echo ucfirst($rs['title']); ?></h4>
 </div>    <br>
 
@@ -226,6 +235,50 @@ mysql_query("update forum_threads set total_views='".$total_views."' where id = 
 </div>
 		
 
+<?php
+if(isset($_POST['cmdcomment']))	
+{
+
+		$blogId = $_POST['postId'];
+		$mId = $_POST['memberId'];	
+		$category_id = $_POST['subcatId'];	
+		
+		$msg = trim($_POST['Message']);
+		$a=stripslashes($msg);
+		$a=mysql_real_escape_string($a);
+		
+		$date = date("Y-m-d");
+		$time = date("h:m:s");	
+		
+		$query_cmt = "insert into  forum_thread_comment(thread_Pid,member_id,sub_cat_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$category_id."','".$a."','".$date."','".$time."')";		 
+		$result=mysql_query($query_cmt);
+		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
+		header("location:forum_view.php?id='".$_SESSION['threadId']."'");
+		
+		/* Sending Notification mail starts here */
+			$query_user = "SELECT * FROM register WHERE id = ".$mId;
+			$result_user = mysql_query($query_user);
+			$result_user = mysql_fetch_array($result_user);
+			
+			$email = $result_user['email'];
+			$name = $result_user['fname'].' '.$result_user['lname'];
+			
+			$subject = 'Comment to your Post';
+			$headers = "From: kbknaidu@gmail.com \r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+			$url = BASE_PATH . '/forum_view.php?id=' . urlencode($blogId);
+			
+			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
+			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
+			$message .= '<td align="center" width="300" height="40" bgcolor="#000091" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">';
+			$message .= '<a href="'.$url.'" style="color: #ffffff; font-size:16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; 
+			line-height:40px; width:100%; display:inline-block">Click to View</a>';
+			$message .= '</td> </tr> </table>';
+			mail($email, $subject, $message, $headers);
+		/* Sending Notification mail ends here */
+}
+?>
 
 
 
@@ -268,29 +321,6 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 
 <br><br><br><br><br>
 
-<?php
-if(isset($_POST['cmdcomment']))	
-{
-
-		$blogId = $_POST['postId'];
-		$mId = $_POST['memberId'];	
-		$category_id = $_POST['subcatId'];	
-		
-		$msg = trim($_POST['Message']);
-		$a=stripslashes($msg);
-		$a=mysql_real_escape_string($a);
-		
-		$date = date("Y-m-d");
-		$time = date("h:m:s");	
-		
-		$query_cmt = "insert into  forum_thread_comment(thread_Pid,member_id,sub_cat_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$category_id."','".$a."','".$date."','".$time."')";		 
-		$result=mysql_query($query_cmt);
-		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:forum_view.php?id='".$_SESSION['threadId']."'");
-		/*		echo"<script language='javascript' type='text/javascript'>document.location='state_blog_details.php?viewId=.$_SESSION['viewId'].';</script>";*/
-
-}
-?>
 
  <div class="dividerHeading">
     <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
@@ -313,7 +343,12 @@ if(isset($_POST['cmdcomment']))
 <input type="hidden" name="postId" id="postId" value="<?php echo $rs['id'] ; ?>">
 <input type="hidden" name="subcatId" id="subcatId" value="<?php echo $rs['category_id'] ; ?>">
 <input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right;" >Post Comment</a>   
+<?php if($_SESSION['Nris_session']['id'] > 0) { ?>
+	<input type="submit" class="btn btn-success" style="float:right;" value="Post Comment" name="cmdcomment">   
+<?php } else { ?>
+	<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right;" >Post Comment</a>   
+<?php } ?>
+
 </div>
 
 </form>

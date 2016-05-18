@@ -214,7 +214,48 @@ $rs = mysql_fetch_array($result_main);
 </div>
 		
 
+<?php
+if(isset($_POST['cmdcomment']))	
+{
 
+		$postId = $_GET['id'];
+		$mId = $_POST['memberId'];
+		
+		$msg = trim($_POST['Message']);
+		$a = stripslashes($msg);
+		$a = mysql_real_escape_string($a);
+		
+		
+		$query_cmt = "insert into  student_talk_comment(postId,added_by,comment)
+		values('".$postId."','".$_SESSION['Nris_session']['id']."','".$a."')";		 
+		$result=mysql_query($query_cmt);
+		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
+		header("location:university_student_talk_view.php?id='".$postId."'");
+		
+		/* Sending Notification mail starts here */
+			$query_user = "SELECT * FROM register WHERE id = ".$mId;
+			$result_user = mysql_query($query_user);
+			$result_user = mysql_fetch_array($result_user);
+			
+			$email = $result_user['email'];
+			$name = $result_user['fname'].' '.$result_user['lname'];
+			
+			$subject = 'Comment to your Post';
+			$headers = "From: kbknaidu@gmail.com \r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+			$url = BASE_PATH . '/university_student_talk_view.php?id=' . urlencode($postId);
+			
+			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
+			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
+			$message .= '<td align="center" width="300" height="40" bgcolor="#000091" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">';
+			$message .= '<a href="'.$url.'" style="color: #ffffff; font-size:16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; 
+			line-height:40px; width:100%; display:inline-block">Click to View</a>';
+			$message .= '</td> </tr> </table>';
+			mail($email, $subject, $message, $headers);
+		/* Sending Notification mail ends here */
+}
+?>
 
 
 <br><br><br>                    
@@ -256,26 +297,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 
 <br><br><br><br><br>
 
-<?php
-if(isset($_POST['cmdcomment']))	
-{
 
-		$postId = $_GET['id'];
-		$mId = $_POST['memberId'];
-		
-		$msg = trim($_POST['Message']);
-		$a = stripslashes($msg);
-		$a = mysql_real_escape_string($a);
-		
-		
-		$query_cmt = "insert into  student_talk_comment(postId,added_by,comment)
-		values('".$postId."','".$_SESSION['Nris_session']['id']."','".$a."')";		 
-		$result=mysql_query($query_cmt);
-		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:university_student_talk_view.php?id='".$postId."'");
-
-}
-?>
 
  <div class="dividerHeading">
     <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>

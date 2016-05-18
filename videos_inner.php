@@ -325,7 +325,8 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
                     <?php
 					if(isset($_GET['cat']))
 					{					
-						$query="select * from  videos where language='".trim($_GET['lang'])."' and  category='".trim($_GET['cat'])."' order by id desc LIMIT $start, $limit";
+						//$query="select * from  videos where language='".trim($_GET['lang'])."' and  category='".trim($_GET['cat'])."' order by id desc LIMIT $start, $limit";
+						$query= 'select * from  videos where language="'.trim($_GET['lang']).'" and  category="'.trim($_GET['cat']).'" order by id desc  LIMIT '.$start.', '.$limit;
 					}
 					else	
 					{
@@ -338,10 +339,10 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 						while($rs=mysql_fetch_array($result))
 						{	?>	
                         
-                	<div class="col-md-2" style="padding:8px;float: left !important;<?php if($i++ % 6 == 0) { ?>clear:both;<?php } ?>">
+                	<div class="col-md-2" style="padding:8px;margin-bottom: 20px;float: left !important;<?php if($i++ % 6 == 0) { ?>clear:both;<?php } ?>">
 						<div style="float:left; width:100%;clear:both;">
 							<?php
-							$strlen = 14;
+							$strlen = 12;
 							if(strlen($rs['title']) > $strlen) {
 								echo substr($rs['title'],0,$strlen).'..';
 							} else {
@@ -375,7 +376,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 						$disliked_cls = ($user_like_res['like_val'] == 1) ? '' : 'disliked';
 					}
 		            ?>
-		            <div class="like_lnks_cnt">
+		            <div class="like_lnks_cnt" style="margin-top:4px;padding: 2px;">
 		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
@@ -387,7 +388,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 						</a>
 		            </div>
 	            <?php } else { ?>
-					<div class="like_lnks_cnt">
+					<div class="like_lnks_cnt" style="margin-top:4px;padding: 2px;">
 		                <a href="javascript:;" class='like_dislike_lnk _like' data-toggle="modal" data-target="#myModal">
 							<button type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>

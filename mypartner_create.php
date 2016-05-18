@@ -10,6 +10,20 @@ else
 	
 }
 
+
+$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
+	$query_count = "select count(id) cnt from post_free_mypart
+					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
+					and CONCAT(`date`,' ',`time`) < now()
+					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
+	$result_count = mysql_query($query_count);                                                
+	$result_count = mysql_fetch_array($result_count);
+	if($result_count['cnt'] > 3) {
+		header('location:adcheck.php?redirect=mypartner_create&State='.$state);
+		exit;
+	}
+}
 ?>
 
 
@@ -263,252 +277,230 @@ if(isset($_POST['Submit']))
 		if($adPosttype!='')	
 		{
 		
-						$fileName2=$_FILES["my_file2"]["name"];
-						$fileSize2=$_FILES["my_file2"]["size"]/1024;
-						$fileType2=$_FILES["my_file2"]["type"];
-						$fileTmpName2=$_FILES["my_file2"]["tmp_name"];
-						
-						if($fileSize2<=200){			
-								
-								$image2=$round."_".$_FILES['my_file2']['name'];
-								$img2="uploads/my_partner/".$image2;
-								move_uploaded_file($_FILES['my_file2']['tmp_name'],$img2);
-						}
-						else
-						{
-							$Error .= "Maximum upload file size limit is 200 kb.<br>";
-						}
-						
-						
-						$fileName3=$_FILES["my_file3"]["name"];
-						$fileSize3=$_FILES["my_file3"]["size"]/1024;
-						$fileType3=$_FILES["my_file3"]["type"];
-						$fileTmpName3=$_FILES["my_file3"]["tmp_name"];
-						
-						if($fileSize3<=200){			
-								
-								$image3=$round."_".$_FILES['my_file3']['name'];
-								$img3="uploads/my_partner/".$image3;
-								move_uploaded_file($_FILES['my_file3']['tmp_name'],$img3);
-						}
-						else
-						{
-							$Error .= "Maximum upload file size limit is 200 kb.<br>";
-						}
-					
-					
-					
-					$fileName4=$_FILES["my_file4"]["name"];
-					$fileSize4=$_FILES["my_file4"]["size"]/1024;
-					$fileType4=$_FILES["my_file4"]["type"];
-					$fileTmpName4=$_FILES["my_file4"]["tmp_name"];
-					
-					if($fileSize4<=200){			
-					
-					$image4=$round."_".$_FILES['my_file4']['name'];
-					$img4="uploads/my_partner/".$image4;
-					move_uploaded_file($_FILES['my_file4']['tmp_name'],$img4);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					
-					$fileName5=$_FILES["my_file5"]["name"];
-					$fileSize5=$_FILES["my_file5"]["size"]/1024;
-					$fileType5=$_FILES["my_file5"]["type"];
-					$fileTmpName5=$_FILES["my_file5"]["tmp_name"];
-					
-					if($fileSize5<=200){			
-					
-					$image5=$round."_".$_FILES['my_file5']['name'];
-					$img5="uploads/my_partner/".$image5;
-					move_uploaded_file($_FILES['my_file5']['tmp_name'],$img5);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					
-					$fileName6=$_FILES["my_file6"]["name"];
-					$fileSize6=$_FILES["my_file6"]["size"]/1024;
-					$fileType6=$_FILES["my_file6"]["type"];
-					$fileTmpName6=$_FILES["my_file6"]["tmp_name"];
-					
-					if($fileSize6<=200){			
-					
-					$image6=$round."_".$_FILES['my_file6']['name'];
-					$img6="uploads/my_partner/".$image6;
-					move_uploaded_file($_FILES['my_file6']['tmp_name'],$img6);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					$fileName7=$_FILES["my_file7"]["name"];
-					$fileSize7=$_FILES["my_file7"]["size"]/1024;
-					$fileType7=$_FILES["my_file7"]["type"];
-					$fileTmpName7=$_FILES["my_file7"]["tmp_name"];
-					
-					if($fileSize7<=200){			
-					
-					$image7=$round."_".$_FILES['my_file7']['name'];
-					$img7="uploads/my_partner/".$image7;
-					move_uploaded_file($_FILES['my_file7']['tmp_name'],$img7);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					$fileName8=$_FILES["my_file8"]["name"];
-					$fileSize8=$_FILES["my_file8"]["size"]/1024;
-					$fileType8=$_FILES["my_file8"]["type"];
-					$fileTmpName8=$_FILES["my_file8"]["tmp_name"];
-					
-					if($fileSize8<=200){			
-					
-					$image8=$round."_".$_FILES['my_file8']['name'];
-					$img8="uploads/my_partner/".$image8;
-					move_uploaded_file($_FILES['my_file8']['tmp_name'],$img8);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					$fileName9=$_FILES["my_file9"]["name"];
-					$fileSize9=$_FILES["my_file9"]["size"]/1024;
-					$fileType9=$_FILES["my_file9"]["type"];
-					$fileTmpName9=$_FILES["my_file9"]["tmp_name"];
-					
-					if($fileSize9<=200){			
-					
-					$image9=$round."_".$_FILES['my_file9']['name'];
-					$img9="uploads/my_partner/".$image9;
-					move_uploaded_file($_FILES['my_file9']['tmp_name'],$img9);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					
-					$fileName10=$_FILES["my_file10"]["name"];
-					$fileSize10=$_FILES["my_file10"]["size"]/1024;
-					$fileType10=$_FILES["my_file10"]["type"];
-					$fileTmpName10=$_FILES["my_file10"]["tmp_name"];
-					
-					if($fileSize10<=200){			
-					
-					$image10=$round."_".$_FILES['my_file10']['name'];
-					$img10="uploads/my_partner/".$image10;
-					move_uploaded_file($_FILES['my_file10']['tmp_name'],$img10);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					$fileName11=$_FILES["my_file11"]["name"];
-					$fileSize11=$_FILES["my_file11"]["size"]/1024;
-					$fileType11=$_FILES["my_file11"]["type"];
-					$fileTmpName11=$_FILES["my_file11"]["tmp_name"];
-					
-					if($fileSize11<=200){			
-					
-					$image11=$round."_".$_FILES['my_file11']['name'];
-					$img11="uploads/my_partner/".$image11;
-					move_uploaded_file($_FILES['my_file11']['tmp_name'],$img11);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					
-					$fileName12=$_FILES["my_file12"]["name"];
-					$fileSize12=$_FILES["my_file12"]["size"]/1024;
-					$fileType12=$_FILES["my_file12"]["type"];
-					$fileTmpName12=$_FILES["my_file12"]["tmp_name"];
-					
-					if($fileSize12<=200){			
-					
-					$image12=$round."_".$_FILES['my_file12']['name'];
-					$img12="uploads/my_partner/".$image12;
-					move_uploaded_file($_FILES['my_file12']['tmp_name'],$img12);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					
-					$fileName13=$_FILES["my_file13"]["name"];
-					$fileSize13=$_FILES["my_file13"]["size"]/1024;
-					$fileType13=$_FILES["my_file13"]["type"];
-					$fileTmpName13=$_FILES["my_file13"]["tmp_name"];
-					
-					if($fileSize13<=200){			
-					
-					$image13=$round."_".$_FILES['my_file13']['name'];
-					$img13="uploads/my_partner/".$image13;
-					move_uploaded_file($_FILES['my_file13']['tmp_name'],$img13);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					
-					$fileName14=$_FILES["my_file14"]["name"];
-					$fileSize14=$_FILES["my_file14"]["size"]/1024;
-					$fileType14=$_FILES["my_file14"]["type"];
-					$fileTmpName14=$_FILES["my_file14"]["tmp_name"];
-					
-					if($fileSize14<=200){			
-					
-					$image14=$round."_".$_FILES['my_file14']['name'];
-					$img14="uploads/my_partner/".$image14;
-					move_uploaded_file($_FILES['my_file14']['tmp_name'],$img14);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
-					
-					
-					
-					$fileName15=$_FILES["my_file15"]["name"];
-					$fileSize15=$_FILES["my_file15"]["size"]/1024;
-					$fileType15=$_FILES["my_file15"]["type"];
-					$fileTmpName15=$_FILES["my_file15"]["tmp_name"];
-					
-					if($fileSize15<=200){			
-					
-					$image15=$round."_".$_FILES['my_file15']['name'];
-					$img15="uploads/my_partner/".$image15;
-					move_uploaded_file($_FILES['my_file15']['tmp_name'],$img15);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
-					
+					if ($_FILES["my_file2"]["name"] != '') {
+                    $fileName2 = $_FILES["my_file2"]["name"];
+                    $fileSize2 = $_FILES["my_file2"]["size"] / 1024;
+                    $fileType2 = $_FILES["my_file2"]["type"];
+                    $fileTmpName2 = $_FILES["my_file2"]["tmp_name"];
+
+                    if ($fileSize2 <= 200) {
+
+                        $image2 = $round . "_" . $_FILES['my_file2']['name'];
+                        $img2 = "uploads/my_partner/" . $image2;
+                        move_uploaded_file($_FILES['my_file2']['tmp_name'], $img2);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file3"]["name"] != '') {
+                    $fileName3 = $_FILES["my_file3"]["name"];
+                    $fileSize3 = $_FILES["my_file3"]["size"] / 1024;
+                    $fileType3 = $_FILES["my_file3"]["type"];
+                    $fileTmpName3 = $_FILES["my_file3"]["tmp_name"];
+
+                    if ($fileSize3 <= 200) {
+
+                        $image3 = $round . "_" . $_FILES['my_file3']['name'];
+                        $img3 = "uploads/my_partner/" . $image3;
+                        move_uploaded_file($_FILES['my_file3']['tmp_name'], $img3);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file4"]["name"] != '') {
+                    $fileName4 = $_FILES["my_file4"]["name"];
+                    $fileSize4 = $_FILES["my_file4"]["size"] / 1024;
+                    $fileType4 = $_FILES["my_file4"]["type"];
+                    $fileTmpName4 = $_FILES["my_file4"]["tmp_name"];
+
+                    if ($fileSize4 <= 200) {
+
+                        $image4 = $round . "_" . $_FILES['my_file4']['name'];
+                        $img4 = "uploads/my_partner/" . $image4;
+                        move_uploaded_file($_FILES['my_file4']['tmp_name'], $img4);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file5"]["name"] != '') {
+                    $fileName5 = $_FILES["my_file5"]["name"];
+                    $fileSize5 = $_FILES["my_file5"]["size"] / 1024;
+                    $fileType5 = $_FILES["my_file5"]["type"];
+                    $fileTmpName5 = $_FILES["my_file5"]["tmp_name"];
+
+                    if ($fileSize5 <= 200) {
+
+                        $image5 = $round . "_" . $_FILES['my_file5']['name'];
+                        $img5 = "uploads/my_partner/" . $image5;
+                        move_uploaded_file($_FILES['my_file5']['tmp_name'], $img5);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file6"]["name"] != '') {
+                    $fileName6 = $_FILES["my_file6"]["name"];
+                    $fileSize6 = $_FILES["my_file6"]["size"] / 1024;
+                    $fileType6 = $_FILES["my_file6"]["type"];
+                    $fileTmpName6 = $_FILES["my_file6"]["tmp_name"];
+
+                    if ($fileSize6 <= 200) {
+
+                        $image6 = $round . "_" . $_FILES['my_file6']['name'];
+                        $img6 = "uploads/my_partner/" . $image6;
+                        move_uploaded_file($_FILES['my_file6']['tmp_name'], $img6);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file7"]["name"] != '') {
+                    $fileName7 = $_FILES["my_file7"]["name"];
+                    $fileSize7 = $_FILES["my_file7"]["size"] / 1024;
+                    $fileType7 = $_FILES["my_file7"]["type"];
+                    $fileTmpName7 = $_FILES["my_file7"]["tmp_name"];
+
+                    if ($fileSize7 <= 200) {
+
+                        $image7 = $round . "_" . $_FILES['my_file7']['name'];
+                        $img7 = "uploads/my_partner/" . $image7;
+                        move_uploaded_file($_FILES['my_file7']['tmp_name'], $img7);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file8"]["name"] != '') {
+                    $fileName8 = $_FILES["my_file8"]["name"];
+                    $fileSize8 = $_FILES["my_file8"]["size"] / 1024;
+                    $fileType8 = $_FILES["my_file8"]["type"];
+                    $fileTmpName8 = $_FILES["my_file8"]["tmp_name"];
+
+                    if ($fileSize8 <= 200) {
+
+                        $image8 = $round . "_" . $_FILES['my_file8']['name'];
+                        $img8 = "uploads/my_partner/" . $image8;
+                        move_uploaded_file($_FILES['my_file8']['tmp_name'], $img8);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file9"]["name"] != '') {
+                    $fileName9 = $_FILES["my_file9"]["name"];
+                    $fileSize9 = $_FILES["my_file9"]["size"] / 1024;
+                    $fileType9 = $_FILES["my_file9"]["type"];
+                    $fileTmpName9 = $_FILES["my_file9"]["tmp_name"];
+
+                    if ($fileSize9 <= 200) {
+
+                        $image9 = $round . "_" . $_FILES['my_file9']['name'];
+                        $img9 = "uploads/my_partner/" . $image9;
+                        move_uploaded_file($_FILES['my_file9']['tmp_name'], $img9);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file10"]["name"] != '') {
+                    $fileName10 = $_FILES["my_file10"]["name"];
+                    $fileSize10 = $_FILES["my_file10"]["size"] / 1024;
+                    $fileType10 = $_FILES["my_file10"]["type"];
+                    $fileTmpName10 = $_FILES["my_file10"]["tmp_name"];
+
+                    if ($fileSize10 <= 200) {
+
+                        $image10 = $round . "_" . $_FILES['my_file10']['name'];
+                        $img10 = "uploads/my_partner/" . $image10;
+                        move_uploaded_file($_FILES['my_file10']['tmp_name'], $img10);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file11"]["name"] != '') {
+                    $fileName11 = $_FILES["my_file11"]["name"];
+                    $fileSize11 = $_FILES["my_file11"]["size"] / 1024;
+                    $fileType11 = $_FILES["my_file11"]["type"];
+                    $fileTmpName11 = $_FILES["my_file11"]["tmp_name"];
+
+                    if ($fileSize11 <= 200) {
+
+                        $image11 = $round . "_" . $_FILES['my_file11']['name'];
+                        $img11 = "uploads/my_partner/" . $image11;
+                        move_uploaded_file($_FILES['my_file11']['tmp_name'], $img11);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file12"]["name"] != '') {
+                    $fileName12 = $_FILES["my_file12"]["name"];
+                    $fileSize12 = $_FILES["my_file12"]["size"] / 1024;
+                    $fileType12 = $_FILES["my_file12"]["type"];
+                    $fileTmpName12 = $_FILES["my_file12"]["tmp_name"];
+
+                    if ($fileSize12 <= 200) {
+
+                        $image12 = $round . "_" . $_FILES['my_file12']['name'];
+                        $img12 = "uploads/my_partner/" . $image12;
+                        move_uploaded_file($_FILES['my_file12']['tmp_name'], $img12);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file13"]["name"] != '') {
+                    $fileName13 = $_FILES["my_file13"]["name"];
+                    $fileSize13 = $_FILES["my_file13"]["size"] / 1024;
+                    $fileType13 = $_FILES["my_file13"]["type"];
+                    $fileTmpName13 = $_FILES["my_file13"]["tmp_name"];
+
+                    if ($fileSize13 <= 200) {
+
+                        $image13 = $round . "_" . $_FILES['my_file13']['name'];
+                        $img13 = "uploads/my_partner/" . $image13;
+                        move_uploaded_file($_FILES['my_file13']['tmp_name'], $img13);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+                if ($_FILES["my_file14"]["name"] != '') {
+                    $fileName14 = $_FILES["my_file14"]["name"];
+                    $fileSize14 = $_FILES["my_file14"]["size"] / 1024;
+                    $fileType14 = $_FILES["my_file14"]["type"];
+                    $fileTmpName14 = $_FILES["my_file14"]["tmp_name"];
+
+                    if ($fileSize14 <= 200) {
+
+                        $image14 = $round . "_" . $_FILES['my_file14']['name'];
+                        $img14 = "uploads/my_partner/" . $image14;
+                        move_uploaded_file($_FILES['my_file14']['tmp_name'], $img14);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
+
+
+                if ($_FILES["my_file15"]["name"] != '') {
+                    $fileName15 = $_FILES["my_file15"]["name"];
+                    $fileSize15 = $_FILES["my_file15"]["size"] / 1024;
+                    $fileType15 = $_FILES["my_file15"]["type"];
+                    $fileTmpName15 = $_FILES["my_file15"]["tmp_name"];
+
+                    if ($fileSize15 <= 200) {
+
+                        $image15 = $round . "_" . $_FILES['my_file15']['name'];
+                        $img15 = "uploads/my_partner/" . $image15;
+                        move_uploaded_file($_FILES['my_file15']['tmp_name'], $img15);
+                    } else {
+                        $Error .= "Maximum upload file size limit is 200 kb.<br>";
+                    }
+                }
 					
 		}
 		
@@ -1030,7 +1022,13 @@ function test_input($data) {
 <div class="form-group">
 	<div class="col-sm-offset-5 col-sm-3">&nbsp;</div>
 	<div class="col-sm-offset-5 col-sm-7">
-		<input type="button" class="button" name="Submit2" id="Submit2" tabindex="28" value="Save">
+		<?php
+			$buttonText = "Save";
+			if($_GET['type'] == 'premium') {
+				$buttonText = "Proceed to Payment";
+			}
+		?>
+		<input type="button" class="button" name="Submit2" id="Submit2" tabindex="28" value="<?php echo $buttonText;?>">
 		<input type="submit" class="button" name="Submit" id="Submit" tabindex="28" value="Save2" style="display:none;">
 	</div>
 </div>
@@ -1139,7 +1137,7 @@ function test_input($data) {
 
                 <div class="col-lg-12 col-md-12 col-sm-12">   
 					<p class="mydata">
-						 NOTE: NRIS.COM OFFERING THIS SERVICE FOR CONVINIENCE OF CUSTOME TO POST ON ALL STATES IN UNITED STATES IN A SINGLE CLICK , IF YOU DOESN NOT OBEY  FAIR USE POLICY YOUR USER ACCEESS TO THIS WEBSITE WILL BE TERMINATED PERMENTLEY AND IP ADDRESS WILL BE TAGGED
+						 NOTE: NRIS.COM OFFERING THIS SERVICE FOR CONVINIENCE OF OUR USERS TO POST AN AD IN ALL STATES IN UNITED STATES WITH A SINGLE CLICK , IF YOU DOESN NOT OBEY  FAIR USE POLICY YOUR USER ACCEESS TO THIS WEBSITE WILL BE TERMINATED PERMENTLEY AND IP ADDRESS WILL BE TAGGED
 					</p>
                 </div>
 	</div>

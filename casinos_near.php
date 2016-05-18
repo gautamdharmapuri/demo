@@ -221,11 +221,11 @@ else
 
 <?php
 
-$tableName="fam_near_casinos";		
+$tableName="fam_casinos";		
 	$targetpage = "casinos_near.php"; 	
 	$limit = 10; 
 	
-	$query = "SELECT COUNT(*) as num FROM $tableName where state_code='".$_SESSION['state']."' order by total_views desc";
+	$query = "SELECT COUNT(id) as num FROM $tableName where state_code='".$_SESSION['state']."' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -250,25 +250,25 @@ $tableName="fam_near_casinos";
 	while($casinoData = mysql_fetch_array($result)) {
 		$tempAddress = array();
 		
-		$tempAddress[] = $casinoData['name'];
+		$tempAddress[] = str_replace("'",'',$casinoData['name']);
 		if($casinoData['address'] != '') {
-			$tempAddress[] = $casinoData['address'];
+			$tempAddress[] = addslashes($casinoData['address']);
 		}
 		if($casinoData['city'] != '') {
-			$tempAddress[] = $casinoData['city'];
+			$tempAddress[] = addslashes($casinoData['city']);
 		}
 		if($casinoData['state_code'] != '') {
 			$tempAddress[] = $casinoData['state_code'];
 		}
 		$address[] = implode(',',$tempAddress);
 	}
-	
+	echo '<pre>';
+	print_r($address);
 ?>
 
 <script>
 	
-    var location_details = '<?php echo json_encode($address);?>';
-	//alert(location_details);
+    var location_details = '<?php echo json_encode($address);?>';	
     var map;
     function initialize() {
         var latLng = new google.maps.LatLng(49.47805, -123.84716);
@@ -280,6 +280,7 @@ $tableName="fam_near_casinos";
         });
 
         $('#loadingMap').hide();
+		var infoWindow = new google.maps.InfoWindow();
     }
     initialize();
     geocoder = new google.maps.Geocoder();
@@ -294,7 +295,7 @@ $tableName="fam_near_casinos";
 
     iter = 0;
 	var location_detailsArr = $.parseJSON(location_details);
-
+	
     $.each(location_detailsArr, function(index,location_details1) {
         address = location_details1;
 
@@ -308,27 +309,36 @@ $tableName="fam_near_casinos";
                 var latitude = results[0].geometry.location.lat();
                 var longitude = results[0].geometry.location.lng();
                 
-                markerArr[iter] = new MarkerWithLabel({
+				var addressArr = address.split(',');
+				
+                marker = new MarkerWithLabel({
                    position: new google.maps.LatLng(latitude, longitude),
                    draggable: false,
                    raiseOnDrag: true,
                    map: map,
-                   labelContent: address,
+                   labelContent: addressArr[0],
                    labelAnchor: new google.maps.Point(22, 0),
                    labelClass: "marker-label", // the CSS class for the label
                    labelStyle: {opacity: 1.0}
                 });
+				markerArr[iter] = marker;
                 markerArr[iter]['address'] = location_details.address;
+				
+				var infoWindow = infoWindow+iter;
+				infoWindow = new google.maps.InfoWindow();
+				
+				(function (marker, location_details1) {
+					google.maps.event.addListener(marker, "click", function (e) {
+						infoWindow.setContent(location_details1);
+						infoWindow.open(map, marker);
+					});
+				})(marker, location_details1);
             } else {
                 console.log("Geocode was not successful for the following reason: (for address " + address +") " + status);
                 markerArr[iter] = null;
             }
 
-            if (Object.keys(markerArr).length == Object.keys(location_details).length) {
-                if (typeof get_info_window_for_markers == 'function') {
-                    get_info_window_for_markers(markerArr);
-                }
-            }
+			
 
             iter++;
         });
@@ -336,33 +346,33 @@ $tableName="fam_near_casinos";
     });
 	
 
-    infowindowsObj = {};
-    function get_info_window_for_markers(markerArr) {
-        if (typeof markerArr == 'undefined') {
-            return false;
-        }
-
-        $.each(markerArr, function (key, markerObj) {
-            if (typeof markerObj != 'undefined' && markerObj != null) {
-                address = markerObj.address;
-
-                infowindowsObj[key] = new google.maps.InfoWindow({
-                    content: address
-                });
-
-                google.maps.event.addListener(markerObj, "click", function (e) { 
-                    closeAllInfoWindows();
-                    infowindowsObj[key].open(map, this);
-                });
-            }
-        })
-    }
-
-    function closeAllInfoWindows() {
-        $.each(infowindowsObj, function(i, infowindow) {
-            infowindow.close();
-        });
-    }
+    //infowindowsObj = {};
+    //function get_info_window_for_markers(markerArr) {
+    //    if (typeof markerArr == 'undefined') {
+    //        return false;
+    //    }
+    //
+    //    $.each(markerArr, function (key, markerObj) {
+    //        if (typeof markerObj != 'undefined' && markerObj != null) {
+    //            address = markerObj.address;
+    //
+    //            infowindowsObj[key] = new google.maps.InfoWindow({
+    //                content: address
+    //            });
+    //
+    //            google.maps.event.addListener(markerObj, "click", function (e) { 
+    //                closeAllInfoWindows();
+    //                infowindowsObj[key].open(map, this);
+    //            });
+    //        }
+    //    })
+    //}
+    //
+    //function closeAllInfoWindows() {
+    //    $.each(infowindowsObj, function(i, infowindow) {
+    //        infowindow.close();
+    //    });
+    //}
 
 </script> 
 

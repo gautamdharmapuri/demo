@@ -294,7 +294,9 @@ if(isset($_POST['submit']))
                                                 <div class="col-md-2 col-xs-12"> 
                                                  <div class="input-group" >
                                                 	 <input type="text" class="form-control datepicker" value="<?php echo $rs['dob']; ?>" name="txtedate" id="txtedate">
-                                             		<span class="input-group-addon add-on"><span class="glyphicon glyphicon-calendar"></span></span>
+                                             		<label class="input-group-addon add-on" for="txtedate">
+												<span class="glyphicon glyphicon-calendar"></span>
+											 </label>
                                                  </div>   
                                                 </div>
                                             </div>     

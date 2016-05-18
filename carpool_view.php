@@ -128,7 +128,49 @@ font-size:12px;
 <!-- Section-1 START-->	
 		<div class="section-1">
         
-        
+            <?php
+if(isset($_POST['cmdcomment']))	
+{
+
+		$postId = $_POST['postId'];
+		$mId = $_POST['memberId'];
+		
+		$msg = trim($_POST['Message']);
+		$a = stripslashes($msg);
+		$a = mysql_real_escape_string($a);
+		
+		
+		$query_cmt = "insert into  carpool_comment(blog_id,member_id,comment,cmnt_date,cmnt_time)
+		values('".$postId."','".$_SESSION['Nris_session']['id']."','".$a."','".date('Y-m-d')."','".date('h:i:s')."')";
+		//echo $query_cmt;exit;
+		$result=mysql_query($query_cmt);
+		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
+		header("location:carpool_view.php?id='".md5($postId)."'");
+		
+		/* Sending Notification mail starts here */
+			$query_user = "SELECT * FROM register WHERE id = ".$mId;
+			$result_user = mysql_query($query_user);
+			$result_user = mysql_fetch_array($result_user);
+			
+			$email = $result_user['email'];
+			$name = $result_user['fname'].' '.$result_user['lname'];
+			
+			$subject = 'Comment to your Post';
+			$headers = "From: kbknaidu@gmail.com \r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+			$url = BASE_PATH . '/carpool_view.php?id=' . md5($postId);
+			
+			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
+			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
+			$message .= '<td align="center" width="300" height="40" bgcolor="#000091" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">';
+			$message .= '<a href="'.$url.'" style="color: #ffffff; font-size:16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; 
+			line-height:40px; width:100%; display:inline-block">Click to View</a>';
+			$message .= '</td> </tr> </table>';
+			mail($email, $subject, $message, $headers);
+		/* Sending Notification mail ends here */
+}
+?>   
         
         <!-- COLUMN LEFT -->	
         <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
@@ -270,6 +312,80 @@ font-size:12px;
 		  </div>
             <!-- TOP BUTTONS ENDS-->
 			
+			<div class="col-md-12">
+				
+				<br><br><br>                    
+<?php
+$query_blog_cmnt = "select a.*, b.* from carpool_comment a, register b where a.member_id = b.id  order by a.cmnt_id desc" ;
+$result_cmnt = mysql_query($query_blog_cmnt);
+if(mysql_num_rows($result_cmnt) > 0)
+{
+?>
+<bR><hr style="margin-bottom:30px;">
+<h5 style="color:#828282;">Comments</h5>
+<?php
+while($rs_cmnt=mysql_fetch_array($result_cmnt))
+{?>
+
+<div class="blockquote">
+            <div class="quote" style="min-height:auto;">
+                <?php /*?><h5 style="margin-bottom:5px;color:#666666;"><?php echo ucfirst($rs_cmnt['fname']) ?>&nbsp;<?php echo ucfirst($rs_cmnt['lname']) ?></h5><?php */?>
+				
+                <p align="justify" style="color:#666666;">                
+                
+                <?php echo ucfirst($rs_cmnt['comment']) ?> 
+                <bR>
+                <span style="color: #999999;font-weight: 300;line-height: 24px;margin-bottom: 12px;">Posted <?php echo date("d M, Y",strtotime($rs_cmnt['cmnt_date'])); ?> by <?php echo ucfirst($rs_cmnt['fname']) ?>&nbsp;<?php echo ucfirst($rs_cmnt['lname']) ?></span>                
+                </p>
+
+            </div>
+
+			
+            </div>
+            
+<?php } }?>   
+
+
+
+
+
+
+
+<br><br><br><br><br>
+
+
+
+ <div class="dividerHeading">
+    <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
+</div>        
+        		
+<form class="form-horizontal" role="form" method="post" action="">
+
+<div class="form-group">
+	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Comment</label>
+	<div class="col-sm-10">
+    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="1" required=''></textarea>
+	<div style="clear:both;width: 100%;display: inline-block;float: left !important;margin-left:312px;">
+						<div id="display_count" style="float: left !important;">200</div>
+						<div style="float: left !important;">&nbsp;words remaining</div>
+					</div>
+	</div>
+</div>
+
+<div class="form-submit-buttons">
+<input type="hidden" name="postId" id="postId" value="<?php echo $rs['id'] ; ?>">
+<input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">
+<?php if($_SESSION['Nris_session']['id'] > 0) { ?>
+	<input type="submit" value="Comment" name="cmdcomment" class="btn btn-success" style="float:right;">
+<?php } else { ?>
+	<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right;" >Post Comment</a>
+<?php } ?>
+</div>
+
+</form>
+<br><br><br><br><br><br>
+				
+			</div>
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         <!-- COLUMN RIGHT -->	

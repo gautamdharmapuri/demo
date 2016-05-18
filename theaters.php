@@ -21,7 +21,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Jobs Ad View | NRIs</title>
+	<title><?php echo $_SESSION['state'];  ?> Education & Teaching Ad View | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -148,61 +148,38 @@ font-size:12px;
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
 
         <?php
-			$query="select a.*, b.name, c.role from post_free_job a, job_category b, job_role c where a.Category = b.id and a.Job_Role=c.id and md5(a.id) = '".$_GET['ViewId']."'"; 
+			$query="select a.*, b.name from post_free_education a, eduation_teaching b where a.AdsCat = b.id  and md5(a.id) = '".$_GET['ViewId']."'"; 
 			$result=mysql_query($query);
 			$rs=mysql_fetch_array($result);	
-			$total_views = $rs['total_views'] + 1 ;
-			mysql_query("update post_free_job set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 			
-			$query2 = "select city from cities where id = ".$rs['City'];
-			$result2 = mysql_query($query2);
-			$rs2 = mysql_fetch_array($result2);
-			$cityName = $rs2['city'];
-			
-			
-						if($rs['Address'] != '') {
-							$addArr[] = $rs['Address'];
-						}
-						if($cityName != '') {
-							$addArr[] = $cityName;
-						}
-						if($rs['state'] != '') {
-							$addArr[] = $rs['state'];
-						}
-						$addArr[] = 'US';
-						$address = urldecode(implode(',',$addArr));
-						$geocode=file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$address.'&sensor=false');
-
-						$output= json_decode($geocode); //Store values in variable
-						
-						if($output->status == 'OK'){ // Check if address is available or not
-						  $lat = $output->results[0]->geometry->location->lat; //Returns Latitude
-						  $lng = $output->results[0]->geometry->location->lng; // Returns Longitude
-						}
-			?>               
+					?>               
                        
-<div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Jobs</h4>
+       <div class="widget-temple">
+	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Education & Teaching</h4>
   <?php
-		if(isset($_SESSION['Nris_session']))	  
-		{ ?>
-<a href="job_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
-<a href="job_create.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
-  <?php } else { ?> 
+if(isset($_SESSION['Nris_session']))	  
+{ ?>
+<a href="education_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
+<a href="education_create.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+ <?php } else { ?> 
 <a href="#"  data-toggle="modal" data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
 <a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
-<?php } ?>   
-</div><br>
-           
-		   <div class="col-md-12" >
+<?php } ?>    
+
+</div>    <br>
+               
+			   <div class="col-md-12" >
 			<?php for($k=1;$k<16;$k++) { ?>
 				<div class="col-md-3" >
 					<?php
 						$tempVar = $k;
+						if($k == 1) {
+							$tempVar = '';
+						}
 						if($rs['image'.$tempVar] != '') { ?>
 							<div class="col-sm-12">
 								<a href="javascript:;">
-									<img class="myImageClass" src="<?php echo 'uploads/jobs/'.$rs['image'.$tempVar];?>" style="width:100%;height:140px;">
+									<img class="myImageClass" src="<?php echo 'uploads/education/'.$rs['image'.$tempVar];?>" style="width:100%;height:140px;">
 								</a>
 							</div>
 					<?php } ?>
@@ -212,66 +189,31 @@ font-size:12px;
             
 			<div class="col-md-7" style="padding-top: 10px;">
 				
-        <table class="table table-bordered">
+            <table class="table table-bordered">
                                        
-                                        <thead>
+                                      
+                                   
+                                     
+                                     <thead>
                                        		<tr>
                                        		<th>Title</th>                                         
                                              <th> <?php    echo ucwords($rs['TitleAD']);   ?> </th>
                                          	</tr>
-                                       </thead>  
-                                       
-                                        <thead>
-                                       		<tr>
-                                       		<th>Job Details</th>                                         
-                                             <th> <?php    echo ucwords($rs['Message']);   ?> </th>
-                                         	</tr>
-                                       </thead>  
-                                       
-                                       <thead>
-                                       		<tr>
-                                       		<th>Category</th>                                         
-                                             <th> <?php    echo ucwords($rs['name']);   ?> </th>
-                                         	</tr>
-                                       </thead>
-                                       
-                                       <thead>
-                                       		<tr>
-                                       		<th>Job Role</th>                                         
-                                             <th> <?php    echo ucwords($rs['role']);   ?> </th>
-                                         	</tr>
-                                       </thead> 
-                                       
-                                    
-                                     
+                                     </thead>
                                      
                                      <thead>
                                        		<tr>
-                                       		<th>City</th>                                         
-                                             <th> <?php    echo ucwords($cityName);   ?> </th>
+                                       		<th>Description</th>                                         
+                                             <th> <?php    echo ucfirst($rs['Message']);   ?> </th>
                                          	</tr>
                                      </thead>
-                                       
-                                       
-                                       
-                                       
-                                       <thead>
+                                     
+                                     <thead>
                                        		<tr>
-                                       		<th>Employement Type</th>                                         
-                                             <th> <?php    echo ucwords($rs['Emp_type']);   ?> </th>
+                                       		<th>Ad Category</th>                                         
+                                             <th> <?php    echo ucwords($rs['name']);   ?> </th>
                                          	</tr>
-                                       </thead> 
-                                       
-                                        
-                                       
-                                        <thead>
-                                       		<tr>
-                                       		<th>Job Reference Id</th>                                         
-                                             <th> <?php    echo ucwords($rs['Job_Ref_Id']);   ?> </th>
-                                         	</tr>
-                                       </thead> 
-                                       
-                                       
+                                     </thead>
                                     
                                     <thead>
                                        		<tr>
@@ -288,29 +230,40 @@ font-size:12px;
                                                 if(isset($_SESSION['Nris_session']))	  
                                                 { echo ucwords($rs['ConatctNumber']);  } else { ?>
 											 <a href=""  data-toggle="modal" data-target="#myModal" style="color:#990000;" >Click Here to View</a>
-											 <?php } ?> </th>                                                                                      
+											 <?php } ?> </th>  
                                          	</tr>
                                        </thead>
                                        
+                                   
                                        
-                                     
                                        
-                                      
+                                       <?php  if($rs['ShowEmail']=='Yes') { ?>
                                        
                                        <thead>
                                        		<tr>
                                        		<th>Email</th> 
-                                            <th>
-                                            <?php
+                                            <th> 
+												<?php
                                                 if(isset($_SESSION['Nris_session']))	  
                                                 { echo strtolower($rs['ConatctEmail']);  } else { ?>
 											 <a href=""  data-toggle="modal" data-target="#myModal" style="color:#990000;" >Click Here to View</a>
-											 <?php } ?> </th>                                          
+											 <?php } ?> </th>                                         
+
                                          	</tr>
                                        </thead>
-                                  
+                                   <?php } ?>
                                        
+                                      
+                                      
+                                      
                                         
+                                     <thead>
+                                       		<tr>
+                                       		<th>City</th>                                         
+                                             <th> <?php    echo ucwords($rs['City']);   ?> </th>
+                                         	</tr>
+                                     </thead>
+                                     
                                      <thead>
                                        		<tr>
                                        		<th>URL</th>                                         
@@ -318,20 +271,17 @@ font-size:12px;
                                          	</tr>
                                      </thead>
                                        
-                                       
                                        <thead>
                                        		<tr>
                                        		<th>Ad Expiry Date</th>                                         
                                              <th> <?php echo date("d M, Y",strtotime($rs['EndDate'])); ?> </th>
                                          	</tr>
                                        </thead>
-                                    
-                                    
-                                    </table>               
-                       
-        </div>
-		
-		<div class="col-md-5" >
+                               
+                                    </table>           
+			</div>
+					
+					<div class="col-md-5" >
 		              
 <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 <script type="text/javascript">
@@ -361,11 +311,10 @@ title: "Address"
 });
 </script>
 <div id="googleMap" style="width:100%;height:300px;" ></div>
-		</div>
-
+		</div>   
+  <br><br><br><br><br>
 		
-		
-		    </div>
+            </div>
             <!-- TOP BUTTONS ENDS-->
             
             

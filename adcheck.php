@@ -1,4 +1,35 @@
-<?php error_reporting(0);  include"config/connection.php";	   ?>
+<?php error_reporting(0);  include"config/connection.php";
+
+require_once "config/formvalidator.php";
+
+$show_form=true;
+if(isset($_POST['Submit']))
+{// The form is submitted
+        $recaptcha = $_POST['g-recaptcha-response'];
+		if(!empty($recaptcha))
+		{
+			include("getCurlData.php");
+			$google_url = "https://www.google.com/recaptcha/api/siteverify";
+			$secret = '6Lf4DR4TAAAAACj9eqhxKvDuBCjMbyncjipZlu8Q';
+			$ip = $_SERVER['REMOTE_ADDR'];
+			$url = $google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
+			$res = getCurlData($url);
+			$res = json_decode($res, true);
+			if($res['success']) {
+				$state = ($_GET['State'] != '') ? $_GET['State'] : $_SESSION['state'];
+				$redirect_url = $_GET['redirect'].'.php?code='.$state.'&verified=1';
+				echo '<script type="text/javascript">window.location.href="'.$redirect_url.'";</script>';
+				exit;
+			} else {
+				echo '<div class="error">Please verify with captcha</div>';
+				$show_form = false;
+			}
+		} else {
+			echo '<div class="error">Please verify with captcha</div>';
+			$show_form = false;
+		}
+}
+?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -7,7 +38,7 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Registration | NRIs</title>
+	<title>Validate | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -327,14 +358,13 @@ var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 </script>
 <script src='https://www.google.com/recaptcha/api.js'></script>
 </head>
-<body  <?php if(!isset($_POST['Submit']))
-{ ?>onload="popup('popUpDiv')"<?php }?>>
+<body>
 
 <div class="loader"><div class="loader_html"></div></div>
 
 
 
-	<?php include "config/menu.php" ;  ?>
+	<?php include "config/menu_inner_state.php" ;  ?>
 	
 	<div class="clearfix"></div>
 
@@ -388,7 +418,7 @@ var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
    				
 
             <div class="widget-temple">
-            <h4>Home >> Registration</h4>
+            <h4>Home >> Captcha</h4>
             </div>    <br>
 
 
@@ -397,301 +427,14 @@ var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
             
 
 <?php
-require_once "config/formvalidator.php";
-
-$show_form=true;
-
-if(isset($_POST['Submit']))
-{// The form is submitted
-
-
-    //Setup Validations
-    $validator = new FormValidator();
-    $validator->addValidation("Firstname","req","Please Enter your First Name");
-	$validator->addValidation("Lastname","req","Please Enter your Last Name");
-    $validator->addValidation("Email","email","The input for Email should be a valid email value");
-    $validator->addValidation("Email","req","Please fill in Email");
-	//$validator->addValidation("Mobile","req","Please Enter your Contact Number");	
-//	$validator->addValidation("DOB","req","Please Select your Date of Birth");	
-	$validator->addValidation("Password","req","Please Enter your Password");	
-	$validator->addValidation("CnfPassword","req","Please Enter your Confirm Password");		
-	$validator->addValidation("Address","req","Please Enter your Address");		
-	$validator->addValidation("State","req","Please Select your State");			
-	$validator->addValidation("city","req","Please Select your city");				
-    //Now, validate the form
-    if($validator->ValidateForm())
-    {
-        $recaptcha = $_POST['g-recaptcha-response'];
-		if(!empty($recaptcha))
-		{
-			include("getCurlData.php");
-			$google_url="https://www.google.com/recaptcha/api/siteverify";
-			$secret='6Lf4DR4TAAAAACj9eqhxKvDuBCjMbyncjipZlu8Q';
-			$ip=$_SERVER['REMOTE_ADDR'];
-			$url=$google_url."?secret=".$secret."&response=".$recaptcha."&remoteip=".$ip;
-			$res=getCurlData($url);
-			$res= json_decode($res, true);
-			if($res['success'])
-			{
-				$fname=trim($_POST['Firstname']);
-				$a=stripslashes($fname);
-				$a=mysql_real_escape_string($a);
-				
-				
-				$lname=trim($_POST['Lastname']);
-				$b=stripslashes($lname);
-				$b=mysql_real_escape_string($b);
-				
-				$email=trim($_POST['Email']);
-				$c=stripslashes($email);
-				$c=mysql_real_escape_string($c);
-				
-				
-				$Mobile=trim($_POST['Mobile']);
-				$d=stripslashes($Mobile);
-				$d=mysql_real_escape_string($d);
-				
-				
-				
-				$dob=trim($_POST['DOB']);
-				$e=stripslashes($dob);
-				$e=mysql_real_escape_string($e);
-				
-				$pass=trim($_POST['Password']);
-				$f=stripslashes($pass);
-				$f=mysql_real_escape_string($f);
-				
-				
-				$address=trim($_POST['Address']);
-				$g=stripslashes($address);
-				$g=mysql_real_escape_string($g);					
-				
-				
-				$state=trim($_POST['State']);
-				$h=stripslashes($state);
-				$h=mysql_real_escape_string($h);
-				
-				$ct=trim($_POST['city']);
-				$i=stripslashes($ct);
-				$i=mysql_real_escape_string($i);	
-				
-				$date=date('Y-m-d');
-				$time=date('h:m:s');
-				
-				
-				
-				
-				
-				
-				
-				
-				$query_verify_email = "SELECT * FROM register  WHERE email ='$c' and isactive = 1";
-		        $result_verify_email = mysqli_query($con,$query_verify_email);
-     
-   if (!$result_verify_email) {
-            echo ' Syste Error! ';
-        }
-
-		
-        if (mysqli_num_rows($result_verify_email) == 0) { 
-
-
-            // Generate a unique code:
-            $hash = md5(uniqid(rand(), true));
-
-
-            $query_create_user = "INSERT INTO `register` ( `fname`, `lname`, `email`, `mobile`, `dob`, `password`, `address`, `state`, `city`, `hash`) VALUES ( '$a', '$b', '$c', '$d', '$e', '$f', '$g', '$h', '$i', '$hash')";
-
-		 $result_create_user = mysqli_query($con,$query_create_user);
-            if (!$result_create_user) {
-                echo 'Query Failed ';
-            }
-		
-		 if (mysqli_affected_rows($con) == 1) { 
-
-
-$subject = 'Activate Your Email';
-
-$headers = "From: kbknaidu@gmail.com \r\n";
-$headers .= "MIME-Version: 1.0\r\n";
-$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-$url= BASE_PATH . '/verify.php?email=' . urlencode($c) . "&key=$hash";
-
-$message ='<h1>NRIs.com</h1><h3>Registration Activate Link</h3><p>To activate your account please click on Activate buttton</p>';
-$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
-$message .= '<td align="center" width="300" height="40" bgcolor="#000091" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; 
-
-color: #ffffff; display: block;">';
-
-$message .= '<a href="'.$url.'" style="color: #ffffff; font-size:16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; 
-
-line-height:40px; width:100%; display:inline-block">Click to Activate</a>';
-$message .= '</td> </tr> </table>'; 
-
-mail($email, $subject, $message, $headers);
-
-
-
-                echo '<br><br><div class="sucess">A confirmation email
-has been sent to <b>'. $email.' </b><br>Please click on the Activate Button to Activate your account </div><br>';
-			} else {
-				echo '<div class="error">Please verify with captcha</div>';
-			}
-		}else{
-		echo '<div class="error">Email already registered</div>';}
-		
-				
-
-
-        } else { 
-                echo '<div class="error">Error Occured</div>';
-            }
-		}
-		else{
-		echo '<div class="error">Please verify with captcha. Please register again <a href="'.SITE_BASE_URL.'/register.php">Here</a></div>';}
-				
-				
-				
-				
-				
-				
-		
-
-        $show_form=false;
-    }
-    else
-    {
-        echo "<div class='error'>Errors:</div>";
-
-        $error_hash = $validator->GetErrors();
-        foreach($error_hash as $inpname => $inp_err)
-        {
-            echo "<div style='color:#FF0000;margin-top:10px;'>$inpname : $inp_err</div>";
-        }        
-    }//else
-}//if(isset($_POST['Submit']))
+//if(isset($_POST['Submit']))
 
 if(true == $show_form)
 {
 ?>
 
-<form class="form-horizontal" method="post" data-toggle="validator" role="form" onSubmit="return checkForm(this);" name="form" id="form">
+<form class="form-horizontal" method="post" data-toggle="validator" role="form" name="form" id="form">
 
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">First Name :*<br>(A-Z)</label>
-	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Firstname" name="Firstname" placeholder="Your First Name" style="width:100%;" required="required" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'/>		
-	</div>
-</div>
-</div>
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;text-align:right;">Last Name :*<br>(A-Z)</label>
-	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Your Last Name" style="width:100%;" required="required" onkeypress='return (event.charCode >= 65 && event.charCode <= 90) || (event.charCode >= 97 && event.charCode <= 122)'/>		
-	</div>
-</div>
-</div>
-
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">E-mail :*</label>
-	<div class="col-sm-8">
-		<input type="email" class="form-control" id="Email" name="Email" placeholder="Your E-mail" style="width:100%;" required="required"  />
-	</div>
-</div>
-</div>
-
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;font-size:12px;text-align:right;">Mobile Number :</label>
-	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Mobile" name="Mobile" placeholder="Your Mobile Number" style="width:100%;" onkeypress='return event.charCode >= 48 && event.charCode <= 57' />
-	</div>
-</div>
-</div>
-
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;font-weight:bold;">Date of Birth :*</label>
-	<div class="col-sm-8">
-		<input type="text" class="form-control" id="DOB" name="DOB" placeholder="Your Date of Birth" style="width:100%;" required="required"  />
-	</div>
-</div>
-</div>
-
-<div class="col-md-6"><div class="form-group" style="height:60px;"><label>&nbsp;</label></div></div>
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;font-weight:bold;">Password :*</label>
-	<div class="col-sm-8">
-		<input type="password" class="form-control" id="Password" name="Password" placeholder="Your Password" style="width:100%;margin-bottom:2px;" required="required"  />
-		<span style="color:#FF0000;font-size:10px;"> 	*Enter minimum 8 chars with atleast 1 number, lower & special(@#$%&) characters       </span> 
-	</div>
-</div>
-</div>
-
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;font-weight:bold;">Confirm Password :*</label>
-	<div class="col-sm-8">
-		<input type="password" class="form-control" id="CnfPassword" name="CnfPassword" placeholder="Confirm  Password" style="width:100%;" required="required"  />        
-	</div>
-</div>
-</div>
-
-
-<div class="col-md-12">
-<div class="form-group">
-	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:left;font-weight:bold;">Address :</label>
-	<div class="col-sm-10">
-    <textarea rows="1" cols="40" style="width:100%;" name="Address" id="Address" required="required" ></textarea>
-	</div>
-</div>
-</div>
-
-
-
-
-
-
-
-            
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">State :*</label>
-	<div class="col-sm-8">
-		<input name="State1" class="State" id="state_auto" style="width:100%;" required="required" type="text">
-		<input name="State" class="State" id="State" type="hidden" style="width:100%;">
-	</div>
-</div>
-</div>
-
-
-
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;font-weight:bold;">City :*</label>
-	<div class="col-sm-8">
-		<input name="city" class="city" id="city_auto" style="width:100%;" required="required" type="text" placeholder="City">
-		<input name="city" class="city" id="City" type="hidden" style="width:100%;">
-	</div>
-</div>
-</div>
 
 <div class="col-md-12">
 <div class="form-group">
@@ -701,52 +444,14 @@ if(true == $show_form)
 	</div>
 </div>
 </div>
-
 <div class="col-md-12">
 <div class="form-group">
-	<label for="inputPassword3" class="col-sm-12 control-label" style="text-align:left;">
-		<input type="checkbox" name="terms" required="required">&nbsp;&nbsp;
-		<a href="javascript:;" onclick="popup('popUpDiv');" onMouseOver="this.style.color='Red'" onMouseOut="this.style.color='black'">I Accept Terms & Conditions</a></label>
-</div>
-</div>
-
-
-
-
-
-
-<div class="form-group">
-	<div class="col-sm-offset-2 col-sm-2">&nbsp;</div>
-	<div class="col-sm-offset-2 col-sm-7">
-		<?php
-            include_once("fb_login/config.php");
-            include_once("google_login/config.php");
-            ?>
-      
-            <?php
-                if(!$fbuser){
-                    $fbuser = null;
-                    $loginUrl = $facebook->getLoginUrl(array('redirect_uri'=>$homeurl,'scope'=>$fbPermissions));
-                    echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png" style="width:165px;height:45px;"></a>';    
-                }
-                ?>
-                <!-- <a href="<?php echo SITE_BASE_URL.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
-           
-            <?php
-                $authUrl = $gClient->createAuthUrl();
-                echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png"  style="width:154px;height:85px;" alt=""/></a>';
-            ?>
-            
-                <?php echo '<a href="twitter_login/process.php"><img style="width:129px;height:40px;" src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
-            
-		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <button type="submit" class="button" name="Submit" id="Submit">Register</button> 
-
+	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:left;font-weight:bold;">&nbsp;</label>
+	<div class="col-sm-8">
+		<button type="submit" class="button" name="Submit" id="Submit">Register</button> 
 	</div>
 </div>
-
-
-
+</div>
 <div class="form-group">
 	<div class="col-sm-offset-2 col-sm-4" style="min-height:100px;">&nbsp;</div>
 	<div class="col-sm-offset-2 col-sm-4" style="min-height:100px;">&nbsp;</div>

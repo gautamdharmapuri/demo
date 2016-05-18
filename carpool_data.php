@@ -1,27 +1,5 @@
 <?php error_reporting(0);  include"config/connection.php";	
-$inseted_row ='';
-if(isset($_POST['cmdsave']))
-{
-	$mId = $_POST['memberId'];	
-	
-	$Titletxt = trim($_POST['Titletxt']);
-	$Titletxt=stripslashes($Titletxt);
-	$Titletxt=mysql_real_escape_string($Titletxt);
-	
-	$msg = trim($_POST['Message']);
-	$msg=stripslashes($msg);
-	$msg=mysql_real_escape_string($msg);
-	
-	$status = '1';
-	
-	$date = date("Y-m-d");
-	$time = date("h:m:s");	
-				
-	$query_thread = "insert into  nris_talk(title,description,member_id,status,date,time) values('".$Titletxt."','".$msg."','".$mId."','".$status."','".$date."','".$time."')";		 
-	$result_thread = mysql_query($query_thread);
-	$inseted_row = "Topic Saved Successfully";
-	
-}
+
   ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -222,18 +200,18 @@ if(isset($_POST['cmdsave']))
 	</div>		
     
 
-<form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" method="get" action="#" enctype="multipart/form-data">
 
 <div class="form-group">
 	<div class="col-sm-3">
-		<input type="text" class="form-control" id="city_auto1" placeholder="Enter From City" style="width:100%;" tabindex="1" />
+		<input type="text" class="form-control" id="city_auto1" placeholder="Enter From City" style="width:100%;" tabindex="1" required/>
 		<input type="hidden" name="City1" id="City1">
 	</div>
 
-
+	<input type="hidden" name="type" value="<?php echo $_GET['type'];?>">
 
 	<div class="col-sm-3">
-		<input type="text" class="form-control" id="city_auto2" placeholder="Enter To City" style="width:100%;" tabindex="1" />
+		<input type="text" class="form-control" id="city_auto2" placeholder="Enter To City" style="width:100%;" tabindex="1" required/>
 		<input type="hidden" name="City2" id="City2">
 	</div>
 
@@ -244,7 +222,65 @@ if(isset($_POST['cmdsave']))
 
 </div>
 
-</form>    
+</form>
+
+<table align="center" >
+					<thead>
+						<tr>
+							<th>From City</th>
+							<th>To City</th>
+							<th>Start Date</th>
+							<th>Start Time</th>
+						</tr>
+					</thead>
+					<tbody>
+<?php
+	$where = '';
+	if(isset($_GET['City1']) && $_GET['City1'] > 0 && isset($_GET['City2']) && $_GET['City2'] > 0) {
+		$where = ' AND (carpool.from_city = "'.$_GET['City1'].'" AND carpool.to_city = "'.$_GET['City2'].'")';
+	}
+	if($_GET['type'] == 'interstate') {
+		$where .= "AND c1.state_code = '$state' AND c2.state_code = '$state'";
+	}
+	$query1 = "SELECT carpool.*,c1.city as from_cityname,c2.city as to_cityname FROM carpool,cities c1, cities as c2
+				WHERE type = '".$_GET['type']."'
+				AND c1.id = from_city AND c2.id = to_city $where";
+				
+				
+			$result = mysql_query($query1);
+			if(mysql_numrows($result) > 0) { ?>
+			 		
+						<?php	
+							while($data = mysql_fetch_assoc($result)) {?>
+								<tr>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['from_cityname']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['to_cityname']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['start_date']; ?>
+										</a>
+									</td>
+									<td>
+										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+											<?php echo $data['start_time']; ?>
+										</a>
+									</td>
+								</tr>
+						<?php } ?>
+					
+                    <?php  } else { ?>
+						<tr><td colspan="4">No data available</td></tr>
+				<?php } ?>
+				</tbody>
+				</table>
             </div>
             <!-- TOP BUTTONS ENDS-->
             
@@ -297,15 +333,15 @@ if(isset($_POST['cmdsave']))
     <script src="calender/jquery-1.10.2.js"></script>
     <script src="calender/jquery-ui.js"></script>
   
-
+<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
 <script>
    $(function() {
    
-	
+	var state = "<?php echo $state;?>";
 	
 	$( "#city_auto1" ).autocomplete({
 		source: function(request, response) {
-			$.getJSON("city_auto.php", { term: $('#city_auto1').val()},response);
+			$.getJSON("city_auto.php", { term: $('#city_auto1').val(),state:state},response);
 		},
       minLength: 1,
       select: function( event, ui ) {
@@ -314,7 +350,7 @@ if(isset($_POST['cmdsave']))
     });
 	$( "#city_auto2" ).autocomplete({
 		source: function(request, response) {
-			$.getJSON("city_auto.php", { term: $('#city_auto2').val()},response);
+			$.getJSON("city_auto.php", { term: $('#city_auto2').val(),state:state},response);
 		},
       minLength: 1,
       select: function( event, ui ) {

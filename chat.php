@@ -34,6 +34,7 @@ $user=$_SESSION['Nris_session']['fname'];
 <script type="text/javascript">
 var user='<?php echo $user;?>'; 
 // Requesting to Database every 2 seconds
+var isInitial = true;
 var auto_refresh = setInterval(function ()
 {
   var last_id=jQuery(".shout_msg").last().attr("id");
@@ -41,7 +42,7 @@ var auto_refresh = setInterval(function ()
     last_id = 0;
   }
   var chat_topic = jQuery('#chat_topic option:selected').val();
-jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id+"&State=<?php echo $state;?>&chat_topic="+chat_topic,function(data)
+jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id+"&State=<?php echo $state;?>&chat_topic="+chat_topic+"&isInitial="+isInitial,function(data)
 {
 jQuery.each(data, function(i,data)
 {
@@ -55,6 +56,7 @@ jQuery('#shout_message').val('');
 }
 });
 });
+isInitial = false;
 }, 3000);
 
 // Inserting records into chat table
@@ -153,18 +155,25 @@ return false;
 jQuery(".chat_header").click(function (e) {
     //get CSS display state of .toggle_chat element
     var toggleState = jQuery('.toggle_chat').css('display');
-
     //toggle show/hide chat box
-    jQuery('.toggle_chat').slideToggle();
+    
    
-    //use toggleState var to change close/open icon image
-    if(toggleState == 'block')
-    {
-        jQuery(".chat_header div").attr('class', 'open_btn');
-        jQuery('#box_smilies').hide();
-    }else{
-        jQuery(".chat_header div").attr('class', 'close_btn');
-    }
+   if (!chatCheck) {
+		popup('chat_terms_conditions_popup');
+				return false; 
+    } else {
+		jQuery('.toggle_chat').slideToggle();
+		//use toggleState var to change close/open icon image
+		if(toggleState == 'block')
+		{
+			jQuery(".chat_header div").attr('class', 'open_btn');
+			jQuery('#box_smilies').hide();
+		}else{
+			jQuery(".chat_header div").attr('class', 'close_btn');
+		}
+	}
+    
+	
 });
 </script>
 <?php include 'images/smilies.inc'; ?>

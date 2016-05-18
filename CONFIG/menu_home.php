@@ -23,11 +23,13 @@
 			  <?php
 					 if(isset($_SESSION['Nris_session'])) { ?>
 							<div class="new-uer-right-div">
+								   <?php include_once('top_social.php');?>
 								   <a href="logout.php" class="reg">Logout</a>
 								   <a href="profile.php" class="reg"><i class="fa fa-user"></i>&nbsp;Profile</a>
 							</div>          
 			  <?php  } else { ?>
 							<div class="new-uer-right-div">
+								   <?php include_once('top_social.php');?>
 								  <a class="reg" href="javascript:;" data-toggle="modal" data-target="#myModal"><i class="fa fa-lock"></i>&nbsp;login</a>
 								  <a class="reg" href="register.php">Register</a>
 							</div>
@@ -141,8 +143,8 @@
         <!-- <li id="famousTemples"><a href="#famousIndianTemples">Famous Indian Temples</a></li> -->
         <li><a href="javascript:;">Carpool</a>
             <ul>
-            <li><a href="carpool_data.php">Inter state Carpool</a></li>
-            <li><a href="carpool_data.php">International carpool</a></li>		
+            <li><a href="carpool_data.php?type=interstate">Inter state Carpool</a></li>
+            <li><a href="carpool_data.php?type=international">International carpool</a></li>
             </ul>
         </li>
   <li><a href="videos.php">Movies/Videos </a>

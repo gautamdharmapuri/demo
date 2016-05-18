@@ -35,11 +35,13 @@ else
 			  <?php
 					 if(isset($_SESSION['Nris_session'])) { ?>
 							<div class="new-uer-right-div">
+								<?php include_once('top_social.php');?>
 								   <a href="logout.php" class="reg">Logout</a>
 								   <a href="profile.php" class="reg"><i class="fa fa-user"></i>&nbsp;Profile</a>
 							</div>          
 			  <?php  } else { ?>
 							<div class="new-uer-right-div">
+								<?php include_once('top_social.php');?>
 								  <a class="reg" href="javascript:;" data-toggle="modal" data-target="#myModal"><i class="fa fa-lock"></i>&nbsp;login</a>
 								  <a class="reg" href="register.php">Register</a>
 							</div>
@@ -73,10 +75,10 @@ else
         <li><a href="discussion_room.php"><?php echo $state;?> NRI's talk</a></li>
         <li><a href="javascript:;"> <?php echo $state;?> Box Office</a>
             <ul class="subnav">
-            <li><a href="javascript:;">$1 Movie Theaters</a></li>
-            <li><a href="javascript:;">$ Saving Theaters</a></li>
-            <li><a href="javascript:;">Top Rated Movie Theaters</a></li>
-            <li><a href="javascript:;">Open Theaters(Drive in Theaters)</a></li>          
+            <li><a href="theaters.php?type=<?php echo urlencode('$1 Movie Theaters');?>">$1 Movie Theaters</a></li>
+            <li><a href="theaters.php?type=<?php echo urlencode('$ Saving Theaters');?>">$ Saving Theaters</a></li>
+            <li><a href="theaters.php?type=<?php echo urlencode('Top Rated Movie Theaters');?>">Top Rated Movie Theaters</a></li>
+            <li><a href="theaters.php?type=<?php echo urlencode('Open Theaters(Drive in Theaters)');?>">Open Theaters(Drive in Theaters)</a></li>          
             </ul>
         </li> 
         
@@ -193,7 +195,7 @@ else
 				<ul class="subnav">
 						<?php
 				
-							$queryStudentTalk = "select * from student_talk where state_code = '".$state."' order by uni_name asc";
+							$queryStudentTalk = "select * from student_talk where state_code = '".$state."' and status = 'Active' order by uni_name asc";
 							$resultStudentTalk = mysql_query($queryStudentTalk);                                                
 							if(mysql_numrows($resultStudentTalk) > 0) {
 						?>

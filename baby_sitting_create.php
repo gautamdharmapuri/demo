@@ -1,6 +1,19 @@
 <?php error_reporting(0);  include"config/connection.php";	   
-//echo $_SESSION['state'];
-//echo $_GET['type'];
+
+
+$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
+	$query_count = "select count(id) cnt from post_free_baby_sitting
+					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
+					and CONCAT(`date`,' ',`time`) < now()
+					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
+	$result_count = mysql_query($query_count);                                                
+	$result_count = mysql_fetch_array($result_count);
+	if($result_count['cnt'] > 3) {
+		header('location:adcheck.php?redirect=baby_sitting_create&State='.$state);
+		exit;
+	}
+}
 ?>
 
 
@@ -221,7 +234,7 @@ if(isset($_POST['Submit']))
 		$adPosttype = test_input($_POST["adPosttype"]);	
 		if($adPosttype!='')	
 		{
-		
+					if($_FILES["my_file2"]["name"] != '') {
 						$fileName2=$_FILES["my_file2"]["name"];
 						$fileSize2=$_FILES["my_file2"]["size"]/1024;
 						$fileType2=$_FILES["my_file2"]["type"];
@@ -237,8 +250,9 @@ if(isset($_POST['Submit']))
 						{
 							$Error .= "Maximum upload file size limit is 200 kb.<br>";
 						}
+					}
 						
-						
+					if($_FILES["my_file3"]["name"] != '') {
 						$fileName3=$_FILES["my_file3"]["name"];
 						$fileSize3=$_FILES["my_file3"]["size"]/1024;
 						$fileType3=$_FILES["my_file3"]["type"];
@@ -254,45 +268,45 @@ if(isset($_POST['Submit']))
 						{
 							$Error .= "Maximum upload file size limit is 200 kb.<br>";
 						}
-					
-					
-					
-					$fileName4=$_FILES["my_file4"]["name"];
-					$fileSize4=$_FILES["my_file4"]["size"]/1024;
-					$fileType4=$_FILES["my_file4"]["type"];
-					$fileTmpName4=$_FILES["my_file4"]["tmp_name"];
-					
-					if($fileSize4<=200){			
-					
-					$image4=$round."_".$_FILES['my_file4']['name'];
-					$img4="uploads/baby_sitting/".$image4;
-					move_uploaded_file($_FILES['my_file4']['tmp_name'],$img4);
-					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
 					
-					
-					
-					$fileName5=$_FILES["my_file5"]["name"];
-					$fileSize5=$_FILES["my_file5"]["size"]/1024;
-					$fileType5=$_FILES["my_file5"]["type"];
-					$fileTmpName5=$_FILES["my_file5"]["tmp_name"];
-					
-					if($fileSize5<=200){			
-					
-					$image5=$round."_".$_FILES['my_file5']['name'];
-					$img5="uploads/baby_sitting/".$image5;
-					move_uploaded_file($_FILES['my_file5']['tmp_name'],$img5);
+					if($_FILES["my_file4"]["name"] != '') {
+						$fileName4=$_FILES["my_file4"]["name"];
+						$fileSize4=$_FILES["my_file4"]["size"]/1024;
+						$fileType4=$_FILES["my_file4"]["type"];
+						$fileTmpName4=$_FILES["my_file4"]["tmp_name"];
+						
+						if($fileSize4<=200){			
+						
+						$image4=$round."_".$_FILES['my_file4']['name'];
+						$img4="uploads/baby_sitting/".$image4;
+						move_uploaded_file($_FILES['my_file4']['tmp_name'],$img4);
+						}
+						else
+						{
+						$Error .= "Maximum upload file size limit is 200 kb.<br>";
+						}
 					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
+					
+					if($_FILES["my_file5"]["name"] != '') {
+						$fileName5=$_FILES["my_file5"]["name"];
+						$fileSize5=$_FILES["my_file5"]["size"]/1024;
+						$fileType5=$_FILES["my_file5"]["type"];
+						$fileTmpName5=$_FILES["my_file5"]["tmp_name"];
+						
+						if($fileSize5<=200){			
+						
+						$image5=$round."_".$_FILES['my_file5']['name'];
+						$img5="uploads/baby_sitting/".$image5;
+						move_uploaded_file($_FILES['my_file5']['tmp_name'],$img5);
+						}
+						else
+						{
+						$Error .= "Maximum upload file size limit is 200 kb.<br>";
+						}
 					}
 					
-					
-					
+					if($_FILES["my_file6"]["name"] != '') {
 					$fileName6=$_FILES["my_file6"]["name"];
 					$fileSize6=$_FILES["my_file6"]["size"]/1024;
 					$fileType6=$_FILES["my_file6"]["type"];
@@ -308,8 +322,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+					}
 					
-					
+					if($_FILES["my_file7"]["name"] != '') {
 					$fileName7=$_FILES["my_file7"]["name"];
 					$fileSize7=$_FILES["my_file7"]["size"]/1024;
 					$fileType7=$_FILES["my_file7"]["type"];
@@ -325,8 +340,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+					}
 					
-					
+					if($_FILES["my_file8"]["name"] != '') {
 					$fileName8=$_FILES["my_file8"]["name"];
 					$fileSize8=$_FILES["my_file8"]["size"]/1024;
 					$fileType8=$_FILES["my_file8"]["type"];
@@ -342,8 +358,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+					}
 					
-					
+					if($_FILES["my_file9"]["name"] != '') {
 					$fileName9=$_FILES["my_file9"]["name"];
 					$fileSize9=$_FILES["my_file9"]["size"]/1024;
 					$fileType9=$_FILES["my_file9"]["type"];
@@ -359,9 +376,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+					}
 					
-					
-					
+					if($_FILES["my_file10"]["name"] != '') {
 					$fileName10=$_FILES["my_file10"]["name"];
 					$fileSize10=$_FILES["my_file10"]["size"]/1024;
 					$fileType10=$_FILES["my_file10"]["type"];
@@ -377,8 +394,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+					}
 					
-					
+					if($_FILES["my_file11"]["name"] != '') {
 					$fileName11=$_FILES["my_file11"]["name"];
 					$fileSize11=$_FILES["my_file11"]["size"]/1024;
 					$fileType11=$_FILES["my_file11"]["type"];
@@ -394,9 +412,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+					}
 					
-					
-					
+					if($_FILES["my_file12"]["name"] != '') {
 					$fileName12=$_FILES["my_file12"]["name"];
 					$fileSize12=$_FILES["my_file12"]["size"]/1024;
 					$fileType12=$_FILES["my_file12"]["type"];
@@ -412,9 +430,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+					}
 					
-					
-					
+					if($_FILES["my_file13"]["name"] != '') {
 					$fileName13=$_FILES["my_file13"]["name"];
 					$fileSize13=$_FILES["my_file13"]["size"]/1024;
 					$fileType13=$_FILES["my_file13"]["type"];
@@ -430,9 +448,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+					}
 					
-					
-					
+					if($_FILES["my_file14"]["name"] != '') {
 					$fileName14=$_FILES["my_file14"]["name"];
 					$fileSize14=$_FILES["my_file14"]["size"]/1024;
 					$fileType14=$_FILES["my_file14"]["type"];
@@ -448,10 +466,10 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+					}
 					
 					
-					
-					
+					if($_FILES["my_file15"]["name"] != '') {
 					$fileName15=$_FILES["my_file15"]["name"];
 					$fileSize15=$_FILES["my_file15"]["size"]/1024;
 					$fileType15=$_FILES["my_file15"]["type"];
@@ -467,7 +485,7 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
-					
+					}
 					
 		}
 		
@@ -1021,7 +1039,13 @@ function test_input($data) {
 	<div class="col-sm-offset-5 col-sm-3">&nbsp;</div>
 	<div class="col-sm-offset-5 col-sm-7">
         <input type="hidden" name="id" id="id" value="<?php echo $_SESSION['Nris_session']['id']; ?>">    
-		<input type="button" class="button" name="Submit2" id="Submit2" tabindex="28" value="Save">
+		<?php
+			$buttonText = "Save";
+			if($_GET['type'] == 'premium') {
+				$buttonText = "Proceed to Payment";
+			}
+		?>
+		<input type="button" class="button" name="Submit2" id="Submit2" tabindex="28" value="<?php echo $buttonText;?>">
 		<input type="submit" class="button" name="Submit" id="Submit" tabindex="28" value="Save2" style="display:none;">
 	</div>
 </div>

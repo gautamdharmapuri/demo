@@ -242,7 +242,7 @@ if(isset($_POST['Submit']))
 			if (empty($_FILES['my_file']['name'])) {
  			  //  Withou Attachment Mail Start
 				$to ='admin@nris.com';	
-				$from = 'info@angeldesigning.com';	
+				$from = 'kbknaidu@gmail.com';	
 				$subject = 'Advertise with Us';	
 			/*	$message = '<h2>Advertise with Us</h2><br><html><body>';
 				$message .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
@@ -272,7 +272,7 @@ if(isset($_POST['Submit']))
 		{
 			
 			
-					$from_email = 'info@angeldesigning.com'; //sender email
+					$from_email = 'kbknaidu@gmail.com'; //sender email
 					$recipient_email = 'admin@nris.com'; //recipient email
 					$subject = 'Advertise with Us'; //subject of email
 					$message = "Name : $full\r\nBusiness : $c\r\nEmail :  $d\r\nWebsite : $e\r\nPhone : $f\r\nMessage:  $msg\r\n";

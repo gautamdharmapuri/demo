@@ -253,7 +253,7 @@ $current_date = date('Y-m-d');
 																		<?php if($rs['image'] != '') { ?>
 																					<img src="images/image-icon.png">
 																		<?php } ?>
-																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
+																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,28);?></span>&nbsp;<img src="images/New_icon2.gif"></div>
 																				<div class="col-md-3" style="padding: 1px;"><span><?php echo $rs['category'];?></span></div>
 																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['totViews'];?></span></div>
 																		</div>
@@ -422,6 +422,17 @@ $current_date = date('Y-m-d');
 									</div> <!-- cd-tabs ends-->
                         </div><!-- MOVIES ends-->
                     
+					<div class="nri-talk" style="float:left;height:149px;width:100%;">
+                                <div class="heading-plain">
+                                <h3>Show Timings and Places</h3>
+                                </div>
+                                <ul style="padding:0px 9px;height:115px;">
+									<?php foreach($movieArr as $movie) { ?>
+												<li><a href="desi_movie_detail.php?id=<?php echo md5($movie['id']);?>"><?php echo $movie['name'];?></a></li>
+									<?php } ?>
+                                </ul>
+                            </div>
+					
                     </div><!-- TOP SECTION RIGHT ENDS -->
                     
                        
@@ -670,6 +681,7 @@ $current_date = date('Y-m-d');
 																		</div>
 																		</a>
 															<?php } ?>
+															<div style="float: right !important;"><a href="freeads_viewmore.php?type=free&State=<?php echo $state;?>" >View more</a></div>
                                                           </div> 
                                                       </li>
                                                       
@@ -777,19 +789,6 @@ $current_date = date('Y-m-d');
                        
                        <div class="right-table">
                            
-                       
-                            <div class="nri-talk" style="float:left;height:149px;width:100%;">
-                                <div class="heading-plain">
-                                <h3>Show Timings and Places</h3>
-                                </div>
-                                <ul style="padding:0px 9px;height:115px;">
-									<?php foreach($movieArr as $movie) { ?>
-												<li><a href="desi_movie_detail.php?id=<?php echo md5($movie['id']);?>"><?php echo $movie['name'];?></a></li>
-									<?php } ?>
-                                </ul>
-                            </div>
-                            
-                            
                              <div class="movies">
                             <div class="full-btn">
                                 <a href="#"><?php echo $_SESSION['state']; ?> - EVENTS </a>
@@ -1160,7 +1159,7 @@ $current_date = date('Y-m-d');
                     	<div class="col-md-12 padding-no">
                         
                                 <div class="adv-big">
-                                    <?php include_once('state_common_right.php');?>
+                                    <?php //include_once('state_common_right.php');?>
                                 </div>                                
                                
                       </div> 

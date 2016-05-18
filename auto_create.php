@@ -11,6 +11,20 @@ else
 	
 }
 
+$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
+	$query_count = "select count(id) cnt from post_free_auto
+					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
+					and CONCAT(`date`,' ',`time`) < now()
+					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
+	$result_count = mysql_query($query_count);                                                
+	$result_count = mysql_fetch_array($result_count);
+	if($result_count['cnt'] > 3) {
+		header('location:adcheck.php?redirect=auto_create&State='.$state);
+		exit;
+	}
+}
+
 ?>
 
 
@@ -160,22 +174,19 @@ border-radius: 5px;
     xmlhttp.send();
 	
     }
-    </script>
-
-<?php /*?><script language="javascript">
-function showstate(str)
+	function showstate(str)
 {
-	//	alert(str);
 	if(str=='ALL')
 	{
-		
+		popup('warning_popup');
 	}
 	if(str=='multiple')
 	{
-		
+		document.getElementById('multiple_state').click();
 	}
 }
-</script><?php */?>
+    </script>
+
 
 
  <script type="text/javascript">
@@ -275,7 +286,7 @@ if(isset($_POST['Submit']))
 		$adPosttype = test_input($_POST["adPosttype"]);	
 		if($adPosttype!='')	
 		{
-				
+				if($_FILES["my_file4"]["name"] != '') {
 					$fileName4=$_FILES["my_file4"]["name"];
 					$fileSize4=$_FILES["my_file4"]["size"]/1024;
 					$fileType4=$_FILES["my_file4"]["type"];
@@ -291,27 +302,31 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
 					
-					
-					$fileName5=$_FILES["my_file5"]["name"];
-					$fileSize5=$_FILES["my_file5"]["size"]/1024;
-					$fileType5=$_FILES["my_file5"]["type"];
-					$fileTmpName5=$_FILES["my_file5"]["tmp_name"];
-					
-					if($fileSize5<=200){			
-					
-					$image5=$round."_".$_FILES['my_file5']['name'];
-					$img5="uploads/auto/".$image5;
-					move_uploaded_file($_FILES['my_file5']['tmp_name'],$img5);
+					if($_FILES["my_file5"]["name"] != '') {
+						$fileName5=$_FILES["my_file5"]["name"];
+						$fileSize5=$_FILES["my_file5"]["size"]/1024;
+						$fileType5=$_FILES["my_file5"]["type"];
+						$fileTmpName5=$_FILES["my_file5"]["tmp_name"];
+						
+						if($fileSize5<=200){			
+						
+						$image5=$round."_".$_FILES['my_file5']['name'];
+						$img5="uploads/auto/".$image5;
+						move_uploaded_file($_FILES['my_file5']['tmp_name'],$img5);
+						}
+						else
+						{
+						$Error .= "Maximum upload file size limit is 200 kb.<br>";
+						}
 					}
-					else
-					{
-					$Error .= "Maximum upload file size limit is 200 kb.<br>";
-					}
 					
 					
 					
+					
+				if($_FILES["my_file6"]["name"] != '') {
 					$fileName6=$_FILES["my_file6"]["name"];
 					$fileSize6=$_FILES["my_file6"]["size"]/1024;
 					$fileType6=$_FILES["my_file6"]["type"];
@@ -327,8 +342,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
-					
+				if($_FILES["my_file7"]["name"] != '') { 
 					$fileName7=$_FILES["my_file7"]["name"];
 					$fileSize7=$_FILES["my_file7"]["size"]/1024;
 					$fileType7=$_FILES["my_file7"]["type"];
@@ -344,8 +360,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
-					
+				if($_FILES["my_file8"]["name"] != '') {
 					$fileName8=$_FILES["my_file8"]["name"];
 					$fileSize8=$_FILES["my_file8"]["size"]/1024;
 					$fileType8=$_FILES["my_file8"]["type"];
@@ -361,8 +378,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
-					
+				if($_FILES["my_file9"]["name"] != '') { 
 					$fileName9=$_FILES["my_file9"]["name"];
 					$fileSize9=$_FILES["my_file9"]["size"]/1024;
 					$fileType9=$_FILES["my_file9"]["type"];
@@ -378,9 +396,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
-					
-					
+				if($_FILES["my_file10"]["name"] != '') {
 					$fileName10=$_FILES["my_file10"]["name"];
 					$fileSize10=$_FILES["my_file10"]["size"]/1024;
 					$fileType10=$_FILES["my_file10"]["type"];
@@ -396,8 +414,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
-					
+				if($_FILES["my_file11"]["name"] != '') {
 					$fileName11=$_FILES["my_file11"]["name"];
 					$fileSize11=$_FILES["my_file11"]["size"]/1024;
 					$fileType11=$_FILES["my_file11"]["type"];
@@ -413,9 +432,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
-					
-					
+				if($_FILES["my_file12"]["name"] != '') {
 					$fileName12=$_FILES["my_file12"]["name"];
 					$fileSize12=$_FILES["my_file12"]["size"]/1024;
 					$fileType12=$_FILES["my_file12"]["type"];
@@ -431,9 +450,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
-					
-					
+				if($_FILES["my_file13"]["name"] != '') {
 					$fileName13=$_FILES["my_file13"]["name"];
 					$fileSize13=$_FILES["my_file13"]["size"]/1024;
 					$fileType13=$_FILES["my_file13"]["type"];
@@ -449,9 +468,9 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
-					
-					
+				if($_FILES["my_file14"]["name"] != '') {
 					$fileName14=$_FILES["my_file14"]["name"];
 					$fileSize14=$_FILES["my_file14"]["size"]/1024;
 					$fileType14=$_FILES["my_file14"]["type"];
@@ -467,10 +486,10 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
+				}
 					
 					
-					
-					
+				if($_FILES["my_file15"]["name"] != '') {
 					$fileName15=$_FILES["my_file15"]["name"];
 					$fileSize15=$_FILES["my_file15"]["size"]/1024;
 					$fileType15=$_FILES["my_file15"]["type"];
@@ -486,7 +505,7 @@ if(isset($_POST['Submit']))
 					{
 					$Error .= "Maximum upload file size limit is 200 kb.<br>";
 					}
-					
+				}
 					
 		}
 										
@@ -1120,14 +1139,12 @@ function test_input($data) {
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;">State</label>
 	<div class="col-sm-8">
-    	<!--<select name="States" id="States" required=""  class="form-control"  onChange="showstate(this.value);" tabindex="18" >              
+    	<select name="States" id="States" required=""  class="form-control"  onChange="showstate(this.value);" tabindex="5" >              
                <option value="">Select State</option>                
-                <option value="< ?php echo $_SESSION['state'] ? >">Current State Only</option>  
+                <option value="<?php echo $_GET['code'] ?>">Current State Only</option>  
                 <option value="ALL" data-toggle="modal" data-target="#ALL">All States in USA</option>  
                 <option value="multiple" data-toggle="modal" data-target="#multiple">Select Multiple States</option>      	
-		</select>   -->
-		<input name="State1" class="State" id="state_auto" style="width:100%;" required="required" type="text">
-		<input name="States" class="State" id="State" type="hidden" style="width:100%;">
+		</select>
 	</div>
 </div>
 </div>
@@ -1236,7 +1253,13 @@ function test_input($data) {
 <div class="form-group">
 	<div class="col-sm-offset-5 col-sm-3">&nbsp;</div>
 	<div class="col-sm-offset-5 col-sm-7">
-		<input type="button" class="button" name="Submit2" id="Submit2" tabindex="28" value="Save">
+		<?php
+			$buttonText = "Save";
+			if($_GET['type'] == 'premium') {
+				$buttonText = "Proceed to Payment";
+			}
+		?>
+		<input type="button" class="button" name="Submit2" id="Submit2" tabindex="28" value="<?php echo $buttonText;?>">
 		<input type="submit" class="button" name="Submit" id="Submit" tabindex="28" value="Save2" style="display:none;">
 	</div>
 </div>
@@ -1281,13 +1304,24 @@ function test_input($data) {
 
 
 
+<div id="warning_popup" style="display:none;">
+    <a style="float:right;cursor: pointer;" onClick="popup('warning_popup')">X</a>
+       
+<center><h4>Alert!</h4></center>
 
+                <div class="col-lg-12 col-md-12 col-sm-12">   
+					<p class="mydata">
+						 NOTE: NRIS.COM OFFERING THIS SERVICE FOR CONVINIENCE OF OUR USERS TO POST AN AD IN ALL STATES IN UNITED STATES WITH A SINGLE CLICK , IF YOU DOESN NOT OBEY  FAIR USE POLICY YOUR USER ACCEESS TO THIS WEBSITE WILL BE TERMINATED PERMENTLEY AND IP ADDRESS WILL BE TAGGED
+					</p>
+                </div>
+	</div>
 
 
 
 
 
 <!-- multiple States  Modal -->
+<a href="javasccript:;" id="multiple_state" data-toggle="modal" data-target="#multiple"></a>
   <div class="modal fade" id="multiple" role="dialog">
     <div class="modal-dialog">
     
@@ -1342,7 +1376,7 @@ function test_input($data) {
       
     </div>
   </div>
-<!-- multiple States Modal -->                        
+<!-- multiple States Modal -->                           
 
 
 
@@ -1429,17 +1463,10 @@ function test_input($data) {
 		}
 	});
 	
-	$( "#state_auto" ).autocomplete({
-      source: "state_auto.php",
-      minLength: 1,
-      select: function( event, ui ) {
-			$('#State').val(ui.item.id);
-      }
-    });
 	
 	$( "#city_auto" ).autocomplete({
 		source: function(request, response) {
-			$.getJSON("city_auto.php", { term: $('#city_auto').val(),state:$('#State').val() },response);
+			$.getJSON("city_auto.php", { term: $('#city_auto').val(),state:$('#States').val() },response);
 		},
       minLength: 1,
       select: function( event, ui ) {
@@ -1447,7 +1474,6 @@ function test_input($data) {
       }
     });
 	
-	$('#state_auto').keyup(function(e){if(e.keyCode == 8)$('#state_auto, #State, #city_auto, #City').val('');});
 	$('#city_auto').keyup(function(e){if(e.keyCode == 8)$('#city_auto, #City').val('');});
 	
   });

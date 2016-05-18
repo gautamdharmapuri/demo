@@ -1,5 +1,19 @@
 <?php error_reporting(0);  include"config/connection.php";	   
-//echo $_SESSION['state'];
+
+
+$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
+	$query_count = "select count(id) cnt from post_free_stuff
+					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
+					and CONCAT(`date`,' ',`time`) < now()
+					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
+	$result_count = mysql_query($query_count);                                                
+	$result_count = mysql_fetch_array($result_count);
+	if($result_count['cnt'] > 3) {
+		header('location:adcheck.php?redirect=create_free_stuff&State='.$state);
+		exit;
+	}
+}
 ?>
 
 

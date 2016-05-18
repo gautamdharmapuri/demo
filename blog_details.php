@@ -323,7 +323,50 @@ else
         </div>     
 	
 	
+<?php
+if(isset($_POST['cmdcomment']))	
+{
 
+	$blogId = $_POST['blogId'];
+	$mId = $_POST['memberId'];	
+	
+	$msg = trim($_POST['Comment']);
+	$a=stripslashes($msg);
+	$a=mysql_real_escape_string($a);
+	
+	$date = date("Y-m-d");
+	$time = date("h:m:s");	
+				
+	$query_cmt = "insert into  blog_comment(blog_id,member_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."')";		 
+	$result=mysql_query($query_cmt);
+		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
+		header("location:state_blog_details.php?viewId='".$_SESSION['viewId']."'");
+	
+	/* Sending Notification mail starts here */
+			$query_user = "SELECT * FROM register WHERE id = ".$mId;
+			$result_user = mysql_query($query_user);
+			$result_user = mysql_fetch_array($result_user);
+			
+			$email = $result_user['email'];
+			$name = $result_user['fname'].' '.$result_user['lname'];
+			
+			$subject = 'Comment to your Post';
+			$headers = "From: kbknaidu@gmail.com \r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+			$url = BASE_PATH . '/blog_details.php?viewId=' . md5($blogId);
+			
+			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
+			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
+			$message .= '<td align="center" width="300" height="40" bgcolor="#000091" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">';
+			$message .= '<a href="'.$url.'" style="color: #ffffff; font-size:16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; 
+			line-height:40px; width:100%; display:inline-block">Click to View</a>';
+			$message .= '</td> </tr> </table>';
+			mail($email, $subject, $message, $headers);
+		/* Sending Notification mail ends here */
+
+}
+?>
      
     
 <!-- Section-1 WRAP START-->	
@@ -465,8 +508,9 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 </div>
 
 <div class="form-submit-buttons">
-
-<input type="submit" class="btn btn-success"  style="float:right" value="Post Comment">
+<input type="hidden" name="blogId" id="blogId" value="<?php echo $rs['id'] ; ?>">
+<input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">
+<input type="submit" class="btn btn-success" name="cmdcomment" style="float:right" value="Post Comment">
 </div>
 
 </form>                        

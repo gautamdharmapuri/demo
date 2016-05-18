@@ -220,7 +220,7 @@ $query_rate_before = mysql_query("select * from rating_casinos where login_id='"
 
 if(mysql_num_rows($query_rate_before)>0)
 {
-		 $query_rate = "update rating_casinos set casino_id = '".$pro_id."', rate='".$star."', login_id = '".$myid."', login_name = '".$new_name."', date = '".$date."' where login_id='".$myid."' and res_id ='".$pro_id."'";		 
+		 $query_rate = "update rating_casinos set casino_id = '".$pro_id."', rate='".$star."', login_id = '".$myid."', login_name = '".$new_name."', date = '".$date."' where login_id='".$myid."' and casino_id ='".$pro_id."'";		 
 		 $result_rate = mysql_query($query_rate);
 }
 else

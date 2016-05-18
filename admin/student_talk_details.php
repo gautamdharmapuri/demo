@@ -58,10 +58,11 @@ if(isset($_POST['submit']))
 				$others=mysql_real_escape_string($others);
 				
 				
-							
 									
 						
-				$query="update student_talk set state_code='".$a."',uni_name='".$c."',edu_field='".$edu."',details='".$add."',url='".$url."',email_id='".$email_ID."',other_details='".$others."',date='".$date."',time='".$time."' where id='".$_POST['id']."'";
+				$query="update student_talk set state_code='".$a."',uni_name='".$c."',edu_field='".$edu."',
+				details='".$add."',url='".$url."',email_id='".$email_ID."',other_details='".$others."',
+				status='".$status."',date='".$date."',time='".$time."' where id='".$_POST['id']."'";
 				$result=mysql_query($query);
 				 echo "<script language='javascript' type='text/javascript'>alert('Student Talk Details Updated sucsessfully');</script>";		 
 				 echo"<script language='javascript' type='text/javascript'>document.location='student_talk.php';</script>";
@@ -109,10 +110,12 @@ if(isset($_POST['submit']))
 				
 				$others=trim($_POST['txtotherdetails']);	
 				$others=stripslashes($others);
-				$others=mysql_real_escape_string($others);		
+				$others=mysql_real_escape_string($others);
+				
 				
 		
-		 $query="insert into student_talk(state_code,uni_name,edu_field,details,url,email_id,other_details,date,time) values('".$a."','".$c."','".$edu."','".$add."','".$url."','".$email_ID."','".$others."','".$date."','".$time."')";		 
+		 $query="insert into student_talk(state_code,uni_name,edu_field,details,url,email_id,other_details,status,date,time)
+		 values('".$a."','".$c."','".$edu."','".$add."','".$url."','".$email_ID."','".$others."','".$status."','".$date."','".$time."')";		 
 		 $result=mysql_query($query);
 		 echo "<script language='javascript' type='text/javascript'>alert('Student Talk added sucsessfully');</script>";		 
 		 echo"<script language='javascript' type='text/javascript'>document.location='student_talk.php';</script>";
@@ -324,6 +327,22 @@ if(isset($_POST['submit']))
                                             <span class="help-block">Other Details</span>                                        </div>
                                     </div> 
                                     
+									<div class="form-group">
+                                               <label class="col-md-3 col-xs-12 control-label">Status</label>
+                                                <div class="col-md-6 col-xs-12"> 
+                                                <select class="form-control select" data-style="btn-success" name="txtstatus" id="txtstatus">                                                     	<?php
+													   	if(isset($rs['status']))
+														{?>
+                                                        <option value="<?php echo $rs['status']; ?>" selected ><?php echo $rs['status']; ?></option>
+														<?php }  ?>
+                                                        <option value="">- Select Status -</option>
+                                                        <option value="Active">Active</option>
+                                                        <option value="Inactive">Inactive</option>
+                                                      
+                                                        </select>
+                                                <span class="help-block">Select Status</span>
+                                                </div>
+                                            </div>
                                 
                                     
                                     
