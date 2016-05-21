@@ -157,15 +157,7 @@
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
-	
-	
+<?php include_once('stock_block.php');?>
 
      
     
@@ -260,7 +252,8 @@ if(isset($_POST['cmdcomment']))
 
 <br><br><br>                    
 <?php
-$query_blog_cmnt = "select a.*, b.* from student_talk_comment a, register b where a.added_by = b.id  order by a.id desc" ;
+$query_blog_cmnt = "select a.*, b.* from student_talk_comment a, register b where a.added_by = b.id and postId = ".$_GET['id']." order by a.id desc" ;
+
 $result_cmnt = mysql_query($query_blog_cmnt);
 if(mysql_num_rows($result_cmnt) > 0)
 {

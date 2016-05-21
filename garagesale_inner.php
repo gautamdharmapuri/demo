@@ -171,13 +171,7 @@ else
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>     
 	
 	
 
@@ -209,13 +203,7 @@ else
                                              <option value="<?php echo $rs_cat['name'];?>"><?php echo $rs_cat['name'];?></option>
 											<?php $cnt++;   } ?>
                                             
-                                            <?php /*?> <option value="TV">TV</option>
-                                             <option value="Blueray/DVD Players">Blueray/DVD Players</option>
-                                             <option value="Blueray/DVD Casetts">Blueray/DVD Casetts</option>
-                                             <option value="Fridge">Fridge</option>
-                                             <option value="Lights">Lights</option>
-                                             <option value="Desktop">Desktop</option>
-                                             <option value="Grinder/Mixie">Grinder/Mixie</option> <?php */?>                                            
+                                           
                                             </select>
                                             <br>
                                             
@@ -255,9 +243,6 @@ if(isset($_SESSION['Nris_session']))
 
 
 </div>    <br>
-                     <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
-
-
 
 
 <table align="center" >
@@ -275,18 +260,7 @@ if(isset($_SESSION['Nris_session']))
                                                                             
                                                                               
 																				<?php
-																				//	if($States!='ALL' && $States!='multiple')
-			
 																				
-			//		$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL')  order by a.id desc";	
-			
-			//		$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.id desc";	
-			
-	//				$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL') and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.id desc";	
-	
-	
-		//			$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL') or (  select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.id desc)";	
-		
 		$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 		if(isset($_POST['cmdsubmit']))
 		{
@@ -314,7 +288,15 @@ if(isset($_SESSION['Nris_session']))
 								<img src="images/image-icon.png">
 							<?php } ?>
 						<a href="garagesale_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	
-                    <td><a href="garagesale_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['City']);?></a></td>
+                    <td><a href="garagesale_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+						<?php
+					$query1 = "SELECT * FROM cities WHERE id = '".$rs['City']."'";
+					$result_city = mysql_query($query1);
+					$result_city2 = mysql_fetch_array($result_city);
+					echo ucwords($result_city2['city']);
+				?>
+						
+					</a></td>
                     <td><a href="garagesale_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>
 			<?php }   ?>

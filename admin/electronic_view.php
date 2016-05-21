@@ -109,7 +109,7 @@
                                        <thead>
                                        		<tr>
                                        		<th>Contact Number</th>                                         
-                                             <th> <?php    echo ucwords($rs['ConatctNumber']);   ?> </th>
+                                             <th> <a class="call_link" href="tel:<?php echo $rs['ConatctNumber']; ?>"><?php echo ucwords($rs['ConatctNumber']); ?></a> </th>
                                          	</tr>
                                        </thead>
                                        

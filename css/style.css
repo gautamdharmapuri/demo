@@ -3049,7 +3049,7 @@ text-align:justify;
     display: block;
     float: left;
     height: 60px;
-    opacity: 0.75;
+    /*opacity: 0.75;*/
     transition: all 0.2s ease 0s;
     width: 50px;
 }
@@ -3072,7 +3072,9 @@ text-align:justify;
     background-position: 0 -186px;
 }
 
-
+.call_link{
+    color: #2eb1fd !important;
+}
 
 
 

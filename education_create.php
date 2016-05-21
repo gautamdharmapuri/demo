@@ -13,13 +13,13 @@ else
 
 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
-	$query_count = "select count(id) cnt from post_free_education
+	$query_count = "select count(id) as cnt from post_free_education
 					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
 					and CONCAT(`date`,' ',`time`) < now()
 					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
 	$result_count = mysql_query($query_count);                                                
 	$result_count = mysql_fetch_array($result_count);
-	if($result_count['cnt'] > 3) {
+	if($result_count['cnt'] >= 3) {
 		header('location:adcheck.php?redirect=education_create&State='.$state);
 		exit;
 	}
@@ -150,6 +150,28 @@ label
 font-weight:500;
 color:#000000;
 }
+#warning_popup , #images_popup{
+                position:absolute;	
+                height:auto !important;
+                border:5px solid #000;
+                z-index: 9002;
+                background-color:#FFFFFF;
+                top:0%;
+                overflow: auto;
+                padding:10px;
+                left:25% !important;
+                top:0% !important;	
+
+            }
+
+            #warning_popup h3, #images_popup h3
+            {
+                font-size:14px;
+            }
+            .mydata { color:#000000;text-align:justify;line-height:22px;font-family: 'Roboto', sans-serif;font-size:16px;line-height:26px; }
+
+            #warning_popup a, #images_popup a {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
+            #warning_popup a:hover, #images_popup a:hover{top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
 </style>
 
 
@@ -202,7 +224,7 @@ if(isset($_POST['Submit']))
 		$EndDate = test_input($_POST["EndDate"]);		
 		
 		
-		
+		if($_FILES["my_file1"]["name"] != '') {
 		$round=rand(1000,100000);
 		$fileName1=$_FILES["my_file1"]["name"];
 		$fileSize1=$_FILES["my_file1"]["size"]/1024;
@@ -222,7 +244,7 @@ if(isset($_POST['Submit']))
 		{
   			$Error .= "Maximum upload file size limit is 200 kb.<br>";
 		}
-	
+		}
 	
 		$adPosttype = test_input($_POST["adPosttype"]);	
 		if($adPosttype!='')	
@@ -522,7 +544,7 @@ if(isset($_POST['Submit']))
 		
 											
 		$date = date("Y-m-d");
-		$time = date("h:m:s");	
+		$time = date("H:i:s");	
 		
 	
 		if ($Error=='')
@@ -608,13 +630,7 @@ function test_input($data) {
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>     
 	
 	
 
@@ -1010,38 +1026,6 @@ function test_input($data) {
 
 
 
-
-
-
-<!-- All States in USA Modal -->
-  <div class="modal fade" id="ALL" role="dialog">
-    <div class="modal-dialog">
-    
-      <!-- Modal content-->
-      <div class="modal-content">
-        <div class="modal-header">         
-          <h4 class="modal-title"><center>Warning!</center></h4>
-        </div>
-        <div class="modal-body">
-			
-             <div id="myLoginuser"></div>  
-            <div>
-           
-          This site is providing option to post a free advertisement to be displayed in all states in United States just with one click, please co-operate with site administration by not posting unnecessary advertisments in Entire United States , and by click on agreeing button at the bottom I agree that after 10 misuses of this feature my account will be terminated permanently from nris.com 
-            </div>
-          
-            
-            
-            
-        </div>
-        <div class="modal-footer" style="clear:both;">
-          <button type="button" class="btn btn-default" data-dismiss="modal" style="background-color:#FF9900;color:#FFFFFF;">Agree</button>
-        </div>
-      </div>
-      
-    </div>
-  </div>
-<!-- All States in USA Modal -->    
 
 
 <div id="warning_popup" style="display:none;">

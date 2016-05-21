@@ -1,6 +1,6 @@
 <script src="widget/astrovisionjs.js"></script>
 <link href="widget/astrovisioncss.css" rel="stylesheet">
-<div id="astro_widget" style="border:1px solid black;padding: 5px;"><div id="astro_widget_content">
+<div id="astro_widget"><div id="astro_widget_content">
 </div>
 </div>
     <script>var widget = new avWidgetAstroCalendar('astro_widget');</script>

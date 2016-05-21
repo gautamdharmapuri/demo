@@ -171,13 +171,7 @@ else
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>     
 	
 	
 
@@ -266,18 +260,7 @@ else
                                                                             
                                                                               
 																				<?php
-																				//	if($States!='ALL' && $States!='multiple')
-			
 																				
-			//		$query = "select a.*, b.name, c.model_name from post_free_baby_sitting a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL')  order by a.total_views desc";	
-			
-			//		$query = "select a.*, b.name, c.model_name from post_free_baby_sitting a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.total_views desc";	
-			
-	//				$query = "select a.*, b.name, c.model_name from post_free_baby_sitting a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL') and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.total_views desc";	
-	
-	
-		//			$query = "select a.*, b.name, c.model_name from post_free_baby_sitting a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL') or (  select a.*, b.name, c.model_name from post_free_baby_sitting a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.total_views desc)";	
-		
 		$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 
 		if(isset($_POST['cmdsubmit']))
@@ -305,7 +288,15 @@ else
 							<?php } ?>
 													<a href="baby_sitting_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
                                                 <td><a href="baby_sitting_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
-                                                <td><a href="baby_sitting_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['City']);?></a></td>
+                                                <td><a href="baby_sitting_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+													<?php
+					$query1 = "SELECT * FROM cities WHERE id = '".$rs['City']."'";
+					$result_city = mysql_query($query1);
+					$result_city2 = mysql_fetch_array($result_city);
+					echo ucwords($result_city2['city']);
+				?>
+				</a></td>
+												</a></td>
                                                <td><a href="baby_sitting_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                                                                 </tr>
                                                                             <?php }   ?>

@@ -75,10 +75,10 @@ else
         <li><a href="discussion_room.php"><?php echo $state;?> NRI's talk</a></li>
         <li><a href="javascript:;"> <?php echo $state;?> Box Office</a>
             <ul class="subnav">
-            <li><a href="theaters.php?type=<?php echo urlencode('$1 Movie Theaters');?>">$1 Movie Theaters</a></li>
-            <li><a href="theaters.php?type=<?php echo urlencode('$ Saving Theaters');?>">$ Saving Theaters</a></li>
-            <li><a href="theaters.php?type=<?php echo urlencode('Top Rated Movie Theaters');?>">Top Rated Movie Theaters</a></li>
-            <li><a href="theaters.php?type=<?php echo urlencode('Open Theaters(Drive in Theaters)');?>">Open Theaters(Drive in Theaters)</a></li>          
+            <li><a href="theaters.php?type=<?php echo urlencode('$1 Movie Theaters');?>&State=<?php echo $defaultState;?>">$1 Movie Theaters</a></li>
+            <li><a href="theaters.php?type=<?php echo urlencode('$ Saving Theaters');?>&State=<?php echo $defaultState;?>">$ Saving Theaters</a></li>
+            <li><a href="theaters.php?type=<?php echo urlencode('Top Rated Movie Theaters');?>&State=<?php echo $defaultState;?>">Top Rated Movie Theaters</a></li>
+            <li><a href="theaters.php?type=<?php echo urlencode('Open Theaters(Drive in Theaters)');?>&State=<?php echo $defaultState;?>">Open Theaters(Drive in Theaters)</a></li>          
             </ul>
         </li> 
         
@@ -159,9 +159,9 @@ else
         </ul>
         </li>
         
-        <li><a href="javascript:;"><?php echo ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']) ?> Carpool</a>
+        <li><a href="javascript:;"><?php echo $defaultState;?> Carpool</a>
         <ul>
-        <li><a href="localcarpool.php"><?php echo ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']) ?> Local carpool</a></li>
+        <li><a href="localcarpool.php"><?php echo $defaultState; ?> Local carpool</a></li>
 		<li><a href="carpool.php">Inter state Carpool</a></li>
 		<li><a href="intercarpool.php">International carpool</a></li>		
         </ul>

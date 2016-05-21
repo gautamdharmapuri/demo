@@ -118,10 +118,10 @@ $current_date = date('Y-m-d');
 	
 	<div class="clearfix"></div>
 
-    
 		<div class="stock-scroll">
 		
 				<div class="col-md-8">
+						
                 </div>
        
         </div>     
@@ -143,7 +143,7 @@ $current_date = date('Y-m-d');
                                 <div class="left-section-1 col-md-2">
                                     <script src="widget/astrovisionjs.js"></script>
 <link href="widget/astrovisioncss.css" rel="stylesheet">
-<div id="astro_widget" style="border:1px solid black;padding: 5px;"><div id="astro_widget_content">
+<div id="astro_widget"><div id="astro_widget_content">
 </div>
 </div>
                                 </div>
@@ -163,7 +163,8 @@ $current_date = date('Y-m-d');
                     <ul class="advert-grp" id="advert-grp">
                         <?php
                         
-                            $home_middle_query1 = "select * from us_ads where ad_position='Home-Top-Center-4' and status='Active' order by id desc";
+                            $home_middle_query1 = "select * from us_ads where ad_position='Home-Top-Center-4'
+							and status='Active' order by id desc";
                             $home_middle_res1 = mysql_query($home_middle_query1);
                             while ($home_dm1 = mysql_fetch_array($home_middle_res1)) {
                         ?>
@@ -212,25 +213,25 @@ $current_date = date('Y-m-d');
 																		</div>
 															<?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_auto.id DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_auto.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_education.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_education.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_electronics.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR State2 LIKE '%".$state."%') ORDER BY post_free_electronics.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_garage_sale.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_garage_sale.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_job.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_job.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_real_estate.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_real_estate.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_roommates.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_roommates.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_stuff.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_stuff.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_mypart.id DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_mypart.id DESC LIMIT 12)) s
 																		ORDER BY date DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;	
@@ -263,93 +264,6 @@ $current_date = date('Y-m-d');
                                                           </div>    
                                                       </li>
                                                       
-                                                      <li data-content="post-ad">
-                                                      <div class="content-tab">
-                                                             
-                                                              <?php
-																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_auto.total_views DESC LIMIT 12)
-																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,total_views,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_baby_sitting.total_views DESC LIMIT 12)
-																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,total_views,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_education.total_views DESC LIMIT 12)
-																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,total_views,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_electronics.total_views DESC LIMIT 12)
-																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,total_views,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_garage_sale.total_views DESC LIMIT 12)
-																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,total_views,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_job.total_views DESC LIMIT 12)
-																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,total_views,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_real_estate.total_views DESC LIMIT 12)
-																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,total_views,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_roommates.total_views DESC LIMIT 12)
-																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,total_views,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_stuff.total_views DESC LIMIT 12)
-																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,total_views,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' ORDER BY post_free_mypart.total_views DESC LIMIT 12)) s
-																		ORDER BY total_views DESC LIMIT 12";
-																		$result = mysql_query($query);
-																		$i=1;					
-																		while($rs=mysql_fetch_array($result)) {
-																					$color = '';	
-																		if($i++%2 == 0) {
-																				$color = '#E6E6E6';	
-																		} else {
-																				$color = '#CCC';	
-																		}
-															?>
-                                                              <a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
-																		<div class="col-md-12" style="padding: 0px;">
-																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
-																					<img src="images/map-icon.png">
-																		<?php } ?>
-																		<?php if($rs['image'] != '') { ?>
-																					<img src="images/image-icon.png">
-																		<?php } ?>
-																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
-																				<div class="col-md-3" style="padding: 1px;"><span><?php echo $rs['category'];?></span></div>
-																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['totViews'];?></span></div>
-																		</div>
-																		</a>
-															<?php } ?>
-                                                        </div>    
-                                                      </li>
-                                                      <li data-content="relegious">
-                                                          <div class="content-tab">
-                                                             <?php
-															 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-															 $query = "SELECT * FROM post_free_stuff WHERE TitleAD != '' AND AdPostType = 'premium' AND States LIKE '%".$state."%' ORDER BY id desc LIMIT 8;";
-																		$result = mysql_query($query);
-																		$i=1;
-																		if(mysql_numrows($result) > 0) {
-																		while($rs=mysql_fetch_array($result)) {
-																					$color = '';	
-																		if($i++%2 == 0) {
-																				$color = '#E6E6E6';	
-																		} else {
-																				$color = '#CCC';	
-																		} 
-															 ?>
-                                                              <a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'" style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
-																		<div class="col-md-12" style="padding: 0px;">
-																				<div class="col-md-7" style="padding: 2px;"><?php if($rs['address'] != '') { ?>
-																					<img src="images/map-icon.png">
-																		<?php } ?>
-																		<?php if($rs['image'] != '') { ?>
-																					<img src="images/image-icon.png">
-																		<?php } ?>
-																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
-																				<div class="col-md-3" style="padding: 1px;"><span>Free Stuff</span></div>
-																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['total_views'];?></span></div>
-																		</div>
-																		</a>
-															  
-															  <?php } } else { ?>
-																		<p><span>No Result found</span></p>
-															  <?php } ?>
-                                                          </div>    
-                                                      </li>
-                                                      
                                                   </ul> <!-- cd-tabs-content ends -->
                                                   
                             </div> <!-- cd-tabs ends-->
@@ -359,7 +273,7 @@ $current_date = date('Y-m-d');
                     <!-- TOP SECTION RIGHT STARTS -->
                     <div class="top-section-one-right">
                     	<div class="full-btn-purple">
-                        	<a href="#" data-toggle="modal" data-target="#change_state" style="padding: 5px 5px;">Switch State</a>
+                        	<a href="#" data-toggle="modal" data-target="#change_state1" style="padding: 5px 5px;">Switch State</a>
                         </div>
                         
                         <div class="full-btn-orange">
@@ -421,15 +335,48 @@ $current_date = date('Y-m-d');
 												<?php } ?>
 									</div> <!-- cd-tabs ends-->
                         </div><!-- MOVIES ends-->
-                    
-					<div class="nri-talk" style="float:left;height:149px;width:100%;">
+                    <?php
+									$query = "SELECT fam_city_movies.*,cities.city as cityname FROM fam_city_movies,cities
+												WHERE image != '' AND status = 'Active'
+												AND cities.id = city_id
+												AND fam_city_movies.state_code LIKE '%".$state."%'
+												ORDER BY fam_city_movies.id desc LIMIT 5;";
+											   $result = mysql_query($query);
+											   $movieArr = array();
+												if(mysql_numrows($result) > 0) {
+															while($rs = mysql_fetch_array($result)) {
+																		$movieArr[] = $rs;	
+															}
+															if($movieArr == 5) {	
+															} else {
+																		for($t = 0 ; $t < 6-count($movieArr) ; $t++) {
+																					if(count($movieArr) < 5) {
+																								$movieArr[] = array();	
+																					}
+																		}
+															}
+												}
+							?>
+					<div class="nri-talk" style="float:left;height:auto !important;width:100%;">
                                 <div class="heading-plain">
                                 <h3>Show Timings and Places</h3>
                                 </div>
                                 <ul style="padding:0px 9px;height:115px;">
-									<?php foreach($movieArr as $movie) { ?>
-												<li><a href="desi_movie_detail.php?id=<?php echo md5($movie['id']);?>"><?php echo $movie['name'];?></a></li>
-									<?php } ?>
+									<?php foreach($movieArr as $movie) { if(count($movie) > 0) { ?>
+												<li>
+															<?php $movieId = $movie['id'];?>
+															<a href="javascript:;" onclick="getMovieDetails('<?php echo $movieId;?>');"><!-- desi_movie_detail.php?id=< ?php echo md5($movie['id']);?> -->
+																		<?php echo $movie['name'];?>
+															</a>
+															<div style="display:none;" class="movie_details_class" id="movie_details_div_<?php echo $movieId;?>">
+																		<?php echo $movie['additional_info'];?>
+															</div>
+												</li>
+									<?php } else {
+									?>
+												<li><a href="javascript:;">No Movie</a></li>
+									<?php 			
+									} }?>
                                 </ul>
                             </div>
 					
@@ -451,6 +398,7 @@ $current_date = date('Y-m-d');
 												$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 												$query = "SELECT * FROM fam_advertisement
 															WHERE image != '' AND edate >= now() AND ad_position = 'Right Side'
+															AND NOW() <= sdate + INTERVAL 30 DAY
 															AND state_code LIKE '%".$state."%'
 															ORDER BY ad_position_no asc LIMIT 10;";
 														   $result = mysql_query($query);
@@ -481,24 +429,8 @@ $current_date = date('Y-m-d');
 
  <!-- NEW  SECTION -->
                  	<div class="table-section-new">
-                   
-                    <div id="doc-menu">
-                            <a href="auto_inner.php?code=<?php echo $_SESSION['state'] ?>">Autos</a>
-                            <a href="baby_sitting_inner.php?code=<?php echo $_SESSION['state'] ?>">Baby Sitting</a>
-                            <a href="education_inner.php?code=<?php echo $_SESSION['state'] ?>">Education & Teaching</a>
-							<a href="electronics_inner.php?code=<?php echo $_SESSION['state'] ?>">Electronics</a>    
-                            <a href="free_stuff_inner.php?code=<?php echo $_SESSION['state'] ?>">Free Stuff</a>
-							 <a href="garagesale_inner.php?code=<?php echo $_SESSION['state'] ?>">Garage Sale</a>							
-                            <a href="jobs_inner.php?code=<?php echo $_SESSION['state'] ?>">Jobs</a>
-                            <a href="mypartner_inner.php?code=<?php echo $_SESSION['state'] ?>">My Partner</a> 
-                            <a href="roommates_inner.php?code=<?php echo $_SESSION['state'] ?>">Roommates</a>
-                            <a href="realestate_inner.php?code=<?php echo $_SESSION['state'] ?>">Real Estate</a>                           
-                    </div>
-                    
-                       <div class="left-table">
-                       
-                               
-                                        
+						<div class="">
+							 
                                         <?php
                                         if(isset($_SESSION['Nris_session']))	  
                                         { ?>
@@ -509,6 +441,24 @@ $current_date = date('Y-m-d');
                                          <a href="#" id="premium_custom_btn" data-toggle="modal" data-toggle="modal" data-target="#myModal" class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
 
                                          <?php } ?>   <br>  
+						</div>
+                    
+                    
+                       <div class="left-table">
+                       
+                            <div id="doc-menu">
+                            <a href="auto_inner.php?code=<?php echo $_SESSION['state'] ?>">Autos</a>
+                            <a href="baby_sitting_inner.php?code=<?php echo $_SESSION['state'] ?>">Baby Sitting</a>
+                            <a href="education_inner.php?code=<?php echo $_SESSION['state'] ?>">Education & Teaching</a>
+							<a href="electronics_inner.php?code=<?php echo $_SESSION['state'] ?>">Electronics</a>    
+                            <a href="free_stuff_inner.php?code=<?php echo $_SESSION['state'] ?>">Free Stuff</a>
+							 <a href="garagesale_inner.php?code=<?php echo $_SESSION['state'] ?>">Garage Sale</a>							
+                            <a href="jobs_inner.php?code=<?php echo $_SESSION['state'] ?>">Jobs</a>
+                            <a href="mypartner_inner.php?code=<?php echo $_SESSION['state'] ?>">My Partner</a> 
+                            <a href="roommates_inner.php?code=<?php echo $_SESSION['state'] ?>">Roommates</a>
+                            <a href="realestate_inner.php?code=<?php echo $_SESSION['state'] ?>">Real Estate</a>                           
+                    </div>   
+                                        
                                
                                 
                                 
@@ -618,7 +568,7 @@ $current_date = date('Y-m-d');
                         
                                 
                                 
-                       		 <div class="cd-tabs table-margin" style="margin-top:54px;">
+                       		 <div class="cd-tabs table-margin">
                                                   <nav class="tab-head">
                                                       <ul class="cd-tabs-navigation" style="width:100%;">
                                                           <li class="tab-size tab-one"><a style="text-align:center;height: 40px;padding:11px 19px;" data-content="hot-list" class="selected" href="#0">Recent Ads</a></li>
@@ -637,25 +587,25 @@ $current_date = date('Y-m-d');
 																		</div>
 															<?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.id DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_auto.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_education.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_education.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_electronics.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR State2 LIKE '%".$state."%') ORDER BY post_free_electronics.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_garage_sale.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_garage_sale.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_job.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_job.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_real_estate.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_real_estate.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_roommates.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_roommates.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_stuff.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_stuff.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_mypart.id DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_mypart.id DESC LIMIT 12)) s
 																		ORDER BY date DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;					
@@ -694,25 +644,25 @@ $current_date = date('Y-m-d');
 																		</div>
 															<?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_auto.total_views DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_auto.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,total_views,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_baby_sitting.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,total_views,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_baby_sitting.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,total_views,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_education.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,total_views,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_education.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,total_views,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_electronics.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,total_views,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR State2 LIKE '%".$state."%') ORDER BY post_free_electronics.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,total_views,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_garage_sale.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,total_views,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_garage_sale.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,total_views,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_job.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,total_views,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_job.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,total_views,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_real_estate.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,total_views,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_real_estate.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,total_views,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_roommates.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,total_views,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_roommates.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,total_views,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_stuff.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,total_views,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_stuff.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,total_views,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' ORDER BY post_free_mypart.total_views DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,total_views,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_mypart.total_views DESC LIMIT 12)) s
 																		ORDER BY total_views DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;					
@@ -749,7 +699,7 @@ $current_date = date('Y-m-d');
 																		</div>
                                                              <?php
 															 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-															 $query = "SELECT * FROM post_free_stuff WHERE TitleAD != '' AND AdPostType != 'premium' AND States LIKE '%".$state."%' ORDER BY id desc LIMIT 8;";
+															 $query = "SELECT * FROM post_free_stuff WHERE TitleAD != '' AND AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY id desc LIMIT 8;";
 															 
 																		$result = mysql_query($query);
 																		if(mysql_numrows($result) > 0) {
@@ -789,7 +739,7 @@ $current_date = date('Y-m-d');
                        
                        <div class="right-table">
                            
-                             <div class="movies">
+                             <div class="movies" style="padding-top: 23px;">
                             <div class="full-btn">
                                 <a href="#"><?php echo $_SESSION['state']; ?> - EVENTS </a>
                             </div>
@@ -890,6 +840,7 @@ $current_date = date('Y-m-d');
 												$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 												$query = "SELECT * FROM fam_advertisement
 															WHERE image != '' AND edate >= now() AND ad_position = 'Left Side'
+															AND NOW() <= sdate + INTERVAL 30 DAY
 															AND state_code LIKE '%".$state."%'
 															ORDER BY ad_position_no asc LIMIT 10;";
 														   $result = mysql_query($query);
@@ -1169,112 +1120,8 @@ $current_date = date('Y-m-d');
            
   </div><!-- right-section-1 ENDS -->
 </div><!-- End Section-1 -->
-	
-	 <?php include "config/footer.php"  ; ?><!--End footer -->
-
-
-<div class="go-up"><i class="fa fa-chevron-up"></i></div>
-<script src="js/tab/jquery-2.1.1.js"></script>
-<script src="js/tab/main.js"></script> <!-- Resource jQuery -->
-
-
-<!-- js -->
-
-<script src="js/html5.js"></script>
-<script src="js/custom.js"></script>
-
-
-
-
-
-
-    <script>var widget = new avWidgetAstroCalendar('astro_widget');</script>
-
-    <script src="widget/jquery.simpleWeather.min.js"></script>
-    <script src="widget/moment.js"></script>
-    <script src="widget/moment-timezone.js"></script>
-    <script src="widget/jstz.min.js"></script>
-    <script src="widget/jqIpLocation.js"></script>
-    <script>
-        jQuery.noConflict();
-        jQuery(document).ready(function () {
-            setInterval(function () {
-                jQuery.getJSON("http://www.telize.com/geoip?callback=?", function (data) {
-                    bwea(data);
-                });
-            }, 10000);
-
-
-            var bwea = function (pos) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    loadWeather(position.coords.latitude + ',' + position.coords.longitude); //load weather using your lat/lng coordinates
-                }, function(){
-                    loadWeather(pos.latitude + ',' + pos.longitude); //load weather using your lat/lng coordinates
-                });
-
-                //loadWeather(pos.latitude + ',' + pos.longitude); //load weather using your lat/lng coordinates
-
-                function loadWeather(location, woeid) {
-                    jQuery.simpleWeather({
-                        location: location,
-                        woeid: woeid,
-                        unit: 'f',
-                        success: function (weather) {
-                            var url = weather.image;
-                            var city = weather.city;
-                            var region = weather.region;
-                            var place = city + ", " + region;
-
-                            var tz = jstz.determine();
-                            var name = tz.name();
-
-                            var d = new Date();
-                            //                            var day = moment(d).tz(name).format('hh:mma z');
-                            var day = moment(d).format('hh:mma z');
-
-                            var n = '<div id="wrap" style="line-height: 31px; width: 144px; text-align: center; float: left; color: black; font-weight: bold;"><div id="temp" style="line-height: 31px; width: 48px; text-align: center; float: left; color: black; font-weight: bold; }">' + weather.temp + '&deg;' + 'F' + '</div><div id="place" style="float: left; height: 50%; width: 95px; font-size: 9px; text-align: center; line-height: 14px;">' + place + '</div><div id="time" style=" text-align: center; font-size: 11px; line-height: 14px; float: left; height: 50%; width: 95px;">' + day + '</div></div>';
-                            var durl = 'images/daysky.JPG';
-                            jQuery('#astro_widget').css({ "background": "url('" + durl + "')", "background-repeat": "no-repeat"});
-                            jQuery('#astro_widget_content').css({ "background": "url('" + url + "')", "background-repeat": "no-repeat", "background-size":"auto 147px"  });
-                            jQuery('div').find('.place.ac.fa.grey.pt10.cp').remove('.place.ac.fa.grey.pt10.cp');
-                            var l = jQuery('div').find('.haeder div#wrap').length;
-
-                            if (l == 0) {                                
-                                jQuery(n).appendTo('.haeder');
-                            } else {
-                                jQuery('.haeder div#wrap').replaceWith(n);
-                            }
-                        },
-                        error: function (error) {
-                            alert(error.message);
-                        }
-                    });
-                }
-            }
-        });
-    </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- End js -->
-<?php include "config/social.php" ;  ?>
-
-
-<!-- Modal  Switch State  Start-->
-<div class="modal fade" id="change_state" role="dialog">
+	<!-- Modal  Switch State  Start-->
+<div class="modal fade" id="change_state1" role="dialog">
 <div class="modal-dialog">
 
 <!-- Modal content-->
@@ -1329,6 +1176,112 @@ $current_date = date('Y-m-d');
 
 </div>
 </div>  
-<!-- Modal  Switch State  End -->  
+<!-- Modal  Switch State  End --> 
+	 <?php include "config/footer.php"  ; ?><!--End footer -->
+
+
+<div class="go-up"><i class="fa fa-chevron-up"></i></div>
+<script src="js/tab/jquery-2.1.1.js"></script>
+<script src="js/tab/main.js"></script> <!-- Resource jQuery -->
+
+
+<!-- js -->
+
+<script src="js/html5.js"></script>
+<script src="js/custom.js"></script>
+
+
+
+
+
+
+    <script>var widget = new avWidgetAstroCalendar('astro_widget');</script>
+
+    <script src="widget/jquery.simpleWeather.min.js"></script>
+    <script src="widget/moment.js"></script>
+    <script src="widget/moment-timezone.js"></script>
+    <script src="widget/jstz.min.js"></script>
+    <script src="widget/jqIpLocation.js"></script>
+    <script>
+        jQuery.noConflict();
+        jQuery(document).ready(function () {
+            setInterval(function () {
+                jQuery.getJSON("http://www.telize.com/geoip?callback=?", function (data) {
+                    bwea(data);
+                });
+            }, 10000);
+
+
+            var bwea = function (pos) {
+                navigator.geolocation.getCurrentPosition(function (position) {
+                    loadWeather(position.coords.latitude + ',' + position.coords.longitude); //load weather using your lat/lng coordinates
+                }, function(){
+                    loadWeather(pos.latitude + ',' + pos.longitude); //load weather using your lat/lng coordinates
+                });
+				
+                function loadWeather(location, woeid) {
+                    jQuery.simpleWeather({
+                        location: location,
+                        woeid: woeid,
+                        unit: 'f',
+                        success: function (weather) {
+                            var url = weather.image;
+                            var city = weather.city;
+                            var region = weather.region;
+                            var place = city + ", " + region;
+
+                            var tz = jstz.determine();
+                            var name = tz.name();
+
+                            var d = new Date();
+                            //                            var day = moment(d).tz(name).format('hh:mma z');
+                            var day = moment(d).format('hh:mma z');
+
+                            var n = '<div id="wrap" style="line-height: 31px; width: 144px; text-align: center; float: left; color: black; font-weight: bold;"><div id="temp" style="line-height: 31px; width: 48px; text-align: center; float: left; color: black; font-weight: bold; }">' + weather.temp + '&deg;' + 'F' + '</div><div id="place" style="float: left; height: 50%; width: 95px; font-size: 9px; text-align: center; line-height: 14px;">' + place + '</div><div id="time" style=" text-align: center; font-size: 11px; line-height: 14px; float: left; height: 50%; width: 95px;">' + day + '</div></div>';
+                            var durl = 'images/daysky.JPG';
+                            jQuery('#astro_widget').css({ "background": "url('" + durl + "')", "background-repeat": "no-repeat"});
+                            jQuery('#astro_widget_content').css({ "background": "url('" + url + "')", "background-repeat": "no-repeat", "background-size":"auto 147px"  });
+                            jQuery('div').find('.place.ac.fa.grey.pt10.cp').remove('.place.ac.fa.grey.pt10.cp');
+                            var l = jQuery('div').find('.haeder div#wrap').length;
+
+                            if (l == 0) {                                
+                                jQuery(n).appendTo('.haeder');
+                            } else {
+                                jQuery('.haeder div#wrap').replaceWith(n);
+                            }
+                        },
+                        error: function (error) {
+                            alert(error.message);
+                        }
+                    });
+                }
+            }
+        });
+		function getMovieDetails(movieId) {
+						jQuery('.movie_details_class').not('#movie_details_div_'+movieId).hide();
+						jQuery('#movie_details_div_'+movieId).slideToggle();
+					}
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- End js -->
+<?php include "config/social.php" ;  ?>
+
+
+ 
 </body>
 </html>

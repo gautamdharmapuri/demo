@@ -163,13 +163,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>   
 	
 	
 
@@ -475,13 +469,13 @@ if(true == $show_form)
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;">First Name</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Firstname" name="Firstname" placeholder="Your First Name" style="width:100%;" tabindex="1" />
+		<input type="text" class="form-control" id="Firstname" name="Firstname" placeholder="Your First Name" style="width:100%;" tabindex="1" required/>
 	</div>
 </div>
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;">Business</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Business" name="Business" placeholder="Your Business Name" style="width:100%;" tabindex="3" />
+		<input type="text" class="form-control" id="Business" name="Business" placeholder="Your Business Name" style="width:100%;" tabindex="3"  required/>
 	</div>
 </div>
 
@@ -503,7 +497,7 @@ if(true == $show_form)
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;">Message</label>
 	<div class="col-sm-8">
-    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="8"></textarea>
+    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="8" required></textarea>
 	</div>
 </div>
 
@@ -519,7 +513,7 @@ if(true == $show_form)
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;">Last Name</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Your Last Name" style="width:100%;" tabindex="2" />
+		<input type="text" class="form-control" id="Lastname" name="Lastname" placeholder="Your Last Name" style="width:100%;" tabindex="2"  required/>
 	</div>
 </div>
 
@@ -527,7 +521,7 @@ if(true == $show_form)
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;">E-mail</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Email" name="Email" placeholder="Your E-mail" style="width:100%;" tabindex="4" />
+		<input type="email" class="form-control" id="Email" name="Email" placeholder="Your E-mail" style="width:100%;" tabindex="4"  required/>
 	</div>
 </div>
 
@@ -535,7 +529,7 @@ if(true == $show_form)
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-size:13px;">Phone Number</label>
 	<div class="col-sm-8">
-		<input type="text" class="form-control" id="Phone" name="Phone" placeholder="Your Phone Number" style="width:100%;" tabindex="6" />
+		<input type="text" class="form-control" id="Phone" name="Phone" placeholder="Your Phone Number" style="width:100%;"  required tabindex="6" />
 	</div>
 </div>
 

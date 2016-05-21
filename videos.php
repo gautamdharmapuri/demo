@@ -89,15 +89,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 	
 	<div class="clearfix"></div>
 
-    
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
-	
+    <?php include_once('stock_block.php');?>
 	
 
      

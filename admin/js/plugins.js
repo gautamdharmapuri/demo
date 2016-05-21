@@ -7,7 +7,9 @@ $(function() {
                 $(".datepicker").datepicker({format: 'yyyy-mm-dd'}).on('changeDate', function(e){
     $(this).datepicker('hide');
 });                
-                $("#dp-2,#dp-3,#dp-4").datepicker(); // Sample
+                $("#dp-2,#dp-3,#dp-4").datepicker().on('changeDate', function(e){
+    $(this).datepicker('hide');
+});                ; // Sample
             }           
             
         }// END Bootstrap datepicker

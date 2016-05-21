@@ -3,13 +3,13 @@
 
 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
-	$query_count = "select count(id) cnt from post_free_electronics
+	$query_count = "select count(id) as cnt from post_free_electronics
 					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
 					and CONCAT(`date`,' ',`time`) < now()
 					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
 	$result_count = mysql_query($query_count);                                                
 	$result_count = mysql_fetch_array($result_count);
-	if($result_count['cnt'] > 3) {
+	if($result_count['cnt'] >= 3) {
 		header('location:adcheck.php?redirect=electronics_create&State='.$state);
 		exit;
 	}
@@ -174,7 +174,7 @@ if(isset($_POST['Submit']))
 		$EndDate = test_input($_POST["EndDate"]);		
 		
 		
-		
+		if($_FILES["my_file1"]["name"] != '') {
 		$round=rand(1000,100000);
 		$fileName1=$_FILES["my_file1"]["name"];
 		$fileSize1=$_FILES["my_file1"]["size"]/1024;
@@ -194,7 +194,7 @@ if(isset($_POST['Submit']))
 		{
   			$Error .= "Maximum upload file size limit is 200 kb.<br>";
 		}
-		
+		}
 		
 		$adPosttype = test_input($_POST["adPosttype"]);	
 		if($adPosttype!='')	
@@ -464,7 +464,7 @@ if(isset($_POST['Submit']))
 		
 											
 		$date = date("Y-m-d");
-		$time = date("h:m:s");	
+		$time = date("H:i:s");	
 		
 		$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 		if ($Error=='')
@@ -563,13 +563,7 @@ function test_input($data) {
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>    
 	
 	
 

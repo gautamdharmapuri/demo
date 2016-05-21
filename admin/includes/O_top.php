@@ -106,6 +106,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                         <a href="#"><span class="fa fa-link"></span> <span class="xn-text">Home Page Link</span></a>
                         <ul class="animated zoomIn">
                             <li><a href="us_ads.php"><span class="fa fa-image"></span> Home Page Ads</a></li>
+                            <li><a href="homepage_header.php"><span class="fa fa-image"></span>Home Page Header</a></li>
                             <li><a href="national_events.php"><span class="fa fa-calendar"></span> National Events</a></li>
                             <li><a href="national_batches.php"><span class="fa fa-cloud"></span> National Batches</a></li>                                                                        
                         </ul>

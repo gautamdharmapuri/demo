@@ -3,6 +3,7 @@
 						
 						$query = "SELECT * FROM us_ads
 									WHERE image != '' AND edate >= now() AND ad_position = 'Home-Left-Bottom'
+									AND NOW() <= sdate + INTERVAL 30 DAY 
 									AND status = 'Active'
 									ORDER BY ad_position_no asc LIMIT 10;";
 								   $result = mysql_query($query);

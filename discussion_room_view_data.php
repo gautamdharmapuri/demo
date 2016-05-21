@@ -181,13 +181,7 @@ mysql_query("update nris_talk set total_views='".$total_views."' where id = '".$
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>    
 	
 	
 

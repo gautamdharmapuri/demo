@@ -1,7 +1,8 @@
 <script type="text/javascript" src="css-pop.js"></script>
 <script type="text/javascript" src="js/blab.js"></script>
 <script type="text/javascript">
-	 
+	 var idleTime = 0;
+		  var chatCheck = true;
 	 jQuery(document).ready(function(){
 		  
 		  jQuery('.myImageClass').click(function(){
@@ -52,9 +53,37 @@
 						jQuery('#processeing_bar_'+thisId).remove();
 					}
 			   },200);
-		});  
+		});
+		  
+		  
+		  jQuery(document).ready(function () {
+			  //Increment the idle time counter every minute.
+			  var idleInterval = setInterval(timerIncrement, 1000); // 1 minute
+		  
+			  //Zero the idle timer on mouse movement.
+			  jQuery(this).mousemove(function (e) {
+				  idleTime = 0;
+			  });
+			  jQuery(this).keypress(function (e) {
+				  idleTime = 0;
+			  });
+		  });
+		  
+		  
 	 });
-	 
+	 function timerIncrement() {
+			  idleTime = idleTime + 1;
+			  if (idleTime > 4) { // 20 minutes
+				  //alert('idle');
+				  chatCheck = false;
+			  }
+		  }
+		  
+		  function chat_condition_click() {
+			   popup('chat_terms_conditions_popup');
+			   chatCheck = true;
+			   jQuery('.chat_header').trigger('click');
+		  }
 </script>
 
 <footer id="footer">
@@ -123,7 +152,7 @@
 					?>
 
             <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
-            <a href="auto_create.php?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+            <a href="state.php?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
             <?php if($fs_state['state_code']==$_SESSION['state']) { 
 			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
 			else { 	echo $fs_state['state'];  } ?>
@@ -338,34 +367,4 @@ a:hover.back-to-top {
 	background-color: #000;
 }
 </style>
-<script type="text/javascript">
-var idleTime = 0;
-var chatCheck = true;
-$(document).ready(function () {
-    //Increment the idle time counter every minute.
-    var idleInterval = setInterval(timerIncrement, 60000); // 1 minute
-
-    //Zero the idle timer on mouse movement.
-    $(this).mousemove(function (e) {
-        idleTime = 0;
-    });
-    $(this).keypress(function (e) {
-        idleTime = 0;
-    });
-});
-
-function timerIncrement() {
-    idleTime = idleTime + 1;
-    if (idleTime > 10) { // 20 minutes
-        //alert('idle');
-		chatCheck = false;
-    }
-}
-
-function chat_condition_click() {
-	 popup('chat_terms_conditions_popup');
-	 chatCheck = true;
-	 $('.chat_header').trigger('click');
-}
-</script>   
 

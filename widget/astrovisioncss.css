@@ -1,31 +1,31 @@
 /* CSS Document */
 
 #av_widget_148{ width:148px; overflow:visible; font-family:Arial, Helvetica, sans-serif;display:block;line-height:15px;}
-.haeder{ width:144px; height:75px;}
-.ddmmyy{width:144px; height:43px;}
-.dateday {width:48px; height:43px;}
+.haeder{ width:100%; height:auto;}
+.ddmmyy{width:100%; height:44px;}
+.dateday {width:33%; height:43px;}
 .date{width:48px; height:26px;  }
 .date_p{width:4px; height:26px;  }
 .date_dd{width:40px; height:26px; line-height:27px; font-size:28px;   }
 .date_n{width:4px; height:26px;  }
 .day{width:48px; height:16px;  font-size:14px; color:#F00  }
-.month {width:45px; height:43px;}
+.month {width:34%; height:43px;}
 .month_p{width:45px; height:6px; font-size:6px;}
 .month_n{width:45px; height:6px; font-size:6px;}
 .month_mm{width:45px; height:28px; line-height:28px;}
-.year{color:#F00; font-size:20px; line-height:38px;}
-.place{ width:144px; height:19px;overflow:hidden;}
-.calnstar{ width:144px; height:98px;}
-.calnstar_1{ width:144px; height:29px;}
-.calnstar_2{ width:144px; height:31px;}
+.year{color:#F00; font-size:20px; line-height:41px;width: 33%;}
+.place{ width:100%; height:19px;overflow:hidden;padding: 2px;}
+.calnstar{ width:100%; height:auto;}
+.calnstar_1{ width:100%; height:35px;border: 1px solid black;border-top: none;}
+.calnstar_2{ width:100%; height:35px;border: 1px solid black;}
 .calnstar_3{ width:144px; height:45px; }
 .calnstar_head{ width:144px; height:13px; }
 .calnstar_text{ width:144px; height:18px; }
-.calnstar_star{ width:144px; height:31px; }
+.calnstar_star{ width:100%; height:35px;border: 1px solid black;border-top: none; }
 .calnstar_sname{ width:141px; height:13px;}
 .linkboxold{width:140px; height:15px; border:2px solid #000;}
 .linkbox{width:auto; height:15px;}
-.linkboxrev{width:140px; height:15px; border:2px solid #000;background-color:black;}
+.linkboxrev{width:100%; height:15px; border:2px solid #000;background-color:black;text-align: center !important;}
 
 
 
@@ -58,7 +58,7 @@
 .wht{color:#fff;}
 .w60{ width:60px; }
 .grey{color:#666;}
-.shim1px{height:1px; width:100px; font-size:1px; display:block;}
+.shim1px{height:4px; width:100px; font-size:1px; display:block;}
 .shim2px{height:2px; width:100px; font-size:2px; display:block;}
 .pl3{padding-left:3px;}
 .pr4{padding-right:4px;}
@@ -68,7 +68,7 @@
 .tac{ text-align:center;}
 .ml5{ margin-left:5px;}
 
-.cp{cursor:pointer;}
+.cp{cursor:pointer;border: 1px solid black;}
 #back_link{ text-decoration:none;color:#2155ec;}
 .back_link{ text-decoration:none;color:#2155ec;}
 .avw_loading{ background:url('images/loading.gif') no-repeat center center; width:148px; height:50px; float:left;z-index:200;}
@@ -108,3 +108,8 @@
 .bbgrey{background-color:#cdcdcc;}
 .blue{color:#00afd5;}
 .pt13{ font-size:13px;}
+.haeder .cp ,.dateday,.month, .year{
+    border: 1px solid red;
+}
+.date_p .cp,.date_n .cp,.fa .cp,.calnstar_2 .cp {border: none;}
+.year{float: left !important;}

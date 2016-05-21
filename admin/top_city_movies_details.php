@@ -56,6 +56,10 @@ if(isset($_POST['submit']))
 				$status=stripslashes($status);
 				$status=mysql_real_escape_string($status);
 				
+				$additional_info = trim($_POST['additional_info']);	
+				$additional_info = stripslashes($additional_info);
+				$additional_info = mysql_real_escape_string($additional_info);
+				
 				$date=date('Y-m-d');
 				$time=date('h:m:s');	
 				
@@ -68,7 +72,9 @@ if(isset($_POST['submit']))
 				$others=stripslashes($others);
 				$others=mysql_real_escape_string($others);		
 				
-				
+				$address = trim($_POST['address']);					
+				$address = stripslashes($address);
+				$address = mysql_real_escape_string($address);
 				
 				
 				$round=rand(1000,100000);
@@ -83,7 +89,9 @@ if(isset($_POST['submit']))
 				$image=$_POST['imgId'];				
 									
 						
-				$query="update fam_city_movies set state_code='".$a."',city_id='".$b."',name='".$c."',url='".$url."',status='".$status."',image='".$image."',date='".$date."',time='".$time."' where id='".$_POST['id']."'";
+				$query="update fam_city_movies set state_code='".$a."',city_id='".$b."',
+				  name='".$c."',url='".$url."',status='".$status."',image='".$image."',date='".$date."',
+				  time='".$time."',address='".$address."',additional_info='".$additional_info."' where id='".$_POST['id']."'";
 				$result=mysql_query($query);
 				 echo "<script language='javascript' type='text/javascript'>alert('Top City Movie Details Updated sucsessfully');</script>";		 
 				 echo"<script language='javascript' type='text/javascript'>document.location='top_city_movies.php';</script>";
@@ -100,6 +108,10 @@ if(isset($_POST['submit']))
 				$b=stripslashes($ct);
 				$b=mysql_real_escape_string($b);
 				
+				$address = trim($_POST['address']);					
+				$address = stripslashes($address);
+				$address = mysql_real_escape_string($address);
+				
 				$name=trim($_POST['txtemplenm']);					
 				$c=stripslashes($name);
 				$c=mysql_real_escape_string($c);
@@ -112,7 +124,9 @@ if(isset($_POST['submit']))
 				$ph=stripslashes($ph);
 				$ph=mysql_real_escape_string($ph);
 				
-	
+				  $additional_info = trim($_POST['additional_info']);	
+				$additional_info = stripslashes($additional_info);
+				$additional_info = mysql_real_escape_string($additional_info);
 				
 				$add=trim($_POST['txtdesc']);	
 				$add=stripslashes($add);
@@ -141,12 +155,15 @@ if(isset($_POST['submit']))
 				
 				$round=rand(1000,100000);
 				
-				$image=$round."_".$_FILES['txtimage']['name'];
-				$img="uploads/city_movies/".$image;
-				move_uploaded_file($_FILES['txtimage']['tmp_name'],$img);
-				$img=$_FILES['txtimage']['name'];		
+				if($_FILES['txtimage']['name'] != '') {
+				  $image=$round."_".$_FILES['txtimage']['name'];
+				  $img="uploads/city_movies/".$image;
+				  move_uploaded_file($_FILES['txtimage']['tmp_name'],$img);
+				  $img=$_FILES['txtimage']['name'];		  
+				}
+				
 		
-		 $query="insert into fam_city_movies(state_code,city_id,name,url,status,image,date,time) values('".$a."','".$b."','".$c."','".$url."','".$status."','".$image."','".$date."','".$time."')";
+		 $query="insert into fam_city_movies(state_code,city_id,name,url,status,image,date,time,address,additional_info) values('".$a."','".$b."','".$c."','".$url."','".$status."','".$image."','".$date."','".$time."','".$address."','".$additional_info."')";
 		 $result=mysql_query($query);
 		 echo "<script language='javascript' type='text/javascript'>alert('Top City Movie added sucsessfully');</script>";		 
 		 echo"<script language='javascript' type='text/javascript'>document.location='top_city_movies.php';</script>";
@@ -336,7 +353,15 @@ if(isset($_POST['submit']))
                                                 </div>
                                             </div>
                                   
-                                  
+									<div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Movie Address</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <input type="text" name="address" id="address" class="form-control" value="<?php echo $rs['address']; ?>"/>
+                                            </div>                                            
+                                            <span class="help-block">Movie Address</span>                                        </div>
+                                    </div>
                                   
                                     <div class="form-group">
                                         <label class="col-md-3 col-xs-12 control-label">Movie Name</label>
@@ -359,7 +384,16 @@ if(isset($_POST['submit']))
                                             <span class="help-block">Movie URL</span>                                        </div>
                                     </div>
                                     
-                                    
+                                    <div class="form-group">
+                                        <label class="col-md-3 col-xs-12 control-label">Other Info</label>
+                                        <div class="col-md-6 col-xs-12">                                            
+                                            <div class="input-group">
+                                                <span class="input-group-addon"><span class="fa fa-pencil"></span></span>
+                                                <textarea name="additional_info" id="additional_info" class="form-control"><?php echo $rs['additional_info'];?></textarea>
+                                            </div>                                            
+                                            <span class="help-block">Other Info</span>                                        </div>
+                                    </div>
+									
                                     <div class="form-group">
                                                <label class="col-md-3 col-xs-12 control-label">Status</label>
                                                 <div class="col-md-6 col-xs-12"> 

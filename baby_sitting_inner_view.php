@@ -109,13 +109,7 @@ font-size:12px;
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>    
 	
 	
 
@@ -256,7 +250,11 @@ font-size:12px;
                                             <th>   
                                               <?php
                                                 if(isset($_SESSION['Nris_session']))	  
-                                                { echo ucwords($rs['ConatctNumber']);  } else { ?>
+                                                {
+													?>
+													<a class="call_link" href="tel:<?php echo $rs['ConatctNumber']; ?>"><?php echo ucwords($rs['ConatctNumber']); ?></a>
+												<?php
+												} else { ?>
 											 <a href=""  data-toggle="modal" data-target="#myModal" style="color:#990000;" >Click Here to View</a>
 											 <?php } ?> </th>  
                                          	</tr>

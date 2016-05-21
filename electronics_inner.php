@@ -171,13 +171,7 @@ else
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>    
 	
 	
 
@@ -304,7 +298,14 @@ if(isset($_SESSION['Nris_session']))
 							<?php } ?>
 													<a href="electronics_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
                                                 <td><a href="electronics_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
-                                                <td><a href="electronics_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['City']);?></a></td>
+                                                <td><a href="electronics_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+													<?php
+					$query1 = "SELECT * FROM cities WHERE id = '".$rs['City']."'";
+					$result_city = mysql_query($query1);
+					$result_city2 = mysql_fetch_array($result_city);
+					echo ucwords($result_city2['city']);
+				?>
+												</a></td>
                                                 <td><a href="electronics_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                                                 </tr>
                                                                             <?php }   ?>

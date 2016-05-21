@@ -1,18 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-//	echo $_SESSION['state'];
- ?>
+<?php error_reporting(0);  include"config/connection.php";	   ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -21,7 +7,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Education & Teaching Ad View | NRIs</title>
+	<title>Famous Theaters | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -53,11 +39,9 @@ else
     
     	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
 	<script src="js/tab/modernizr.js"></script> <!-- Modernizr -->
-    
-                <script src="css/modal/jquery.min.js"></script>            
-            <script src="css/modal/bootstrap.min.js"></script>
   <!--[if !IE]><!-->
-	
+	            <script src="css/modal/jquery.min.js"></script>            
+            <script src="css/modal/bootstrap.min.js"></script>
 	<!--<![endif]-->
 <style>
 .mydata { color:#000000;text-align:justify;line-height:22px; }
@@ -81,21 +65,83 @@ else
 { color:#FFFFFF;
 }
 
+</style>   
+<style>
+			th,td, tr {
+			text-align:center;
+			vertical-align:middle;
+			height:35px;
+		}
+	/*
+	Max width before this PARTICULAR table gets nasty
+	This query will take effect for any screen smaller than 760px
+	and also iPads specifically.
+	*/
+	@media
+	only screen and (max-width: 760px),
+	(min-device-width: 768px) and (max-device-width: 1024px)  {
 
-.polaroid img {
-  border: 10px solid #fff;
-  border-bottom: 45px solid #fff;
-  -webkit-box-shadow: 3px 3px 3px #777;
-     -moz-box-shadow: 3px 3px 3px #777;
-          box-shadow: 3px 3px 3px #777;
-}
-th
-{
-background-color:#f1f5f9;
-color:#56688a;
-font-size:12px;
-}
-</style>    
+		/* Force table to not be like tables anymore */
+		table, thead, tbody, th, td, tr {
+			display: block;
+			text-align:center;
+			vertical-align:central;
+		    height: auto;
+		    padding: 5px 0;
+		}
+
+		/* Hide table headers (but not display: none;, for accessibility) */
+		thead tr {
+			position: absolute;
+			top: -9999px;
+			left: -9999px;
+		}
+
+		tr { border: 1px solid #ccc; }
+
+		td {
+			/* Behave  like a "row" */
+			border: none;
+			border-bottom: 1px solid #eee;
+			position: relative;
+			padding-left: 50%;
+		}
+
+		td:before {
+			/* Now like a table header */
+			position: absolute;
+			/* Top/left values mimic padding */
+			top: 6px;
+			left: 6px;
+			width: 45%;
+			padding-right: 10px;
+			white-space: nowrap;
+		}
+
+		/*
+		Label the data
+		*/
+		td:nth-of-type(1):before { content: "Title"; }
+		td:nth-of-type(2):before { content: "Views"; }
+		td:nth-of-type(3):before { content: "Replies"; }
+	}
+
+	/* Smartphones (portrait and landscape) ----------- */
+	@media only screen
+	and (min-device-width : 320px)
+	and (max-device-width : 480px) {
+		body {
+			padding: 0;
+			margin: 0;
+			}
+		}
+
+	/* iPads (portrait and landscape) ----------- */
+	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+	
+	}
+
+	</style> 
 </head>
 <body>
 
@@ -103,24 +149,14 @@ font-size:12px;
 
 
 
-		<?php   include "config/menu_inner_state.php" ;  ?>
+	<?php include "config/menu_inner_state.php" ;  ?>
 	
 	<div class="clearfix"></div>
 
-    
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
-	
+    <?php include_once('stock_block.php');?>
 	
 
      
-     
-
      
     
 <!-- Section-1 WRAP START-->	
@@ -131,7 +167,7 @@ font-size:12px;
         
         
         <!-- COLUMN LEFT -->	
-        <?php include_once('state_common_left.php');?><!-- COLUMN LEFT ENDS -->	
+        <?php include_once('home_common_left.php');?><!-- COLUMN LEFT ENDS -->	
         
         <!-- COLUMN MIDDLE -->	
         <div class="col-md-8 inner-middle-wrap">
@@ -146,174 +182,174 @@ font-size:12px;
             
             <!-- FIRST TABLE -->
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
-
-        <?php
-			$query="select a.*, b.name from post_free_education a, eduation_teaching b where a.AdsCat = b.id  and md5(a.id) = '".$_GET['ViewId']."'"; 
-			$result=mysql_query($query);
-			$rs=mysql_fetch_array($result);	
-			
-					?>               
-                       
-       <div class="widget-temple">
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Education & Teaching</h4>
-  <?php
-if(isset($_SESSION['Nris_session']))	  
-{ ?>
-<a href="education_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
-<a href="education_create.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
- <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
-<a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
-<?php } ?>    
-
+   				
+<div class="widget-temple">
+	<h4><a href="index.php" style="color:#0033FF;">Home</a> >> <?php echo ucwords(urldecode($_GET['type']));?></h4>
 </div>    <br>
-               
-			   <div class="col-md-12" >
-			<?php for($k=1;$k<16;$k++) { ?>
-				<div class="col-md-3" >
-					<?php
-						$tempVar = $k;
-						if($k == 1) {
-							$tempVar = '';
-						}
-						if($rs['image'.$tempVar] != '') { ?>
-							<div class="col-sm-12">
-								<a href="javascript:;">
-									<img class="myImageClass" src="<?php echo 'uploads/education/'.$rs['image'.$tempVar];?>" style="width:100%;height:140px;">
-								</a>
-							</div>
-					<?php } ?>
-				</div>
-			<?php } ?>
-		</div>
-            
-			<div class="col-md-7" style="padding-top: 10px;">
-				
-            <table class="table table-bordered">
-                                       
-                                      
-                                   
-                                     
-                                     <thead>
-                                       		<tr>
-                                       		<th>Title</th>                                         
-                                             <th> <?php    echo ucwords($rs['TitleAD']);   ?> </th>
-                                         	</tr>
-                                     </thead>
-                                     
-                                     <thead>
-                                       		<tr>
-                                       		<th>Description</th>                                         
-                                             <th> <?php    echo ucfirst($rs['Message']);   ?> </th>
-                                         	</tr>
-                                     </thead>
-                                     
-                                     <thead>
-                                       		<tr>
-                                       		<th>Ad Category</th>                                         
-                                             <th> <?php    echo ucwords($rs['name']);   ?> </th>
-                                         	</tr>
-                                     </thead>
-                                    
-                                    <thead>
-                                       		<tr>
-                                       		<th>Contact Name</th>                                         
-                                             <th> <?php    echo ucwords($rs['ConatctNAME']);   ?> </th>
-                                         	</tr>
-                                       </thead>
-                                       
-                                       <thead>
-                                       		<tr>
-                                       		<th>Contact Number</th> 
-                                            <th>   
-                                              <?php
-                                                if(isset($_SESSION['Nris_session']))	  
-                                                { echo ucwords($rs['ConatctNumber']);  } else { ?>
-											 <a href=""  data-toggle="modal" data-target="#myModal" style="color:#990000;" >Click Here to View</a>
-											 <?php } ?> </th>  
-                                         	</tr>
-                                       </thead>
-                                       
-                                   
-                                       
-                                       
-                                       <?php  if($rs['ShowEmail']=='Yes') { ?>
-                                       
-                                       <thead>
-                                       		<tr>
-                                       		<th>Email</th> 
-                                            <th> 
-												<?php
-                                                if(isset($_SESSION['Nris_session']))	  
-                                                { echo strtolower($rs['ConatctEmail']);  } else { ?>
-											 <a href=""  data-toggle="modal" data-target="#myModal" style="color:#990000;" >Click Here to View</a>
-											 <?php } ?> </th>                                         
+                     <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
-                                         	</tr>
-                                       </thead>
-                                   <?php } ?>
-                                       
-                                      
-                                      
-                                      
-                                        
-                                     <thead>
-                                       		<tr>
-                                       		<th>City</th>                                         
-                                             <th> <?php    echo ucwords($rs['City']);   ?> </th>
-                                         	</tr>
-                                     </thead>
-                                     
-                                     <thead>
-                                       		<tr>
-                                       		<th>URL</th>                                         
-                                             <th> <?php    echo strtolower($rs['URL']);   ?> </th>
-                                         	</tr>
-                                     </thead>
-                                       
-                                       <thead>
-                                       		<tr>
-                                       		<th>Ad Expiry Date</th>                                         
-                                             <th> <?php echo date("d M, Y",strtotime($rs['EndDate'])); ?> </th>
-                                         	</tr>
-                                       </thead>
-                               
-                                    </table>           
-			</div>
-					
-					<div class="col-md-5" >
-		              
-<script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
-<script type="text/javascript">
-$(document).ready(function () {
-// Define the latitude and longitude positions
-var latitude = parseFloat("<?php echo $lat; ?>"); // Latitude get from above variable
-var longitude = parseFloat("<?php echo $lng; ?>"); // Longitude from same
-var latlngPos = new google.maps.LatLng(latitude, longitude);
-// Set up options for the Google map
-var myOptions = {
-zoom: 17,
-center: latlngPos,
-mapTypeId: google.maps.MapTypeId.ROADMAP,
-zoomControlOptions: true,
-zoomControlOptions: {
-style: google.maps.ZoomControlStyle.LARGE
-}
-};
-// Define the map
-map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
-// Add the marker
-var marker = new google.maps.Marker({
-position: latlngPos,
-map: map,
-title: "Address"
-});
-});
-</script>
-<div id="googleMap" style="width:100%;height:300px;" ></div>
-		</div>   
-  <br><br><br><br><br>
+
+<table align="center" >
+                                                                            <thead>
+                                                                            <tr>
+                                                                                
+                                                                                <th>Name</th>
+                                                                                <th>City</th>
+																				<th>Contact</th>
+                                                                            </tr>
+                                                                            </thead>
+                                                                            <tbody>
+                                                                            
+                                                                            
+                                                                              <?php
+
+	$targetpage = "theaters.php"; 	
+	$limit = 10; 
+	
+	$query = "SELECT * FROM fam_theaters WHERE theater_type = '".urldecode($_GET['type'])."' AND state_code = '".$_GET['State']."'";
+
+	$total_pages = mysql_query($query);
+	$total_pages = mysql_num_rows($total_pages);
+
+	
+//	$total_pages = $total_pages[num];
+	
+	$stages = 3;
+	$page = mysql_escape_string($_GET['page']);
+	if($page){
+		$start = ($page - 1) * $limit; 
+	}else{
+		$start = 0;	
+		}	
+	
+//	$query1 = "SELECT a.*,b.rate FROM fam_temples a , rating_temple b where a.id=b.temple_id  order by b.rate desc LIMIT $start, $limit";
+	$query1 = "SELECT fam_theaters.*,cities.city as cityName FROM fam_theaters
+				LEFT JOIN cities ON cities.id = fam_theaters.city_id
+				WHERE theater_type = '".urldecode($_GET['type'])."' AND fam_theaters.state_code = '".$_GET['State']."'
+				ORDER BY name DESC LIMIT $start, $limit";
+
+
+//	echo $query1;
+	
+	
+	$result = mysql_query($query1);
+	
+	// Initial page num setup
+	if ($page == 0){$page = 1;}
+	$prev = $page - 1;	
+	$next = $page + 1;							
+	$lastpage = ceil($total_pages/$limit);		
+	$LastPagem1 = $lastpage - 1;					
+	
+	
+	$paginate = '';
+	if($lastpage > 1)
+	{	
+	
+
+	
+	
+		$paginate .= "<div class='paginate'>";
+		// Previous
+		if ($page > 1){
+			$paginate.= "<a href='$targetpage?page=$prev'><i class='fa fa-angle-double-left'></i></a>";
+		}else{
+			$paginate.= "<span class='disabled'><i class='fa fa-angle-double-left'></i></span>";	}
+			
+
 		
+		// Pages	
+		if ($lastpage < 7 + ($stages * 2))	// Not enough pages to breaking it up
+		{	
+			for ($counter = 1; $counter <= $lastpage; $counter++)
+			{
+				if ($counter == $page){
+					$paginate.= "<span class='current'>$counter</span>";
+				}else{
+					$paginate.= "<a href='$targetpage?page=$counter'>$counter</a>";}					
+			}
+		}
+		elseif($lastpage > 5 + ($stages * 2))	// Enough pages to hide a few?
+		{
+			// Beginning only hide later pages
+			if($page < 1 + ($stages * 2))		
+			{
+				for ($counter = 1; $counter < 4 + ($stages * 2); $counter++)
+				{
+					if ($counter == $page){
+						$paginate.= "<span class='current'>$counter</span>";
+					}else{
+						$paginate.= "<a href='$targetpage?page=$counter'>$counter</a>";}					
+				}
+				$paginate.= "...";
+				$paginate.= "<a href='$targetpage?page=$LastPagem1'>$LastPagem1</a>";
+				$paginate.= "<a href='$targetpage?page=$lastpage'>$lastpage</a>";		
+			}
+			// Middle hide some front and some back
+			elseif($lastpage - ($stages * 2) > $page && $page > ($stages * 2))
+			{
+				$paginate.= "<a href='$targetpage?page=1'>1</a>";
+				$paginate.= "<a href='$targetpage?page=2'>2</a>";
+				$paginate.= "...";
+				for ($counter = $page - $stages; $counter <= $page + $stages; $counter++)
+				{
+					if ($counter == $page){
+						$paginate.= "<span class='current'>$counter</span>";
+					}else{
+						$paginate.= "<a href='$targetpage?page=$counter'>$counter</a>";}					
+				}
+				$paginate.= "...";
+				$paginate.= "<a href='$targetpage?page=$LastPagem1'>$LastPagem1</a>";
+				$paginate.= "<a href='$targetpage?page=$lastpage'>$lastpage</a>";		
+			}
+			// End only hide early pages
+			else
+			{
+				$paginate.= "<a href='$targetpage?page=1'>1</a>";
+				$paginate.= "<a href='$targetpage?page=2'>2</a>";
+				$paginate.= "...";
+				for ($counter = $lastpage - (2 + ($stages * 2)); $counter <= $lastpage; $counter++)
+				{
+					if ($counter == $page){
+						$paginate.= "<span class='current'>$counter</span>";
+					}else{
+						$paginate.= "<a href='$targetpage?page=$counter'>$counter</a>";}					
+				}
+			}
+		}
+					
+				// Next
+		if ($page < $counter - 1){ 
+			$paginate.= "<a href='$targetpage?page=$next'><i class='fa fa-angle-double-right'></i></a>";
+		}else{
+			$paginate.= "<span class='disabled'><i class='fa fa-angle-double-right'></i></span>";
+			}
+			
+		$paginate.= "</div>";		
+	
+	
+}
+
+				$i=1;
+				if(mysql_numrows($result) > 0) {
+				while($rs=mysql_fetch_array($result))
+				{ 
+				
+				?> 
+                            <tr>
+                                <td><a href="theater_view.php?ViewId=<?php echo md5($rs['id']);?>"><?php echo $rs['name'];?></a></td>
+								<td><?php echo $rs['cityName'];?></td>
+								<td><a class="call_link" href="tel:<?php echo $rs['contact']; ?>"><?php echo ucwords($rs['contact']); ?></a></td>
+                            </tr>
+                            <?php } }else { ?>
+								<tr><td colspan="3">No Theaters Found</td></tr>
+							<?php } ?>
+                
+                                                                            
+                                                                            </tbody>
+                                                                        </table>
+ <?php  echo "<br><br><center>".$paginate."</center>"; ?><br><br><br>
+			
             </div>
             <!-- TOP BUTTONS ENDS-->
             
@@ -326,7 +362,7 @@ title: "Address"
         
         
         <!-- COLUMN RIGHT -->	
-        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
+        <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
 

@@ -108,13 +108,7 @@ font-size:12px;
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>    
 	
 	
 
@@ -230,7 +224,7 @@ if(isset($_POST['cmdcomment']))
 									   <thead>
                                        		<tr>
                                        		<th>Mobile</th>                                         
-                                             <th> <?php echo ucwords($rs['mobile']);   ?> </th>
+                                             <th> <a class="call_link" href="tel:<?php echo $rs['mobile']; ?>"><?php echo ucwords($rs['mobile']); ?></a> </th>
                                          	</tr>
                                        </thead>
 									   <thead>

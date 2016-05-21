@@ -13,13 +13,13 @@ else
 
 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
-	$query_count = "select count(id) cnt from post_free_auto
+	$query_count = "select count(id) as cnt from post_free_auto
 					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
 					and CONCAT(`date`,' ',`time`) < now()
 					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
 	$result_count = mysql_query($query_count);                                                
 	$result_count = mysql_fetch_array($result_count);
-	if($result_count['cnt'] > 3) {
+	if($result_count['cnt'] >= 3) {
 		header('location:adcheck.php?redirect=auto_create&State='.$state);
 		exit;
 	}
@@ -140,6 +140,28 @@ font-weight:bold;
 color:#FFFFFF;font-weight:bold;clear:both;background-color:#009900;font-weight:bold;padding:10px 10px;
 border-radius: 5px;
 }
+#warning_popup , #images_popup{
+                position:absolute;	
+                height:auto !important;
+                border:5px solid #000;
+                z-index: 9002;
+                background-color:#FFFFFF;
+                top:0%;
+                overflow: auto;
+                padding:10px;
+                left:25% !important;
+                top:0% !important;	
+
+            }
+
+            #warning_popup h3, #images_popup h3
+            {
+                font-size:14px;
+            }
+            .mydata { color:#000000;text-align:justify;line-height:22px;font-family: 'Roboto', sans-serif;font-size:16px;line-height:26px; }
+
+            #warning_popup a, #images_popup a {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
+            #warning_popup a:hover, #images_popup a:hover{top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
 </style>
 
 <script type="text/javascript">
@@ -228,7 +250,7 @@ if(isset($_POST['Submit']))
 	
 	//echo $Color;
 	
-
+		if($_FILES["my_file1"]["name"] != '') {
 		$round=rand(1000,100000);
 		$fileName1=$_FILES["my_file1"]["name"];
 		$fileSize1=$_FILES["my_file1"]["size"]/1024;
@@ -246,9 +268,9 @@ if(isset($_POST['Submit']))
 		{
   			$Error .= "Maximum upload file size limit is 200 kb.<br>";
 		}
+		}
 		
-		
-		
+		if($_FILES["my_file2"]["name"] != '') {
 		$fileName2=$_FILES["my_file2"]["name"];
 		$fileSize2=$_FILES["my_file2"]["size"]/1024;
 		$fileType2=$_FILES["my_file2"]["type"];
@@ -264,8 +286,9 @@ if(isset($_POST['Submit']))
 		{
   			$Error .= "Maximum upload file size limit is 200 kb.<br>";
 		}
+		}
 		
-		
+		if($_FILES["my_file3"]["name"] != '') {
 		$fileName3=$_FILES["my_file3"]["name"];
 		$fileSize3=$_FILES["my_file3"]["size"]/1024;
 		$fileType3=$_FILES["my_file3"]["type"];
@@ -281,7 +304,7 @@ if(isset($_POST['Submit']))
 		{
   			$Error .= "Maximum upload file size limit is 200 kb.<br>";
 		}
-		
+		}
 		
 		$adPosttype = test_input($_POST["adPosttype"]);	
 		if($adPosttype!='')	
@@ -566,7 +589,7 @@ if(isset($_POST['Submit']))
 		$pid = $_POST['id'];
 											
 		$date = date("Y-m-d");
-		$time = date("h:m:s");	
+		$time = date("H:i:s");	
 		
 	/*	echo "insert into post_free_auto (Brand,SubBrand,BCondition,Transmission,Cylinder,BType,DriveTrain,Year,Color,VINNo,ODO,Price,Address,image1,image2,image3,States,States_Details,City,TitleAD,Message,URL,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,EndDate,date,time) VALUES('".$Brand."','".$SubBrand."','".$Condition."','".$Transmission."','".$Cylinder."','".$BType."','".$DriveTrain."','".$Year."','".$Color."','".$VINNo."','".$ODO."','".$Price."','".$Address."','".$image1."','".$image2."','".$image3."','".$States."','".$chk."','".$City."','".$TitleAD."','".$Desrp."','".$URL."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$EndDate."','".$date."','".$time."'";		*/
 		if ($Error=='')
@@ -655,13 +678,7 @@ function test_input($data) {
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
+		<?php include_once('stock_block.php');?>    
 	
 	
 
@@ -1139,7 +1156,7 @@ function test_input($data) {
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;">State</label>
 	<div class="col-sm-8">
-    	<select name="States" id="States" required=""  class="form-control"  onChange="showstate(this.value);" tabindex="5" >              
+    	<select name="States" id="States" required=""  class="form-control"  onChange="showstate(this.value);" tabindex="5" required>              
                <option value="">Select State</option>                
                 <option value="<?php echo $_GET['code'] ?>">Current State Only</option>  
                 <option value="ALL" data-toggle="modal" data-target="#ALL">All States in USA</option>  

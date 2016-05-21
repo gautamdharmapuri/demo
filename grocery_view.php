@@ -86,15 +86,7 @@
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
-	
-	
+		<?php include_once('stock_block.php');?>
 
      
      
@@ -158,7 +150,7 @@
 
 
 
-<p class="mydata"><b>Number  :</b> <?php echo ucwords($rs['contact']); ?></p>
+<p class="mydata"><b>Number  :</b> <a class="call_link" href="tel:<?php echo $rs['contact']; ?>"><?php echo ucwords($rs['contact']); ?></a></p>
 <p class="mydata"><b>Grocery City  :</b> <?php 
 $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
 															$rcity = mysql_fetch_array($query_city);

@@ -57,7 +57,7 @@ jQuery('#shout_message').val('');
 });
 });
 isInitial = false;
-}, 3000);
+}, 1000);
 
 // Inserting records into chat table
 jQuery(document).ready(function()

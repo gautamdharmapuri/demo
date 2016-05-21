@@ -90,22 +90,7 @@ $current_date = date('Y-m-d');
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				
-                 <!-- START Worden Top Gainers Ticker Widget -->
-<script src="http://widgets.freestockcharts.com/js/jquery-1.3.1.min.js" type="text/javascript"></script> <script src="widget/WBIHorizontalTicker2.js?ver=12334" type="text/javascript"></script> 
-<?php /*?><link href="http://widgets.freestockcharts.com/WidgetServer/WBITickerblue.css" rel="stylesheet" type="text/css" /><?php */?>
-<link href="widget/WBITickerblue.css" rel="stylesheet" type="text/css" />
-<script>
-    var gainTicker = new WBIHorizontalTicker('gainers');
-    gainTicker.start();
-    var loserTick = new WBIHorizontalTicker('losers');
-    loserTick.start();
-	</script> <!-- End Scrolling Ticker Widget -->
-                
-       
-        </div>     
+		<?php include_once('stock_block.php');?>  
 	
 	
 	
@@ -131,7 +116,7 @@ $current_date = date('Y-m-d');
                     <ul class="advert-grp" id="advert-grp">
                         <?php
                         
-                            $home_middle_query1 = "select * from us_ads where ad_position='Home-Top-Center-4' and status='Active' order by id desc";
+                            $home_middle_query1 = "select * from us_ads where ad_position='Home-Top-Center-4'  and status='Active' order by id desc";
                             $home_middle_res1 = mysql_query($home_middle_query1);
                             while ($home_dm1 = mysql_fetch_array($home_middle_res1)) {
                         ?>
@@ -2869,10 +2854,6 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 
     <script src="calender/jquery-ui.js"></script>
 <script type="text/javascript">
-    $(document).ready(function(){
-        setTimeout(function(){
-            $('.wbiscroller').find('a').attr('href','javascript:;');
-        },500);
 		
 		$( "#responsive_auto_states" ).autocomplete({
       source: "state_auto.php",

@@ -90,7 +90,7 @@
                                    
                                         <tr>
                                             <th>Advertiser Conatct No</th>                      
-                                            <th><?php echo ucwords($rs['contact']); ?></th>                                               
+                                            <th><a class="call_link" href="tel:<?php echo $rs['contact']; ?>"><?php echo ucwords($rs['contact']); ?></a></th>                                               
                                         </tr>
                                  
                                     

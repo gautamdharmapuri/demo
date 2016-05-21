@@ -171,14 +171,7 @@ else
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
-	
+		<?php include_once('stock_block.php');?>
 	
 
      
@@ -203,13 +196,14 @@ else
   <?php
 		if(isset($_SESSION['Nris_session']))	  
 		{ ?>
-<a href="#" data-toggle="modal" data-target="#premium_post"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
-<a href="#" data-toggle="modal" data-target="#free_post"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="#" data-toggle="modal" data-target="#change_state"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
+<a href="#" data-toggle="modal" data-target="#change_state"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
   <?php } else { ?> 
 <a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
 <a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
 <?php } ?>   
 </div><br>
+
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
 

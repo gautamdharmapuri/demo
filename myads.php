@@ -266,15 +266,7 @@ font-weight:bold;
 	<div class="clearfix"></div>
 
     
-		<div class="stock-scroll">
-		
-				<div class="col-md-12">
-                SCROLLING TEXT GOES HERE
-                </div>
-       
-        </div>     
-	
-	
+		<?php include_once('stock_block.php');?>
 
      
      

@@ -3,6 +3,7 @@
 						$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 						$query = "SELECT * FROM fam_advertisement
 									WHERE image != '' AND edate >= now() AND ad_position = 'Left Side'
+									AND NOW() <= sdate + INTERVAL 30 DAY
 									AND state_code = '".$state."'
 									AND status = 'Active'
 									ORDER BY ad_position_no asc LIMIT 10;";
