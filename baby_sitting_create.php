@@ -9,10 +9,8 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
 	$result_count = mysql_query($query_count);                                                
 	$result_count = mysql_fetch_array($result_count);
-	if($result_count['cnt'] >= 3) {
-		header('location:adcheck.php?redirect=baby_sitting_create&State='.$state);
-		exit;
-	}
+	$final_count = $result_count['cnt'];
+	
 }
 ?>
 
@@ -511,6 +509,8 @@ if(isset($_POST['Submit']))
 			{			
 			$query=mysql_query("insert into post_free_baby_sitting (TitleAD,Message,AdsCat,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,City,EndDate,image,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$AdsCat."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$City."','".$EndDate."','".$image1."','".$date."','".$time."','".$state."')");
 			}
+			$final_count++;
+			
 			$msg = "<h3 class='sucess'>Baby Sitting Ads Created Successfully!..</h3>";
 		if($_GET['type'] == 'premium') {
 				
@@ -1087,7 +1087,19 @@ function test_input($data) {
 
 	
     
-    	
+    	<?php
+		
+		if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
+			if($final_count >= 3) {
+				//header('location:adcheck.php?redirect=baby_sitting_create&State='.$state);
+				//exit;
+				$url = 'adcheck.php?redirect=baby_sitting_create&State='.$state;
+				echo "<script>window.location.href='".$url."';</script>";
+				exit;
+			}
+		}
+		
+		?>
 	
     
     
@@ -1115,7 +1127,7 @@ function test_input($data) {
   
   <script>
    $(function() {
-    $( "#EndDate" ).datepicker({minDate: 0});
+    $( "#EndDate" ).datepicker({minDate: 0,maxDate: "+30d" });
 	
 	$('#Submit2').click(function(){
 		var err = false;

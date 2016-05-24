@@ -173,6 +173,21 @@ font-size:12px;
 						if($output->status == 'OK'){ // Check if address is available or not
 						  $lat = $output->results[0]->geometry->location->lat; //Returns Latitude
 						  $lng = $output->results[0]->geometry->location->lng; // Returns Longitude
+						} else {
+							$addArr = array();
+							if($cityName != '') {
+								$addArr[] = $cityName;
+							}
+							if($rs['state'] != '') {
+								$addArr[] = $rs['state'];
+							}
+							$addArr[] = 'US';
+							$address = urldecode(implode(',',$addArr));
+							$geocode=file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$address.'&sensor=false');
+	
+							$output= json_decode($geocode);
+							$lat = $output->results[0]->geometry->location->lat; //Returns Latitude
+							$lng = $output->results[0]->geometry->location->lng; // Returns Longitude
 						}
 			
 					?>               

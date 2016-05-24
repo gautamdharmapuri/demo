@@ -2240,7 +2240,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
            		<div class="col-md-4 full-wid">
                 	<div class="btn-round-wrap">
                       	<div class="btn-round"><a href="#" data-toggle="modal" data-target="#free_post">Create<br><span>Free Post</span></a></div>
-                        <div class="btn-round-red" id="premium_custom_btn"><a id="premium_post" href="#" data-toggle="modal" data-target="#premium_post">Create<br><span>Premium Post</span></a></div>
+                        <div class="btn-round-red" id="premium_custom_btn"><a href="#" data-toggle="modal" data-target="#premium_post">Create<br><span>Premium Post</span></a></div>
                     </div>    
                 </div>
           <!-- BUTTON COLUMN THIRD -->
@@ -2871,7 +2871,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 					//$('#weather-widget').html(data);
 				}
 			});
-    });
+    
 </script>
 <!-- js -->
 <script src="js/html5.js"></script>

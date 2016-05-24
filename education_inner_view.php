@@ -144,14 +144,11 @@ font-size:12px;
         <?php
 			$query="select a.*, b.name from post_free_education a, eduation_teaching b where a.AdsCat = b.id  and md5(a.id) = '".$_GET['ViewId']."'"; 
 			$result=mysql_query($query);
-			$rs=mysql_fetch_array($result);	
+			$rs=mysql_fetch_array($result);
 			$total_views = $rs['total_views'] + 1 ;
 			mysql_query("update post_free_education set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 			
-			$query2 = "select city from cities where id = ".$rs['City'];
-			$result2 = mysql_query($query2);
-			$rs2 = mysql_fetch_array($result2);
-			$cityName = $rs2['city'];
+			$cityName = $rs['City'];
 			
 			
 						if($rs['Address'] != '') {
@@ -160,8 +157,8 @@ font-size:12px;
 						if($cityName != '') {
 							$addArr[] = $cityName;
 						}
-						if($rs['state'] != '') {
-							$addArr[] = $rs['state'];
+						if($rs['States'] != '') {
+							$addArr[] = $rs['States'];
 						}
 						$addArr[] = 'US';
 						$address = urldecode(implode(',',$addArr));
@@ -172,6 +169,21 @@ font-size:12px;
 						if($output->status == 'OK'){ // Check if address is available or not
 						  $lat = $output->results[0]->geometry->location->lat; //Returns Latitude
 						  $lng = $output->results[0]->geometry->location->lng; // Returns Longitude
+						} else {
+							$addArr = array();
+							if($cityName != '') {
+								$addArr[] = $cityName;
+							}
+							if($rs['States'] != '') {
+								$addArr[] = $rs['States'];
+							}
+							$addArr[] = 'US';
+							$address = urldecode(implode(',',$addArr));
+							$geocode=file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$address.'&sensor=false');
+	
+							$output= json_decode($geocode);
+							$lat = $output->results[0]->geometry->location->lat; //Returns Latitude
+							$lng = $output->results[0]->geometry->location->lng; // Returns Longitude
 						}
 					?>               
                        

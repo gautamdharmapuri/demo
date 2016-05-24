@@ -1,27 +1,14 @@
 <div class="col-md-2 inner-left">
-<?php
-						$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-						$query = "SELECT * FROM fam_advertisement
-									WHERE image != '' AND edate >= now() AND ad_position = 'Right Side'
-									AND NOW() <= sdate + INTERVAL 30 DAY
-									AND state_code = '".$state."'
-									AND status = 'Active'
-									ORDER BY ad_position_no asc LIMIT 10;";
-								   $result = mysql_query($query);
-								   $i=1;
-								   if(mysql_numrows($result) > 0) {
-								   while($rs=mysql_fetch_array($result)) {
-			?>
+
 		<div class="inner-left-ad-wrap">
-			<a href="<?php echo ($rs['url'] != '') ? $rs['url'] : 'javascript:;';?>" target="_blank">
-				<img src="admin/uploads/myadimg/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
-			</a>
+			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+<!-- State Right Ad -->
+<ins class="adsbygoogle"
+     style="display:inline-block;width:120px;height:600px"
+     data-ad-client="ca-pub-6597181034567166"
+     data-ad-slot="8803244536"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
 		</div>
-		<?php } } else { ?>
-						<div class="inner-left-ad-wrap">
-						<a href="javascript:;">
-							<img src="img/2_x_1-ad.jpg">
-						</a>
-					</div>
-		<?php } ?>
 </div>

@@ -9,10 +9,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
 	$result_count = mysql_query($query_count);                                                
 	$result_count = mysql_fetch_array($result_count);
-	if($result_count['cnt'] >= 3) {
-		header('location:adcheck.php?redirect=roommates_create&State='.$state);
-		exit;
-	}
+	$final_count = $result_count['cnt'];
 }
 ?>
 
@@ -462,7 +459,7 @@ if(isset($_POST['Submit']))
 			{
 				$query=mysql_query("insert into  post_free_roommates (TitleAD,Message,Category,gender_type,Rent,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,City,image1,URL,EndDate,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$Brand."','".$SubBrand."','".$Rent."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$City."','".$image1."','".$URL."','".$EndDate."','".$date."','".$time."','".$state."')");
 			}
-			
+			$final_count++;
 		
 			$msg = "<h3 class='sucess'>Room Mates Ads Created Successfully!..</h3>";
 		if($_GET['type'] == 'premium') {
@@ -1111,7 +1108,16 @@ function test_input($data) {
     
     	
 	
-    
+    <?php
+		
+		if($final_count >= 3) {
+			$url = 'adcheck.php?redirect=roommates_create&State='.$state;
+			echo "<script>window.location.href='".$url."';</script>";
+			exit;
+		}
+		
+		?>
+	
     
     
 	
@@ -1137,7 +1143,7 @@ function test_input($data) {
   
   <script>
    $(function() {
-    $( "#EndDate" ).datepicker({minDate: 0});
+    $( "#EndDate" ).datepicker({minDate: 0,maxDate: "+30d" });
 	
 	$('#Submit2').click(function(){
 		var err = false;

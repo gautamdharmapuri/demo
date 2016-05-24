@@ -341,29 +341,6 @@ if(isset($_SESSION['Nris_session']))
     <div style="clear:both;"></div>
     	
 	
-    
-    
-    
-	
-<?php include "config/footer.php" ; ?><!--End footer -->
-    
-
-
-
-<div class="go-up"><i class="fa fa-chevron-up"></i></div>
-<script src="js/tab/jquery-2.1.1.js"></script>
-<script src="js/tab/main.js"></script> <!-- Resource jQuery -->
-
-
-<!-- js -->
-<script src="js/jquery.min.js"></script>
-<script src="js/html5.js"></script>
-<script src="js/custom.js"></script>
-<!-- End js -->
-
-<?php include "config/social.php" ;  ?>
-
-
 <!-- Modal  Switch State  Start-->
 <div class="modal fade" id="change_state" role="dialog">
 <div class="modal-dialog">
@@ -420,6 +397,29 @@ if(isset($_SESSION['Nris_session']))
 </div>
 </div>  
 <!-- Modal  Switch State  End -->  
+    
+    
+    
+	
+<?php include "config/footer.php" ; ?><!--End footer -->
+    
+
+
+
+<div class="go-up"><i class="fa fa-chevron-up"></i></div>
+<script src="js/tab/jquery-2.1.1.js"></script>
+<script src="js/tab/main.js"></script> <!-- Resource jQuery -->
+
+
+<!-- js -->
+<script src="js/jquery.min.js"></script>
+<script src="js/html5.js"></script>
+<script src="js/custom.js"></script>
+<!-- End js -->
+
+<?php include "config/social.php" ;  ?>
+
+
 
 </body>
 </html>

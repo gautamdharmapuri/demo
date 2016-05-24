@@ -11,10 +11,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
 	$result_count = mysql_query($query_count);                                                
 	$result_count = mysql_fetch_array($result_count);
-	if($result_count['cnt'] >= 3) {
-		header('location:adcheck.php?redirect=job_create&State='.$state);
-		exit;
-	}
+	$final_count = $result_count['cnt'];
 }
 ?>
 
@@ -540,6 +537,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
                 } else {
                     $query = mysql_query("insert into post_free_job (TitleAD,Message,Category,Job_Role,States,States_Details,City,image1,Emp_type,Job_Ref_Id,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,URL,EndDate,date,time) VALUES('" . $TitleAD . "','" . $Desrp . "','" . $Brand . "','" . $SubBrand . "','" . $States . "','" . $chk . "','" . $City . "','" . $image1 . "','" . $EmpType . "','" . $RefId . "','" . $ConatctNAME . "','" . $ConatctNumber . "','" . $ConatctEmail . "','" . $pid . "','" . $URL . "','" . $EndDate . "','" . $date . "','" . $time . "')");
                 }
+				$final_count++;
                 $msg = "<h3 class='sucess'>Job Ads Created Successfully!..</h3>";
                 if ($_GET['type'] == 'premium') {
 
@@ -1247,7 +1245,15 @@ while ($fs_state = mysql_fetch_array($qy_state_res)) {
 
 
 
-
+<?php
+		
+		if($final_count >= 3) {
+			$url = 'adcheck.php?redirect=job_create&State='.$state;
+			echo "<script>window.location.href='".$url."';</script>";
+			exit;
+		}
+		
+		?>
 
 
 
@@ -1274,7 +1280,7 @@ while ($fs_state = mysql_fetch_array($qy_state_res)) {
 
         <script>
                                     $(function () {
-                                        $("#EndDate").datepicker({minDate: 0});
+                                        $( "#EndDate" ).datepicker({minDate: 0,maxDate: "+30d" });
 
                                         $('#Submit2').click(function () {
                                             var err = false;

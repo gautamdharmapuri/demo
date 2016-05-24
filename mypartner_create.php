@@ -1265,7 +1265,7 @@ function test_input($data) {
   
   <script>
    $(function() {
-    $( "#EndDate" ).datepicker({minDate: 0});
+    $( "#EndDate" ).datepicker({minDate: 0,maxDate: "+30d" });
 	
 	$('#Submit2').click(function(){
 		var err = false;

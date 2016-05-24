@@ -191,7 +191,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 <p class="mydata"><b>Movie Name :</b> <?php echo ucwords($rs['name']); ?></p>
 <p class="mydata"><b>Url :</b> <?php echo ucwords($rs['url']); ?></p>
-<p class="mydata"><b>Restaurant City  :</b> <?php 
+<p class="mydata"><b>City  :</b> <?php 
 $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
 															$rcity = mysql_fetch_array($query_city);
 															echo ucwords($rcity['city']); ?></p>
@@ -330,8 +330,7 @@ $star_fs5 = mysql_fetch_array($result_start5);
 
 
 <?php
-$tmpl_cmnt = "select a.*, b.* from  comment_restaurant a, register b where a.member_id = b.id  and md5(a.movie_id) = '".$_SESSION['ViewId']."' order by a.cmnt_id desc" ;
-
+$tmpl_cmnt = "select a.*, b.* from  comment_theater a, register b where a.member_id = b.id  and md5(a.res_id) = '".$_GET['id']."' order by a.cmnt_id desc" ;
 $result_cmnt = mysql_query($tmpl_cmnt);
 if(mysql_num_rows($result_cmnt) > 0)
 {
@@ -382,7 +381,9 @@ if(isset($_POST['cmdcomment']))
 	
 	$url_link = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 				
-	$query_cmt = "insert into comment_restaurant(movie_id,member_id,comment,cmnt_date,cmnt_time) values('".$TMPId."','".$mId."','".$a."','".$date."','".$time."')";		 
+	$query_cmt = "insert into comment_theater(res_id,member_id,comment,cmnt_date,cmnt_time)
+	values('".$TMPId."','".$mId."','".$a."','".$date."','".$time."')";
+//echo $query_cmt;exit;
 	$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
 		echo "<script language='javascript' type='text/javascript'>document.location='".$url_link."';</script>";
@@ -398,7 +399,7 @@ if(isset($_POST['cmdcomment']))
 </div>
         
           
-            <form class="form-horizontal" role="form" method="post" onSubmit="return frmchk();">
+            <form class="form-horizontal" role="form" method="post" action="">
               <div class="form-div ">
                     <div class="form-label">Message:</div>
                     <div class="form-field">

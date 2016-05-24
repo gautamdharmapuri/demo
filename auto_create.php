@@ -12,18 +12,6 @@ else
 }
 
 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
-	$query_count = "select count(id) as cnt from post_free_auto
-					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
-					and CONCAT(`date`,' ',`time`) < now()
-					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
-	$result_count = mysql_query($query_count);                                                
-	$result_count = mysql_fetch_array($result_count);
-	if($result_count['cnt'] >= 3) {
-		header('location:adcheck.php?redirect=auto_create&State='.$state);
-		exit;
-	}
-}
 
 ?>
 
@@ -603,7 +591,9 @@ if(isset($_POST['Submit']))
 			{			
 			$query=mysql_query("insert into post_free_auto (Brand,SubBrand,BCondition,Transmission,Cylinder,BType,DriveTrain,Year,Color,VINNo,ODO,Price,MPG,Address,image1,image2,image3,States,States_Details,City,TitleAD,Message,URL,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,EndDate,date,time) VALUES('".$Brand."','".$SubBrand."','".$Condition."','".$Transmission."','".$Cylinder."','".$BType."','".$DriveTrain."','".$Year."','".$Color."','".$VINNo."','".$ODO."','".$Price."','".$MPG."','".$Address."','".$image1."','".$image2."','".$image3."','".$States."','".$chk."','".$City."','".$TitleAD."','".$Desrp."','".$URL."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$EndDate."','".$date."','".$time."')");
 			}
-			$post_id = mysql_insert_id(); 
+			$post_id = mysql_insert_id();
+			$final_count++;
+			
 			$msg = "<h3 class='sucess'>Auto Ads Created Successfully!..</h3>";
 			
 			//echo '----'.$_GET['type'].'----';exit;
@@ -665,6 +655,16 @@ function test_input($data) {
    $data = stripslashes($data);
    $data = htmlspecialchars($data);
    return $data;
+}
+
+if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
+	$query_count = "select count(id) as cnt from post_free_auto
+					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
+					and CONCAT(`date`,' ',`time`) < now()
+					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
+	$result_count = mysql_query($query_count);                                                
+	$result_count = mysql_fetch_array($result_count);
+	$final_count = $result_count['cnt'];
 }
 ?>
 
@@ -1432,7 +1432,15 @@ function test_input($data) {
 
 	
     
-    	
+    	<?php
+		
+		if($final_count >= 3) {
+			$url = 'adcheck.php?redirect=auto_create&State='.$state;
+			echo "<script>window.location.href='".$url."';</script>";
+			exit;
+		}
+		
+		?>
 	
     
     
@@ -1460,7 +1468,7 @@ function test_input($data) {
   
   <script>
    $(function() {
-    $( "#EndDate" ).datepicker({minDate: 0});
+    $( "#EndDate" ).datepicker({minDate: 0,maxDate: "+30d" });
 	
 	$('#Submit2').click(function(){
 		var err = false;

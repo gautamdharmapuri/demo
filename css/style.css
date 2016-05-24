@@ -2661,6 +2661,7 @@ border:1px solid #77021d;-webkit-box-shadow: #FFFFFF 0px 0px 1px inset;-moz-box-
 	font-family: 'Montserrat', sans-serif;
 	padding: 3px;
 	margin: 3px;
+    display: inline-block;
 }
 
 .paginate a {
@@ -3076,7 +3077,12 @@ text-align:justify;
     color: #2eb1fd !important;
 }
 
-
+input, button, select, textarea {
+    border: 1px solid darkgrey !important;
+}
+input:focus, button:focus, select:focus, textarea:focus {
+    border: 1px solid #2eb1fd !important;
+}
 
 
 

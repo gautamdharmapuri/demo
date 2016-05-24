@@ -86,6 +86,9 @@ $current_date = date('Y-m-d');
 						j('#desi_movies_link li a:eq('+randNum+')').addClass('selected');
 						j('#desi_movies_content li:eq('+randNum+')').addClass('selected');
 						j('#desi_movies_content li div img:eq('+randNum+')').show();
+						j('ul[id^="movie_city_"]').hide();
+						var txt = j.trim(j('#desi_movies_link li a:eq('+randNum+')').text());
+						j('#movie_city_'+txt).show();
 						tempVar = randNum+1;
 			        },3000);
 				   
@@ -125,7 +128,6 @@ $current_date = date('Y-m-d');
                 </div>
        
         </div>     
-	
 	
 	
 <div class="section-1-wrap">	
@@ -294,7 +296,8 @@ $current_date = date('Y-m-d');
 											   $movieArr = array();
 												if(mysql_numrows($result) > 0) {
 															while($rs = mysql_fetch_array($result)) {
-																		$movieArr[] = $rs;	
+																		$movieArr[] = $rs;
+																		$movieCityArr[] = $rs['cityname'];
 															}
 															if($movieArr == 3) {	
 															} else {
@@ -311,7 +314,7 @@ $current_date = date('Y-m-d');
 												<?php if(count($movieArr) > 0) { $k = 0;?>
 															<nav>
 																<ul class="cd-tabs-navigation" style="width:100%;" id="desi_movies_link">
-																	<?php foreach($movieArr as $movie) { ?>
+																	<?php foreach($movieArr as $movie) {?>
 																		<li style="width:84px;background-color:#87CEEB;">
 																			<a data-content="<?php echo ucfirst($movie['cityname']);?>" <?php if($k == 0) { ?>class="selected"<?php } ?> href="#<?php echo $k;?>" style="font-size:9px;height:35px;text-align:center; color:#3c3c3c;">
 																						<?php echo ucfirst($movie['cityname']);$k++;?>
@@ -335,49 +338,46 @@ $current_date = date('Y-m-d');
 												<?php } ?>
 									</div> <!-- cd-tabs ends-->
                         </div><!-- MOVIES ends-->
-                    <?php
-									$query = "SELECT fam_city_movies.*,cities.city as cityname FROM fam_city_movies,cities
-												WHERE image != '' AND status = 'Active'
-												AND cities.id = city_id
-												AND fam_city_movies.state_code LIKE '%".$state."%'
-												ORDER BY fam_city_movies.id desc LIMIT 5;";
-											   $result = mysql_query($query);
-											   $movieArr = array();
-												if(mysql_numrows($result) > 0) {
-															while($rs = mysql_fetch_array($result)) {
-																		$movieArr[] = $rs;	
-															}
-															if($movieArr == 5) {	
-															} else {
-																		for($t = 0 ; $t < 6-count($movieArr) ; $t++) {
-																					if(count($movieArr) < 5) {
-																								$movieArr[] = array();	
-																					}
-																		}
-															}
-												}
-							?>
+                    
 					<div class="nri-talk" style="float:left;height:auto !important;width:100%;">
                                 <div class="heading-plain">
                                 <h3>Show Timings and Places</h3>
                                 </div>
-                                <ul style="padding:0px 9px;height:115px;">
-									<?php foreach($movieArr as $movie) { if(count($movie) > 0) { ?>
-												<li>
-															<?php $movieId = $movie['id'];?>
-															<a href="javascript:;" onclick="getMovieDetails('<?php echo $movieId;?>');"><!-- desi_movie_detail.php?id=< ?php echo md5($movie['id']);?> -->
-																		<?php echo $movie['name'];?>
-															</a>
-															<div style="display:none;" class="movie_details_class" id="movie_details_div_<?php echo $movieId;?>">
-																		<?php echo $movie['additional_info'];?>
-															</div>
-												</li>
-									<?php } else {
+								<?php
+									$movieCityArr = array_unique($movieCityArr);
+									$cntI = 0;
+									foreach($movieCityArr as $movieCity) {
+									
+												$query = "SELECT fam_city_movies.*,cities.city as cityname FROM fam_city_movies,cities
+												WHERE image != '' AND status = 'Active'
+												AND cities.id = city_id AND cities.city = '".$movieCity."'
+												AND fam_city_movies.state_code LIKE '%".$state."%'
+												ORDER BY fam_city_movies.id desc LIMIT 5;";
+												//echo $query;
+												$result = mysql_query($query);
+												$movieArr = array();
+												 if(mysql_numrows($result) > 0) {
+															 while($rs = mysql_fetch_array($result)) {
+																		 $movieArr[] = $rs;	
+															 }
+												 }
+												// print_r($movieArr);
 									?>
-												<li><a href="javascript:;">No Movie</a></li>
-									<?php 			
-									} }?>
-                                </ul>
+									<ul style="padding:0px 9px;height:115px;<?php if($cntI++ != 0) { ?>display: none;<?php }?>" id="movie_city_<?php echo $movieCity;?>">
+										<?php foreach($movieArr as $movie) { if(count($movie) > 0) { ?>
+													<li>
+																<?php $movieId = $movie['id'];?>
+																<a href="desi_movie_detail.php?id=<?php echo md5($movie['id']);?>">
+																			<?php echo $movie['name'];?>
+																</a>
+													</li>
+										<?php } else {
+										?>
+													<li><a href="javascript:;">No Movie</a></li>
+										<?php 			
+										} }?>
+									</ul>
+								<?php } ?>
                             </div>
 					
                     </div><!-- TOP SECTION RIGHT ENDS -->
@@ -1205,14 +1205,55 @@ $current_date = date('Y-m-d');
     <script>
         jQuery.noConflict();
         jQuery(document).ready(function () {
-            setInterval(function () {
-                jQuery.getJSON("http://www.telize.com/geoip?callback=?", function (data) {
-                    bwea(data);
-                });
-            }, 10000);
+			
+			var locat = '<?php echo $state;?>';
+			var imgUrl = 'https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/36d.png';
+			jQuery("#astro_widget").css('background-image','url(' + imgUrl + ')');
+			jQuery("#astro_widget").css('background-repeat','no-repeat');
+			jQuery("#astro_widget").css('background-color','beige');
+															
+			jQuery.get("http://ipinfo.io", function(response) {
+						jQuery.ajax({
+									url : 'location.php',
+									type: 'POST',
+									data: {ip:response.ip},
+									success : function(data) {
+										if (data == '' || typeof(data) == 'undefined') {
+                                        } else {
+											locat =	data;
+										}
+										//console.log('============');
+										//console.log(locat);return false;
+										jQuery.simpleWeather({
+												location: locat,
+												woeid: '',
+												unit: 'f',
+												success: function(weather) {
+															var imgUrl = weather.image;
+															if (imgUrl == '' || typeof(imgUrl) == 'undefined') {
+                                                                imgUrl = 'https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/36d.png';
+                                                            }
+															jQuery("#astro_widget").css('background-image','url(' + imgUrl + ')');
+															jQuery("#astro_widget").css('background-repeat','no-repeat');
+															jQuery("#astro_widget").css('background-color','beige');
+												},
+												error: function(error) {
+												  jQuery("#weather").html('<p>'+error+'</p>');
+												}
+									});
+									}
+								});			
+			}, "jsonp");
+			
+			
+            //setInterval(function () {
+            //    jQuery.getJSON("http://www.telize.com/geoip?callback=?", function (data) {
+            //        bwea(data);
+            //    });
+            //}, 10000);
 
 
-            var bwea = function (pos) {
+            /*var bwea = function (pos) {
                 navigator.geolocation.getCurrentPosition(function (position) {
                     loadWeather(position.coords.latitude + ',' + position.coords.longitude); //load weather using your lat/lng coordinates
                 }, function(){
@@ -1254,8 +1295,8 @@ $current_date = date('Y-m-d');
                             alert(error.message);
                         }
                     });
-                }
-            }
+                }*/
+            //}
         });
 		function getMovieDetails(movieId) {
 						jQuery('.movie_details_class').not('#movie_details_div_'+movieId).hide();
