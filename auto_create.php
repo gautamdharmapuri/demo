@@ -658,9 +658,11 @@ function test_input($data) {
 }
 
 if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
+	
+	$date = date("Y-m-d H:i:s");
 	$query_count = "select count(id) as cnt from post_free_auto
-					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
-					and CONCAT(`date`,' ',`time`) < now()
+					where CONCAT(`date`,' ',`time`) > date_sub('".$date."', interval 10 minute)
+					and CONCAT(`date`,' ',`time`) < '".$date."'
 					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
 	$result_count = mysql_query($query_count);                                                
 	$result_count = mysql_fetch_array($result_count);

@@ -13,17 +13,16 @@ else
 
 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
+	
+	$date = date("Y-m-d H:i:s");
 	$query_count = "select count(id) as cnt from post_free_mypart
-					where CONCAT(`date`,' ',`time`) > date_sub(now(), interval 10 minute)
-					and CONCAT(`date`,' ',`time`) < now()
+					where CONCAT(`date`,' ',`time`) > date_sub('".$date."', interval 10 minute)
+					and CONCAT(`date`,' ',`time`) < '".$date."'
 					and ConatctEmail = '".$_SESSION['Nris_session']['email']."'";
 					
 	$result_count = mysql_query($query_count);                                                
 	$result_count = mysql_fetch_array($result_count);
-	if($result_count['cnt'] >= 3) {
-		header('location:adcheck.php?redirect=mypartner_create&State='.$state);
-		exit;
-	}
+	$final_count = $result_count['cnt'];
 }
 ?>
 
@@ -537,6 +536,8 @@ if(isset($_POST['Submit']))
 			{
 			$query=mysql_query("insert into  post_free_mypart (TitleAD,Message,Category,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,States,States_Details,City,image1,URL,EndDate,date,time) VALUES('".$TitleAD."','".$Desrp."','".$Brand."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$States."','".$chk."','".$City."','".$image1."','".$URL."','".$EndDate."','".$date."','".$time."')");
 			}
+			$final_count++;
+			
 			$msg = "<h3 class='sucess'>My Partner Ads Created Successfully!..</h3>";
 		if($_GET['type'] == 'premium') {
 				
@@ -1236,7 +1237,15 @@ function test_input($data) {
 </div><!-- End Section-1 WRAP -->
 
 	
-    
+    <?php
+		
+		if($final_count >= 3) {
+			$url = 'adcheck.php?redirect=mypartner_create&State='.$state;
+			echo "<script>window.location.href='".$url."';</script>";
+			exit;
+		}
+		
+		?>
     	
 	
     
