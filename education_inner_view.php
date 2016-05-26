@@ -151,40 +151,26 @@ font-size:12px;
 			$cityName = $rs['City'];
 			
 			
+						if(is_integer($rs['City'])) {
+							$query2 = "select city from cities where id = ".$rs['City'];
+							$result2 = mysql_query($query2);
+							$rs2 = mysql_fetch_array($result2);
+							$cityName = $rs2['city'];
+						} else {
+							$cityName = $rs['City'];
+						}
+			
+			
 						if($rs['Address'] != '') {
 							$addArr[] = $rs['Address'];
 						}
 						if($cityName != '') {
 							$addArr[] = $cityName;
 						}
-						if($rs['States'] != '') {
+						if($rs['States'] != '' && strtolower($rs['States']) != 'all' && strtolower($rs['States']) != 'multiple') {
 							$addArr[] = $rs['States'];
 						}
-						$addArr[] = 'US';
 						$address = urldecode(implode(',',$addArr));
-						$geocode=file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$address.'&sensor=false');
-
-						$output= json_decode($geocode); //Store values in variable
-						
-						if($output->status == 'OK'){ // Check if address is available or not
-						  $lat = $output->results[0]->geometry->location->lat; //Returns Latitude
-						  $lng = $output->results[0]->geometry->location->lng; // Returns Longitude
-						} else {
-							$addArr = array();
-							if($cityName != '') {
-								$addArr[] = $cityName;
-							}
-							if($rs['States'] != '') {
-								$addArr[] = $rs['States'];
-							}
-							$addArr[] = 'US';
-							$address = urldecode(implode(',',$addArr));
-							$geocode=file_get_contents('http://maps.google.com/maps/api/geocode/json?address='.$address.'&sensor=false');
-	
-							$output= json_decode($geocode);
-							$lat = $output->results[0]->geometry->location->lat; //Returns Latitude
-							$lng = $output->results[0]->geometry->location->lng; // Returns Longitude
-						}
 					?>               
                        
        <div class="widget-temple">
@@ -323,28 +309,29 @@ if(isset($_SESSION['Nris_session']))
 <script src="http://maps.google.com/maps/api/js?sensor=false" type="text/javascript"></script>
 <script type="text/javascript">
 $(document).ready(function () {
-// Define the latitude and longitude positions
-var latitude = parseFloat("<?php echo $lat; ?>"); // Latitude get from above variable
-var longitude = parseFloat("<?php echo $lng; ?>"); // Longitude from same
-var latlngPos = new google.maps.LatLng(latitude, longitude);
-// Set up options for the Google map
-var myOptions = {
-zoom: 17,
-center: latlngPos,
-mapTypeId: google.maps.MapTypeId.ROADMAP,
-zoomControlOptions: true,
-zoomControlOptions: {
-style: google.maps.ZoomControlStyle.LARGE
-}
-};
-// Define the map
-map = new google.maps.Map(document.getElementById("googleMap"), myOptions);
-// Add the marker
-var marker = new google.maps.Marker({
-position: latlngPos,
-map: map,
-title: "Address"
-});
+geocoder = new google.maps.Geocoder();
+    var latlng = new google.maps.LatLng(-34.397, 150.644);
+    var mapOptions = {
+      zoom: 8,
+      center: latlng,
+      mapTypeId: google.maps.MapTypeId.ROADMAP
+    }
+    map = new google.maps.Map(document.getElementById('googleMap'), mapOptions);
+	
+	var address = '<?php echo $address; ?>';
+	console.log(address);
+    geocoder.geocode( { 'address': address}, function(results, status) {
+      if (status == google.maps.GeocoderStatus.OK) {
+        map.setCenter(results[0].geometry.location);
+        var marker = new google.maps.Marker({
+            map: map,
+            position: results[0].geometry.location
+        });
+      } else {
+        console.log('Geocode was not successful for the following reason: ' + status);
+      }
+    });
+
 });
 </script>
 <div id="googleMap" style="width:100%;height:300px;" ></div>

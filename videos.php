@@ -286,7 +286,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 					   </div>
 					</div>
 					<?php
-					$sql2 = "SELECT * FROM videos 
+					$sql2 = "SELECT * FROM videos WHERE language = '".$_GET['lang']."'
 										   ORDER BY rand(".date('Ymd').") LIMIT 1";
 							   //echo $sql2;
 							   $result2 = mysql_query($sql2);		
