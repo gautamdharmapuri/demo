@@ -205,7 +205,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 
 		<?php if($msg!='')
         {
-        echo $msg ;
+        echo $msg ;exit;
         }
         
         if($Error!='')

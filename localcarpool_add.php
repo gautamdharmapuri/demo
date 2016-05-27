@@ -294,7 +294,7 @@ function showDiv2(elem){
 
 		<?php if($msg!='')
         {
-        echo $msg ;
+        echo $msg ;exit;
         }
         
         if($Error!='')

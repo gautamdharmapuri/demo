@@ -646,7 +646,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 
         <?php
         if ($msg != '') {
-            echo $msg;
+            echo $msg ;exit;
         }
 
         if ($Error != '') {

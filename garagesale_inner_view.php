@@ -194,14 +194,10 @@ font-size:12px;
 			$total_views = $rs['total_views'] + 1 ;
 			mysql_query("update post_free_garage_sale set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 			
-			if(is_integer($rs['City'])) {
-				$query2 = "select city from cities where id = ".$rs['City'];
+			$query2 = "select city from cities where id = ".$rs['City'];
 				$result2 = mysql_query($query2);
 				$rs2 = mysql_fetch_array($result2);
 				$cityName = $rs2['city'];
-			} else {
-				$cityName = $rs['City'];
-			}
 			
 			
 						if($rs['Address'] != '') {
@@ -211,9 +207,14 @@ font-size:12px;
 							$addArr[] = $cityName;
 						}
 						if($rs['States'] != '' && strtolower($rs['States']) != 'all' && strtolower($rs['States']) != 'multiple') {
-							$addArr[] = $rs['States'];
+							$query2="select state from states where state_code = '".$rs['States']."'"; 
+							$result2=mysql_query($query2);
+							$rs2=mysql_fetch_array($result2);
+							$addArr[] = $rs2['state'];
 						}
-						$address = urldecode(implode(',',$addArr));
+						$addArr[] = 'United States';
+						
+						$address = urldecode(implode(', ',$addArr));
 			
 			?>               
                        

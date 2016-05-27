@@ -239,7 +239,7 @@ if(isset($_POST['cmdSubmit'])) {
 
 		<?php if($msg!='')
         {
-        echo $msg ;
+        echo $msg ;exit;
         }
         
         if($Error!='')

@@ -102,7 +102,30 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
     
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap" style="min-height:650px;">	
-<!-- Section-1 START-->	
+<!-- Section-1 START-->
+
+
+		<div class="col-md-12">
+					<div class="col-md-4">
+						
+					</div>
+					<div class="col-md-8">
+					<?php
+				
+				
+				$query_video_lang="select * from  video_languages order by id desc";
+				$result_video_lang=mysql_query($query_video_lang);                                                
+				while($rs_video_lang=mysql_fetch_array($result_video_lang))
+				{?>
+				<a href="videos_inner.php?lang=<?php echo $rs_video_lang['name'] ?>">
+				<div class="col-xs-2 col-centered">
+					<div class="famous_btn" <?php if($rs_video_lang['name'] == $_GET['lang']) { ?>style="background-color: #2eb1fd;"<?php }?>>
+					<?php echo $rs_video_lang['name'] ?>
+					</div></div></a>
+				<?php } ?>
+	</div>
+				</div>
+
 		<div class="col-md-12">
 				
               <?php if(isset($_GET['lang'])) { ?>
@@ -233,22 +256,28 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
                 <div class="col-md-4" style="margin:0 auto;">
             	
                             <div style="width:30%;float:left;">&nbsp;</div>
-                            <div class="nri-talk" style="width:70%;">
+                            <div class="nri-talk" style="width:70%;height: auto !important;">
                                           <div class="head-title-no-pad">
                                               <h4 class="cat_heading">Category</h4>
                                         </div>
                                                 <div class="bord-cla">
-                                                 <ul style="padding-left:5px;padding-right:5px;">
+                                                <ul>
                                                        <?php
 														$querys_video_cat="select * from  video_categories order by category_name";
 														$results_video_cat=mysql_query($querys_video_cat);                                                
 														while($row__video_cat=mysql_fetch_array($results_video_cat))
-														{?>
+														{
+															$color = '';
+															if($row__video_cat['category_name'] == $_GET['cat']) {
+																$color = 'lightseagreen';	
+															}
+															
+															?>
                                                        
-                                                        <li><a href="videos_inner.php?lang=<?php echo $_GET['lang'] ?>&cat=<?php echo $row__video_cat['category_name'] ?>"><?php echo $row__video_cat['category_name'] ?></a></li>
+                                                        <li style="padding-left:5px;padding-right:5px;background-color: <?php echo $color;?>"><a href="videos.php?lang=<?php echo $_GET['lang'] ?>&cat=<?php echo $row__video_cat['category_name'] ?>"><?php echo $row__video_cat['category_name'] ?></a></li>
                                                         <?php } ?>
                                                         
-                                              </ul>                                                         
+                                              </ul>                                                        
                                               </div>        
                             </div>
                 </div>        

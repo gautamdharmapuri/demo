@@ -148,18 +148,8 @@ font-size:12px;
 			$total_views = $rs['total_views'] + 1 ;
 			mysql_query("update post_free_education set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 			
-			$cityName = $rs['City'];
-			
-			
-						if(is_integer($rs['City'])) {
-							$query2 = "select city from cities where id = ".$rs['City'];
-							$result2 = mysql_query($query2);
-							$rs2 = mysql_fetch_array($result2);
-							$cityName = $rs2['city'];
-						} else {
-							$cityName = $rs['City'];
-						}
-			
+						$cityName = $rs['City'];
+					
 			
 						if($rs['Address'] != '') {
 							$addArr[] = $rs['Address'];
@@ -168,9 +158,15 @@ font-size:12px;
 							$addArr[] = $cityName;
 						}
 						if($rs['States'] != '' && strtolower($rs['States']) != 'all' && strtolower($rs['States']) != 'multiple') {
-							$addArr[] = $rs['States'];
+							$query2="select state from states where state_code = '".$rs['States']."'"; 
+							$result2=mysql_query($query2);
+							$rs2=mysql_fetch_array($result2);
+							$addArr[] = $rs2['state'];
 						}
-						$address = urldecode(implode(',',$addArr));
+						$addArr[] = 'United States';
+						
+						$address = urldecode(implode(', ',$addArr));
+						//echo $address;
 					?>               
                        
        <div class="widget-temple">
@@ -321,6 +317,7 @@ geocoder = new google.maps.Geocoder();
 	var address = '<?php echo $address; ?>';
 	console.log(address);
     geocoder.geocode( { 'address': address}, function(results, status) {
+		console.log(results[0].geometry.location);
       if (status == google.maps.GeocoderStatus.OK) {
         map.setCenter(results[0].geometry.location);
         var marker = new google.maps.Marker({

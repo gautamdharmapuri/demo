@@ -442,7 +442,7 @@ if(true == $show_form)
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:left;font-weight:bold;">&nbsp;</label>
 	<div class="col-sm-8">
-		<button type="submit" class="button" name="Submit" id="Submit">Register</button> 
+		<button type="submit" class="button" name="Submit" id="Submit">Verify</button> 
 	</div>
 </div>
 </div>
