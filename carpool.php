@@ -266,7 +266,7 @@ if(isset($_SESSION['Nris_session']))
 	$query1 = "SELECT carpool.*,c1.city as from_cityname,c2.city as to_cityname FROM carpool,cities c1, cities as c2
 				WHERE type = 'interstate'
 				AND c1.id = from_city AND c2.id = to_city $where";
-
+	//echo $query1;
 			$result = mysql_query($query1);
 			if(mysql_numrows($result) > 0) { ?>
 			 		
@@ -275,12 +275,12 @@ if(isset($_SESSION['Nris_session']))
 								<tr>
 									<td>
 										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
-											<?php echo $data['from_cityname']; ?>
+											<?php echo $data['from_cityname'].', '.$data['from_state']; ?>
 										</a>
 									</td>
 									<td>
 										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
-											<?php echo $data['to_cityname']; ?>
+											<?php echo $data['to_cityname'].', '.$data['to_state']; ?>
 										</a>
 									</td>
 									<td>

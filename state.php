@@ -1110,7 +1110,7 @@ $current_date = date('Y-m-d');
                     	<div class="col-md-12 padding-no">
                         
                                 <div class="adv-big">
-                                    <?php //include_once('state_common_right.php');?>
+                                    <?php include_once('state_common_right.php');?>
                                 </div>                                
                                
                       </div> 

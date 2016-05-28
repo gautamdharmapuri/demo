@@ -246,8 +246,8 @@ include"config/connection.php";
                                 $query1 = "SELECT carpool.*,c1.city as from_cityname,c2.city as to_cityname FROM carpool,cities c1, cities as c2
 				WHERE type = '" . $_GET['type'] . "'
 				AND c1.id = from_city AND c2.id = to_city $where";
-
-
+                //echo $query1;
+    
                                 $result = mysql_query($query1);
                                 if (mysql_numrows($result) > 0) {
                                     ?>

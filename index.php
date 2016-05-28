@@ -2310,12 +2310,12 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                 <div class="section-new-2">
                 
                 <!-- RIGHT AD SECTION -->
-                <div class="left-ad">
+                <div class="left-image">
                     
                     
                            <div class="padding-no">
                         
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                           <?php                                    
                                     $home_left_query1 = "select * from us_ads where ad_position='Home-Left-Bottom' and ad_position_no='1' and status='Active' order by id desc limit 1";
@@ -2334,7 +2334,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>        
                                     </a>
                                 </div>
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                         <?php                                    
                                     $home_left_query2 = "select * from us_ads where ad_position='Home-Left-Bottom' and ad_position_no='2' and status='Active' order by id desc limit 1";
@@ -2352,7 +2352,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>                     
                                     </a>
                                 </div>
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                        <?php                                    
                                     $home_left_query3 = "select * from us_ads where ad_position='Home-Left-Bottom' and ad_position_no='3' and status='Active' order by id desc limit 1";
@@ -2368,7 +2368,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>               
                                     </a>
                                 </div>	
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                        <?php                                    
                                     $home_left_query4 = "select * from us_ads where ad_position='Home-Left-Bottom' and ad_position_no='4' and status='Active' order by id desc limit 1";
@@ -2384,7 +2384,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>                 
                                     </a>
                                 </div>
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                       <?php                                    
                                     $home_left_query5 = "select * from us_ads where ad_position='Home-Left-Bottom' and ad_position_no='5' and status='Active' order by id desc limit 1";
@@ -2399,7 +2399,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>                    
                                     </a>
                                 </div>
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                        <?php                                    
                                     $home_left_query6 = "select * from us_ads where ad_position='Home-Left-Bottom' and ad_position_no='6' and status='Active' order by id desc limit 1";
@@ -2415,7 +2415,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>                        
                                     </a>
                                 </div>	
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                         <?php                                    
                                     $home_left_query7 = "select * from us_ads where ad_position='Home-Left-Bottom' and ad_position_no='7' and status='Active' order by id desc limit 1";
@@ -2430,7 +2430,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>                                
                                     </a>
                                 </div>
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                         <?php                                    
                                     $home_left_query8 = "select * from us_ads where ad_position='Home-Left-Bottom' and ad_position_no='8' and status='Active' order by id desc limit 1";
@@ -2701,10 +2701,10 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                     </div><!-- MIDDLE SECTION ENDS -->
                     
                      <!-- LEFT AD SECTION -->
-                    <div class="right-ad">
+                    <div class="right-img">
                     	<div class="col-md-12 padding-no">
                         
-                                <div class="advert-big">
+                                <div class="image-big">
                                     
                                        <?php                                    
                                     $home_right_query1 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='1' and status='Active' order by id desc limit 1";
@@ -2724,7 +2724,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                               
                               
                               
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                         <?php                                    
                                     $home_right_query2 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='2' and status='Active' order by id desc limit 1";
@@ -2741,7 +2741,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                     </a>
                                 </div>
                                 
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                         <?php                                    
                                     $home_right_query3 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='3' and status='Active' order by id desc limit 1";
@@ -2758,7 +2758,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                     </a>
                                 </div>	
                                 
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                          <?php                                    
                                     $home_right_query4 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='4' and status='Active' order by id desc limit 1";
@@ -2775,7 +2775,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                     </a>
                                 </div>
                                 
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                          <?php                                    
                                     $home_right_query5 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='5' and status='Active' order by id desc limit 1";
@@ -2790,7 +2790,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>                        
                                     </a>
                                 </div>
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                          <?php                                    
                                     $home_right_query6 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='6' and status='Active' order by id desc limit 1";
@@ -2805,7 +2805,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>                        
                                     </a>
                                 </div>	
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                          <?php                                    
                                     $home_right_query2 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='7' and status='Active' order by id desc limit 1";
@@ -2820,7 +2820,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                                           <?php } ?>                
                                     </a>
                                 </div>
-                                <div class="advert-big">
+                                <div class="image-big">
                                     <a href="#" >
                                         <?php                                    
                                     $home_right_query2 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='8' and status='Active' order by id desc limit 1";
