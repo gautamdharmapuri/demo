@@ -101,8 +101,12 @@ $current_date = date('Y-m-d');
             
 <!-- WEATHER WIDGET -->
 				<div class="left-section-1 col-md-2" >
-				        <div class="weather-widget" id="weather-widget"></div>
-					
+				        <script src="widget/astrovisionjs.js"></script>
+<link href="widget/astrovisioncss.css" rel="stylesheet">
+<div id="astro_widget_home">
+		<div id="astro_widget_home_content">
+</div>
+</div>
                 </div><!-- End Left-Section-1 -->
                 
                 
@@ -2172,54 +2176,43 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                             <div class="head-title">
                                 <h3>National Events</h3>
                             </div>
-        
+								<?php
+										$eventCatSelect = "SELECT category FROM national_events GROUP BY category ORDER BY id DESC LIMIT 3";
+										$eventCatResult = mysql_query($eventCatSelect);
+										while($tempRes = mysql_fetch_array($eventCatResult)) {
+												$eventCatArr[] = $tempRes['category'];
+										}
+								?>
                               <div class="cd-tabs">
                                   <nav>
                                       <ul class="cd-tabs-navigation">
-                                          <li><a data-content="cultural" class="selected" href="#0">Cultural</a></li>
-                                          <li><a data-content="relegious" href="#0">Religious</a></li>                                          
+												<?php $catCnt = 0;
+												foreach($eventCatArr as $eventCat) { ?>
+														<li style="width:33.3%;"><a data-content="<?php echo $eventCat;?>" <?php if($catCnt == 0) { ?>class="selected"<?php } ?> href="<?php echo '#'.$catCnt++;?>"><?php echo ucfirst($eventCat);?></a></li>
+												<?php } ?>
                                       </ul> <!-- cd-tabs-navigation -->
                                   </nav>
                                   
                                   <ul class="cd-tabs-content cd-tabs-content-2">
-                                      <li data-content="cultural" class="selected">
-                                          <div class="content-tab">                                             
-											<?php
-												$query_Nation_evnts_Cul="select * from national_events where category='Cultural' and edate>'".$current_date."' and status='Active' order by sdate limit 5";																
-												$result_Events_cul=mysql_query($query_Nation_evnts_Cul);                                                
-												if(mysql_num_rows($result_Events_cul) > 0) {
-												while($rs_event1=mysql_fetch_array($result_Events_cul))
-												{?>   
-                                                <p><a href="national_events.php?ViewId=Cultural"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
-                                                <?php } } else {  ?>
-                                                <p><h4>No Data Found.</h4></p>
-                                                <?php } ?>
-                                              
-                                          </div>    
-                                          <a href="national_events.php?ViewId=Cultural" class="read-btn-tab">View more</a>
-                                      </li>
-                                      
-                                      <li data-content="relegious">
-                                      <div class="content-tab">
-                                             
-                                             <?php
-												$query_Nation_evnts_Reg="select * from national_events where category='Religious' and edate>'".$current_date."' and status='Active' order by sdate limit 5";																
-												$result_Events_Reg=mysql_query($query_Nation_evnts_Reg);                                                
-												if(mysql_num_rows($result_Events_Reg) > 0) {
-												while($rs_event2=mysql_fetch_array($result_Events_Reg))
-												{?>   
-                                                <p><a href="national_events.php?ViewId=Religious"><?php echo date("d M ",strtotime($rs_event2['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event2['title']);?></span></a></p>
-                                                <?php } } else {  ?>
-                                                <p><h4>No Data Found.</h4></p>
-                                                <?php } ?>
-                                          </div>    
-                                          <a href="national_events.php?ViewId=Religious" class="read-btn-tab">View more</a>
-                                      </li>
-                                      
-                                      
-                                      
-                                      
-                                      
+										<?php $catCnt = 0;
+												foreach($eventCatArr as $eventCat) { ?>
+										<li data-content="<?php echo $eventCat;?>" <?php if($catCnt++ == 0) { ?>class="selected"<?php } ?>>
+											<div class="content-tab">                                             
+											  <?php
+												  $query_Nation_evnts_Cul="select * from national_events where category='".$eventCat."' and edate>'".$current_date."' and status='Active' order by sdate limit 5";																
+												  $result_Events_cul=mysql_query($query_Nation_evnts_Cul);                                                
+												  if(mysql_num_rows($result_Events_cul) > 0) {
+												  while($rs_event1=mysql_fetch_array($result_Events_cul))
+												  {?>   
+												  <p><a href="national_events.php?ViewId=<?php echo ucfirst($eventCat);?>"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
+												  <?php } } else {  ?>
+												  <p><h4>No Data Found.</h4></p>
+												  <?php } ?>
+												
+											</div>    
+											<a href="national_events.php?ViewId=Cultural" class="read-btn-tab">View more</a>
+										</li>
+                                      <?php } ?>
                                   </ul> <!-- cd-tabs-content ends -->
                                   
                               </div> <!-- cd-tabs ends-->
@@ -2847,7 +2840,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 
 	 <?php include "config/footer.php" ; ?>
      <!--End footer -->
-<link rel="stylesheet" href="calender/jquery-ui.css">
+
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->
@@ -2864,20 +2857,63 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
       }
     });
 		
-		$.ajax({
-				url : 'weather.php',
-				async:false,
-				success:function(data){
-					//$('#weather-widget').html(data);
-				}
-			});
-    
+		
 </script>
 <!-- js -->
 <script src="js/html5.js"></script>
 <script src="js/custom.js"></script>
 <!-- End js -->
+<script type="text/javascript">var widget = new avWidgetAstroCalendar('astro_widget_home');</script>
 
+    <script src="widget/jquery.simpleWeather.min.js"></script>
+    <script src="widget/moment.js"></script>
+    <script src="widget/moment-timezone.js"></script>
+    <script src="widget/jstz.min.js"></script>
+    <script src="widget/jqIpLocation.js"></script>
+	
+    <script>
+        //$.noConflict();
+        $(document).ready(function () {
+			
+			
+			var locat = '<?php echo $state;?>';
+			var imgUrl = 'https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/36d.png';
+			$("#astro_widget_home").css('background-image','url(' + imgUrl + ')');
+			$("#astro_widget_home").css('background-repeat','no-repeat');
+			$("#astro_widget_home").css('background-color','beige');
+															
+			$.get("http://ipinfo.io", function(response) {
+						$.ajax({
+									url : 'location.php',
+									type: 'POST',
+									data: {ip:response.ip},
+									success : function(data) {
+										if (data == '' || typeof(data) == 'undefined') {
+                                        } else {
+											locat =	data;
+										}
+										$.simpleWeather({
+												location: locat,
+												woeid: '',
+												unit: 'f',
+												success: function(weather) {
+															var imgUrl = weather.image;
+															if (imgUrl == '' || typeof(imgUrl) == 'undefined') {
+                                                                imgUrl = 'https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/36d.png';
+                                                            }
+															$("#astro_widget_home").css('background-image','url(' + imgUrl + ')');
+															$("#astro_widget_home").css('background-repeat','no-repeat');
+															$("#astro_widget_home").css('background-color','beige');
+												},
+												error: function(error) {
+												  $("#weather").html('<p>'+error+'</p>');
+												}
+									});
+									}
+								});			
+			}, "jsonp");
+        });
+    </script>
 
 <?php include "config/social.php" ;  ?>
 

@@ -113,16 +113,7 @@ color:#FFFFFF;font-weight:bold;clear:both;background-color:#FF0000;font-weight:b
 border-radius: 5px;
 }
 
-/*.sucess
-{
-background-color:#009933;
-padding:5px;
-color:#FFFFFF;
-width:100%;
-font-weight:bold;
-}
 
-*/
 .sucess
 {
 color:#FFFFFF;font-weight:bold;clear:both;background-color:#009900;font-weight:bold;padding:10px 10px;
@@ -150,6 +141,16 @@ border-radius: 5px;
 
             #warning_popup a, #images_popup a {top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
             #warning_popup a:hover, #images_popup a:hover{top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
+			.color-div{
+				margin-top:6px;margin-left:10px;
+	border:2px solid black;border-radius:32px;width:20px;height:20px;float:left;
+	-webkit-box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+  box-shadow: inset 0 1px rgba(255, 255, 255, 0.4), 0 1px 2px rgba(0, 0, 0, 0.2);
+  background-image: -webkit-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  background-image: -moz-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  background-image: -o-linear-gradient(top, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.3), rgba(255, 255, 255, 0) 50%, rgba(0, 0, 0, 0.12) 51%, rgba(0, 0, 0, 0.04));
+}
 </style>
 
 <script type="text/javascript">
@@ -747,7 +748,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;">
 		Title (Ad title limited to 50 characters only)</label>
 	<div class="col-sm-8">
-    	<input type="text" pattern="[a-zA-Z0-9\s]+" required class="form-control" id="" name="TitleAD" placeholder="Title Ad" style="width:100%;margin-bottom:0px;" maxlength="50" tabindex="20" onKeyUp="LimtCharacters(this,50,'lblcount');" />
+    	<input type="text" pattern="[a-zA-Z0-9\s]+" required="true" class="form-control" id="" name="TitleAD" placeholder="Title Ad" style="width:100%;margin-bottom:0px;" maxlength="50" tabindex="20" onKeyUp="LimtCharacters(this,50,'lblcount');" />
  <label id="lblcount" style="background-color:#E2EEF1;color:Red;font-weight:bold;">50 characters remaining</label><br/>        
 	</div>
 </div>
@@ -821,16 +822,17 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-4 control-label" style="text-align:left;">Color</label>
 	<div class="col-sm-8">
-                <select name="Color" id="Color" required=""  class="form-control" tabindex="9" >                
+                <select name="Color" id="Color" required=""  class="form-control" tabindex="9" style="float:left;width:88%">                
                     <option value="">Select a Color:</option>                    
                      <?php 
 					$query_color="select * from  auto_color order by name";
 					$result_query = mysql_query($query_color);                                                
 					while($rs_color = mysql_fetch_array($result_query))
 					{?>	                   
-	                   	 <option value="<?php echo $rs_color['code'] ; ?>" style="background: <?php echo $rs_color['code'] ; ?>"><?php echo ucwords($rs_color['name']) ; ?></option>                    
+	                   	 <option value="<?php echo $rs_color['code'] ; ?>"><?php echo ucwords($rs_color['name']);?></option>
                      <?php } ?>                    
-                    </select>
+                </select>
+				<div id="auto_color" class="color-div"></div>
 	</div>
 </div>
 
@@ -1332,6 +1334,9 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 					<p class="mydata">
 						 NOTE: NRIS.COM OFFERING THIS SERVICE FOR CONVINIENCE OF OUR USERS TO POST AN AD IN ALL STATES IN UNITED STATES WITH A SINGLE CLICK , IF YOU DOESN NOT OBEY  FAIR USE POLICY YOUR USER ACCEESS TO THIS WEBSITE WILL BE TERMINATED PERMENTLEY AND IP ADDRESS WILL BE TAGGED
 					</p>
+					<div class="modal-footer" style="clear:both;">
+						<button type="button" class="btn btn-default" onClick="popup('warning_popup')" style="background-color:#FF9900;color:#FFFFFF;">Agree</button>
+					</div>
                 </div>
 	</div>
 
@@ -1471,6 +1476,13 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
   <script>
    $(function() {
     $( "#EndDate" ).datepicker({minDate: 0,maxDate: "+30d" });
+	
+	$('#Color').change(function(){
+		var colr = $('#Color option:selected').val();
+		$('#auto_color').css('background-color',colr);
+	});
+        
+    
 	
 	$('#Submit2').click(function(){
 		var err = false;

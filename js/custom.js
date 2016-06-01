@@ -119,9 +119,13 @@
 	
 	/* bxSlider */
 	
-	jQuery(".single-portfolio-slide-3 > ul").bxSlider({easing: "linear",tickerHover: true,adaptiveHeightSpeed: 1500,moveSlides: 1,maxSlides: 1,auto: true});
+	if (jQuery('.single-portfolio-slide-3 > ul').length != 0) {
+        jQuery(".single-portfolio-slide-3 > ul").bxSlider({easing: "linear",tickerHover: true,adaptiveHeightSpeed: 1500,moveSlides: 1,maxSlides: 1,auto: true});
+    }
+	if (jQuery(".bxslider-slide > ul").length != 0) {
+        jQuery(".bxslider-slide > ul").bxSlider({easing: "linear",tickerHover: true,slideWidth: 1170,adaptiveHeightSpeed: 1500,moveSlides: 1,maxSlides: 1,auto: true});
+    }
 	
-	jQuery(".bxslider-slide > ul").bxSlider({easing: "linear",tickerHover: true,slideWidth: 1170,adaptiveHeightSpeed: 1500,moveSlides: 1,maxSlides: 1,auto: true});
 
 	/* Counter */
 	
@@ -234,18 +238,6 @@
 	
 	/* niceScroll */
 	
-	jQuery("html").niceScroll({
-		scrollspeed: 60,
-		mousescrollstep: 38,
-		cursorwidth: 6,
-		cursorborder: 0,
-		cursorcolor: '#171717',
-		autohidemode: false,
-		zindex: 9999999,
-		horizrailenabled: false,
-		cursorborderradius: 0,
-	});
-	
 	/* animation */
 	
 	jQuery(".animation").each( function() {
@@ -319,31 +311,11 @@
 		default_height: 529
 	};
 		
-	jQuery("a[href$=jpg], a[href$=JPG], a[href$=jpeg], a[href$=JPEG], a[href$=png], a[href$=gif], a[href$=bmp]:has(img)").prettyPhoto(lightboxArgs);
-			
-	jQuery("a[class^='prettyPhoto'], a[rel^='prettyPhoto']").prettyPhoto(lightboxArgs);
 	
 	/* Twitter */
 	
-	jQuery(".footer-tweet,.sidebar-tweet").tweet({
-		join_text: false,
-		username: "envato", // Username
-		modpath: "./js/twitter/",
-		avatar_size: false,
-		count: 2,
-		template: "{text} <br> {time}",
-		loading_text: "loading twitter feed...",
-		seconds_ago_text: "about %d seconds ago",
-		a_minutes_ago_text: "about a minute ago",
-		minutes_ago_text: "about %d minutes ago",
-		a_hours_ago_text: "about an hour ago",
-		hours_ago_text: "about %d hours ago",
-		a_day_ago_text: "about a day ago",
-		days_ago_text: "about %d days ago",
-		view_text: "view tweet on twitter"
-	});
 	
-	jQuery(".sidebar-tweet ul").bxSlider({easing: "linear",tickerHover: true,slideWidth: 1170,adaptiveHeightSpeed: 1500,moveSlides: 1,maxSlides: 1,auto: true});
+	//jQuery(".sidebar-tweet ul").bxSlider({easing: "linear",tickerHover: true,slideWidth: 1170,adaptiveHeightSpeed: 1500,moveSlides: 1,maxSlides: 1,auto: true});
 	
 	/* Demo switcher */
 	jQuery('head').append("<script src='js/switcher.js'></script>");

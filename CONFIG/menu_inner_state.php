@@ -2,17 +2,34 @@
 		var site_url = '<?php echo SITE_BASE_URL.'/';?>';
 	</script>
 <?php
+
+if($_SERVER['SCRIPT_NAME']) {
+		
+}
+if (strpos($_SERVER['SCRIPT_NAME'], 'aboutus.php') !== false || strpos($_SERVER['SCRIPT_NAME'], 'disclaimer.php') !== false) {
+    $_SESSION['state'] = '';
+	if($_GET['State'] != '') {
+		$_SESSION['state'] = $_GET['State'];
+	}
+}
+//$_SESSION['state'] = '';
 if(isset($_GET['State']))
 {
 	$_SESSION['state']=$_GET['State'];
 }
-else
+elseif(isset($_GET['state']))
 {
-	$_SESSION['state']=$_SESSION['state'];
+	$_SESSION['state']=$_GET['state'];
 	
+}elseif(isset($_GET['code']))
+{
+	$_SESSION['state']=$_GET['code'];
+	
+} else {
+		
 }
 ?>
-<?php $_SESSION['state'] = $defaultState = $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+<?php $state = $defaultState = $_SESSION['state'];?>
 <header id="header" class="header-3">
 <div class="menu-wrap clearfix">
 		
@@ -29,7 +46,11 @@ else
 				<div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');background-position: 0px 0px;background-repeat: no-repeat;background-size: 100% 116px;">
 		<?php } ?>
         <div class="col-md-4">
-			  <div class="logo"><a href="state.php?State=<?php echo $state;?>"><img alt="" src="img/logo.png"></a></div>
+				<?php if($defaultState != '') { ?>
+						<div class="logo"><a href="state.php?State=<?php echo $defaultState;?>"><img alt="" src="img/logo.png"></a></div>
+				<?php } else { ?>
+						<div class="logo"><a href="index.php"><img alt="" src="img/logo.png"></a></div>
+				<?php } ?>
 	   </div>
 	   <div class="col-md-8">
 			  <?php

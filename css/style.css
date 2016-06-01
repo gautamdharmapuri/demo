@@ -1115,6 +1115,7 @@ input,textarea {
     float: left;
     text-align: center;
     padding-top: 5px;
+    min-height: 310px;
 }
 .section-1{
 	width:1280px !important; 

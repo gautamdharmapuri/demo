@@ -1137,6 +1137,9 @@ if ($_GET['type'] == 'premium') {
                                     <p class="mydata">
                                         NOTE: NRIS.COM OFFERING THIS SERVICE FOR CONVINIENCE OF OUR USERS TO POST AN AD IN ALL STATES IN UNITED STATES WITH A SINGLE CLICK , IF YOU DOESN NOT OBEY  FAIR USE POLICY YOUR USER ACCEESS TO THIS WEBSITE WILL BE TERMINATED PERMENTLEY AND IP ADDRESS WILL BE TAGGED
                                     </p>
+									<div class="modal-footer" style="clear:both;">
+										<button type="button" class="btn btn-default" onClick="popup('warning_popup')" style="background-color:#FF9900;color:#FFFFFF;">Agree</button>
+									</div>
                                 </div>
                             </div>
 

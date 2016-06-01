@@ -10,7 +10,7 @@ else
 	
 }
 
-
+$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 
 if(isset($_GET['id']))
 {
@@ -197,7 +197,9 @@ if(isset($_POST['cmdcomment']))
 		$date = date("Y-m-d");
 		$time = date("h:m:s");	
 		
-		$query_cmt = "insert into  nris_talk_comment(thread_Pid,member_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."')";		 
+		
+		
+		$query_cmt = "insert into  nris_talk_comment(thread_Pid,member_id,comment,cmnt_date,cmnt_time,state_code) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."','".$state."')";		 
 		$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
 		header("location:discussion_room_view.php?id='".$_SESSION['threadId']."'");
@@ -330,7 +332,7 @@ if (!empty($_SESSION['Nris_session']['id'])) { ?>
 <br><br><br>                    
 <?php
 $query_blog_cmnt = "select a.*, b.* from nris_talk_comment a, register b where a.member_id = b.id
-					and a.reply_status='0' and thread_Pid = ".$_GET['id']." order by a.cmnt_id desc" ;
+					and a.reply_status='0' and thread_Pid = ".$_GET['id']." and (state_code = '".$state."' or state_code = '') order by a.cmnt_id desc" ;
 $result_cmnt = mysql_query($query_blog_cmnt);
 if(mysql_numrows($result_cmnt) > 0)
 {

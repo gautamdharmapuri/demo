@@ -853,7 +853,7 @@ Widget.prototype.unauthorisedAccess = function()
 };
 Widget.prototype.showBasicScreen = function()
 {
-	$(this.targetId+'_content').clear();
+	//$(this.targetId+'_content').clear();
 	frame = new Element('div',{id:'av_widget_148','class':'',html:''}).create();
 	frame.appendChild(this.header());
 	frame.appendChild(this.shim1px());
@@ -869,7 +869,12 @@ Widget.prototype.showBasicScreen = function()
 	frame.appendChild(this.shim1px());
 	frame.appendChild(this.linkFreePredictions());
 	frame.appendChild(this.shim1px());
-	$(this.targetId+'_content').instance.appendChild(frame);
+	//$(this.targetId+'_content').instance.appendChild(frame);
+	if ($(this.targetId).selector == 'astro_widget_home') {
+        $('#astro_widget_home_content').html(frame);
+    } else {
+			$(this.targetId+'_content').instance.appendChild(frame);			
+	}
 };
 Widget.prototype.showPanchangaScreen = function()
 {

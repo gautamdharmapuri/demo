@@ -741,78 +741,47 @@ $current_date = date('Y-m-d');
                            
                              <div class="movies" style="padding-top: 23px;">
                             <div class="full-btn">
-                                <a href="#"><?php echo $_SESSION['state']; ?> - EVENTS </a>
+                                <a href="javascript:;"><?php echo $state; ?> - EVENTS </a>
                             </div>
-                        
+                        <?php
+										$eventCatSelect = "SELECT category FROM events WHERE state_code = '".$state."' GROUP BY category ORDER BY id DESC LIMIT 3";
+										$eventCatResult = mysql_query($eventCatSelect);
+										while($tempRes = mysql_fetch_array($eventCatResult)) {
+												$eventCatArr[] = $tempRes['category'];
+										}
+								?>
+								
                                          <div class="cd-tabs" style="float:left;padding: 0 5px;width: 100%;margin-top:0;">
                                                   <nav>
                                                       <ul class="cd-tabs-navigation" style="width:100%;">
-                                                          <li style="width: 84px;"><a data-content="chicago" class="selected" href="#0" style="font-size:9px;padding:15px 0px;text-align:center;">Cultural</a></li>
-                                                          <li style="width: 84px;"><a data-content="spring" href="#0" style="font-size:9px;padding: 15px 0px;text-align:center;" >Religious</a></li>
-                                                           <li style="width: 84px;"><a data-content="chicago-2" href="#0" style="font-size:9px;padding:15px 0px;text-align:center;" >Community</a></li>
+                                                         <?php $catCnt = 0;
+												foreach($eventCatArr as $eventCat) { ?>
+														<li style="width:33.3%;">
+															<a style="padding:10px 11px;" data-content="<?php echo $eventCat;?>" <?php if($catCnt++ == 0) { ?>class="selected"<?php } ?> href="javascript:;"><?php echo ucfirst($eventCat);?></a></li>
+												<?php } ?>
                                                       </ul> <!-- cd-tabs-navigation -->
                                                   </nav>
-                                                  
+                                                                                                    
                                                   <ul class="cd-tabs-content" style="min-height:257px;">
-                                                      <li data-content="chicago" class="selected">
-                                                          <div class="content-tab">
-		<?php
-        $event_query1 = "select * from events where state_code = '".$_SESSION['state']."' and category='Cultural' and edate>'".$current_date."' and status='Active' order by sdate limit 5";
-        $result_e1 = mysql_query($event_query1);
-		if(mysql_num_rows($result_e1) > 0) {
-        while($rs_ent1 = mysql_fetch_array($result_e1)) 
-		{
-        	if($rs_ent1['edate'] >= $current_date)
-	        { ?>                                                          
-                      <p><a href="events.php?ViewId=Cultural&State=<?php echo $_SESSION['state']; ?>"><?php echo date("d M",strtotime($rs_ent1['sdate'])); ?>
-                        <span style="text-transform:none;"> <?php echo $rs_ent1['title']; ?></span></a></p>
-                                                                
-             <?php } 
-		}	} else { echo "<p>No Event Found.</p>" ; } ?>
-                                                             <?php /*?> <p><a href="#">16 Mar<span> Cultural EVENT TITLE</span></a></p>
-                                                              <p><a href="#">16 Mar<span> Cultural EVENT TITLE</span></a></p><?php */?>
-                                                          </div> 
-                                                          <a href="events.php?ViewId=Cultural&State=<?php echo $_SESSION['state']; ?>" class="read-btn-tab">View more</a>   
-                                                      </li>
-                                                      
-                                                      <li data-content="spring" >
-                                                      <div class="content-tab">
-                                                            <?php
-        $event_query2 = "select * from events where state_code = '".$_SESSION['state']."' and category='Religious' and edate>'".$current_date."' and status='Active' order by sdate limit 5";
-        $result_e2 = mysql_query($event_query2);
-		if(mysql_num_rows($result_e2) > 0) {
-        while($rs_ent2 = mysql_fetch_array($result_e2)) 
-		{
-        	if($rs_ent2['edate'] >= $current_date)
-	        { ?>                                                          
-                      <p><a href="events.php?ViewId=Religious"><?php echo date("d M",strtotime($rs_ent2['sdate'])); ?>
-                        <span style="text-transform:none;"> <?php echo $rs_ent2['title']; ?></span></a></p>
-                                                                
-             <?php } 
-		}	} else { echo "<p>No Event Found.</p>" ; } ?>
-                                                        </div>    
-                                                          <a href="events.php?ViewId=Religious" class="read-btn-tab">View more</a>
-                                                      </li>
-                                                      <li data-content="chicago-2" >
-                                                          <div class="content-tab">
-                                                         
-                                                          <?php
-        $event_query3 = "select * from events where state_code = '".$_SESSION['state']."' and category='Community' and edate>'".$current_date."' and status='Active' order by sdate limit 5";
-        $result_e3 = mysql_query($event_query3);
-		if(mysql_num_rows($result_e3) > 0) {
-        while($rs_ent3 = mysql_fetch_array($result_e3)) 
-		{
-        	if($rs_ent3['edate'] >= $current_date)
-	        { ?>                                                          
-                      <p><a href="events.php?ViewId=Community"><?php echo date("d M",strtotime($rs_ent3['sdate'])); ?>
-                        <span style="text-transform:none;"> <?php echo $rs_ent3['title']; ?></span></a></p>
-                                                                
-             <?php } 
-		}	} else { echo "<p>No Event Found.</p>" ; } ?>
-                                                         
-                                                          </div>    
-                                                          <a href="events.php?ViewId=Community" class="read-btn-tab">View more</a>
-                                                      </li>
+                                                      <?php $catCnt = 0;
+												foreach($eventCatArr as $eventCat) { ?>
+										<li data-content="<?php echo $eventCat;?>" <?php if($catCnt++ == 0) { ?>class="selected"<?php } ?>>
+											<div class="content-tab">                                             
+											  <?php
+												  $query_Nation_evnts_Cul="select * from events where category='".$eventCat."' and state_code = '".$state."' and edate>'".$current_date."' and status='Active' order by sdate limit 5";
+												  $result_Events_cul=mysql_query($query_Nation_evnts_Cul);                                                
+												  if(mysql_num_rows($result_Events_cul) > 0) {
+												  while($rs_event1=mysql_fetch_array($result_Events_cul))
+												  {?>   
+												  <p><a href="events.php?ViewId=<?php echo ucfirst($eventCat);?>"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
+												  <?php } } else {  ?>
+												  <p><h4>No Data Found.</h4></p>
+												  <?php } ?>
+												
+											</div>    
+											<a href="events.php?ViewId=Cultural" class="read-btn-tab">View more</a>
+										</li>
+                                      <?php } ?>
                                                       
                                                   </ul> <!-- cd-tabs-content ends -->
                                                   

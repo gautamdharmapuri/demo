@@ -9,6 +9,17 @@
 /*			echo $_SESSION['USNRIs_session']['username'];
 			echo $_SESSION['USNRIs_session']['category'];			*/
 ?>
+<?php  if (isset($_GET['delId']))
+	  	{
+		
+		$qy="delete from videos where id='".$_GET['delId']."'";
+		mysql_query($qy);
+		
+	
+		echo "<script language='javascript' type='text/javascript'>alert('Movie Theaters Deleted Successfully...');</script>";
+		echo "<script language='javascript' type='text/javascript'>document.location='videos.php';</script>";
+		exit;
+} ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -111,6 +122,14 @@ font-style:italic;
 			                                <a class="btn btn-danger" title="Edit" style="padding:4px 10px;" href="video_details.php?action=edit&editId=<?php echo $rs['id'];?>">
                                             <span class="fa fa-pencil-square-o" style="margin-right:0px;"></span>
                                             </a>
+											<?php 
+                                            if ($_SESSION['USNRIs_session']['category']!='Clerk')
+                                            {  ?> 
+                                            &nbsp;
+                                            <a class="btn btn-danger" style="background-color:#FF0000;border:#0066CC;padding:4px 10px;" title="Delete" href="videos.php?delId=<?php echo $rs['id'];?>" onClick="return delthis();" >
+                                            <span class="fa fa-trash-o" style="margin-right:0px;"></span>
+                                            </a>
+                                            <?php }   ?>
                                             
                                           
                                                                                          </td>

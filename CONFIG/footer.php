@@ -250,44 +250,25 @@
 
                     
                         <p class="mydata">
-							  Terms and conditions before registering with our site after entered all the info .Registration  terms and conditions guidelines 
+							  The NRIS Nationwide  chat room and State Wide Chat rooms are operated by the NRIS.com staff, and users falls under a number of regulations. This is to ensure a safe and fun chatting environment for all!
                         </p>
 
                 <div class="col-lg-12 col-md-12 col-sm-12">   
 					<ul class="checks">
-						 <li>
-							  I am responsible what ever the content I post at any section of this site ,to respect  that I do not  post any content, rate or reply/review that may be considered, abusive, vulgar,offensive,  obscene
-						 </li>
-						 <li>
-							 Site Management is not responsible for any violations as per law.  
-						 </li>
-						 <li>
-							 This site is for public for free use I always maintain courtesy, if i am a business person/organization, marketing person or any other soliciting person I oath for not repeated posts, if any, site management have right to find the IP address or delete the my ID and barred for future postings from this IP address 
-						 </li>
-						 <li>
-							  We respect Privacy according to US law, by agreeing these terms I honor that I never post others information like name phone numbers addresses etc.
-						 </li>
-						 <li>
-							 I oath i never do spamming, no repeated ads this sections with useless content, and i agree i am responsible to open any external links/URLs posted by other users and/or by Admin. 
-						 </li>
-						 <li>
-							  I am agreeing that after i accept these terms & conditions i solely responsible for whatever the content si post here or share here in public chat
-						 </li>
-						 <li>
-							  NRIS.com  Reserves all right to remove or delete any user permanantly with out any reason or prior notifcation.
-						 </li>
-						 <li>
-							  I am authorizing NRIS.com can track my IPaddress all the times for legal reasons. 
-						 </li>
-						 <li>
-							  I always respect all other users of this site and I expect the same from other users of this site
-						 </li>
-						 <li>
-							  I know that public chat is limited just to share the views of  political issues ,movies, sports and educational issues and i oath i never use unparliamentary, unlawful,abusive,vulgar words or phrases at any time.
-						 </li>
+						 <li>No Foul Language - Please avoid using obscene words or phrases. Like the forums, the chat is considered a PG-13 zone, and thus the language used should reflect that. Using foul language may result in a warning. Persistent behavior of the kind will not be tolerated and will result in a ban.</li>
+						 <li>No Flooding or Excess Spam - Please do not flood the channel with meaningless or repetitive messages. It distracts from the conversation and may result in a kick from the channel. Repeat offenses will result in bans.</li>
+						 <li>No Advertising - Entering the channel and using it solely to promote another website, IRC channel, etc will result in being kicked/banned from the room. We do not mind you talking about your own Trek fan films and the like, but we ask that you not use the channel solely for that purpose. The room is, after all, a Hidden Frontier chat room.</li>
+						 <li>Do Not Falsely Represent Yourself - Falsely representing yourself as an HF cast/crewmember or another member is grounds for an immediate and permanent ban from the chat room. To protect your identity, we recommend that you register your nickname with NickServ. You can get more information on how to do this by typing /msg NickServ Register into the channel.</li>
+						 <li>Do Not Beg for Ops - Ops, or channel operators (indicated by a @, %, ~, or & next to their nickname) are moderators of the room. Do not beg or request to become an op in the channel, as it will result in an immediate kick from the room. Repeat behavior will result in a ban. Operators are (typically) production and/or forum staff members. While we do recruit non- forum/production staff members to assist us in moderation on occasion, we invite you, and not the other way around.</li>
+						 <li>Do Not Evade Bans - Ban evasion, which is defined as deliberately getting around a ban (either by changing your IP or other means) before the ban is served completely. Ban evasion will result in a temporary ban becoming a permanent one. Repeat attempts will result in it being considered as harassment, the consequences of which are defined below.</li>
+						 <li>Follow Operator Instructions - We ask that you follow all instructions given to you by channel operators. Failure to follow instructions will result in a kick and/or ban from the channel. If you feel you were unfairly targeted by an operator, you may file a report us at Admin@nris.com</li>
+						 <li>Do Not Harass Members - Harassing members or moderators of the chat room, or any other user on the IRC server will result in severe repercussions, including but not limited to a kline -- or permanent ban from the server (not just the channel) -- and possibly a police report, depending on the severity of the harassment.</li>
+						 <li>No Leetspeak - Please do not use "leet speak" (l1k3 7h1s s0r7 0f 7yp1ng) or variants thereof. Also, using excessive forms of slang or "street talk" may result in warnings, and eventually a kick/ban from the channel.</li>
+						 <li>Monday Night Chats - Our weekly Monday night chat sessions (beginning at 7:00pm Pacific, and ending before midnight) may have different rules and regulations associated with them.</li>
+						 <li>Operator Authority - Channel operators are empowered to enforce these regulations, make exceptions to them when necessary, and use their discretion when applying punishment. If you feel you have been treated unfairly, you may file a complaint at Admin@NRIS.com</li>
 					</ul>
 					<p class="mydata">
-						 We thank you in advance for your understanding and continued support.
+						 Thanks for joining us in chat!
 					</p>
 					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;
 					<button onClick="chat_condition_click();" class="btn btn-success" style="">Submit</button></span></p>
