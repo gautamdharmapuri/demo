@@ -29,7 +29,8 @@ if(isset($_POST['cmdLoginbtn']))
 				echo '<center><img src="img/loading.gif"></center>'	;				
 
 				$Lrow=mysql_fetch_array($Lresult);
-				$_SESSION['Nris_session']=$Lrow;
+				$_SESSION['Nris_session'] = $Lrow;
+				$_SESSION['Nris_session']['loggedTime'] = date('Y-m-d H:i:s');
 				
 				mysql_query("UPDATE register SET login_status = 'Y' where email ='".$email."' and password='".$pass."' and isactive = 1");
 				

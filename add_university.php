@@ -302,7 +302,7 @@ if(isset($_POST['cmdSubmit'])) {
 <div class="form-group" style="clear:both;">
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Description</label>
 	<div class="col-sm-10">
-    <textarea rows="5" cols="40" style="width:100%;" name="details" id="details" tabindex="6"></textarea>
+    <textarea rows="5" cols="40" style="width:100%;" name="details" id="details" tabindex="6" required></textarea>
 	</div>
 </div>
 

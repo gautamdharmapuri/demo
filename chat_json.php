@@ -1,6 +1,27 @@
 <?php
 error_reporting(0);
-include "config/connection.php"; 
+
+include "config/connection.php";
+if (session_id() != '' && is_array($_SESSION['Nris_session'])) {
+	$currentTime = strtotime(date('Y-m-d H:i:s'));
+	$loggedInTime = strtotime($_SESSION['Nris_session']['loggedTime']);
+	
+	if(($currentTime-$loggedInTime) > 30*60) {
+		$email = $_SESSION['Nris_session']['email'];
+		mysql_query("UPDATE register SET login_status = 'N' where email ='".$email."' and isactive = 1");
+		
+		$_SESSION['Nris_session']="";
+		unset($_SESSION['Nris_session']);
+		
+		$_SESSION['state']="";
+		unset($_SESSION['state']);	
+		
+		$_SESSION['ViewId']="";
+		unset($_SESSION['ViewId']);		
+		
+		echo -1;exit;
+	}
+}
 $today=date('Y-m-d',strtotime(date('Y-m-d')));  
 $last_id = $_GET['id'];
 $state = ($_GET['State'] != '') ? $_GET['State'] : '';

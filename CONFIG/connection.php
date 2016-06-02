@@ -61,6 +61,30 @@ function createLoginSession($data = array()) {
 	$_SESSION['Nris_session'] = $data;
 	return $_SESSION['Nris_session'];
 }
+
+if (session_id() != '' && is_array($_SESSION['Nris_session'])) {
+$currentTime = strtotime(date('Y-m-d H:i:s'));
+$loggedInTime = strtotime($_SESSION['Nris_session']['loggedTime']);
+
+//echo $currentTime-$loggedInTime;
+if(($currentTime-$loggedInTime) > 30*60) {
+	$email = $_SESSION['Nris_session']['email'];
+	mysql_query("UPDATE register SET login_status = 'N' where email ='".$email."' and isactive = 1");
+	
+	$_SESSION['Nris_session']="";
+	unset($_SESSION['Nris_session']);
+	
+	$_SESSION['state']="";
+	unset($_SESSION['state']);	
+	
+	$_SESSION['ViewId']="";
+	unset($_SESSION['ViewId']);		
+	
+	header('location:index.php');
+	exit;
+}
+}
+
 ?>
 
 	

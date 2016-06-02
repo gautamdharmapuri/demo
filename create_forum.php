@@ -226,7 +226,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Description</label>
 	<div class="col-sm-10">
-    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="2"></textarea>
+    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="2" required></textarea>
 	</div>
 </div>
 

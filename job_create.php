@@ -679,7 +679,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
                             <div class="form-group">
                                 <label for="inputPassword3" class="col-sm-2 control-label" style="text-align:left;">Job Details</label>
                                 <div class="col-sm-10">
-                                    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="2"></textarea>
+                                    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="2" required></textarea>
                                 </div>
                             </div>
 

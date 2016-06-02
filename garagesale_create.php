@@ -681,7 +681,7 @@ function test_input($data) {
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:left;">Description</label>
 	<div class="col-sm-10">
-    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="2"></textarea>
+    <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="2" required></textarea>
     <span style="font-size:11px ">Select or deselect any item under the description box, item names automatically copied in description box and you can add/edit the data entered</span>
 	</div>
 </div>

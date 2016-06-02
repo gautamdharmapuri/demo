@@ -493,7 +493,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Comment</label>
 	<div class="col-sm-10">
-    <textarea rows="5" cols="40" style="width:100%;" name="Comment" id="Comment" tabindex="2"  placeholder="Your comment"></textarea>
+    <textarea rows="5" cols="40" style="width:100%;" name="Comment" id="Comment" tabindex="2"  placeholder="Your comment" required></textarea>
 	<div style="clear:both;width: 100%;display: inline-block;float: left !important;margin-left:312px;">
 						<div id="display_count" style="float: left !important;">200</div>
 						<div style="float: left !important;">&nbsp;words remaining</div>

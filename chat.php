@@ -44,6 +44,9 @@ var auto_refresh = setInterval(function ()
   var chat_topic = jQuery('#chat_topic option:selected').val();
 jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id+"&State=<?php echo $state;?>&chat_topic="+chat_topic+"&isInitial="+isInitial,function(data)
 {
+	if (data == -1) {
+        location.reload(true);
+    }
 jQuery.each(data, function(i,data)
 {
 if(data.id != last_id)  

@@ -179,7 +179,7 @@ Give your rating
               <div class="form-div ">
                     <div class="form-label">Message:</div>
                     <div class="form-field">
-                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
+                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required></textarea>
                     </div>            
                </div>      
              <div class="form-submit-buttons">               

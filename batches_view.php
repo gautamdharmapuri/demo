@@ -259,7 +259,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
               <div class="form-div ">
                     <div class="form-label">Message:</div>
                     <div class="form-field">
-                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
+                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required></textarea>
                     </div>            
                </div>      
              <div class="form-submit-buttons">               

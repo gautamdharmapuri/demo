@@ -308,7 +308,7 @@ $star_fs5 = mysql_fetch_array($result_start5);
               <div class="form-div ">
                     <div class="form-label">Message:</div>
                     <div class="form-field">
-                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
+                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required></textarea>
 					<div style="clear:both;width: 100%;display: inline-block;float: left !important;margin-left:312px;">
 						<div id="display_count" style="float: left !important;">200</div>
 						<div style="float: left !important;">&nbsp;words remaining</div>
