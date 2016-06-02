@@ -242,9 +242,8 @@ if(isset($_SESSION['Nris_session']))
                         <table align="center" >
                         <thead>
                         <tr>
-                           
+                           <th>Title</th>
                             <th>Category</th>                                                                              
-                           
                             <th>Views</th>
                         </tr>
                         </thead>
@@ -279,7 +278,7 @@ if(isset($_SESSION['Nris_session']))
 						while($rs=mysql_fetch_array($result))
 						{ ?> 
 					<tr>                                                                             
-					
+					<td><a href="mypartner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAd']);?></a></td>
 					<td><a href="mypartner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
 					
 					<td><a href="mypartner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
@@ -287,7 +286,7 @@ if(isset($_SESSION['Nris_session']))
 					<?php }  } else {  ?>
                     
                     <tr>
-						<td colspan="2"><br><h6>No Records Found.</h6></td>	
+						<td colspan="3"><br><h6>No Records Found.</h6></td>	
                     </tr>    
 					<?php } ?>
                    

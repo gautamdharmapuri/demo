@@ -231,11 +231,8 @@ if(isset($_SESSION['Nris_session']))
                                        <thead>
                                        		<tr>
                                        		<th>Color</th>                                         
-                                             <th> <span style="background-color:<?php    echo ucwords($rs['Color']);   ?>">
-                                             	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                                                </span>&nbsp;&nbsp;
-                                             <?php    echo ucwords($rs['Color']);   ?>
+                                              <th>
+												<div style="background-color:<?php echo ucwords($rs['Color']);?>;" class="color-div"></div>
                                               </th>
                                          	</tr>
                                        </thead>                                   

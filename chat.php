@@ -278,6 +278,13 @@ jQuery('#box_smilies').slideToggle();
 jQuery('.link_color').click(function() {
   jQuery('#box_smilies').fadeOut('slow');
   jQuery('#shout_message').focus();
-})
+});
+
+jQuery(document).ready(function(){
+        setTimeout(function(){
+            jQuery('.wbiscroller').find('a').attr('href','javascript:;');
+        },300);
+    });
+
 });
 </script>

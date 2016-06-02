@@ -262,7 +262,7 @@ if(isset($_SESSION['Nris_session']))
                         <table align="center" >
                         <thead>
                         <tr>
-                            <th>Make</th>
+							<th>Title</th>
                             <th>Model</th>
                             <th>City</th>
                             <th>Views</th>
@@ -339,7 +339,9 @@ if(isset($_SESSION['Nris_session']))
 						if(mysql_num_rows($result) > 0) {
 						while($rs=mysql_fetch_array($result))
 						{ ?> 
-					 <tr>                                                                             
+					 <tr>
+						<td><a href="auto_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+					<?php echo ucwords($rs['TitleAd']);?></a></td>
                     <td><a href="auto_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 					<?php echo ucwords($rs['name']);?></a></td>
                     <td><a href="auto_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
@@ -352,7 +354,7 @@ if(isset($_SESSION['Nris_session']))
 					<?php }  } else {  ?>
                     
                     <tr>
-						<td colspan="4"><br><h6>No Records Found.</h6></td>	
+						<td colspan="5"><br><h6>No Records Found.</h6></td>	
                     </tr>    
 					<?php } ?>
                    

@@ -111,6 +111,11 @@ $current_date = date('Y-m-d');
                 });
             </script>
 </head>
+<style type="text/css">
+    iframe{margin:0px !important;}
+	iframe html body{margin:0px !important;}
+	iframe #document html body{margin:0px !important;}
+</style>
 <body>
 
 <div class="loader"><div class="loader_html"></div></div>
@@ -121,13 +126,9 @@ $current_date = date('Y-m-d');
 	
 	<div class="clearfix"></div>
 
-		<div class="stock-scroll">
-		
-				<div class="col-md-8">
-						
-                </div>
-       
-        </div>     
+		<div id="stock_div">
+			<iframe id="myFrame" src="http://nris.com/New-Site/stock_block_state.php" frameborder="0" width="100%" height="41px" scrolling="auto" style="margin: 0px !important;padding: 0px !important;"></iframe>
+		</div>     
 	
 	
 <div class="section-1-wrap">	
@@ -1210,62 +1211,14 @@ $current_date = date('Y-m-d');
 												  jQuery("#weather").html('<p>'+error+'</p>');
 												}
 									});
+										
+										//jQuery('#stock_div').html('<iframe id="myFrame" src="http://nris.com/New-Site/stock_block_state.php" frameborder="0" width="100%" height="41px" scrolling="auto"></iframe>');
+			
 									}
 								});			
 			}, "jsonp");
 			
-			
-            //setInterval(function () {
-            //    jQuery.getJSON("http://www.telize.com/geoip?callback=?", function (data) {
-            //        bwea(data);
-            //    });
-            //}, 10000);
 
-
-            /*var bwea = function (pos) {
-                navigator.geolocation.getCurrentPosition(function (position) {
-                    loadWeather(position.coords.latitude + ',' + position.coords.longitude); //load weather using your lat/lng coordinates
-                }, function(){
-                    loadWeather(pos.latitude + ',' + pos.longitude); //load weather using your lat/lng coordinates
-                });
-				
-                function loadWeather(location, woeid) {
-                    jQuery.simpleWeather({
-                        location: location,
-                        woeid: woeid,
-                        unit: 'f',
-                        success: function (weather) {
-                            var url = weather.image;
-                            var city = weather.city;
-                            var region = weather.region;
-                            var place = city + ", " + region;
-
-                            var tz = jstz.determine();
-                            var name = tz.name();
-
-                            var d = new Date();
-                            //                            var day = moment(d).tz(name).format('hh:mma z');
-                            var day = moment(d).format('hh:mma z');
-
-                            var n = '<div id="wrap" style="line-height: 31px; width: 144px; text-align: center; float: left; color: black; font-weight: bold;"><div id="temp" style="line-height: 31px; width: 48px; text-align: center; float: left; color: black; font-weight: bold; }">' + weather.temp + '&deg;' + 'F' + '</div><div id="place" style="float: left; height: 50%; width: 95px; font-size: 9px; text-align: center; line-height: 14px;">' + place + '</div><div id="time" style=" text-align: center; font-size: 11px; line-height: 14px; float: left; height: 50%; width: 95px;">' + day + '</div></div>';
-                            var durl = 'images/daysky.JPG';
-                            jQuery('#astro_widget').css({ "background": "url('" + durl + "')", "background-repeat": "no-repeat"});
-                            jQuery('#astro_widget_content').css({ "background": "url('" + url + "')", "background-repeat": "no-repeat", "background-size":"auto 147px"  });
-                            jQuery('div').find('.place.ac.fa.grey.pt10.cp').remove('.place.ac.fa.grey.pt10.cp');
-                            var l = jQuery('div').find('.haeder div#wrap').length;
-
-                            if (l == 0) {                                
-                                jQuery(n).appendTo('.haeder');
-                            } else {
-                                jQuery('.haeder div#wrap').replaceWith(n);
-                            }
-                        },
-                        error: function (error) {
-                            alert(error.message);
-                        }
-                    });
-                }*/
-            //}
         });
 		function getMovieDetails(movieId) {
 						jQuery('.movie_details_class').not('#movie_details_div_'+movieId).hide();
