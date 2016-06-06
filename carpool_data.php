@@ -256,13 +256,13 @@ include"config/connection.php";
                                         <tr>
                                             <td>
                                                 <a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
-                                                    <?php echo $data['from_cityname']; ?>
-                                                </a>
+											<?php echo $data['from_cityname'].', '.$data['from_state']; ?>
+										</a>
                                             </td>
                                             <td>
                                                 <a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
-                                                    <?php echo $data['to_cityname']; ?>
-                                                </a>
+											<?php echo $data['to_cityname'].', '.$data['to_state']; ?>
+										</a>
                                             </td>
                                             <td>
                                                 <a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">

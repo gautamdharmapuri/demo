@@ -3,6 +3,8 @@
 ?>
 
 <?php
+
+$defaultState = $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 if(isset($_POST['Submitdata']))
 {
 	$Error ='';
@@ -13,6 +15,27 @@ if(isset($_POST['Submitdata']))
 		$insData = $_POST;
 		unset($insData['Submitdata']);
 		unset($insData['JourneyType']);
+		
+		if($insData['type'] == "local") {
+			if($insData['from_state'] == '' || $insData['from_state'] == 0) {
+				$insData['from_state'] = $defaultState;
+			}
+			if($insData['to_state'] == '' || $insData['to_state'] == 0) {
+				$insData['to_state'] = $defaultState;
+			}
+		}
+		
+		if($insData['type'] == "international") {
+			$sql = mysql_query("select * from cities where id = '".$insData['from_city']."' GROUP BY city ORDER BY city ASC LIMIT 1");
+			
+			$row = mysql_fetch_array($sql);
+			$insData['from_state'] = $row['state_code'];
+			
+			$sql=mysql_query("select * from cities where id = '".$insData['to_city']."' GROUP BY city ORDER BY city ASC LIMIT 1");
+			$row = mysql_fetch_array($sql);
+			$insData['to_state'] = $row['state_code'];
+		}
+		
 		
 		if ($Error == '') {
 			$columns = implode(", ",array_keys($insData));
@@ -283,7 +306,7 @@ function showDiv2(elem){
    				
 
 <div class="widget-temple">
-	<?php $defaultState = $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
+	<?php ?>
 				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
 				<a href="javascript:history.back()" class="breadcumb_link"> Local Carpool</a>
 				>> Create Carpool Post</h4>

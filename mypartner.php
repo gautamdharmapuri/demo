@@ -278,7 +278,7 @@ if(isset($_SESSION['Nris_session']))
 						while($rs=mysql_fetch_array($result))
 						{ ?> 
 					<tr>                                                                             
-					<td><a href="mypartner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAd']);?></a></td>
+					<td><a href="mypartner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
 					<td><a href="mypartner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
 					
 					<td><a href="mypartner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>

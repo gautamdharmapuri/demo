@@ -279,12 +279,16 @@ if(isset($_SESSION['Nris_session']))
 									</td>
 									<td>
 										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
-											<?php echo $data['from_cityname']; ?>
+											<?php
+											$from_state = ($data['from_state'] != '0') ? ', '.$data['from_state'] : '';
+											echo $data['from_cityname'].$from_state; ?>
 										</a>
 									</td>
 									<td>
 										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
-											<?php echo $data['to_cityname']; ?>
+											<?php
+											$to_state = ($data['to_state'] != '0') ? ', '.$data['to_state'] : '';
+											echo $data['to_cityname'].$to_state; ?>
 										</a>
 									</td>
 									<td>

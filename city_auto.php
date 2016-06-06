@@ -11,6 +11,7 @@ if(isset($_GET['state']) && $_GET['state'] != '') {
 }
 
 
+//echo "select id,city from cities where city like '".$_GET['term']."%' $where GROUP BY city ORDER BY city ASC LIMIT 20";exit;
 $sql=mysql_query("select id,city from cities where city like '".$_GET['term']."%' $where GROUP BY city ORDER BY city ASC LIMIT 20");
 $cnt = 0;
 while($row = mysql_fetch_array($sql)) {
