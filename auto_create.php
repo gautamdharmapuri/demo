@@ -1163,8 +1163,8 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
     	<select name="States" id="States" required=""  class="form-control"  onChange="showstate(this.value);" tabindex="5" required>              
                <option value="">Select State</option>                
                 <option value="<?php echo $_GET['code'] ?>">Current State Only</option>  
-                <option value="ALL" data-toggle="modal" data-target="#ALL">All States in USA</option>  
-                <option value="multiple" data-toggle="modal" data-target="#multiple">Select Multiple States</option>      	
+                <option value="ALL">All States in USA</option>  
+                <option value="multiple">Select Multiple States</option>      	
 		</select>
 	</div>
 </div>

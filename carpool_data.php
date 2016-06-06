@@ -241,7 +241,7 @@ include"config/connection.php";
                                     $where = ' AND (carpool.from_city = "' . $_GET['City1'] . '" AND carpool.to_city = "' . $_GET['City2'] . '")';
                                 }
                                 if ($_GET['type'] == 'interstate') {
-                                    $where .= "AND c1.state_code = '$state' AND c2.state_code = '$state'";
+                                    //$where .= "AND c1.state_code = '$state' AND c2.state_code = '$state'";
                                 }
                                 $query1 = "SELECT carpool.*,c1.city as from_cityname,c2.city as to_cityname FROM carpool,cities c1, cities as c2
 				WHERE type = '" . $_GET['type'] . "'

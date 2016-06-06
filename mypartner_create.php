@@ -782,8 +782,8 @@ function test_input($data) {
     	<select name="States" id="States" required=""  class="form-control"  onChange="showstate(this.value);" tabindex="8" >              
                <option value="">Select State</option>                
                 <option value="<?php echo $_SESSION['state'] ?>">Current State Only</option>  
-                <option value="ALL" data-toggle="modal" data-target="#ALL">All States in USA</option>  
-                <option value="multiple" data-toggle="modal" data-target="#multiple">Select Multiple States</option>      	
+                <option value="ALL">All States in USA</option>  
+                <option value="multiple">Select Multiple States</option>      	
 		</select>                		
 	</div>
 </div>
