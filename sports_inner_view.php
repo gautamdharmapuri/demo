@@ -360,7 +360,7 @@ $star_fs5 = mysql_fetch_array($result_start5);
         //$('.comment-form').validate();
 		
 		var word_count = 200;
-		$("#message").on('keydown',function() {
+		$("#message").on('input propertychange',function() {
 
 			var words = $(this).val().length;
 			

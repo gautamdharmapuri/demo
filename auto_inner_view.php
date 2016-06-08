@@ -188,6 +188,8 @@ font-size:12px;
 				mail($to, $subject, $htmlmsg, $headers);
 				echo "<script type='text/javascript'>alert('Good luck your price has been submitted');</script>";
 			}
+			
+			
 		
 			$query="select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.Brand = b.id and md5(a.id) = '".$_GET['ViewId']."' group by a.id ";
 			$result=mysql_query($query);
@@ -214,6 +216,12 @@ font-size:12px;
 						$addArr[] = 'United States';
 						
 						$address = urldecode(implode(', ',$addArr));
+						
+						
+						if(isset($_POST['respond'])) {
+							$msg = send_respond_mail($_POST,$rs['ConatctEmail']);
+							echo "<script type='text/javascript'>alert('Your response sent successfully');</script>";
+						}
 						//echo $address;
 					   ?>               
         <div class="widget-temple">
@@ -515,6 +523,9 @@ geocoder = new google.maps.Geocoder();
 				</div>
 			<?php } ?>
 			<br><br>
+			<div class="col-md-12">
+ <?php include "reply-widget.php"; ?>
+ </div>
         <div class="col-md-12">
 
  <div class="dividerHeading">
@@ -546,6 +557,8 @@ geocoder = new google.maps.Geocoder();
 				<input class="form-control" type="hidden" name="to_email" value="<?php echo $rs['ConatctEmail']; ?>"/>
            </form> 
 </div>                   
+ 
+ 
  <script>
      $('document').ready(function() {
 		

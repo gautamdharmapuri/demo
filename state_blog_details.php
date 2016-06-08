@@ -624,7 +624,7 @@ if(isset($_POST['cmdcomment']))
         //$('.comment-form').validate();
 		
 		var word_count = 200;
-		$("#Comment").on('keydown',function() {
+		$("#Comment").on('input propertychange',function() {
 
 			var words = $(this).val().length;
 			

@@ -1,5 +1,6 @@
 <?php error_reporting(0);  include"config/connection.php";	
 $inseted_row ='';
+$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 if(isset($_POST['cmdsave']))
 {
 	$mId = $_POST['memberId'];	
@@ -17,8 +18,9 @@ if(isset($_POST['cmdsave']))
 	$date = date("Y-m-d");
 	$time = date("h:m:s");	
 	
-	$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-	$query_thread = "insert into  nris_talk(title,description,member_id,status,date,time,state_code) values('".$Titletxt."','".$msg."','".$mId."','".$status."','".$date."','".$time."','".$state."')";
+	
+	$query_thread = "insert into nris_talk(title,description,member_id,`status`,`date`,`time`,state_code) values ('".$Titletxt."','".$msg."','".$mId."','".$status."','".$date."','".$time."','".$state."')";
+	//echo $query_thread;//exit;
 	$result_thread = mysql_query($query_thread);
 	$inseted_row = "Topic Saved Successfully";
 	
@@ -261,7 +263,9 @@ if(isset($_SESSION['Nris_session']))
 		}	
 	
     // Get page data
-	$query1 = "SELECT * FROM $tableName where state_code = '".$state."' AND status='1' order by total_views desc LIMIT $start, $limit";
+	$query1 = "SELECT * FROM $tableName where state_code = '".$state."' AND status='1'
+	order by id desc LIMIT $start, $limit";
+	//echo $query1;
 	$result = mysql_query($query1);
 	
 	// Initial page num setup
@@ -381,9 +385,12 @@ if(isset($_SESSION['Nris_session']))
 							</td>
 							<td>
 								<?php 
-									$qss="select cmnt_id from nris_talk_comment where reply_status='0'";
+									$qss="select count(1) as cnt from nris_talk_comment where reply_status='0' and thread_Pid = ".$rs['id'];
 									$rss=mysql_query($qss);
-									echo mysql_num_rows($rss);
+									
+									$result1 = mysql_fetch_array($rss);
+									#print_r($result);
+									echo $result1['cnt'];
 								?>
 							</td>
                           

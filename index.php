@@ -2199,7 +2199,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 										<li data-content="<?php echo $eventCat;?>" <?php if($catCnt++ == 0) { ?>class="selected"<?php } ?>>
 											<div class="content-tab">                                             
 											  <?php
-												  $query_Nation_evnts_Cul="select * from national_events where category='".$eventCat."' and edate>'".$current_date."' and status='Active' order by sdate limit 5";																
+												  $query_Nation_evnts_Cul="select * from national_events where category='".$eventCat."' and edate>'".$current_date."' and status='Active' order by id desc limit 5";																
 												  $result_Events_cul=mysql_query($query_Nation_evnts_Cul);                                                
 												  if(mysql_num_rows($result_Events_cul) > 0) {
 												  while($rs_event1=mysql_fetch_array($result_Events_cul))

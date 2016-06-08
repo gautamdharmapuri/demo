@@ -121,8 +121,7 @@ font-weight:bold;
     padding: 5px;
 	text-align:left;
 }
-</style>    
-<style>
+
 			th,td, tr {
 			vertical-align:middle;
 			height:35px;
@@ -200,7 +199,11 @@ font-weight:bold;
 	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 	
 	}
-
+	
+	.cd-tabs-content li {
+		overflow : scroll;
+		height: 416px;
+	}
 	</style> 
 <script type="text/javascript">
 

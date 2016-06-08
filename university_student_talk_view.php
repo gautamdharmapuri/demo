@@ -341,7 +341,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
         //$('.comment-form').validate();
 		
 		var word_count = 200;
-		$("#Message").on('keydown',function() {
+		$("#Message").on('input propertychange',function() {
 
 			var words = $(this).val().length;
 			

@@ -85,6 +85,8 @@ if(($currentTime-$loggedInTime) > 30*60) {
 }
 }
 
+include_once('common_functions.php');
+
 ?>
 
 	

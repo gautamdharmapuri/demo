@@ -229,7 +229,11 @@ else
 	$targetpage = "groceries.php"; 	
 	$limit = 10; 
 	
-	$query = "SELECT COUNT(*) as num FROM $tableName where  state_code='".$_SESSION['state']."' order by total_views desc";
+	$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+	$query = "SELECT count(1) as num FROM fam_groceries
+	where  state_code='".$state."' and status = 'Active'";
+	
+	//$query = "SELECT COUNT(*) as num FROM $tableName where  state_code='".$_SESSION['state']."' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -242,9 +246,20 @@ else
 		}	
 	
     // Get page data
-	$query1 = "SELECT $tableName.*,rate FROM $tableName
+	/*$query1 = "SELECT $tableName.*,rate FROM $tableName
 	left join rating_grocery on rating_grocery.grocery_id = $tableName.id and login_id = ".$_SESSION['Nris_session']['id']."
-	where  state_code='".$_SESSION['state']."' order by total_views desc LIMIT $start, $limit";
+	where  state_code='".$_SESSION['state']."' order by total_views desc LIMIT $start, $limit";*/
+	
+	$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+	if($_SESSION['Nris_session']['id'] > 0) {
+				$query1 = "SELECT fam_groceries.*,rate FROM fam_groceries
+	left join rating_grocery on rating_grocery.grocery_id = fam_groceries.id and login_id = ".$_SESSION['Nris_session']['id']."
+	where  state_code='".$state."' and status = 'Active' order by id desc LIMIT $start, $limit";
+	} else {
+				$query1 = "SELECT fam_groceries.*,rate FROM fam_groceries
+	left join rating_grocery on rating_grocery.grocery_id = fam_groceries.id 
+	where  state_code='".$state."' and status = 'Active' order by id desc LIMIT $start, $limit";
+	}
 	$result = mysql_query($query1);
 	
 	// Initial page num setup

@@ -494,7 +494,7 @@ if(isset($_SESSION['Nris_session']))
         //$('.comment-form').validate();
 		
 		var word_count = 200;
-		$("#Comment").on('keydown',function() {
+		$("#Comment").on('input propertychange',function() {
 
 			var words = $(this).val().length;
 			

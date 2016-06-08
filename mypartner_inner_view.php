@@ -383,6 +383,11 @@ geocoder = new google.maps.Geocoder();
 
 			
 			</div>
+			<br><br>
+            <div class="col-md-12">
+ <?php include "reply-widget.php"; ?>
+ </div>
+			
 			
 			<div class="col-md-12">
 				

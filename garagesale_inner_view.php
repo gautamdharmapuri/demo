@@ -215,7 +215,10 @@ font-size:12px;
 						$addArr[] = 'United States';
 						
 						$address = urldecode(implode(', ',$addArr));
-			
+						if(isset($_POST['respond'])) {
+							$msg = send_respond_mail($_POST,$rs2['ConatctEmail']);
+							echo "<script type='text/javascript'>alert('Your response sent successfully');</script>";
+						}
 			?>               
                        
         <div class="widget-temple">
@@ -403,7 +406,11 @@ geocoder = new google.maps.Geocoder();
 			
 			</div>
             <!-- TOP BUTTONS ENDS-->
-            
+            <br><br>
+            <div class="col-md-12">
+ <?php include "reply-widget.php"; ?>
+ </div>
+			
 			<?php
 				$query1 = "SELECT garage_comments.*,CONCAT(register.fname,' ',register.lname) as username
 							FROM garage_comments,register

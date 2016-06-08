@@ -434,7 +434,7 @@ if(isset($_SESSION['Nris_session']))
 		
 		
 		var word_count = 200;
-		$("#Message").on('keydown',function() {
+		$("#Message").on('input propertychange',function() {
 
 			var words = $(this).val().length;
 			

@@ -197,6 +197,11 @@ if(isset($_POST['cmdcomment']))
 			$result=mysql_query($query1);
 			$rs=mysql_fetch_array($result);
 			$total_views = $rs['total_views'] + 1 ;
+			
+			if(isset($_POST['respond'])) {
+	$msg = send_respond_mail($_POST,$rs['email']);
+	echo "<script type='text/javascript'>alert('Your response sent successfully');</script>";
+}
 			///mysql_query("update post_free_auto set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 				
 					   ?>               
@@ -305,6 +310,10 @@ if(isset($_POST['cmdcomment']))
 		
 		  </div>
             <!-- TOP BUTTONS ENDS-->
+			<br><br>
+            <div class="col-md-12">
+ <?php include "reply-widget.php"; ?>
+ </div>
 			
 			<div class="col-md-12">
 				

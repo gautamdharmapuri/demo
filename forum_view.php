@@ -359,13 +359,11 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
      $('document').ready(function() {
 		
 		var word_count = 200;
-		$("#Message").on('keydown',function() {
+		$("#Message").on('input propertychange',function() {
 
 			var words = $(this).val().length;
 			
 			if (words > word_count) {
-				//var trimmed = $(this).val().split(/\s+/, word_count).join(" ");
-				//$(this).val(trimmed + " ");
 				return false;
 			}
 			else {

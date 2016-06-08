@@ -140,7 +140,7 @@ font-size:12px;
             <!-- TOP BUTTONS ENDS-->
             
             <!-- FIRST TABLE -->
-            <div class="col-md-12" style="text-align:left;color:#000000;"> 
+            <div class="col-md-12" style="text-align:left;color:#000000;margin-bottom: 10px;"> 
 
         <?php
 			$query="select a.*, b.name from post_free_baby_sitting a, baby_sitting b where a.AdsCat = b.id  and md5(a.id) = '".$_GET['ViewId']."'"; 
@@ -170,6 +170,11 @@ font-size:12px;
 						$addArr[] = 'United States';
 						
 						$address = urldecode(implode(', ',$addArr));
+						
+						if(isset($_POST['respond'])) {
+							$msg = send_respond_mail($_POST,$rs2['ConatctEmail']);
+							echo "<script type='text/javascript'>alert('Your response sent successfully');</script>";
+						}
 					?>               
                        
         <div class="widget-temple">
@@ -326,9 +331,13 @@ geocoder = new google.maps.Geocoder();
 <div id="googleMap" style="width:100%;height:300px;" ></div>
 		</div>
 			
+			<br><br>
 			</div>
             <!-- TOP BUTTONS ENDS-->
-            
+			<br><br>
+            <div class="col-md-12">
+ <?php include "reply-widget.php"; ?>
+ </div>
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         

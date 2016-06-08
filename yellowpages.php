@@ -254,40 +254,28 @@ exit;
 
 
 
-<ul class="accordion_example">
 
-	<?php  // for($i = A ; $i<=Z; $i++)  { 
-		foreach (range('A', 'Z') as $i) {	?>
-	
-    <!-- Section 1 -->
-	<li style="list-style:none;">
-		<div><?php echo $i;  
+	<?php echo $i;  
 			
-					$queryname="select * from desi_pages_cat where name like '$i%' order by name" ; 					
+					$queryname="select * from desi_pages_cat order by name asc" ; 					
 					$resulname=mysql_query($queryname);
-					echo "&nbsp;&nbsp;(<b>".mysql_num_rows($resulname)."</b>)";
 			
 			?>
-		</div><!-- Head -->
-		<div>
-			
+		
 		<ul>
         <?php 
         while($sub_result = mysql_fetch_array($resulname)) { 
 //			$q = "select * from "
 		?>
-        <li><a href="deshiads.php?type=<?php echo md5($sub_result['name']); ?>&code=<?php echo $_SESSION['state'] ?>"><?php echo ucwords($sub_result['name']);  ?></a></li>
+        <li style="list-style: none;padding: 4px;">
+			<a style="color: #2eb1fd !important;" href="deshiads.php?type=<?php echo md5($sub_result['name']); ?>&code=<?php echo $_SESSION['state'] ?>">
+			<?php echo ucwords($sub_result['name']);  ?>
+			</a>
+		</li>
         <?php } ?>
         </ul><br>
            <!-- <p>Quick text. Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla  tempus, molestie fermentum purus euismod.</p>-->
 
-		</div>
-	</li>
-    
-    <?php } ?>
-
-
-</ul>
                                                           
 
 			
