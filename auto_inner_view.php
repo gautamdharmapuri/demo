@@ -114,13 +114,6 @@ font-size:12px;
     
 		<?php include_once('stock_block.php');?>    
 	
-	
-
-     
-     
-
-     
-    
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap">	
 <!-- Section-1 START-->	
@@ -591,24 +584,8 @@ geocoder = new google.maps.Geocoder();
         <!-- COLUMN RIGHT -->	
         <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
-
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

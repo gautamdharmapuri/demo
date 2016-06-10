@@ -551,6 +551,7 @@ if(isset($_POST['Submit']))
 			{
 			$query=mysql_query("insert into post_free_real_estate (TitleAD,Message,AdsCat,BuiltYear,PropertyPrice,SquareFeet,Bedrooms,Bathrooms,Other,URL,image1,image2,image3,States,States_Details,City,NextDate,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,Address,EndDate,date,time) VALUES('".$TitleAD."','".$Desrp."','".$AdsCat."','".$BuiltYear."','".$PropertyPrice."','".$SquareFeet."','".$Bedrooms."','".$Bathrooms."','".$Other."','".$URL."','".$image1."','".$image2."','".$image3."','".$States."','".$chk."','".$City."','".$NextDate."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$Address."','".$EndDate."','".$date."','".$time."')");
 			}
+			$post_id = mysql_insert_id();
 			$final_count++;
 			
 			$msg = "<h3 class='sucess'>Real Estate Ads Created Successfully!..</h3>";
@@ -579,13 +580,13 @@ if(isset($_POST['Submit']))
 			   <input type="hidden" value="img/logo.png" name="cpp_header_image">
 				<input type="hidden" value="img/logo.png" name="image_url">
 				<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>" />
-			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>">
-			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success">			
+			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>" />
+			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>&table_name=<?php echo $table_name; ?>">
+			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success&table_name=<?php echo $table_name; ?>">			
 </form>
 <script>
 $('document').ready(function() {
-$('#paypal_form').submit();
+//$('#paypal_form').submit();
 });
 </script>
 				
@@ -1031,23 +1032,6 @@ function test_input($data) {
 </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="col-md-6">
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Contact Name</label>
@@ -1093,20 +1077,6 @@ function test_input($data) {
 </div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="col-md-6">
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Address</label>
@@ -1127,9 +1097,6 @@ function test_input($data) {
 </div>
 
 
-
-
-
 <div id="warning_popup" style="display:none;">
     <a style="float:right;cursor: pointer;" onClick="popup('warning_popup')">X</a>
        
@@ -1144,9 +1111,6 @@ function test_input($data) {
 					</div>
                 </div>
 	</div>
-
-
-
 
 
 <!-- multiple States  Modal -->
@@ -1241,17 +1205,6 @@ function test_input($data) {
   </div>
 <!-- All States in USA Modal -->    
 
-
-
-
-
-
-
-
-
-
-
-
 <!-- multiple States  Modal -->
   <div class="modal fade" id="multiple" role="dialog">
     <div class="modal-dialog">
@@ -1331,20 +1284,7 @@ function test_input($data) {
 
 </div>
 
-
-
-
-
-
-
-
-
 </form>
-
-                  
-
-		
-
             </div>
             <!-- TOP BUTTONS ENDS-->
 
@@ -1353,29 +1293,12 @@ function test_input($data) {
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
     <?php
 		
 		if($final_count >= 3) {

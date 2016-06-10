@@ -280,18 +280,7 @@ if(isset($_SESSION['Nris_session']))
                                                                             
                                                                               
 																				<?php
-																				//	if($States!='ALL' && $States!='multiple')
-			
 																				
-			//		$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL')  order by a.id desc";	
-			
-			//		$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.id desc";	
-			
-	//				$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL') and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.id desc";	
-	
-	
-		//			$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL') or (  select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.id desc)";	
-		
 			if(isset($_POST['cmdsubmit']))
 		{
 			$cat = $_POST['AdsCat'];
@@ -360,8 +349,6 @@ if(isset($_SESSION['Nris_session']))
 					
 		}
 		
-	//	$query = "select a.*, b.name, c.role from post_free_job a, job_category b, job_role c where a.Category = b.id and a.Job_Role=c.id  and  a.States  IN ('ALL')";			
-
 			$result = mysql_query($query1);
 				$i=1;					
 				while($rs=mysql_fetch_array($result))
@@ -392,28 +379,12 @@ if(isset($_SESSION['Nris_session']))
                     </tr>
 			<?php }   
 			
-  ?>
-            
-            
-            
-        
-            
-                                                            
+  ?> 
                     </tbody>
                     </table>
-                                                          
-
-			
+    		
             </div>
             <!-- TOP BUTTONS ENDS-->
-            
-            
-    
-        
-        
-        
-        
-        
         
         <!-- COLUMN RIGHT -->	
          <div style="width:8%;float:right;">
@@ -439,31 +410,13 @@ if(isset($_SESSION['Nris_session']))
             </script>
          </div>
         <!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
        </div>
 </div><!-- End Section-1 WRAP -->
-
-	
     <div style="clear:both;"></div>
-    	
-	
     
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
-
-
-
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->

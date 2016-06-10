@@ -137,18 +137,6 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 
 </head>
 <body>
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="loader"><div class="loader_html"></div></div>
 
 
@@ -161,15 +149,6 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 
     
 		<?php include_once('stock_block.php');?> 
-	
-	
-
-     
-     
-    
-    
-     
-    
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap">	
 <!-- Section-1 START-->	
@@ -416,30 +395,10 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
         
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
-        </div><!-- Section-1 ENDS -->
+	    </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
-
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
-
-
-
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->

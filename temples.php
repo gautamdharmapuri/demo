@@ -234,16 +234,8 @@
 	}else{
 		$start = 0;	
 		}	
-	
-    // Get page data
-//	$query1 = "SELECT * FROM $tableName  order by total_views desc LIMIT $start, $limit";
-//	$query1 = "SELECT a.*,b.rate FROM fam_temples a , rating_temple b where a.id=b.temple_id  order by b.rate desc LIMIT $start, $limit";
 	$query1 = "SELECT DISTINCT  * FROM fam_temples LEFT OUTER JOIN rating_temple ON fam_temples.id = rating_temple.temple_id GROUP BY(fam_temples.id) order by rating_temple.rate desc, fam_temples.total_views desc   LIMIT $start, $limit";
 
-
-//	echo $query1;
-	
-	
 	$result = mysql_query($query1);
 	
 	// Initial page num setup
@@ -257,19 +249,12 @@
 	$paginate = '';
 	if($lastpage > 1)
 	{	
-	
-
-	
-	
 		$paginate .= "<div class='paginate'>";
 		// Previous
 		if ($page > 1){
 			$paginate.= "<a href='$targetpage?page=$prev'><i class='fa fa-angle-double-left'></i></a>";
 		}else{
 			$paginate.= "<span class='disabled'><i class='fa fa-angle-double-left'></i></span>";	}
-			
-
-		
 		// Pages	
 		if ($lastpage < 7 + ($stages * 2))	// Not enough pages to breaking it up
 		{	
@@ -379,38 +364,11 @@
             
             
         </div><!-- COLUMN MIDDLE ENDS -->	
-        
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
-
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
-    
-
-
-
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->

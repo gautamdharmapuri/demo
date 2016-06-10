@@ -216,25 +216,25 @@ $current_date = date('Y-m-d');
 																		</div>
 															<?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_auto.id DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews FROM post_free_auto WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_auto.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_education.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews FROM post_free_education WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_education.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR State2 LIKE '%".$state."%') ORDER BY post_free_electronics.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR State2 LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_electronics.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_garage_sale.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_garage_sale.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_job.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews FROM post_free_job WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_job.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_real_estate.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_real_estate.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_roommates.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_roommates.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_stuff.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_stuff.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_mypart.id DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType = 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_mypart.id DESC LIMIT 12)) s
 																		ORDER BY date DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;	
@@ -588,25 +588,25 @@ $current_date = date('Y-m-d');
 																		</div>
 															<?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_auto.id DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,date,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_auto.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,date,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_baby_sitting.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_education.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,date,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_education.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR State2 LIKE '%".$state."%') ORDER BY post_free_electronics.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,date,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR State2 LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_electronics.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_garage_sale.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,date,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_garage_sale.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_job.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,date,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_job.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_real_estate.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,date,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_real_estate.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_roommates.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,date,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_roommates.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_stuff.id DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,date,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_stuff.id DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_mypart.id DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,date,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_mypart.id DESC LIMIT 12)) s
 																		ORDER BY date DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;					
@@ -645,25 +645,25 @@ $current_date = date('Y-m-d');
 																		</div>
 															<?php
 																		
-																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_auto.total_views DESC LIMIT 12)
+																		$query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_auto.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,total_views,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_baby_sitting.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'baby_sitting' as type,image as image,City as address,total_views,'baby sitter' as category,total_views as totViews  FROM post_free_baby_sitting WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_baby_sitting.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'education' as type,image as image,City as address,total_views,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_education.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'education' as type,image as image,City as address,total_views,'education' as category,total_views as totViews  FROM post_free_education WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_education.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,total_views,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR State2 LIKE '%".$state."%') ORDER BY post_free_electronics.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'electronics' as type,image as image,City as address,total_views,'electronics' as category,total_views as totViews  FROM post_free_electronics WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR State2 LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_electronics.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,total_views,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_garage_sale.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'garagesale' as type,image as image,City as address,total_views,'garage sale' as category,total_views as totViews  FROM post_free_garage_sale WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_garage_sale.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,total_views,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_job.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'jobs' as type,image1 as image,City as address,total_views,'jobs' as category,total_views as totViews  FROM post_free_job WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_job.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,total_views,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_real_estate.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'realestate' as type,image1 as image,City as address,total_views,'realestate' as category,total_views as totViews  FROM post_free_real_estate WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_real_estate.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,total_views,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_roommates.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'roommates' as type,image1 as image,City as address,total_views,'roommates' as category,total_views as totViews  FROM post_free_roommates WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_roommates.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,total_views,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY post_free_stuff.total_views DESC LIMIT 12)
+																		(SELECT id,TitleAD,'free_stuff' as type,image as image,City as address,total_views,'free stuff' as category,total_views as totViews  FROM post_free_stuff WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY post_free_stuff.total_views DESC LIMIT 12)
 																		UNION
-																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,total_views,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_mypart.total_views DESC LIMIT 12)) s
+																		(SELECT id,TitleAD,'mypartner' as type,image1 as image,City as address,total_views,'my partener' as category,total_views as totViews  FROM post_free_mypart WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') AND EndDate >= now() ORDER BY post_free_mypart.total_views DESC LIMIT 12)) s
 																		ORDER BY total_views DESC LIMIT 12";
 																		$result = mysql_query($query);
 																		$i=1;					
@@ -700,7 +700,7 @@ $current_date = date('Y-m-d');
 																		</div>
                                                              <?php
 															 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-															 $query = "SELECT * FROM post_free_stuff WHERE TitleAD != '' AND AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') ORDER BY id desc LIMIT 8;";
+															 $query = "SELECT * FROM post_free_stuff WHERE TitleAD != '' AND AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY id desc LIMIT 8;";
 															 
 																		$result = mysql_query($query);
 																		if(mysql_numrows($result) > 0) {

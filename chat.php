@@ -45,6 +45,7 @@ var auto_refresh = setInterval(function ()
 jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id+"&State=<?php echo $state;?>&chat_topic="+chat_topic+"&isInitial="+isInitial,function(data)
 {
 	if (data == -1) {
+		alert('your session has timed out');
         location.reload(true);
     }
 jQuery.each(data, function(i,data)

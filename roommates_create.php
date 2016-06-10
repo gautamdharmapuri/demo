@@ -131,23 +131,6 @@ border-radius: 5px;
 </style>
 
 
-
-<?php /*?><script language="javascript">
-function showstate(str)
-{
-	//	alert(str);
-	if(str=='ALL')
-	{
-		
-	}
-	if(str=='multiple')
-	{
-		
-	}
-}
-</script><?php */?>
-
-
  <script type="text/javascript">
 function LimtCharacters(txtMsg, CharLength, indicator) {
 chars = txtMsg.value.length;
@@ -461,6 +444,7 @@ if(isset($_POST['Submit']))
 			{
 				$query=mysql_query("insert into  post_free_roommates (TitleAD,Message,Category,gender_type,Rent,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,City,image1,URL,EndDate,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$Brand."','".$SubBrand."','".$Rent."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$City."','".$image1."','".$URL."','".$EndDate."','".$date."','".$time."','".$state."')");
 			}
+			$post_id = mysql_insert_id();
 			$final_count++;
 		
 			$msg = "<h3 class='sucess'>Room Mates Ads Created Successfully!..</h3>";
@@ -489,9 +473,9 @@ if(isset($_POST['Submit']))
 			   <input type="hidden" value="img/logo.png" name="cpp_header_image">
 				<input type="hidden" value="img/logo.png" name="image_url">
 				<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>" />
-			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>">
-			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success">			
+			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo $post_id;?>&state=<?php echo $state;?>" />
+			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&table_name=<?php echo $table_name; ?>&type=<?php echo $type; ?>&id=<?php echo $post_id;?>&state=<?php echo $state;?>">
+			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success&table_name=<?php echo $table_name; ?>">			
 </form>
 
 
@@ -509,15 +493,7 @@ $('#paypal_form').submit();
 		{
 			$Error = $Error;
 		}
-		
-		
-
 }
-
-
-
-
-
 
 function test_input($data) {
    $data = trim($data);
@@ -537,13 +513,7 @@ function test_input($data) {
 	<div class="clearfix"></div>
 
     <?php include_once('stock_block.php');?>
-	
 
-     
-     
-    
-    
-     
     
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap">	
@@ -587,16 +557,7 @@ function test_input($data) {
 								}
 								
 								?>
-                                
-                                
-                                
-
-		
- 
 <form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">
-
-
-
 
 <div class="col-md-12">
 <div class="form-group">
@@ -616,15 +577,6 @@ function test_input($data) {
     <textarea rows="5" cols="40" style="width:100%;" name="Message" id="Message" tabindex="2" required></textarea>
 	</div>
 </div>
-
-
-
-
-
-
-
-
-
 <div class="col-md-6">
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-size:13px;">Room Mate Type</label>
@@ -720,23 +672,11 @@ function test_input($data) {
 	</div>
 </div>
 </div>
-
-
-
-
-
-
-
-
-
-
-
 <div class="col-md-6">   
 <div class="col-md-12">
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">City</label>
 	<div class="col-sm-8">
-    	<!--<input type="text" class="form-control" id="City" name="City" placeholder="City" style="width:100%;margin-bottom:0px;" tabindex="9" required/>               		-->
 				<input name="city" class="city" id="city_auto" style="width:100%;" required="required" type="text" placeholder="City">
 		<input name="City" class="city" id="City" type="hidden" style="width:100%;">
 	</div>
@@ -1001,19 +941,7 @@ function test_input($data) {
       
     </div>
   </div>
-<!-- All States in USA Modal -->    
-
-
-
-
-
-
-
-
-
-
-
-
+<!-- All States in USA Modal --> 
 <!-- multiple States  Modal -->
   <div class="modal fade" id="multiple" role="dialog">
     <div class="modal-dialog">
@@ -1028,9 +956,6 @@ function test_input($data) {
              <div id="myLoginuser"></div>  
 			<table border="0" cellpadding="2" cellspacing="1" width="100%">
             	<tr>
-                	
-
-           
          	<?php 
 			$cnt=0;
 			$qy_state_res = mysql_query("select state,state_code from states order by state");
@@ -1071,15 +996,7 @@ function test_input($data) {
   </div>
 <!-- multiple States Modal -->                        
 
-
-
-
-
 </form>
-
-                  
-				
-
             </div>
             <!-- TOP BUTTONS ENDS-->
 
@@ -1096,20 +1013,9 @@ function test_input($data) {
         <!-- COLUMN RIGHT -->	
         <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
     <?php
 		
 		if($final_count >= 3) {
@@ -1117,17 +1023,9 @@ function test_input($data) {
 			echo "<script>window.location.href='".$url."';</script>";
 			exit;
 		}
-		
 		?>
-	
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
-
-
-
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->

@@ -229,9 +229,7 @@ else
                     </tr>
                 </thead>
                 <tbody>
-                                                                            
-                                                                            
-                                                                              <?php
+<?php
 
 	$tableName="fam_temples";		
 	$targetpage = "temples_inner.php"; 	
@@ -398,36 +396,12 @@ else
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-
-          
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
-
-	
-    
-    	
-	
-    
-    
-    
 	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
-    
-
-
 
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>

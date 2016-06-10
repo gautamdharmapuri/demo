@@ -102,17 +102,6 @@
 color:#FFFFFF;font-weight:bold;clear:both;background-color:#FF0000;font-weight:bold;padding:10px 10px;
 border-radius: 5px;
 }
-
-/*.sucess
-{
-background-color:#009933;
-padding:5px;
-color:#FFFFFF;
-width:100%;
-font-weight:bold;
-}
-
-*/
 .sucess
 {
 color:#FFFFFF;font-weight:bold;clear:both;background-color:#009900;font-weight:bold;padding:10px 10px;
@@ -137,17 +126,6 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 
 </head>
 <body>
-
-
-
-
-
-
-
-
-
-
-
 
 <div class="loader"><div class="loader_html"></div></div>
 
@@ -176,22 +154,11 @@ if(isset($_POST['cmdSubmit'])) {
 
 ?>
 
-
-
-	
 	<div class="clearfix"></div>
 
     
 		<?php include_once('stock_block.php');?>    
 	
-	
-
-     
-     
-    
-    
-     
-    
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap">	
 <!-- Section-1 START-->	
@@ -267,27 +234,6 @@ if(isset($_POST['cmdSubmit'])) {
 	</div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="col-md-12">
 
 <div class="form-group">
@@ -299,57 +245,20 @@ if(isset($_POST['cmdSubmit'])) {
 
 </div>
 
-
-
-
-
-
-
-
-
 </form>
-
-                  
-					
-
             </div>
             <!-- TOP BUTTONS ENDS-->
 
-<br style="clear:both;"><br><br><br><br><br><br>			
-            
-            
+<br style="clear:both;"><br><br><br><br><br><br>			     
         </div><!-- COLUMN MIDDLE ENDS -->	
-        
-        
-        
-        
-        
         
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
+		            
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
-    
-
-
 
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>

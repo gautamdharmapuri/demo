@@ -116,17 +116,6 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 color:#FFFFFF;font-weight:bold;clear:both;background-color:#FF0000;font-weight:bold;padding:10px 10px;
 border-radius: 5px;
 }
-
-/*.sucess
-{
-background-color:#009933;
-padding:5px;
-color:#FFFFFF;
-width:100%;
-font-weight:bold;
-}
-
-*/
 .sucess
 {
 color:#FFFFFF;font-weight:bold;clear:both;background-color:#009900;font-weight:bold;padding:10px 10px;
@@ -511,6 +500,7 @@ if(isset($_POST['Submit']))
 			{			
 			$query=mysql_query("insert into post_free_baby_sitting (TitleAD,Message,AdsCat,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,City,EndDate,image,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$AdsCat."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$City."','".$EndDate."','".$image1."','".$date."','".$time."','".$state."')");
 			}
+			$post_id = mysql_insert_id();
 			$final_count++;
 			
 			$msg = "<h3 class='sucess'>Baby Sitting Ads Created Successfully!..</h3>";
@@ -539,9 +529,9 @@ if(isset($_POST['Submit']))
 			   <input type="hidden" value="img/logo.png" name="cpp_header_image">
 				<input type="hidden" value="img/logo.png" name="image_url">
 				<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>" />
-			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>">
-			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success">			
+			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>" />
+			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo ($post_id);?>&table_name=<?php echo $table_name; ?>&state=<?php echo $state;?>">
+			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success&table_name=<?php echo $table_name; ?>">			
 </form>
 <script>
 $('document').ready(function() {
@@ -619,7 +609,7 @@ function test_input($data) {
                     <p>While your babysitting income might not be subject to federal income taxes, you might still have to pay self-employment taxes. According to the Internal Revenue Service, you must file Schedule SE and pay self-employment taxes if you had net earnings from self-employment of $400 or more. Self-employment tax rules apply regardless of your age.
                     </p>
                 </div>
-<p> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('popUpDiv')" class="btn btn-success" style="">Submit</button></span></p>
+<p> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('popUpDiv')" class="btn btn-success" style="">Agree</button></span></p>
 
 
 
@@ -1046,20 +1036,7 @@ function test_input($data) {
 	</div>
 </div>
 
-</div>
-
-
-
-
-
-
-
-
-
-</form>
-
-                  
-					
+</div></form>
 
             </div>
             <!-- TOP BUTTONS ENDS-->
@@ -1068,22 +1045,8 @@ function test_input($data) {
             
             
         </div><!-- COLUMN MIDDLE ENDS -->	
-        
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
-        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
+        <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	  
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
@@ -1093,20 +1056,12 @@ function test_input($data) {
 		
 		if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 			if($final_count >= 3) {
-				//header('location:adcheck.php?redirect=baby_sitting_create&State='.$state);
-				//exit;
 				$url = 'adcheck.php?redirect=baby_sitting_create&State='.$state;
 				echo "<script>window.location.href='".$url."';</script>";
 				exit;
 			}
 		}
-		
 		?>
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

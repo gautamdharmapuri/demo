@@ -314,26 +314,11 @@ if(isset($_SESSION['Nris_session']))
 				$query  = "select a.*, b.name, c.model_name  from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= '".$current_date."'  and a.Brand = b.id and a.SubBrand=c.id  and a.States  IN ('ALL','multiple')   order by a.total_views desc";
 			}		
 			
-			
-			
-			
-//			$query = "select a.*, b.name from post_free_auto a, auto_makes b where a.Category= '".$cat."' and  '".$cat."' = b.id  order by a.total_views desc";	
-			
 		}
 		else
 		{		
-				//	$query = "select a.*, b.name from post_free_auto a, auto_makes b where a.Category = b.id  order by a.total_views desc";
-					$query  = "select a.*, b.name, c.model_name  from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= '".$current_date."'  and a.Brand = b.id and a.SubBrand=c.id  and a.States  IN ('ALL','multiple')   order by a.total_views desc";
-					
-					
-					
-			
-							
-					
-		}
-			
-
-																				
+			$query  = "select a.*, b.name, c.model_name  from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= '".$current_date."'  and a.Brand = b.id and a.SubBrand=c.id  and a.States  IN ('ALL','multiple')   order by a.total_views desc";
+		}	
 						$result = mysql_query($query);
 						
 						if(mysql_num_rows($result) > 0) {
@@ -358,19 +343,9 @@ if(isset($_SESSION['Nris_session']))
                    
                    </tbody>
                 </table>
-                                                          
-
-			
             </div>
             <!-- TOP BUTTONS ENDS-->
             
-            
-    
-        
-        
-        
-        
-        
         
         <!-- COLUMN RIGHT -->	
          <div style="width:8%;float:right;">
@@ -395,15 +370,7 @@ if(isset($_SESSION['Nris_session']))
             });
             </script>
          </div>
-        <!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
+        <!-- COLUMN RIGHT ENDS -->
         </div>
 
 <!-- Section-1 ENDS -->

@@ -256,36 +256,15 @@ else
                                                                             
                                                                               
 																				<?php
-																				//	if($States!='ALL' && $States!='multiple')
-			
-																				
-			//		$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL')  order by a.id desc";	
-			
-			//		$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.id desc";	
-			
-	//				$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL') and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.id desc";	
-	
-	
-		//			$query = "select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('".$_SESSION['state']."','ALL') or (  select a.*, b.name, c.model_name from post_free_garage_sale a, auto_makes b, auto_models c where a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.id desc)";	
-		$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+																				$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
 			if(isset($_POST['cmdsubmit']))
 		{
 			$cat = $_POST['AdsCat'];
-//			echo $cat;
-		//	$query1 = "select a.*, b.name from post_free_roommates a,  room_mates b where a.Category = b.id and '".$cat."' = b.id and  a.States  IN ('ALL')  order by a.total_views desc";			
-		//	$query2 = "select a.*, b.name from post_free_roommates a,  room_mates b where a.Category = b.id and '".$cat."' = b.id  and  FIND_IN_SET('".$_SESSION['state']."',  a.States_Details) order by a.total_views desc";			
 			$query = "select a.*, b.name from post_free_roommates a,  room_mates b where a.Category = b.id and '".$cat."' = b.id  and EndDate > now() and States IN ('".$state."','All') order by a.total_views desc";			
 		}
 		else
-		{		
-			//	$query1 = "select a.*, b.name from post_free_roommates a,  room_mates b where a.Category = b.id and  a.States  IN ('ALL') order by a.total_views desc ";
-			//	$query2 = "select a.*, b.name from post_free_roommates a,  room_mates b where a.Category = b.id and  FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)  order by a.total_views desc";				
-				$query = "select a.*, b.name from post_free_roommates a,  room_mates b where a.Category = b.id  and EndDate > now() and States IN ('".$state."','All') order by a.total_views desc ";
-					
+		{	$query = "select a.*, b.name from post_free_roommates a,  room_mates b where a.Category = b.id  and EndDate > now() and States IN ('".$state."','All') order by a.total_views desc ";
 		}
-		
-	//	$query = "select a.*, b.name, c.role from post_free_job a, job_category b, job_role c where a.Category = b.id and a.Job_Role=c.id  and  a.States  IN ('ALL')";			
-	//	echo $query;
 			$result = mysql_query($query);
 
 				$i=1;					
@@ -303,27 +282,12 @@ else
                     <td><a href="roommates_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	                  
                     <td><a href="roommates_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>
-			<?php }   ?>
-            
-        
-            
-                                                            
+			<?php }   ?>   
                     </tbody>
                     </table>
-                                                          
-
-			
             </div>
             <!-- TOP BUTTONS ENDS-->
             
-            
-    
-        
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
          <div style="width:8%;float:right;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -349,13 +313,6 @@ else
          </div>
         <!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
        </div>
 </div><!-- End Section-1 WRAP -->
@@ -363,11 +320,6 @@ else
 	
     <div style="clear:both;"></div>
     	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

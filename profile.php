@@ -161,11 +161,6 @@ font-weight:bold;
       form.Password.focus();
       return false;
     }
-	
-	
-	
-	
- 
     return true;
   }
 
@@ -206,9 +201,6 @@ font-weight:bold;
 <!-- Section-1 START-->	
 		<div class="col-md-12">
 				
-            
-              
-              
                 <div class="col-md-3" style="margin:0 auto;">
             	
                             <div style="width:30%;float:left;">&nbsp;</div>
@@ -230,18 +222,11 @@ font-weight:bold;
                             </div>
                 </div>        
 				
-                
-                
                 <?php if(isset($_GET['action']))
 				{ ?>
 
-
 							 <div class="col-md-9"><br><br>
 
-
-
-
-                                         
 <?php
 require_once "config/formvalidator.php";
 
@@ -285,17 +270,9 @@ if(isset($_POST['Submit']))
 					$d = mysql_real_escape_string($d);	
 				}
 				
-				
-				
-				
-			
-				
 				$date=date('Y-m-d');
 				$time=date('h:m:s');
 				
-								
-				
-		
 		 $query="update register set fname='".$a."',lname='".$b."',mobile='".$c."' where id='".$_SESSION['Nris_session']['id']."' ";
 		 if($d != '') {
 			$query="update register set fname='".$a."',lname='".$b."',mobile='".$c."',password='".$d."' where id='".$_SESSION['Nris_session']['id']."' ";
@@ -350,13 +327,6 @@ if(true == $show_form)
 	</div>
 </div>
 
-
-
-
-
-
-
-
 </div>
 
 
@@ -387,30 +357,14 @@ if(true == $show_form)
 	</div>
 </div>
 
-
-
-
-
             </div>
 
 </form>
 </div>
 
-<?php } ?>		
+<?php } ?>
+</div>
                             
-                            
-                            
-                            
-                            
-                            
-                             </div>
-                             
-                             
-                             
-                             
-                             
-                             
-
                 <?php  } else { ?>
                 <div class="col-md-9"><br><br>
                 	    
@@ -435,22 +389,10 @@ if(true == $show_form)
                 
                 </div>    
                 <?php } ?>
-                
-                
-                
-                
-                
-                
-                
 		</div>
         <!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
- 	
-	
-    
     
 <div style="clear:both"></div>    
 	

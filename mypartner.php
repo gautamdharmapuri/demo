@@ -234,11 +234,6 @@ if(isset($_SESSION['Nris_session']))
 
 
 </div>    <br>
-                     <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
-
-
-
-
                         <table align="center" >
                         <thead>
                         <tr>
@@ -248,30 +243,17 @@ if(isset($_SESSION['Nris_session']))
                         </tr>
                         </thead>
                         <tbody>
-                        
-                                                                            
-                                                                              
 		<?php
 		
 		if(isset($_POST['cmdsubmit']))
 		{
 			$cat = $_POST['AdsCat'];
-			
-			
-//			$query = "select a.*, b.name from post_free_mypart a, my_partner b where a.Category= '".$cat."' and  '".$cat."' = b.id  order by a.total_views desc";	
 			$query  = "select a.*, b.name from post_free_mypart a, my_partner b where a.Category= '".$cat."' and a.EndDate >= '".$current_date."' and a.Category = b.id and a.States  IN ('ALL','multiple')   order by a.total_views desc";
 		}
 		else
 		{		
-				//	$query = "select a.*, b.name from post_free_mypart a, my_partner b where a.Category = b.id  order by a.total_views desc";
-					$query  = "select a.*, b.name from post_free_mypart a, my_partner b where a.EndDate >= '".$current_date."' and a.Category = b.id and a.States  IN ('ALL','multiple')   order by a.total_views desc";
-					
-							
-					
-		}
-			
-
-																				
+			$query  = "select a.*, b.name from post_free_mypart a, my_partner b where a.EndDate >= '".$current_date."' and a.Category = b.id and a.States  IN ('ALL','multiple')   order by a.total_views desc";
+		}	
 						$result = mysql_query($query);
 						
 						if(mysql_num_rows($result) > 0) {
@@ -292,20 +274,9 @@ if(isset($_SESSION['Nris_session']))
                    
                    </tbody>
                 </table>
-                                                          
-
-			
-            </div>
+			</div>
             <!-- TOP BUTTONS ENDS-->
             
-            
-    
-        
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
          <div style="width:8%;float:right;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
@@ -330,14 +301,7 @@ if(isset($_SESSION['Nris_session']))
             </script>
          </div>
         <!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
+			 
         </div>
 
 <!-- Section-1 ENDS -->

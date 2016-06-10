@@ -236,10 +236,6 @@ else
 	$tableName="fam_pubs";		
 	$targetpage = "pub_places.php"; 	
 	$limit = 10; 
-	
-/*	$query = "SELECT COUNT(*) as num FROM $tableName  where pub_type='".$_SESSION['type']."' and  state_code='".$_SESSION['state']."' order by total_views desc";
-	$total_pages = mysql_fetch_array(mysql_query($query));
-	$total_pages = $total_pages[num];		*/
 
 	$query = "SELECT DISTINCT  * FROM fam_pubs LEFT OUTER JOIN rating_pubs ON fam_pubs.id = rating_pubs.pub_id where  fam_pubs.pub_type='".$_SESSION['type']."' and fam_pubs.state_code='".$_SESSION['state']."' GROUP BY(fam_pubs.id) order by rating_pubs.rate desc, fam_pubs.total_views desc";
 	$total_pages = mysql_query($query);
@@ -253,9 +249,6 @@ else
 	}else{
 		$start = 0;	
 		}	
-	
-    // Get page data
-//	$query1 = "SELECT * FROM $tableName  where pub_type='".$_SESSION['type']."' and state_code='".$_SESSION['state']."' order by total_views desc LIMIT $start, $limit";
 	$query1 = "SELECT DISTINCT  * FROM fam_pubs LEFT OUTER JOIN rating_pubs ON fam_pubs.id = rating_pubs.pub_id where  fam_pubs.pub_type='".$_SESSION['type']."' and fam_pubs.state_code='".$_SESSION['state']."' GROUP BY(fam_pubs.id) order by rating_pubs.rate desc, fam_pubs.total_views desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
 	
@@ -400,37 +393,14 @@ else
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
+			 
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
-
-
-
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->

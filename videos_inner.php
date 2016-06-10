@@ -92,14 +92,6 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 	<div class="clearfix"></div>
 
     <?php include_once('stock_block.php');?>
-	
-
-     
-     
-    
-    
-     
-    
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap" style="min-height:650px;">	
 <!-- Section-1 START-->
@@ -152,11 +144,6 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 	}else{
 		$start = 0;	
 		}	
-	
-    // Get page data
-//	$query1 = "SELECT * FROM $tableName  order by total_views desc LIMIT $start, $limit";
-//	$query1 = "SELECT a.*,b.rate FROM fam_temples a , rating_temple b where a.id=b.temple_id  order by b.rate desc LIMIT $start, $limit";
-	
 	// Initial page num setup
 	if ($page == 0){$page = 1;}
 	$prev = $page - 1;	

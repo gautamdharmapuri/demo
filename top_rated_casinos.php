@@ -226,7 +226,6 @@ else
 	$targetpage = "top_rated_casinos.php"; 	
 	$limit = 10; 
 	
-//	$query = "SELECT COUNT(*) as num FROM $tableName where state_code='".$_SESSION['state']."' order by total_views";
 	$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
@@ -239,9 +238,7 @@ else
 		$start = 0;	
 		}	
 	
-    // Get page data
-//	$query1 = "SELECT * FROM $tableName where state_code='".$_SESSION['state']."' order by total_views LIMIT $start, $limit";
-	$query1 = "SELECT $tableName.*,rate FROM $tableName
+    $query1 = "SELECT $tableName.*,rate FROM $tableName
 			left join rating_casinos on rating_casinos.casino_id = $tableName.id and login_id = ".$_SESSION['Nris_session']['id']."
 			order by total_views desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
@@ -258,17 +255,12 @@ else
 	if($lastpage > 1)
 	{	
 	
-
-	
-	
 		$paginate .= "<div class='paginate'>";
 		// Previous
 		if ($page > 1){
 			$paginate.= "<a href='$targetpage?page=$prev'><i class='fa fa-angle-double-left'></i></a>";
 		}else{
 			$paginate.= "<span class='disabled'><i class='fa fa-angle-double-left'></i></span>";	}
-			
-
 		
 		// Pages	
 		if ($lastpage < 7 + ($stages * 2))	// Not enough pages to breaking it up
@@ -390,37 +382,13 @@ else
             
             
         </div><!-- COLUMN MIDDLE ENDS -->	
-        
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
-    
-
-
 
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>

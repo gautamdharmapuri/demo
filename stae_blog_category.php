@@ -490,32 +490,9 @@ if (strpos($rs['image'],'.') !== false) {  ?>
 <?php } ?>
 
 <bR>
-
-
-            
-
-            
-
-
-
-            
-            
-            
-
-                        
-
-            
 </div>            
             <!-- TOP BUTTONS ENDS-->
-            
-            
-    
-        
-        
-        
-        
-        
-        
+           
         <!-- COLUMN RIGHT -->	
          <div class="col-md-2 inner-left">
 			
@@ -537,40 +514,20 @@ if (strpos($rs['image'],'.') !== false) {  ?>
 
                     </ul>
                 </li>
-                
-               
-
-                
             </ul>
 		
         </aside>
          </div>
         <!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
+			   
         </div><!-- Section-1 ENDS -->
        </div>
 </div><!-- End Section-1 WRAP -->
 
 	
     <div style="clear:both;"></div>
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
-
-
-
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->

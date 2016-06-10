@@ -304,69 +304,9 @@ if(isset($_SESSION['Nris_session']))
                                          	</tr>
                                        </thead>
                                     
-                                    
-                                    
-                                    
-                                    
-                                        <?php /*?><tr>
-                                            
-                                            <th colspan="2" align="center" style="text-align:center">
-
-											<?php   if (strpos($rs['image1'],'.') !== false) {  ?>
-                             			   <img src="uploads/real_estate/<?php echo $rs['image1'];?>" width="150" height="auto"> 	<?php }  else {  ?>
-                                           <img src="admin/img/no_image.png" height="auto" width="150">
-                                           <?php } ?>
-                                           
-                                           
-                                           <?php   if (strpos($rs['image2'],'.') !== false) {  ?>
-                             			   <img src="uploads/real_estate/<?php echo $rs['image2'];?>" width="150" height="auto"> 	<?php }  else {  ?>
-                                           <img src="admin/img/no_image.png" height="auto" width="150">
-                                           <?php } ?>
-                                           
-                                           
-                                            <?php   if (strpos($rs['image3'],'.') !== false) {  ?>
-                             			   <img src="uploads/real_estate/<?php echo $rs['image3'];?>" width="150" height="auto"> 	<?php }  else {  ?>
-                                           <img src="admin/img/no_image.png" height="auto" width="150">
-                                           <?php } ?>
-                                           
-                                          
-
-                                            </th>                                               
-                                        </tr><?php */?>
-                                 
-                                     
-                                        
                                     </table>           
                        
-                       
-                       
-                       
 
-
-					
-                    
-
-
-                    
-<br><br><br><br><br>
-
-<?php /*?> <div class="dividerHeading">
-    <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
-</div>
-        
-            <form novalidate="novalidate" method="post" action="#" class="comment-form">               
-              <div class="form-div ">
-                    <div class="form-label">Message:</div>
-                    <div class="form-field">
-                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
-                    </div>            
-               </div>      
-             <div class="form-submit-buttons">               
-                <input name="comment_submit" value="Post Comment" class="no-comment btn btn-premium" type="submit" style="float:right">
-             </div>
-                <input class="form-control" name="post_id" value="623" type="hidden">
-                <input class="form-control" name="commented_by" value="" type="hidden"><br>
-           </form> <?php */?>	
 <br><br><br><br><br><br><br><br><br>
 		
             </div>
@@ -375,32 +315,13 @@ if(isset($_SESSION['Nris_session']))
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
             
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

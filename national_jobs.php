@@ -210,20 +210,16 @@ else
 
 
 <table align="center" >
-                                                                            <thead>
-                                                                            <tr>
-                                                                               <th>Title</th>
-                                                                                <th>Category</th>
-                                                                                <th>Job Role</th>
-                                                                                <th>Views</th>
-                                                                            </tr>
-                                                                            </thead>
-                                                                            <tbody>
-                                                                            
-                                                                            
-                                                                              
-																				<?php
-																				
+			<thead>
+				<tr>
+				   <th>Title</th>
+					<th>Category</th>
+					<th>Job Role</th>
+					<th>Views</th>
+				</tr>
+				</thead>
+				<tbody>
+		<?php
 		if(isset($_GET['type']))
 		{
 			$cat = $_GET['type'];

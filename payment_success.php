@@ -13,7 +13,7 @@ $redirectUrl = $type.'_inner.php?code='.$state;
 if($action == 'success') {
     $isPayed = 'Y';
     
-    $sql = "UPDATE $tableName SET isPayed = '".$isPayed."' WHERE id = ".$id;
+    $sql = "UPDATE $tableName SET isPayed = '".$isPayed."' WHERE (id) = '".$id."'";
     $query = mysql_query($sql);
     if($query) {
         ?>
@@ -23,6 +23,8 @@ if($action == 'success') {
         </script>
         <?php
     } else {
+        $sql = "DELETE FROM $tableName WHERE (id) = '".$id."'";
+        $query = mysql_query($sql);
         ?>
         <script>
             alert('Something went wrong');
@@ -31,6 +33,9 @@ if($action == 'success') {
         <?php
     }
 } else {
+        $sql = "DELETE FROM $tableName WHERE (id) = '".$id."'";
+        //echo $sql;exit;
+        $query = mysql_query($sql);
     ?>
     <script>
         alert('Payment has failed');

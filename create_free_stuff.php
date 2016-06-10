@@ -221,6 +221,7 @@ if(isset($_POST['Submit']))
 			{
 			$query=mysql_query("insert into post_free_stuff (TitleAD,Message,image,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,City,EndDate,date,time,States) VALUES('".$TitleAD."','".$Desrp."','".$image1."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$City."','".$EndDate."','".$date."','".$time."','".$state."')");
 			}
+			$post_id = mysql_insert_id();
 			$final_count++;
 			$msg = "<h3 class='sucess'>Free Stuff Ads Created Successfully!..</h3>";
 		if($_GET['type'] == 'premium') {
@@ -248,9 +249,9 @@ if(isset($_POST['Submit']))
 			   <input type="hidden" value="img/logo.png" name="cpp_header_image">
 				<input type="hidden" value="img/logo.png" name="image_url">
 				<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>" />
-			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>">
-			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success">			
+			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>" />
+			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo ($post_id);?>&table_name=<?php echo $table_name; ?>&state=<?php echo $state;?>">
+			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success&table_name=<?php echo $table_name; ?>">			
 </form>
 <script>
 $('document').ready(function() {

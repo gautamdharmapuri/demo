@@ -249,30 +249,18 @@ if(isset($_SESSION['Nris_session']))
                         </tr>
                         </thead>
                         <tbody>
-                        
-                                                                            
-                                                                              
 		<?php
 		
 		if(isset($_POST['cmdsubmit']))
 		{
 			$cat = $_POST['AdsCat'];
-			
-			
-//			$query = "select a.*, b.name from post_free_real_estate a, real_estate b where a.AdsCat= '".$cat."' and  '".$cat."' = b.id  order by a.total_views desc";	
 			$query  = "select a.*, b.name from post_free_real_estate a, real_estate b where a.AdsCat= '".$cat."' and a.EndDate >= '".$current_date."' and a.AdsCat = b.id and a.States  IN ('ALL','multiple')   order by a.total_views desc";
-
 		}
 		else
 		{		
-				//	$query = "select a.*, b.name from post_free_real_estate a, real_estate b where a.AdsCat = b.id  order by a.total_views desc";
-					$query  = "select a.*, b.name from post_free_real_estate a, real_estate b where a.EndDate >= '".$current_date."' and a.AdsCat = b.id and a.States  IN ('ALL','multiple')   order by a.total_views desc";
-					
-					
+			$query  = "select a.*, b.name from post_free_real_estate a, real_estate b where a.EndDate >= '".$current_date."' and a.AdsCat = b.id and a.States  IN ('ALL','multiple')   order by a.total_views desc";
 		}
-			
-
-																				
+				
 						$result = mysql_query($query);
 						if(mysql_num_rows($result) > 0) {
 						while($rs=mysql_fetch_array($result))
@@ -289,25 +277,10 @@ if(isset($_SESSION['Nris_session']))
 						<td colspan="4"><br><h6>No Records Found.</h6></td>	
                     </tr>    
 					<?php } ?>
-                                                                            
-	
-                                                                            
-                </tbody>
-                </table>
-                                                          
-
-			
-            </div>
+					</tbody>
+                </table></div>
             <!-- TOP BUTTONS ENDS-->
             
-            
-    
-        
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
          <div style="width:8%;float:right;">
 			<script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>

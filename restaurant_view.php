@@ -190,14 +190,6 @@ $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id'].
 		<span class="glyphicon-map-marker"></span>
 		<?php echo ucwords($rs['address']); ?>
 	</a></p><br>
-
-
-					
-                    
-
-
-
-                    
 <?php
 		if(isset($_SESSION['Nris_session']))	  
 	   { ?>
@@ -241,9 +233,6 @@ else
  $result_rate = mysql_query($query_rate);
 }
 
-
-// $query_rate = "insert into rating_restaurant(res_id,rate,login_id,login_name,date) values('".$pro_id."','".$star."','".$myid."','".$new_name."','".$date."')";		 
-// $result_rate = mysql_query($query_rate);
 
 }
 
@@ -313,11 +302,7 @@ $star_fs5 = mysql_fetch_array($result_start5);
 <?php echo $star_fs5['star5Id']; ?>%</p></div></div></td>
 </tr>
 </table>
-
-
-
-
-                    
+      
 <br style="clear:both;"><br><br>
 
 
@@ -350,13 +335,6 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 <?php } }?>  
 
 <br><br>
-
-
-
-
-
-
-
 
 <?php
 if(isset($_POST['cmdcomment']))	
@@ -424,36 +402,15 @@ if(isset($_SESSION['Nris_session']))
         </div><!-- COLUMN MIDDLE ENDS -->	
         
         
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
+			 
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
+
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
-
-
-
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->

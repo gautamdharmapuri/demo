@@ -238,10 +238,6 @@ else
 	$targetpage = "restaurants_inner.php"; 	
 	$limit = 10; 
 	
-/*	$query = "SELECT COUNT(*) as num FROM $tableName where rest_type='".$_SESSION['type']."' and state_code='".$_SESSION['state']."' order by total_views desc";
-	$total_pages = mysql_fetch_array(mysql_query($query));
-	$total_pages = $total_pages[num];		*/
-	
 	$query = "SELECT DISTINCT  * FROM fam_restaurants LEFT OUTER JOIN rating_restaurant ON fam_restaurants.id = rating_restaurant.res_id where  fam_restaurants.rest_type='".$_SESSION['type']."' and fam_restaurants.state_code='".$_SESSION['state']."' GROUP BY(fam_restaurants.id) order by rating_restaurant.rate desc, fam_restaurants.total_views desc";
 	$total_pages = mysql_query($query);	
 	
@@ -252,9 +248,6 @@ else
 	}else{
 		$start = 0;	
 		}	
-	
-    // Get page data
-//	$query1 = "SELECT * FROM $tableName  where rest_type='".$_SESSION['type']."' and state_code='".$_SESSION['state']."' order by total_views desc LIMIT $start, $limit";
 	$query1 = "SELECT DISTINCT  * FROM fam_restaurants LEFT OUTER JOIN rating_restaurant ON fam_restaurants.id = rating_restaurant.res_id where  fam_restaurants.rest_type='".$_SESSION['type']."' and fam_restaurants.state_code='".$_SESSION['state']."' GROUP BY(fam_restaurants.id) order by rating_restaurant.rate desc, fam_restaurants.total_views desc LIMIT $start, $limit";
 
 	$result = mysql_query($query1);
@@ -270,9 +263,6 @@ else
 	$paginate = '';
 	if($lastpage > 1)
 	{	
-	
-
-	
 	
 		$paginate .= "<div class='paginate'>";
 		// Previous
@@ -401,32 +391,12 @@ else
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('state_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

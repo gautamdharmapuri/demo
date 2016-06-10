@@ -229,7 +229,7 @@
 					<p class="mydata">
 						 We thank you in advance for your understanding and continued support.
 					</p>
-					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('terms_conditions_popup')" class="btn btn-success" style="">Submit</button></span></p>
+					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('terms_conditions_popup')" class="btn btn-success" style="">Accept</button></span></p>
                 </div>
 	</div>	
 <!-- / POPUP-->
@@ -271,7 +271,7 @@
 						 Thanks for joining us in chat!
 					</p>
 					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;
-					<button onClick="chat_condition_click();" class="btn btn-success" style="">Submit</button></span></p>
+					<button onClick="chat_condition_click();" class="btn btn-success" style="">Agree</button></span></p>
                 </div>
 	</div>	
 <!-- / POPUP-->

@@ -162,7 +162,14 @@ else
 	@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
 	
 	}
-
+	.alphabet-div{
+		background: #2eb1fd;
+		width: 30px;
+		padding: 5px;
+		border-radius: 30px;
+		padding-left: 10px;
+		font-weight: bolder;
+	}
 	</style> 
 </head>
 <body>
@@ -249,12 +256,6 @@ exit;
 
 
 </div>    <br>
-                     <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
-
-
-
-
-
 	<?php echo $i;  
 			
 					$queryname="select * from desi_pages_cat order by name asc" ; 					
@@ -263,21 +264,42 @@ exit;
 			?>
 		
 		<ul>
-        <?php 
-        while($sub_result = mysql_fetch_array($resulname)) { 
+
+	<?php  // for($i = A ; $i<=Z; $i++)  { 
+		foreach (range('A', 'Z') as $i) {
+			
+		$queryname = "select count(1) as cnt from desi_pages_cat where name like '$i%' order by name" ; 					
+		$resulname = mysql_query($queryname);
+		$cnt = mysql_fetch_array($resulname);
+		if($cnt['cnt'] > 0) {
+	?>
+	
+    <!-- Section 1 -->
+	<li style="list-style:none;">
+		<div class="alphabet-div"><?php echo $i;?>
+		</div><!-- Head -->
+		<div>
+			
+		<ul style="padding-left:20px;">
+        <?php
+		$queryname1 = "select * from desi_pages_cat where name like '$i%' order by name" ; 					
+		$resulname1 = mysql_query($queryname1);
+		
+        while($sub_result = mysql_fetch_array($resulname1)) { 
 //			$q = "select * from "
 		?>
-        <li style="list-style: none;padding: 4px;">
-			<a style="color: #2eb1fd !important;" href="deshiads.php?type=<?php echo md5($sub_result['name']); ?>&code=<?php echo $_SESSION['state'] ?>">
-			<?php echo ucwords($sub_result['name']);  ?>
-			</a>
-		</li>
+        <li  style="list-style:none;"><a href="deshiads.php?type=<?php echo md5($sub_result['name']); ?>&code=<?php echo $_SESSION['state'] ?>"><?php echo ucwords($sub_result['name']);  ?></a></li>
         <?php } ?>
         </ul><br>
            <!-- <p>Quick text. Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla  tempus, molestie fermentum purus euismod.</p>-->
 
-                                                          
+		</div>
+	</li>
+    
+    <?php } } ?>
 
+
+</ul>
 			
             </div>
             <!-- TOP BUTTONS ENDS-->

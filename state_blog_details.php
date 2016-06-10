@@ -439,27 +439,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
             </div>
             
 <?php } }?>            
-            
-            
-            
-<?php /*?><div class="blockquote">
-            <div class="quote" style="min-height:auto;">
-                <h5 style="margin-bottom:5px;color:#666666;">Institute Type : School & Hostel</h5>
-				<div style="color: #999999;font-weight: 300;line-height: 24px;margin-bottom: 12px;">Posted 06:12PM, 25 December 2015 by Admin / Category: Fashion, Dresses</div>
-                <p align="justify" style="color:#666666;">                
-                
-                Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download Browse over 11000 flat colors in over 2300 flat color palettes. Copy them or download </p>
-            </div>
-
-			
-            </div><?php */?>
-            
-
-
-
-
-
-
+          
 <?php
 if(isset($_POST['cmdcomment']))	
 {
@@ -509,24 +489,6 @@ if(isset($_POST['cmdcomment']))
             
 <h3>Post a comment</h3>            
 <form class="form-horizontal" role="form" method="post">
-
-<?php /*?><div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Name</label>
-	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="Name" name="Name" placeholder="Your Name" style="width:100%;margin-bottom:0px;" tabindex="1" value="" />               		
-	</div>
-</div>
-</div>
-
-<div class="col-md-6">
-<div class="form-group">
-	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:right;">Email</label>
-	<div class="col-sm-8">
-    	<input type="text" class="form-control" id="Email" name="Email" placeholder="Your Email" style="width:100%;margin-bottom:0px;" tabindex="2" value="" />               		
-	</div>
-</div>
-</div><?php */?>
 
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Comment</label>

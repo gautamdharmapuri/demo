@@ -95,8 +95,6 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 <script language="javascript" type="text/javascript">
 	function frmchk()
 	{
-		
-		
 		data  = document.getElementById('Comment').value;
 				 if (data.length < 5)	
 				{
@@ -104,9 +102,6 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 						document.getElementById('Comment').focus();
 						return false;
 				}
-	
-		
-					
 		return true;
 	}
 </script>   
@@ -122,24 +117,12 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));</script>
 
-
-
-
-
-
 <div class="loader"><div class="loader_html"></div></div>
-
-
 
 	<?php include "config/menu.php" ;  ?>
 	
 	<div class="clearfix"></div>
-
-    
 		<?php include_once('stock_block.php');?>
-     
-     
-     
     
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap">	
@@ -196,46 +179,17 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 		<span class="glyphicon-map-marker"></span>
 		<?php echo ucwords($rs['address']); ?>
 	</a></p><br>
-
-
-
-
-
-
-	
-		
             </div>
             <!-- TOP BUTTONS ENDS-->
             
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
-
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

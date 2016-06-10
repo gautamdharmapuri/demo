@@ -536,6 +536,7 @@ if(isset($_POST['Submit']))
 			{
 			$query=mysql_query("insert into  post_free_mypart (TitleAD,Message,Category,ConatctNAME,ConatctNumber,ConatctEmail,Contact_PID,ShowEmail,States,States_Details,City,image1,URL,EndDate,date,time) VALUES('".$TitleAD."','".$Desrp."','".$Brand."','".$ConatctNAME."','".$ConatctNumber."','".$ConatctEmail."','".$pid."','".$ShowEmail."','".$States."','".$chk."','".$City."','".$image1."','".$URL."','".$EndDate."','".$date."','".$time."')");
 			}
+			$post_id = mysql_insert_id();
 			$final_count++;
 			
 			$msg = "<h3 class='sucess'>My Partner Ads Created Successfully!..</h3>";
@@ -564,9 +565,9 @@ if(isset($_POST['Submit']))
 			   <input type="hidden" value="img/logo.png" name="cpp_header_image">
 				<input type="hidden" value="img/logo.png" name="image_url">
 				<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>" />
-			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo md5($post_id);?>&state=<?php echo $state;?>">
-			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success">			
+			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>" />
+			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>&table_name=<?php echo $table_name; ?>">
+			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success&table_name=<?php echo $table_name; ?>">			
 </form>
 <script>
 $('document').ready(function() {

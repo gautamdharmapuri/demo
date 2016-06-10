@@ -103,16 +103,6 @@ color:#FFFFFF;font-weight:bold;clear:both;background-color:#FF0000;font-weight:b
 border-radius: 5px;
 }
 
-/*.sucess
-{
-background-color:#009933;
-padding:5px;
-color:#FFFFFF;
-width:100%;
-font-weight:bold;
-}
-
-*/
 .sucess
 {
 color:#FFFFFF;font-weight:bold;clear:both;background-color:#009900;font-weight:bold;padding:10px 10px;
@@ -137,17 +127,6 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 
 </head>
 <body>
-
-
-
-
-
-
-
-
-
-
-
 
 <div class="loader"><div class="loader_html"></div></div>
 
@@ -306,55 +285,17 @@ if(isset($_POST['cmdSubmit'])) {
 	</div>
 </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 <div class="col-md-12">
 
 <div class="form-group">
 	<div class="col-sm-offset-5 col-sm-3">&nbsp;</div>
 	<div class="col-sm-offset-5 col-sm-7">
-
-
-    
         <input type="hidden" name="id" id="id" value="<?php echo $_SESSION['Nris_session']['id']; ?>">    		
 		<button type="submit" class="button" name="cmdSubmit" id="cmdSubmit" tabindex="7">Send Message</button>
 	</div>
 </div>
-
 </div>
-
-
-
-
-
-
-
-
-
 </form>
-
-                  
-					
-
             </div>
             <!-- TOP BUTTONS ENDS-->
 
@@ -371,24 +312,9 @@ if(isset($_POST['cmdSubmit'])) {
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

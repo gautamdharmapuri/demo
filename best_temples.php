@@ -236,10 +236,6 @@
 	}else{
 		$start = 0;	
 		}	
-	
-    // Get page data
-//	$query1 = "SELECT * FROM $tableName  order by total_views desc LIMIT $start, $limit";
-//	$query1 = "SELECT a.*,b.rate FROM fam_temples a , rating_temple b where a.id=b.temple_id  order by b.rate desc LIMIT $start, $limit";
 	$query1 = "SELECT DISTINCT  * FROM fam_temples LEFT OUTER JOIN rating_temple ON fam_temples.id = rating_temple.temple_id GROUP BY(fam_temples.id) order by fam_temples.total_views desc, rating_temple.rate desc   LIMIT 25";
 
 

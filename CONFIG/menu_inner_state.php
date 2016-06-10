@@ -74,27 +74,27 @@ elseif(isset($_GET['state']))
         <ul>
 
             
-        <li><a href="state.php?State=<?php echo $state;?>">Home</a></li>
-        <li><a href="yellowpages.php">Desi Pages</a></li>
+        <li><a href="state.php?State=<?php echo $defaultState;?>">Home</a></li>
+        <li><a href="yellowpages.php"><?php echo $defaultState;?> Desi Pages</a></li>
         <li><a href="discussion_board.php">Forum</a></li>
        
 		<li><a href="javascript:;"> Free Ads</a>
             <ul class="subnav">
-                <li><a href="auto_inner.php?code=<?php echo $state;?>">Auto</a></li>
-                <li><a href="baby_sitting_inner.php?code=<?php echo $state;?>">Baby Sitting</a></li>  
-                <li><a href="education_inner.php?code=<?php echo $state;?>">Education & Teaching</a></li>   
-                <li><a href="electronics_inner.php?code=<?php echo $state;?>">Electronics</a></li>
-                <li><a href="free_stuff_inner.php?code=<?php echo $state;?>">Free Stuff</a></li>                       
-                <li><a href="garagesale_inner.php?code=<?php echo $state;?>">Garage Sale</a></li>                          
-                <li><a href="jobs_inner.php?code=<?php echo $state;?>">Jobs</a></li>
-                <li><a href="mypartner_inner.php?code=<?php echo $state;?>">My Partner</a></li>            
-                <li><a href="roommates_inner.php?code=<?php echo $state;?>">Roommates</a></li>          
-                <li><a href="realestate_inner.php?code=<?php echo $state;?>">Real Estate</a></li>
+                <li><a href="auto_inner.php?code=<?php echo $defaultState;?>">Auto</a></li>
+                <li><a href="baby_sitting_inner.php?code=<?php echo $defaultState;?>">Baby Sitting</a></li>  
+                <li><a href="education_inner.php?code=<?php echo $defaultState;?>">Education & Teaching</a></li>   
+                <li><a href="electronics_inner.php?code=<?php echo $defaultState;?>">Electronics</a></li>
+                <li><a href="free_stuff_inner.php?code=<?php echo $defaultState;?>">Free Stuff</a></li>                       
+                <li><a href="garagesale_inner.php?code=<?php echo $defaultState;?>">Garage Sale</a></li>                          
+                <li><a href="jobs_inner.php?code=<?php echo $defaultState;?>">Jobs</a></li>
+                <li><a href="mypartner_inner.php?code=<?php echo $defaultState;?>">My Partner</a></li>            
+                <li><a href="roommates_inner.php?code=<?php echo $defaultState;?>">Roommates</a></li>          
+                <li><a href="realestate_inner.php?code=<?php echo $defaultState;?>">Real Estate</a></li>
             </ul>
         </li>
         <li><a href="state_blog.php">Blog</a></li>
-        <li><a href="discussion_room.php"><?php echo $state;?> NRI's talk</a></li>
-        <li><a href="javascript:;"> <?php echo $state;?> Box Office</a>
+        <li><a href="discussion_room.php"><?php echo $defaultState;?> NRI's talk</a></li>
+        <li><a href="javascript:;"> <?php echo $defaultState;?> Box Office</a>
             <ul class="subnav">
             <li><a href="theaters.php?type=<?php echo urlencode('$1 Movie Theaters');?>&State=<?php echo $defaultState;?>">$1 Movie Theaters</a></li>
             <li><a href="theaters.php?type=<?php echo urlencode('$ Saving Theaters');?>&State=<?php echo $defaultState;?>">$ Saving Theaters</a></li>
@@ -109,41 +109,41 @@ elseif(isset($_GET['state']))
         
   <li><a href="javascript:;">Casinos </a>
             <ul class="subnav">
-            <li><a href="top_rated_casinos.php?code=<?php echo $state;?>">Top Rated Casinos </a></li>
-            <li><a href="casinos_inner.php?code=<?php echo $state;?>"><?php echo $state;?> Casinos </a></li>
-            <li><a href="casinos_near.php?code=<?php echo $state;?>">Casinos Near Me</a></li>
+            <li><a href="top_rated_casinos.php?code=<?php echo $defaultState;?>">Top Rated Casinos </a></li>
+            <li><a href="casinos_inner.php?code=<?php echo $defaultState;?>"><?php echo $defaultState;?> Casinos </a></li>
+            <li><a href="casinos_near.php?code=<?php echo $defaultState;?>">Casinos Near Me</a></li>
              </ul>
         </li>
         <!-- <li id="famousTemples"><a href="#famousIndianTemples">Famous Indian Temples</a></li> -->
         <li><a href="javascript:;">Temples</a>
             <ul>
-            <li><a href="temples_inner.php?type=Hindu Temples&code=<?php echo $state;?>">Hindu Temples </a></li>
-            <li><a href="temples_inner.php?type=ISKON Temple&code=<?php echo $state;?>">ISKON Temples</a></li>
-            <li><a href="temples_inner.php?type=Jain Temples&code=<?php echo $state;?>">Jain Temples</a></li>
-            <li><a href="temples_inner.php?type=Gurudwara&code=<?php echo $state;?>">Gurudeara Temples</a></li>
-            <li><a href="temples_inner.php?type=Churches&code=<?php echo $state;?>">Churches</a></li>
-            <li><a href="temples_inner.php?type=Mosques & Darga&code=<?php echo $state;?>">Mosques &amp; Darga</a></li>
-            <li><a href="temples_inner.php?type=Budda Vihar&code=<?php echo $state;?>">Budda Vihar</a></li>		
-            <li><a href="temples_inner.php?type=Other&code=<?php echo $state;?>">Other</a></li>
+            <li><a href="temples_inner.php?type=Hindu Temples&code=<?php echo $defaultState;?>">Hindu Temples </a></li>
+            <li><a href="temples_inner.php?type=ISKON Temple&code=<?php echo $defaultState;?>">ISKON Temples</a></li>
+            <li><a href="temples_inner.php?type=Jain Temples&code=<?php echo $defaultState;?>">Jain Temples</a></li>
+            <li><a href="temples_inner.php?type=Gurudwara&code=<?php echo $defaultState;?>">Gurudeara Temples</a></li>
+            <li><a href="temples_inner.php?type=Churches&code=<?php echo $defaultState;?>">Churches</a></li>
+            <li><a href="temples_inner.php?type=Mosques & Darga&code=<?php echo $defaultState;?>">Mosques &amp; Darga</a></li>
+            <li><a href="temples_inner.php?type=Budda Vihar&code=<?php echo $defaultState;?>">Budda Vihar</a></li>		
+            <li><a href="temples_inner.php?type=Other&code=<?php echo $defaultState;?>">Other</a></li>
             </ul>
         </li>
         
         
         <li><a href="javascript:;">Restaurants </a>
         <ul>
-        <li><a href="restaurants_inner.php?type=Top Rated Restaurants&code=<?php echo $state;?>">Top Rated Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Indian Restaurants&code=<?php echo $state;?>">Indian Restaurants</a></li>
-		<li><a href="restaurants_inner.php?type=Indian Vegetarian Restaurants&code=<?php echo $state;?>">Indian Vegetarian Restaurants</a></li>
-		<li><a href="restaurants_inner.php?type=Halal Restaurants&code=<?php echo $state;?>">Halal Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Thai Restaurants&code=<?php echo $state;?>">Thai Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Chinese Restaurants&code=<?php echo $state;?>">Chinese Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=American Restaurants&code=<?php echo $state;?>">American Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Mediterranean Restaurants&code=<?php echo $state;?>">Mediterranean Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Mexican Restaurants&code=<?php echo $state;?>">Mexican Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Italian Restaurants&code=<?php echo $state;?>">Italian Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=French Restaurants&code=<?php echo $state;?>">French Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Spanish Restaurants&code=<?php echo $state;?>">Spanish Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Other&code=<?php echo $state;?>">other </a></li>
+        <li><a href="restaurants_inner.php?type=Top Rated Restaurants&code=<?php echo $defaultState;?>">Top Rated Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=Indian Restaurants&code=<?php echo $defaultState;?>">Indian Restaurants</a></li>
+		<li><a href="restaurants_inner.php?type=Indian Vegetarian Restaurants&code=<?php echo $defaultState;?>">Indian Vegetarian Restaurants</a></li>
+		<li><a href="restaurants_inner.php?type=Halal Restaurants&code=<?php echo $defaultState;?>">Halal Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=Thai Restaurants&code=<?php echo $defaultState;?>">Thai Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=Chinese Restaurants&code=<?php echo $defaultState;?>">Chinese Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=American Restaurants&code=<?php echo $defaultState;?>">American Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=Mediterranean Restaurants&code=<?php echo $defaultState;?>">Mediterranean Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=Mexican Restaurants&code=<?php echo $defaultState;?>">Mexican Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=Italian Restaurants&code=<?php echo $defaultState;?>">Italian Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=French Restaurants&code=<?php echo $defaultState;?>">French Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=Spanish Restaurants&code=<?php echo $defaultState;?>">Spanish Restaurants </a></li>
+		<li><a href="restaurants_inner.php?type=Other&code=<?php echo $defaultState;?>">other </a></li>
         </ul>
         </li>
   
@@ -151,32 +151,32 @@ elseif(isset($_GET['state']))
         
         <li><a href="javascript:;">Sports</a>
         <ul>
-        <li><a href="sports_inner.php?type=Tennis Clubs&code=<?php echo $state;?>">Tennis clubs </a></li>
-     	<li><a href="sports_inner.php?type=Cricket Clubs&code=<?php echo $state;?>">Cricket Clubs </a></li>
-		<li><a href="sports_inner.php?type=Shuttle (Badminton)&code=<?php echo $state;?>">Shuttle (Badminton) </a></li>
-		<li><a href="sports_inner.php?type=Board Games (Carom Board, Chess, Checkers, Brain Vita)&code=<?php echo $state;?>">Board games ( carom board , chess , checkers , brain vita ) </a></li>
-		<li><a href="sports_inner.php?type=GOLF Clubs&code=<?php echo $state;?>">GOLF clubs </a></li>
-		<li><a href="sports_inner.php?type=Swimming Pools&code=<?php echo $state;?>">Swimming pools </a></li>
-		<li><a href="sports_inner.php?type=Kayaking&code=<?php echo $state;?>">Kayaking </a></li>
-		<li><a href="sports_inner.php?type=Hiking&code=<?php echo $state;?>">Hiking </a></li>
-		<li><a href="sports_inner.php?type=Skating&code=<?php echo $state;?>">Skating </a></li>
-		<li><a href="sports_inner.php?type=Surfing&code=<?php echo $state;?>">Surfing </a></li>
-		<li><a href="sports_inner.php?type=Para Sailing&code=<?php echo $state;?>">Para sailing </a></li>
-		<li><a href="sports_inner.php?type=Boating&code=<?php echo $state;?>">Boating </a></li>
-		<li><a href="sports_inner.php?type=Other&code=<?php echo $state;?>">Other </a></li>
+        <li><a href="sports_inner.php?type=Tennis Clubs&code=<?php echo $defaultState;?>">Tennis clubs </a></li>
+     	<li><a href="sports_inner.php?type=Cricket Clubs&code=<?php echo $defaultState;?>">Cricket Clubs </a></li>
+		<li><a href="sports_inner.php?type=Shuttle (Badminton)&code=<?php echo $defaultState;?>">Shuttle (Badminton) </a></li>
+		<li><a href="sports_inner.php?type=Board Games (Carom Board, Chess, Checkers, Brain Vita)&code=<?php echo $defaultState;?>">Board games ( carom board , chess , checkers , brain vita ) </a></li>
+		<li><a href="sports_inner.php?type=GOLF Clubs&code=<?php echo $defaultState;?>">GOLF clubs </a></li>
+		<li><a href="sports_inner.php?type=Swimming Pools&code=<?php echo $defaultState;?>">Swimming pools </a></li>
+		<li><a href="sports_inner.php?type=Kayaking&code=<?php echo $defaultState;?>">Kayaking </a></li>
+		<li><a href="sports_inner.php?type=Hiking&code=<?php echo $defaultState;?>">Hiking </a></li>
+		<li><a href="sports_inner.php?type=Skating&code=<?php echo $defaultState;?>">Skating </a></li>
+		<li><a href="sports_inner.php?type=Surfing&code=<?php echo $defaultState;?>">Surfing </a></li>
+		<li><a href="sports_inner.php?type=Para Sailing&code=<?php echo $defaultState;?>">Para sailing </a></li>
+		<li><a href="sports_inner.php?type=Boating&code=<?php echo $defaultState;?>">Boating </a></li>
+		<li><a href="sports_inner.php?type=Other&code=<?php echo $defaultState;?>">Other </a></li>
         </ul>
         </li>
         
         
         <li><a href="javascript:;">Pub/Party Places</a>
         <ul>
-        <li><a href="pub_places.php?type=Spots Bars&code=<?php echo $state;?>">Sports bars </a></li>
-		<li><a href="pub_places.php?type=Bowling Bars&code=<?php echo $state;?>">Bowling bars </a></li>
-		<li><a href="pub_places.php?type=Night Clubs&code=<?php echo $state;?>">Night Clubs </a></li>
-		<li><a href="pub_places.php?type=Hukkah Bars&code=<?php echo $state;?>">Hukkah Bars </a></li>
-		<li><a href="pub_places.php?type=Dancing clubs&code=<?php echo $state;?>">Dancing clubs </a></li>
-		<li><a href="pub_places.php?type=Salsa Bars&code=<?php echo $state;?>">Salsa bars </a></li>		
-		<li><a href="pub_places.php?type=Other&code=<?php echo $state;?>">Other </a></li>
+        <li><a href="pub_places.php?type=Spots Bars&code=<?php echo $defaultState;?>">Sports bars </a></li>
+		<li><a href="pub_places.php?type=Bowling Bars&code=<?php echo $defaultState;?>">Bowling bars </a></li>
+		<li><a href="pub_places.php?type=Night Clubs&code=<?php echo $defaultState;?>">Night Clubs </a></li>
+		<li><a href="pub_places.php?type=Hukkah Bars&code=<?php echo $defaultState;?>">Hukkah Bars </a></li>
+		<li><a href="pub_places.php?type=Dancing clubs&code=<?php echo $defaultState;?>">Dancing clubs </a></li>
+		<li><a href="pub_places.php?type=Salsa Bars&code=<?php echo $defaultState;?>">Salsa bars </a></li>		
+		<li><a href="pub_places.php?type=Other&code=<?php echo $defaultState;?>">Other </a></li>
         </ul>
         </li>
         
@@ -189,7 +189,7 @@ elseif(isset($_GET['state']))
         </li>
         
         
-        <li><a href="groceries.php?code=<?php echo $state;?>">groceries</a></li>
+        <li><a href="groceries.php?code=<?php echo $defaultState;?>">groceries</a></li>
         <li><a href="javascript:;">Movies/Videos </a>
   
 			 <ul>
@@ -216,7 +216,7 @@ elseif(isset($_GET['state']))
 				<ul class="subnav">
 						<?php
 				
-							$queryStudentTalk = "select * from student_talk where state_code = '".$state."' and status = 'Active' order by uni_name asc";
+							$queryStudentTalk = "select * from student_talk where state_code = '".$defaultState."' and status = 'Active' order by uni_name asc";
 							$resultStudentTalk = mysql_query($queryStudentTalk);                                                
 							if(mysql_numrows($resultStudentTalk) > 0) {
 						?>

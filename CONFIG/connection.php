@@ -67,7 +67,7 @@ $currentTime = strtotime(date('Y-m-d H:i:s'));
 $loggedInTime = strtotime($_SESSION['Nris_session']['loggedTime']);
 
 //echo $currentTime-$loggedInTime;
-if(($currentTime-$loggedInTime) > 30*60) {
+if(($currentTime-$loggedInTime) > 15*60) {
 	$email = $_SESSION['Nris_session']['email'];
 	mysql_query("UPDATE register SET login_status = 'N' where email ='".$email."' and isactive = 1");
 	
@@ -80,6 +80,7 @@ if(($currentTime-$loggedInTime) > 30*60) {
 	$_SESSION['ViewId']="";
 	unset($_SESSION['ViewId']);		
 	
+	echo "<script>alert('your session has timed out');</script>";
 	header('location:index.php');
 	exit;
 }

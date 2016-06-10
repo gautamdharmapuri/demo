@@ -6,7 +6,7 @@ if (session_id() != '' && is_array($_SESSION['Nris_session'])) {
 	$currentTime = strtotime(date('Y-m-d H:i:s'));
 	$loggedInTime = strtotime($_SESSION['Nris_session']['loggedTime']);
 	
-	if(($currentTime-$loggedInTime) > 30*60) {
+	if(($currentTime-$loggedInTime) > 15*60) {
 		$email = $_SESSION['Nris_session']['email'];
 		mysql_query("UPDATE register SET login_status = 'N' where email ='".$email."' and isactive = 1");
 		
