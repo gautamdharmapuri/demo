@@ -1110,21 +1110,21 @@ Widget.prototype.header = function()
 	var tpl =	'<div class="haeder"><div class="ddmmyy">'+
             	'	<div class="dateday fl">'+
                 '		<div class="date fa">'+
-				'    		<div class="date_p fl"><img src="'+srv_root+'images/p_left.gif" width="4" height="5" class="padt10 cp" onclick="prevDay()"/></div>'+
+				'    		<div class="date_p fl"><img src="'+srv_root+'images/p_left.gif" width="4" height="5" class="padt10 cp"/></div>'+
                 '			<div class="date_dd fl ac b">'+lpad(curDate.getDate()+'')+'</div>'+
-                '			<div class="date_n fr"><img src="'+srv_root+'images/n_right.gif" width="4" height="5" class="padt10 cp" onclick="nextDay()"/></div>'+
+                '			<div class="date_n fr"><img src="'+srv_root+'images/n_right.gif" width="4" height="5" class="padt10 cp"/></div>'+
                 '   	</div>'+
                 '  		<div class="day ac b fa">'+wlist[curDate.getDay()].substring(0,3)+'</div>'+
                 '	</div>'+
                 '	<div class="month fl">'+
                 '		<div class="month_p  ac"><img src="'+srv_root+'images/empty.gif" width="5" height="4" class="padt4" /></div>'+
-                '		<div class="month_mm ac b fa" onclick="loadWidget(\'clndr\',false)"><span class=" cp"> <u>'+mlist[curDate.getMonth()].substring(0,3)+'</u></span></div>'+
+                '		<div class="month_mm ac b fa"><span class=" cp"> <u>'+mlist[curDate.getMonth()].substring(0,3)+'</u></span></div>'+
                 '		<div class="month_n ac"><img src="'+srv_root+'images/empty.gif" width="5" height="4" /></div>'+
                 '	</div>'+
                 '	<div class="year fr b ac fa">'+curDate.getFullYear()+'</div>'+
                     
        			'</div>'+
-                '<div class="place ac fa grey pt10 cp" onclick="loadWidget(\'prfnc\',false)">Place : <span class="b red pt12" >'+Trimm(wInput.place.cityName,15)+'</span></div>'+
+                '<div class="place ac fa grey pt10 cp">Place : <span class="b red pt12" >'+Trimm(wInput.place.cityName,15)+'</span></div>'+
 				'</div>';
 	return new Element('div',{id:'',html:tpl}).create();
 
@@ -1401,7 +1401,7 @@ Widget.prototype.astroCal = function(isChMod)
 	reg = (isChMod)?strSelRegion():reg;
 	var tpl = '<div class="calnstar">'+
               '	<div class="calnstar_2">'+
-              '  	<div class="calnstar_head pt11 b cp pl3 fa" onclick="loadWidget(\'rgion\',false);"><u>'+astroData.header.regional.year_caption+'</u>&nbsp;<img src="'+srv_root+'images/p_bot.gif" class="cp blk" onclick="loadWidget(\'rgion\',false);" width="5" height="4"/> </div>'+
+              '  	<div class="calnstar_head pt11 b cp pl3 fa"><u>'+astroData.header.regional.year_caption+'</u>&nbsp;<img src="'+srv_root+'images/p_bot.gif" class="cp blk" width="5" height="4"/> </div>'+
               '     <div class="shim2px cb">&nbsp;</div>'+
 			  '      <div class="calnstar_text red pt12 b ac fa" id="regional_result">'+reg+'</div>'+
               '  </div>'+
@@ -1422,7 +1422,7 @@ Widget.prototype.linkChart = function()
 {
 	var tpl = '<div class="linkbox ar red pt12 b pr4 fa">Instant astro chart<img src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
-	li.onclick = function(){ loadWidget('chart',false);};
+	//li.onclick = function(){ loadWidget('chart',false);};
 	return li;
 };
 
@@ -1453,7 +1453,7 @@ Widget.prototype.linkPanchang = function()
 {
 	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Today\'s Panchagam<img src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
-	li.onclick = function(){ loadWidget('panch',false);};
+	//li.onclick = function(){ loadWidget('panch',false);};
 	return li;
 };
 
@@ -1461,7 +1461,7 @@ Widget.prototype.linkSpeciality = function()
 {
 	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Speciality of this day<img src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
-	li.onclick = function(){ loadWidget('signf',false);};
+	//li.onclick = function(){ loadWidget('signf',false);};
 	return li;
 };
 
@@ -1469,14 +1469,14 @@ Widget.prototype.linkAstroDay = function()
 {
 	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Astroday<img src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
-	li.onclick = function(){ loadWidget('astro',false);};
+	//li.onclick = function(){ loadWidget('astro',false);};
 	return li;
 };
 Widget.prototype.linkFreePredictions = function()
 {
 	var tpl = '<div class="linkboxrev ar wht pt12 b pr4 fa">Free Predictions<img src="'+srv_root+'images/dbullet_white.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
-	li.onclick = function(){ loadWidget('frpred',false);};
+	//li.onclick = function(){ loadWidget('frpred',false);};
 	return li;
 };
 
