@@ -10,7 +10,7 @@ else
 	
 }
 
-$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+$state = $defaultState;
 
 if(isset($_GET['id']))
 {
@@ -202,7 +202,7 @@ if(isset($_POST['cmdcomment']))
 		$query_cmt = "insert into  nris_talk_comment(thread_Pid,member_id,comment,cmnt_date,cmnt_time,state_code) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."','".$state."')";		 
 		$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:discussion_room_view.php?id='".$_SESSION['threadId']."'");
+		header("location:discussion_room_view?id='".$_SESSION['threadId']."'");
 		
 		/* Sending Notification mail starts here */
 			$query_user = "SELECT * FROM register WHERE id = ".$mId;
@@ -216,7 +216,7 @@ if(isset($_POST['cmdcomment']))
 			$headers = "From: kbknaidu@gmail.com \r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			$url = BASE_PATH . '/discussion_room_view.php?id=' . urlencode($blogId);
+			$url = $siteUrlConstant . 'discussion_room_view?id=' . urlencode($blogId);
 			
 			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
 			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
@@ -261,8 +261,8 @@ $rs = mysql_fetch_array($result);
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
-	<a href="<?php echo SITE_BASE_URL.'/discussion_room.php';?>" class="breadcumb_link">Nri's Talk</a> >> <?php echo ucfirst($rs['title']); ?></h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
+	<a href="<?php echo $siteUrlConstant.'discussion_room';?>" class="breadcumb_link">Nri's Talk</a> >> <?php echo ucfirst($rs['title']); ?></h4>
 </div>    <br>
 
 <div style="border:1px solid #999999;width:100%;padding:10px;border-radius:5px;">
@@ -298,11 +298,11 @@ if (!empty($_SESSION['Nris_session']['id'])) { ?>
 					}
 		            ?>
 		            <div class="like_lnks_cnt">
-		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
+		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
 						</button></a>
-		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
+		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
 							<button type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
 							</button>

@@ -334,8 +334,8 @@ else
             <div class="col-md-10" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> <a href="<?php echo SITE_BASE_URL.'/state_blog.php?code='.$state;?>" class="breadcumb_link">Blog</a> >> Blog Deatils</h4>
+	<?php $state = $defaultState;?>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> <a href="<?php echo $siteUrlConstant.'state_blog?code='.$state;?>" class="breadcumb_link">Blog</a> >> Blog Deatils</h4>
 </div>    
 <?php
 $query = "select a.*, b.category_name from blog a, blog_categories b where a.category_id  = b.id and status = 'Publish' and md5(a.id) = '".$_SESSION['viewId']."'" ;
@@ -385,11 +385,11 @@ if (!empty($_SESSION['Nris_session']['id'])) { ?>
 					}
 		            ?>
 		            <div class="like_lnks_cnt">
-		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
+		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
 						</button></a>
-		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
+		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
 							<button type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
 							</button>
@@ -412,7 +412,54 @@ if (!empty($_SESSION['Nris_session']['id'])) { ?>
 
 
 
+            
+          
+<?php
+if(isset($_POST['cmdcomment']))	
+{
 
+	$blogId = $_POST['blogId'];
+	$mId = $_POST['memberId'];	
+	
+	$msg = trim($_POST['Comment']);
+	$a=stripslashes($msg);
+	$a=mysql_real_escape_string($a);
+	
+	$date = date("Y-m-d");
+	$time = date("h:m:s");	
+				
+	$query_cmt = "insert into  blog_comment(blog_id,member_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."')";		 
+	$result=mysql_query($query_cmt);
+		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
+		header("location:state_blog_details?viewId='".$_SESSION['viewId']."'");
+	
+	/* Sending Notification mail starts here */
+			$query_user = "SELECT * FROM register WHERE id = ".$mId;
+			$result_user = mysql_query($query_user);
+			$result_user = mysql_fetch_array($result_user);
+			
+			$email = $result_user['email'];
+			$name = $result_user['fname'].' '.$result_user['lname'];
+			
+			$subject = 'Comment to your Post';
+			$headers = "From: kbknaidu@gmail.com \r\n";
+			$headers .= "MIME-Version: 1.0\r\n";
+			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
+			$url = $siteUrlConstant . 'state_blog_details?viewId=' . md5($blogId);
+			
+			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
+			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
+			$message .= '<td align="center" width="300" height="40" bgcolor="#000091" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">';
+			$message .= '<a href="'.$url.'" style="color: #ffffff; font-size:16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; 
+			line-height:40px; width:100%; display:inline-block">Click to View</a>';
+			$message .= '</td> </tr> </table>';
+			mail($email, $subject, $message, $headers);
+		/* Sending Notification mail ends here */
+
+}
+?>
+            
+         
 <?php
 $query_blog_cmnt = "select a.*, b.* from blog_comment a, register b where a.member_id = b.id  and md5(a.blog_id) = '".$_SESSION['viewId']."' order by a.cmnt_id desc" ;
 $result_cmnt = mysql_query($query_blog_cmnt);
@@ -438,54 +485,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 			
             </div>
             
-<?php } }?>            
-          
-<?php
-if(isset($_POST['cmdcomment']))	
-{
-
-	$blogId = $_POST['blogId'];
-	$mId = $_POST['memberId'];	
-	
-	$msg = trim($_POST['Comment']);
-	$a=stripslashes($msg);
-	$a=mysql_real_escape_string($a);
-	
-	$date = date("Y-m-d");
-	$time = date("h:m:s");	
-				
-	$query_cmt = "insert into  blog_comment(blog_id,member_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."')";		 
-	$result=mysql_query($query_cmt);
-		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:state_blog_details.php?viewId='".$_SESSION['viewId']."'");
-	
-	/* Sending Notification mail starts here */
-			$query_user = "SELECT * FROM register WHERE id = ".$mId;
-			$result_user = mysql_query($query_user);
-			$result_user = mysql_fetch_array($result_user);
-			
-			$email = $result_user['email'];
-			$name = $result_user['fname'].' '.$result_user['lname'];
-			
-			$subject = 'Comment to your Post';
-			$headers = "From: kbknaidu@gmail.com \r\n";
-			$headers .= "MIME-Version: 1.0\r\n";
-			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			$url = BASE_PATH . '/state_blog_details.php?viewId=' . md5($blogId);
-			
-			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
-			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
-			$message .= '<td align="center" width="300" height="40" bgcolor="#000091" style="-webkit-border-radius: 5px; -moz-border-radius: 5px; border-radius: 5px; color: #ffffff; display: block;">';
-			$message .= '<a href="'.$url.'" style="color: #ffffff; font-size:16px; font-weight: bold; font-family: Helvetica, Arial, sans-serif; text-decoration: none; 
-			line-height:40px; width:100%; display:inline-block">Click to View</a>';
-			$message .= '</td> </tr> </table>';
-			mail($email, $subject, $message, $headers);
-		/* Sending Notification mail ends here */
-
-}
-?>
-            
-            
+<?php } }?>   
             
 <h3>Post a comment</h3>            
 <form class="form-horizontal" role="form" method="post">
@@ -546,7 +546,7 @@ if(isset($_POST['cmdcomment']))
 					   	$query_cat = "select * from blog_categories order by category_name" ;
 						$result_cat = mysql_query($query_cat);
 						while($fs = mysql_fetch_array($result_cat)){ ?>
-                        <li><a href="stae_blog_category.php?viewId=<?php echo md5($fs['id']); ?>" style="list-style:none;"><?php echo $fs['category_name']; ?></a></li>			
+                        <li><a href="<?php echo $siteUrlConstant;?>stae_blog_category?viewId=<?php echo md5($fs['id']); ?>" style="list-style:none;"><?php echo $fs['category_name']; ?></a></li>			
                        <?php } ?> 
 
                     </ul>

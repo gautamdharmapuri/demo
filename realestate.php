@@ -158,17 +158,7 @@ $current_date = date('Y-m-d');
     
 		<?php include_once('stock_block.php');?>
 	
-	
-
-  <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>   
-    
+	<?php include_once('top_container_links.php');?>
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap" style="min-height:700px;">	
 <!-- Section-1 START-->	
@@ -220,7 +210,7 @@ $current_date = date('Y-m-d');
 <div class="widget-temple">
 
 
-	<h4><a href="index.php" style="color:#0033FF;">Home</a> >> National Real Estate</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> National Real Estate</h4>
 
   <?php
 if(isset($_SESSION['Nris_session']))	  
@@ -266,10 +256,10 @@ if(isset($_SESSION['Nris_session']))
 						while($rs=mysql_fetch_array($result))
 						{ ?> 
 					<tr>
-						<td><a href="realestate_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	
-                    <td><a href="realestate_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	
-                    <td><a href="realestate_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['BuiltYear']);?></a></td>
-                    <td><a href="realestate_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
+						<td><a href="<?php echo $siteUrlConstant;?>realestate_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	
+                    <td><a href="<?php echo $siteUrlConstant;?>realestate_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	
+                    <td><a href="<?php echo $siteUrlConstant;?>realestate_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['BuiltYear']);?></a></td>
+                    <td><a href="<?php echo $siteUrlConstant;?>realestate_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>
 					<?php }  } else {  ?>
                     
@@ -345,11 +335,12 @@ if(isset($_SESSION['Nris_session']))
 				if($cnt%3==0){						
 				echo "<tr>";
 				}
+				$siteUrlConstant = $protocol . "://" .str_replace(' ','',$fs_state['state']).'.'.$_SERVER['SERVER_NAME'].'/';
 					?>
 
             <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
-            <a href="realestate_create.php?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
-            <?php if($fs_state['state_code']==$_SESSION['state']) { 
+            <a href="<?php echo $siteUrlConstant;?>realestate_create?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+            <?php if($fs_state['state_code']==$defaultState) { 
 			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
 			else { 	echo $fs_state['state'];  } ?>
             </a>

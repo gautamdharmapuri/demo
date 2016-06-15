@@ -130,14 +130,7 @@ font-weight:bold;
      
      
     
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+    <?php include_once('top_container_links.php');?>  
      
     
 <!-- Section-1 WRAP START-->	
@@ -166,7 +159,7 @@ font-weight:bold;
    				
 
 <div class="widget-temple">
-	<h4><a href="index.php" style="color:#0033FF;">Home</a>  >>  Advertise with Us</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a>  >>  Advertise with Us</h4>
 </div><br>
 
 
@@ -238,24 +231,6 @@ if(isset($_POST['Submit']))
 				$to ='admin@nris.com';	
 				$from = 'kbknaidu@gmail.com';	
 				$subject = 'Advertise with Us';	
-			/*	$message = '<h2>Advertise with Us</h2><br><html><body>';
-				$message .= '<table rules="all" style="border-color: #666;" cellpadding="10">';
-				$message .= "<tr style='background: #eee;'><td><strong>Name:</strong> </td><td>" . ucfirst(strip_tags($_POST['Firstname'])) . " " . ucfirst(strip_tags($_POST['Lastname'])) . "</td></tr>";
-				$message .= "<tr><td><strong>Business:</strong> </td><td>" . ucfirst(strip_tags($_POST['Business'])) . "</td></tr>";
-				$message .= "<tr><td><strong>Email:</strong> </td><td>" . strtolower(strip_tags($_POST['Email'])) . "</td></tr>";
-				$message .= "<tr><td><strong>Website:</strong> </td><td>" . strtolower(strip_tags($_POST['Website'])) . "</td></tr>";
-				$message .= "<tr><td><strong>Phone Number:</strong> </td><td>" . strip_tags($_POST['Phone']) . "</td></tr>";
-				$message .= "<tr><td><strong>Message:</strong> </td><td>" . $_POST['Message'] . "</td></tr>";
-				$message .= "</table>";
-				$message .= "</body></html>";
-						// Always set content-type when sending HTML email
-						$headers = "MIME-Version: 1.0" . "\r\n";
-						$headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";						
-						// More headers
-					//	$headers .= 'From: $from' . "\r\n";
-				mail($to, $subject, $message, $headers);		*/
-				
-				
 			
 			   $body = "Name : $full\r\nBusiness : $c\r\nEmail :  $d\r\nWebsite : $e\r\nPhone : $f\r\nMessage:  $msg\r\n";
 				mail($to, $subject, $body, "From: $from");
@@ -319,21 +294,6 @@ if(isset($_POST['Submit']))
 			
 		}
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 				$fname=trim($_POST['Firstname']);
 				$a=stripslashes($fname);
 				$a=mysql_real_escape_string($a);
@@ -385,31 +345,6 @@ if(isset($_POST['Submit']))
 		 $query="insert into advertise_with_us(fname,lanem,business,email,website,phone,image,message,date,time) values('".$a."','".$b."','".$c."','".$d."','".$e."','".$f."','".$image."','".$msg."','".$date."','".$time."')";		 
 		 $result=mysql_query($query);
 		 
-		 
-		 
-	
-	
-	
-	
-
-
-
-
-
-	 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		 
-		
-		
         echo "<div class='sucess'>Success! Your message has been recieved We will contact you soon. !</div>";
         $show_form=false;
     }
@@ -510,7 +445,7 @@ if(true == $show_form)
 <div class="form-group">
 	<div class="col-sm-offset-2 col-sm-2">&nbsp;</div>
 	<div class="col-sm-offset-2 col-sm-7">
-		<a href="advertising.php" class="button" style="background-color:#CD3232;" tabindex="10">Cancel</a>
+		<a href="<?php echo $siteUrlConstant;?>advertising" class="button" style="background-color:#CD3232;" tabindex="10">Cancel</a>
 		<button type="submit" class="button" name="Submit" tabindex="9">Save</button>
 	</div>
 </div>

@@ -1,17 +1,6 @@
 <?php  error_reporting(0);  
-include"config/connection.php";	   
-//echo $_SESSION['state'];
-if(isset($_GET['code']))
-{
-	$_SESSION['state']=$_GET['code'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+include"config/connection.php";
+$state = $defaultState;
 
 ?>
 
@@ -24,7 +13,7 @@ $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GE
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'] ?> - Auto Create Ad | NRIs</title>
+	<title><?php echo $defaultState ?> - Auto Create Ad | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -622,10 +611,10 @@ if(isset($_POST['Submit']))
 			   <input type="hidden" name="no_note" value="0">
 			   <input type="hidden" value="img/logo.png" name="cpp_header_image">
 				<input type="hidden" value="img/logo.png" name="image_url">
-				<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>" />
-			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>">
-			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success&table_name=<?php echo $table_name; ?>">			
+				<?php $state = $defaultState;?>
+			   <input type="hidden" name="return" id="return" value="<?php echo $siteUrlConstant; ?>/payment_success?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>" />
+			   <input type="hidden" name="cancel_return" value="<?php echo $siteUrlConstant; ?>/payment_success?status=fail&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>">
+			   <input type="hidden" name="notify_url" value="<?php echo $siteUrlConstant;?>/payment_success?b=success&table_name=<?php echo $table_name; ?>">			
 </form>
 <script>
 $('document').ready(function() {
@@ -717,8 +706,10 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
    				
 
 <div class="widget-temple">
-			<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> <a href="<?php echo SITE_BASE_URL.'/auto_inner.php?code='.$state;?>" class="breadcumb_link">Autos</a> >> Create Ad</h4>
+			<?php $state = $defaultState;?>
+				<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
+				<a href="<?php echo $siteUrlConstant.'auto_inner?code='.$state;?>" class="breadcumb_link">Autos</a>
+				>> Create Ad</h4>
 </div><br>
 
 
@@ -1162,7 +1153,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 	<div class="col-sm-8">
     	<select name="States" id="States" required=""  class="form-control"  onChange="showstate(this.value);" tabindex="5" required>              
                <option value="">Select State</option>                
-                <option value="<?php echo $_GET['code'] ?>">Current State Only</option>  
+                <option value="<?php echo $defaultState ?>">Current State Only</option>  
                 <option value="ALL">All States in USA</option>  
                 <option value="multiple">Select Multiple States</option>      	
 		</select>
@@ -1374,7 +1365,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 					?>
 
             <td style="vertical-align:middle;width:auto;">
-            <input type="checkbox" name="state_id_multiple[]"  value="<?php echo $fs_state['state_code']; ?>" <?php if($fs_state['state_code']==$_SESSION['state']) { echo "checked"; } ?> style="padding:3px;">
+            <input type="checkbox" name="state_id_multiple[]"  value="<?php echo $fs_state['state_code']; ?>" <?php if($fs_state['state_code']==$defaultState) { echo "checked"; } ?> style="padding:3px;">
 			<?php echo $fs_state['state'];?>
             </td>
           <?php 
@@ -1442,7 +1433,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
     	<?php
 		
 		if($final_count >= 3) {
-			$url = 'adcheck.php?redirect=auto_create&State='.$state;
+			$url = 'adcheck?redirect=auto_create&State='.$state;
 			echo "<script>window.location.href='".$url."';</script>";
 			exit;
 		}

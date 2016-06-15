@@ -12,10 +12,10 @@ $_SESSION['ViewId']="";
 unset($_SESSION['ViewId']);
 
 if (!headers_sent())
-	header('location:index.php');
+	header('location:'.$siteUrlConstant);
 else {
 	echo '<script type="text/javascript">';
-	echo 'window.location.href="index.php";';
+	echo 'window.location.href="'.$siteUrlConstant.'";';
 	echo '</script>';
 	echo '<noscript>';
 	echo '<meta http-equiv="refresh" content="0;url='.$filename.'" />';

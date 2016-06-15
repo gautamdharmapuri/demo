@@ -9,20 +9,9 @@ else
 	$_SESSION['ViewId']=$_SESSION['ViewId'];
 	
 }
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
 $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
 
-//	echo $_SESSION['state'];
+//	echo $defaultState;
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -32,7 +21,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Temple View | NRIs</title>
+	<title><?php echo $defaultState;  ?> Temple View | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -190,11 +179,11 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 									mysql_query("update fam_temples set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 					    ?>
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+	<?php $state = $defaultState;
 		$type = urlencode($rs['temple_type']);
 	?>
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >>
-	<a href="<?php echo SITE_BASE_URL.'/temples_inner.php?type='.$type.'&code='.$state;?>" class="breadcumb_link"><?php echo $state;  ?> Temples</a> >> <?php echo ucwords($rs['temple_name']); ?></h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
+	<a href="<?php echo $siteUrlConstant.'temples_inner?type='.$type.'&code='.$state;?>" class="breadcumb_link"><?php echo $state;  ?> Temples</a> >> <?php echo ucwords($rs['temple_name']); ?></h4>
 </div>    <br>                          
                         
 

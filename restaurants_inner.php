@@ -1,17 +1,4 @@
 <?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
 if(isset($_GET['type']))
 {
 	$_SESSION['type']=$_GET['type'];
@@ -20,12 +7,7 @@ else
 {
 	$_SESSION['type']=$_SESSION['type'];
 	
-}
-
-	/*echo $_SESSION['state'];
-	echo $_SESSION['type'];		*/
-
- ?>
+}?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -34,7 +16,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Famous Restaurants | NRIs</title>
+	<title><?php echo $defaultState;  ?> Famous Restaurants | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -214,7 +196,7 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> <?php echo $_SESSION['state'];  ?> Restaurants</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> <?php echo $defaultState;  ?> Restaurants</h4>
 </div>   <br>
                        
 
@@ -235,10 +217,10 @@ else
                                                                               <?php
 
 	$tableName="fam_restaurants";		
-	$targetpage = "restaurants_inner.php"; 	
+	$targetpage = "restaurants_inner"; 	
 	$limit = 10; 
 	
-	$query = "SELECT DISTINCT  * FROM fam_restaurants LEFT OUTER JOIN rating_restaurant ON fam_restaurants.id = rating_restaurant.res_id where  fam_restaurants.rest_type='".$_SESSION['type']."' and fam_restaurants.state_code='".$_SESSION['state']."' GROUP BY(fam_restaurants.id) order by rating_restaurant.rate desc, fam_restaurants.total_views desc";
+	$query = "SELECT DISTINCT  * FROM fam_restaurants LEFT OUTER JOIN rating_restaurant ON fam_restaurants.id = rating_restaurant.res_id where  fam_restaurants.rest_type='".$_SESSION['type']."' and fam_restaurants.state_code='".$defaultState."' GROUP BY(fam_restaurants.id) order by rating_restaurant.rate desc, fam_restaurants.total_views desc";
 	$total_pages = mysql_query($query);	
 	
 	$stages = 3;
@@ -248,7 +230,7 @@ else
 	}else{
 		$start = 0;	
 		}	
-	$query1 = "SELECT DISTINCT  * FROM fam_restaurants LEFT OUTER JOIN rating_restaurant ON fam_restaurants.id = rating_restaurant.res_id where  fam_restaurants.rest_type='".$_SESSION['type']."' and fam_restaurants.state_code='".$_SESSION['state']."' GROUP BY(fam_restaurants.id) order by rating_restaurant.rate desc, fam_restaurants.total_views desc LIMIT $start, $limit";
+	$query1 = "SELECT DISTINCT  * FROM fam_restaurants LEFT OUTER JOIN rating_restaurant ON fam_restaurants.id = rating_restaurant.res_id where  fam_restaurants.rest_type='".$_SESSION['type']."' and fam_restaurants.state_code='".$defaultState."' GROUP BY(fam_restaurants.id) order by rating_restaurant.rate desc, fam_restaurants.total_views desc LIMIT $start, $limit";
 
 	$result = mysql_query($query1);
 	
@@ -352,11 +334,11 @@ else
 				{ ?> 
                         <tr>
                             <td style="padding:5px;">
-                            <a href="restaurant_inner_view.php?ViewId=<?php echo md5($rs[0]);?>">
+                            <a href="<?php echo $siteUrlConstant;?>restaurant_inner_view?ViewId=<?php echo md5($rs[0]);?>">
                             <img src="admin/uploads/restaurants/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
-                            <td style="text-align:left;"><a href="restaurant_inner_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['rest_name']);?></a></td>
+                            <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>restaurant_inner_view?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['rest_name']);?></a></td>
                             <td style="text-align:left;">
-                            <a href="restaurant_inner_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+                            <a href="<?php echo $siteUrlConstant;?>restaurant_inner_view?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
                             <?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
         $rcity = mysql_fetch_array($query_city);
         echo ucwords($rcity['city']);  ?></a>
@@ -371,7 +353,7 @@ else
                         if($rs['rate']=='NULL')  { echo "<img src='images/0.png'>" ; }
                         
                         ?>  </td>
-                            <td><a href="restaurant_inner_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
+                            <td><a href="<?php echo $siteUrlConstant;?>restaurant_inner_view?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
                         </tr>
                         <?php } } else { ?>
                         <tr>

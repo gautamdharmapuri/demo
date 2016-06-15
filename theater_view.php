@@ -119,7 +119,11 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 <div class="loader"><div class="loader_html"></div></div>
 
-	<?php include "config/menu.php" ;  ?>
+	<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<?php include "config/menu_inner_state.php" ;  ?>
+	<?php } else { ?>
+		<?php include "config/menu.php" ;  ?>
+	<?php } ?>
 	
 	<div class="clearfix"></div>
 		<?php include_once('stock_block.php');?>
@@ -149,7 +153,11 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
 
                        <br><h4 class="myheadline4">
-                       <a href="index.php" style="color:#0033FF;">Home</a> >> Theater >> 
+							<?php if(isset($defaultState) && $defaultState != '') { ?>
+								<a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a>
+							<?php } else { ?>
+								<a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a>
+							<?php } ?>>> Theater >> 
 					   <?php 
 					  	 $query = "SELECT fam_theaters.*,cities.city as cityName FROM fam_theaters
 				LEFT JOIN cities ON cities.id = fam_theaters.city_id

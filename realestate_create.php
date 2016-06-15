@@ -1,15 +1,6 @@
 <?php error_reporting(0);  include"config/connection.php";	   
-//echo $_SESSION['state'];
-if(isset($_GET['code']))
-{
-	$_SESSION['state']=$_GET['code'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];	
-}
 
-$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+$state = $defaultState;
 if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 	
 	$date = date("Y-m-d H:i:s");
@@ -33,7 +24,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'] ?> - Real Estate Ad | NRIs</title>
+	<title><?php echo $defaultState ?> - Real Estate Ad | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -579,14 +570,14 @@ if(isset($_POST['Submit']))
 			   <input type="hidden" name="no_note" value="0">
 			   <input type="hidden" value="img/logo.png" name="cpp_header_image">
 				<input type="hidden" value="img/logo.png" name="image_url">
-				<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-			   <input type="hidden" name="return" id="return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>" />
-			   <input type="hidden" name="cancel_return" value="<?php echo SITE_BASE_URL; ?>/payment_success.php?status=fail&type=<?php echo $type; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>&table_name=<?php echo $table_name; ?>">
-			   <input type="hidden" name="notify_url" value="<?php echo SITE_BASE_URL;?>/payment_success.php?b=success&table_name=<?php echo $table_name; ?>">			
+				<?php $state = $defaultState;?>
+			   <input type="hidden" name="return" id="return" value="<?php echo $siteUrlConstant; ?>/payment_success?status=success&type=<?php echo $type; ?>&table_name=<?php echo $table_name; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>" />
+			   <input type="hidden" name="cancel_return" value="<?php echo $siteUrlConstant; ?>/payment_success?status=fail&type=<?php echo $type; ?>&id=<?php echo ($post_id);?>&state=<?php echo $state;?>&table_name=<?php echo $table_name; ?>">
+			   <input type="hidden" name="notify_url" value="<?php echo $siteUrlConstant;?>/payment_success?b=success&table_name=<?php echo $table_name; ?>">			
 </form>
 <script>
 $('document').ready(function() {
-//$('#paypal_form').submit();
+$('#paypal_form').submit();
 });
 </script>
 				
@@ -662,8 +653,8 @@ function test_input($data) {
    				
 
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-				<h4><a href="state.php" style="color:#0033FF;">Home</a> >> <a href="<?php echo SITE_BASE_URL.'/realestate_inner.php?code='.$state;?>" class="breadcumb_link">Real Estate</a> >> Create Ad</h4>
+	<?php $state = $defaultState;?>
+				<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> <a href="<?php echo $siteUrlConstant.'realestate_inner?code='.$state;?>" class="breadcumb_link">Real Estate</a> >> Create Ad</h4>
 </div><br>
 
 
@@ -998,7 +989,7 @@ function test_input($data) {
 	<div class="col-sm-8">
     	<select name="States" id="States" required=""  class="form-control"  onChange="showstate(this.value);" tabindex="14" >              
                <option value="">Select State</option>                
-                <option value="<?php echo $_SESSION['state'] ?>">Current State Only</option>  
+                <option value="<?php echo $defaultState ?>">Current State Only</option>  
                 <option value="ALL">All States in USA</option>  
                 <option value="multiple">Select Multiple States</option>      	
 		</select>            		
@@ -1143,7 +1134,7 @@ function test_input($data) {
 					?>
 
             <td style="vertical-align:middle;width:auto;">
-            <input type="checkbox" name="state_id_multiple[]"  value="<?php echo $fs_state['state_code']; ?>" <?php if($fs_state['state_code']==$_SESSION['state']) { echo "checked"; } ?> style="padding:3px;">
+            <input type="checkbox" name="state_id_multiple[]"  value="<?php echo $fs_state['state_code']; ?>" <?php if($fs_state['state_code']==$defaultState) { echo "checked"; } ?> style="padding:3px;">
 			<?php echo $fs_state['state'];?>
             </td>
           <?php 
@@ -1234,7 +1225,7 @@ function test_input($data) {
 					?>
 
             <td style="vertical-align:middle;width:auto;">
-            <input type="checkbox" name="state_id_multiple[]"  value="<?php echo $fs_state['state_code']; ?>" <?php if($fs_state['state_code']==$_SESSION['state']) { echo "checked"; } ?> style="padding:3px;">
+            <input type="checkbox" name="state_id_multiple[]"  value="<?php echo $fs_state['state_code']; ?>" <?php if($fs_state['state_code']==$defaultState) { echo "checked"; } ?> style="padding:3px;">
 			<?php echo $fs_state['state'];?>
             </td>
           <?php 
@@ -1302,7 +1293,7 @@ function test_input($data) {
     <?php
 		
 		if($final_count >= 3) {
-			$url = 'adcheck.php?redirect=realestate_create&State='.$state;
+			$url = 'adcheck?redirect=realestate_create&State='.$state;
 			echo "<script>window.location.href='".$url."';</script>";
 			exit;
 		}

@@ -97,17 +97,17 @@
 						</ul>
 					</div>
           <div class="link-ftr" style="width:100%;text-align:center;color:#FFFFFF;">
-			   <?php $state = ($_GET['State'] != '') ? $_GET['State'] : $_GET['code'];
-					$aboutus = 'aboutus.php';
-					$disclaimer = 'disclaimer.php';
+			   <?php $state = $defaultState;
+					$aboutus = 'aboutus';
+					$disclaimer = 'disclaimer';
 					if($state != '') {
 						$aboutus .= '?State='.$state;
 						$disclaimer .= '?State='.$state; 
 					}
 			   ?>
-            	<a href="<?php echo $aboutus;?>" style="color:#FFFFFF;font-weight:bold;">About Us</a>&nbsp;|&nbsp;
+            	<a href="<?php echo $siteUrlConstant;?><?php echo $aboutus;?>" style="color:#FFFFFF;font-weight:bold;">About Us</a>&nbsp;|&nbsp;
                 <a href="javascript:;" onclick="popup('terms_conditions_popup');" style="color:#FFFFFF;font-weight:bold;">Terms &amp; Condition</a> &nbsp;|&nbsp;
-               <a href="<?php echo $disclaimer;?>"  style="color:#FFFFFF;font-weight:bold;">Disclaimer</a>
+               <a href="<?php echo $siteUrlConstant;?><?php echo $disclaimer;?>"  style="color:#FFFFFF;font-weight:bold;">Disclaimer</a>
          
           </div>         
          <div class="copyright-n">
@@ -149,11 +149,12 @@
 				if($cnt%3==0){						
 				echo "<tr>";
 				}
+				$siteUrlConstant = $protocol . "://" .str_replace(' ','',$fs_state['state']).'.'.$_SERVER['SERVER_NAME'].'/';
 					?>
 
             <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
-            <a href="state.php?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
-            <?php if($fs_state['state_code']==$_SESSION['state']) { 
+            <a href="<?php echo $siteUrlConstant;?>state?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+            <?php if($fs_state['state_code']==$defaultState) { 
 			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
 			else { 	echo $fs_state['state'];  } ?>
             </a>

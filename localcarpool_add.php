@@ -1,10 +1,9 @@
-<?php error_reporting(0);  include"config/connection.php";	   
-//echo $_SESSION['state'];
+<?php error_reporting(0);  include"config/connection.php";
 ?>
 
 <?php
 
-$defaultState = $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+$state = $defaultState;
 if(isset($_POST['Submitdata']))
 {
 	$Error ='';
@@ -74,7 +73,7 @@ function test_input($data) {
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'] ?> - Carpool | NRIs</title>
+	<title><?php echo $defaultState ?> - Carpool | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -307,7 +306,7 @@ function showDiv2(elem){
 
 <div class="widget-temple">
 	<?php ?>
-				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
+				<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
 				<a href="javascript:history.back()" class="breadcumb_link"> Local Carpool</a>
 				>> Create Carpool Post</h4>
 </div><br>

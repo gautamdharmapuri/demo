@@ -11,7 +11,6 @@ else
 	
 }
 $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]"; 
-//	echo $_SESSION['state'];
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -21,7 +20,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Groceries | NRIs</title>
+	<title><?php echo $defaultState;  ?> Groceries | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -161,9 +160,9 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 					    ?>
                         
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >>
-	<a href="<?php echo SITE_BASE_URL.'/groceries.php?code='.$state;?>" class="breadcumb_link">Groceries</a>
+	<?php $state = $defaultState;?>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
+	<a href="<?php echo $siteUrlConstant.'groceries?code='.$state;?>" class="breadcumb_link">Groceries</a>
 	>> <?php echo ucwords($rs['name']); ?></h4>
 </div>    <br>  
 

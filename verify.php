@@ -42,7 +42,7 @@ if(isset($_POST['cmdLoginbtn']))
 				}
 				else
 				{
-					echo "<script language='javascript' type='text/javascript'>document.location='index.php';</script>";
+					echo "<script language='javascript' type='text/javascript'>document.location='".$siteUrlConstant."';</script>";
 					exit; 
 				}	
 			}
@@ -205,18 +205,7 @@ text-align:center;
 		<?php include_once('stock_block.php');?> 
 	
 	
-
-     
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+<?php include_once('top_container_links.php');?>
      
     
 <!-- Section-1 WRAP START-->	

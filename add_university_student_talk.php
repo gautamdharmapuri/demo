@@ -1,5 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	   
-//echo $_SESSION['state'];
+<?php error_reporting(0);  include"config/connection.php";
 ?>
 
 
@@ -12,7 +11,7 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'] ?> - Add University | NRIs</title>
+	<title><?php echo $defaultState ?> - Add University | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -133,12 +132,11 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 
 <?php   include "config/menu_inner_state.php" ;  ?>
 
-<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
 <?php
 
 if(isset($_POST['cmdSubmit'])) {
 	
-	$state_code = $state;
+	$state_code = $defaultState;
 	$universityId = $_GET['universityId'];
 	$title = $_POST['title'];
 	$message = $_POST['message'];
@@ -185,7 +183,7 @@ if(isset($_POST['cmdSubmit'])) {
    				
 
 <div class="widget-temple">
-				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Add University Student Talk</h4>
+				<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> Add University Student Talk</h4>
 </div><br>
 
 

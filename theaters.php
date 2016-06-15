@@ -184,7 +184,7 @@
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="index.php" style="color:#0033FF;">Home</a> >> <?php echo ucwords(urldecode($_GET['type']));?></h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> <?php echo ucwords(urldecode($_GET['type']));?></h4>
 </div>    <br>
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
@@ -203,10 +203,10 @@
                                                                             
                                                                               <?php
 
-	$targetpage = "theaters.php"; 	
+	$targetpage = "theaters"; 	
 	$limit = 10; 
 	
-	$query = "SELECT * FROM fam_theaters WHERE theater_type = '".urldecode($_GET['type'])."' AND state_code = '".$_GET['State']."'";
+	$query = "SELECT * FROM fam_theaters WHERE theater_type = '".urldecode($_GET['type'])."' AND state_code = '".$defaultState."'";
 
 	$total_pages = mysql_query($query);
 	$total_pages = mysql_num_rows($total_pages);
@@ -225,7 +225,7 @@
 //	$query1 = "SELECT a.*,b.rate FROM fam_temples a , rating_temple b where a.id=b.temple_id  order by b.rate desc LIMIT $start, $limit";
 	$query1 = "SELECT fam_theaters.*,cities.city as cityName FROM fam_theaters
 				LEFT JOIN cities ON cities.id = fam_theaters.city_id
-				WHERE theater_type = '".urldecode($_GET['type'])."' AND fam_theaters.state_code = '".$_GET['State']."'
+				WHERE theater_type = '".urldecode($_GET['type'])."' AND fam_theaters.state_code = '".$defaultState."'
 				ORDER BY name DESC LIMIT $start, $limit";
 
 
@@ -337,7 +337,7 @@
 				
 				?> 
                             <tr>
-                                <td><a href="theater_view.php?ViewId=<?php echo md5($rs['id']);?>"><?php echo $rs['name'];?></a></td>
+                                <td><a href="<?php echo $siteUrlConstant;?>theater_view?ViewId=<?php echo md5($rs['id']);?>"><?php echo $rs['name'];?></a></td>
 								<td><?php echo $rs['cityName'];?></td>
 								<td><a class="call_link" href="tel:<?php echo $rs['contact']; ?>"><?php echo ucwords($rs['contact']); ?></a></td>
                             </tr>

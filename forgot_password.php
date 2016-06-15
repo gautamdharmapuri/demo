@@ -181,17 +181,7 @@ var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 		<?php include_once('stock_block.php');?>
 	
 
-     
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+     <?php include_once('top_container_links.php');?>
      
     
 <!-- Section-1 WRAP START-->	
@@ -267,7 +257,7 @@ $subject = 'Forgot Password';
 $headers = "From: kbknaidu@gmail.com \r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-$url= BASE_PATH . '/verify.php?email=' . urlencode($c) . "&key=$hash";
+$url= BASE_PATH . '/verify?email=' . urlencode($c) . "&key=$hash";
 $row = mysqli_fetch_array($result_verify_email, MYSQLI_ASSOC);
 $message ='<h1>NRIs.com</h1><h3>Forgot Password</h3><p>To login please use this password : '.$row['password'].'</p>';
 

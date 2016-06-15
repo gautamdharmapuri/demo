@@ -195,12 +195,12 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >>  <a href="discussion_room.php">Nri's Talk</a> >> Add Topic</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >>  <a href="<?php echo $siteUrlConstant;?>discussion_room">Nri's Talk</a> >> Add Topic</h4>
 </div>    <br>
 
 
 				
-<form class="form-horizontal" role="form" method="post" action="discussion_room.php">
+<form class="form-horizontal" role="form" method="post" action="discussion_room">
 
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Title*</label>

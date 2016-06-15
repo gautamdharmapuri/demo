@@ -1,35 +1,45 @@
-<script type="text/javascript">
-		var site_url = '<?php echo SITE_BASE_URL.'/';?>';
-	</script>
 <?php
+
+if(isset($_GET['State']) && $_GET['State'] != '') {
+	
+	$_SESSION['state'] = $_GET['State'];
+	
+} elseif(isset($_GET['state']) && $_GET['state'] != '') {
+
+	$_SESSION['state']=$_GET['state'];
+	
+} elseif(isset($_GET['code']) && $_GET['code'] != '') {
+	
+	$_SESSION['state']=$_GET['code'];
+	
+} else {
+}
+$state = $defaultState = $_SESSION['state'];
 
 if($_SERVER['SCRIPT_NAME']) {
 		
 }
-if (strpos($_SERVER['SCRIPT_NAME'], 'aboutus.php') !== false || strpos($_SERVER['SCRIPT_NAME'], 'disclaimer.php') !== false) {
+if (strpos($_SERVER['SCRIPT_NAME'], 'aboutus') !== false || strpos($_SERVER['SCRIPT_NAME'], 'disclaimer') !== false) {
     $_SESSION['state'] = '';
 	if($_GET['State'] != '') {
 		$_SESSION['state'] = $_GET['State'];
 	}
 }
-//$_SESSION['state'] = '';
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
+
+include_once('common_functions.php');
+
+if(isset($_SESSION['state']) && $_SESSION['state'] != '') {
+		if(strpos($siteUrlConstant,$_GET['State'].'.' === false)) {
+				$siteUrlConstant = $protocol . "://" .$_SESSION['state'].'.'.$_SERVER['SERVER_NAME'].'/';
+		}
 }
-elseif(isset($_GET['state']))
-{
-	$_SESSION['state']=$_GET['state'];
-	
-}elseif(isset($_GET['code']))
-{
-	$_SESSION['state']=$_GET['code'];
-	
-} else {
-		
-}
+
 ?>
-<?php $state = $defaultState = $_SESSION['state'];?>
+
+<script type="text/javascript">
+var site_url = '<?php echo $siteUrlConstant;?>';
+</script>
+
 <header id="header" class="header-3">
 <div class="menu-wrap clearfix">
 		
@@ -47,9 +57,9 @@ elseif(isset($_GET['state']))
 		<?php } ?>
         <div class="col-md-4">
 				<?php if($defaultState != '') { ?>
-						<div class="logo"><a href="state.php?State=<?php echo $defaultState;?>"><img alt="" src="img/logo.png"></a></div>
+						<div class="logo"><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>"><img alt="" src="img/logo.png"></a></div>
 				<?php } else { ?>
-						<div class="logo"><a href="index.php"><img alt="" src="img/logo.png"></a></div>
+						<div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="" src="img/logo.png"></a></div>
 				<?php } ?>
 	   </div>
 	   <div class="col-md-8">
@@ -57,14 +67,14 @@ elseif(isset($_GET['state']))
 					 if(isset($_SESSION['Nris_session'])) { ?>
 							<div class="new-uer-right-div">
 								<?php include_once('top_social.php');?>
-								   <a href="logout.php" class="reg">Logout</a>
-								   <a href="profile.php" class="reg"><i class="fa fa-user"></i>&nbsp;Profile</a>
+								   <a href="<?php echo $siteUrlConstant;?>logout" class="reg">Logout</a>
+								   <a href="<?php echo $siteUrlConstant;?>profile" class="reg"><i class="fa fa-user"></i>&nbsp;Profile</a>
 							</div>          
 			  <?php  } else { ?>
 							<div class="new-uer-right-div">
 								<?php include_once('top_social.php');?>
 								  <a class="reg" href="javascript:;" data-toggle="modal" data-target="#myModal"><i class="fa fa-lock"></i>&nbsp;login</a>
-								  <a class="reg" href="register.php">Register</a>
+								  <a class="reg" href="<?php echo $siteUrlConstant;?>register">Register</a>
 							</div>
 			  <?php  } ?> 
 	   </div>
@@ -74,32 +84,32 @@ elseif(isset($_GET['state']))
         <ul>
 
             
-        <li><a href="state.php?State=<?php echo $defaultState;?>">Home</a></li>
-        <li><a href="yellowpages.php"><?php echo $defaultState;?> Desi Pages</a></li>
-        <li><a href="discussion_board.php">Forum</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>">Home</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>yellowpages"><?php echo $defaultState;?> Desi Pages</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>discussion_board">Forum</a></li>
        
 		<li><a href="javascript:;"> Free Ads</a>
             <ul class="subnav">
-                <li><a href="auto_inner.php?code=<?php echo $defaultState;?>">Auto</a></li>
-                <li><a href="baby_sitting_inner.php?code=<?php echo $defaultState;?>">Baby Sitting</a></li>  
-                <li><a href="education_inner.php?code=<?php echo $defaultState;?>">Education & Teaching</a></li>   
-                <li><a href="electronics_inner.php?code=<?php echo $defaultState;?>">Electronics</a></li>
-                <li><a href="free_stuff_inner.php?code=<?php echo $defaultState;?>">Free Stuff</a></li>                       
-                <li><a href="garagesale_inner.php?code=<?php echo $defaultState;?>">Garage Sale</a></li>                          
-                <li><a href="jobs_inner.php?code=<?php echo $defaultState;?>">Jobs</a></li>
-                <li><a href="mypartner_inner.php?code=<?php echo $defaultState;?>">My Partner</a></li>            
-                <li><a href="roommates_inner.php?code=<?php echo $defaultState;?>">Roommates</a></li>          
-                <li><a href="realestate_inner.php?code=<?php echo $defaultState;?>">Real Estate</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>auto_inner?code=<?php echo $defaultState;?>">Auto</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>baby_sitting_inner?code=<?php echo $defaultState;?>">Baby Sitting</a></li>  
+                <li><a href="<?php echo $siteUrlConstant;?>education_inner?code=<?php echo $defaultState;?>">Education & Teaching</a></li>   
+                <li><a href="<?php echo $siteUrlConstant;?>electronics_inner?code=<?php echo $defaultState;?>">Electronics</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>free_stuff_inner?code=<?php echo $defaultState;?>">Free Stuff</a></li>                       
+                <li><a href="<?php echo $siteUrlConstant;?>garagesale_inner?code=<?php echo $defaultState;?>">Garage Sale</a></li>                          
+                <li><a href="<?php echo $siteUrlConstant;?>jobs_inner?code=<?php echo $defaultState;?>">Jobs</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>mypartner_inner?code=<?php echo $defaultState;?>">My Partner</a></li>            
+                <li><a href="<?php echo $siteUrlConstant;?>roommates_inner?code=<?php echo $defaultState;?>">Roommates</a></li>          
+                <li><a href="<?php echo $siteUrlConstant;?>realestate_inner?code=<?php echo $defaultState;?>">Real Estate</a></li>
             </ul>
         </li>
-        <li><a href="state_blog.php">Blog</a></li>
-        <li><a href="discussion_room.php"><?php echo $defaultState;?> NRI's talk</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>blog?State=<?php echo $defaultState;?>">Blog</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>discussion_room"><?php echo $defaultState;?> NRI's talk</a></li>
         <li><a href="javascript:;"> <?php echo $defaultState;?> Box Office</a>
             <ul class="subnav">
-            <li><a href="theaters.php?type=<?php echo urlencode('$1 Movie Theaters');?>&State=<?php echo $defaultState;?>">$1 Movie Theaters</a></li>
-            <li><a href="theaters.php?type=<?php echo urlencode('$ Saving Theaters');?>&State=<?php echo $defaultState;?>">$ Saving Theaters</a></li>
-            <li><a href="theaters.php?type=<?php echo urlencode('Top Rated Movie Theaters');?>&State=<?php echo $defaultState;?>">Top Rated Movie Theaters</a></li>
-            <li><a href="theaters.php?type=<?php echo urlencode('Open Theaters(Drive in Theaters)');?>&State=<?php echo $defaultState;?>">Open Theaters(Drive in Theaters)</a></li>          
+            <li><a href="<?php echo $siteUrlConstant;?>theaters?type=<?php echo urlencode('$1 Movie Theaters');?>&State=<?php echo $defaultState;?>">$1 Movie Theaters</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>theaters?type=<?php echo urlencode('$ Saving Theaters');?>&State=<?php echo $defaultState;?>">$ Saving Theaters</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>theaters?type=<?php echo urlencode('Top Rated Movie Theaters');?>&State=<?php echo $defaultState;?>">Top Rated Movie Theaters</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>theaters?type=<?php echo urlencode('Open Theaters(Drive in Theaters)');?>&State=<?php echo $defaultState;?>">Open Theaters(Drive in Theaters)</a></li>          
             </ul>
         </li> 
         
@@ -109,41 +119,41 @@ elseif(isset($_GET['state']))
         
   <li><a href="javascript:;">Casinos </a>
             <ul class="subnav">
-            <li><a href="top_rated_casinos.php?code=<?php echo $defaultState;?>">Top Rated Casinos </a></li>
-            <li><a href="casinos_inner.php?code=<?php echo $defaultState;?>"><?php echo $defaultState;?> Casinos </a></li>
-            <li><a href="casinos_near.php?code=<?php echo $defaultState;?>">Casinos Near Me</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>top_rated_casinos?code=<?php echo $defaultState;?>">Top Rated Casinos </a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>casinos_inner?code=<?php echo $defaultState;?>"><?php echo $defaultState;?> Casinos </a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>casinos_near?code=<?php echo $defaultState;?>">Casinos Near Me</a></li>
              </ul>
         </li>
         <!-- <li id="famousTemples"><a href="#famousIndianTemples">Famous Indian Temples</a></li> -->
         <li><a href="javascript:;">Temples</a>
             <ul>
-            <li><a href="temples_inner.php?type=Hindu Temples&code=<?php echo $defaultState;?>">Hindu Temples </a></li>
-            <li><a href="temples_inner.php?type=ISKON Temple&code=<?php echo $defaultState;?>">ISKON Temples</a></li>
-            <li><a href="temples_inner.php?type=Jain Temples&code=<?php echo $defaultState;?>">Jain Temples</a></li>
-            <li><a href="temples_inner.php?type=Gurudwara&code=<?php echo $defaultState;?>">Gurudeara Temples</a></li>
-            <li><a href="temples_inner.php?type=Churches&code=<?php echo $defaultState;?>">Churches</a></li>
-            <li><a href="temples_inner.php?type=Mosques & Darga&code=<?php echo $defaultState;?>">Mosques &amp; Darga</a></li>
-            <li><a href="temples_inner.php?type=Budda Vihar&code=<?php echo $defaultState;?>">Budda Vihar</a></li>		
-            <li><a href="temples_inner.php?type=Other&code=<?php echo $defaultState;?>">Other</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>temples_inner?type=Hindu Temples&code=<?php echo $defaultState;?>">Hindu Temples </a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>temples_inner?type=ISKON Temple&code=<?php echo $defaultState;?>">ISKON Temples</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>temples_inner?type=Jain Temples&code=<?php echo $defaultState;?>">Jain Temples</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>temples_inner?type=Gurudwara&code=<?php echo $defaultState;?>">Gurudeara Temples</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>temples_inner?type=Churches&code=<?php echo $defaultState;?>">Churches</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>temples_inner?type=Mosques & Darga&code=<?php echo $defaultState;?>">Mosques &amp; Darga</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>temples_inner?type=Budda Vihar&code=<?php echo $defaultState;?>">Budda Vihar</a></li>		
+            <li><a href="<?php echo $siteUrlConstant;?>temples_inner?type=Other&code=<?php echo $defaultState;?>">Other</a></li>
             </ul>
         </li>
         
         
         <li><a href="javascript:;">Restaurants </a>
         <ul>
-        <li><a href="restaurants_inner.php?type=Top Rated Restaurants&code=<?php echo $defaultState;?>">Top Rated Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Indian Restaurants&code=<?php echo $defaultState;?>">Indian Restaurants</a></li>
-		<li><a href="restaurants_inner.php?type=Indian Vegetarian Restaurants&code=<?php echo $defaultState;?>">Indian Vegetarian Restaurants</a></li>
-		<li><a href="restaurants_inner.php?type=Halal Restaurants&code=<?php echo $defaultState;?>">Halal Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Thai Restaurants&code=<?php echo $defaultState;?>">Thai Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Chinese Restaurants&code=<?php echo $defaultState;?>">Chinese Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=American Restaurants&code=<?php echo $defaultState;?>">American Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Mediterranean Restaurants&code=<?php echo $defaultState;?>">Mediterranean Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Mexican Restaurants&code=<?php echo $defaultState;?>">Mexican Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Italian Restaurants&code=<?php echo $defaultState;?>">Italian Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=French Restaurants&code=<?php echo $defaultState;?>">French Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Spanish Restaurants&code=<?php echo $defaultState;?>">Spanish Restaurants </a></li>
-		<li><a href="restaurants_inner.php?type=Other&code=<?php echo $defaultState;?>">other </a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Top Rated Restaurants&code=<?php echo $defaultState;?>">Top Rated Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Indian Restaurants&code=<?php echo $defaultState;?>">Indian Restaurants</a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Indian Vegetarian Restaurants&code=<?php echo $defaultState;?>">Indian Vegetarian Restaurants</a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Halal Restaurants&code=<?php echo $defaultState;?>">Halal Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Thai Restaurants&code=<?php echo $defaultState;?>">Thai Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Chinese Restaurants&code=<?php echo $defaultState;?>">Chinese Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=American Restaurants&code=<?php echo $defaultState;?>">American Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Mediterranean Restaurants&code=<?php echo $defaultState;?>">Mediterranean Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Mexican Restaurants&code=<?php echo $defaultState;?>">Mexican Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Italian Restaurants&code=<?php echo $defaultState;?>">Italian Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=French Restaurants&code=<?php echo $defaultState;?>">French Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Spanish Restaurants&code=<?php echo $defaultState;?>">Spanish Restaurants </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Other&code=<?php echo $defaultState;?>">other </a></li>
         </ul>
         </li>
   
@@ -151,45 +161,45 @@ elseif(isset($_GET['state']))
         
         <li><a href="javascript:;">Sports</a>
         <ul>
-        <li><a href="sports_inner.php?type=Tennis Clubs&code=<?php echo $defaultState;?>">Tennis clubs </a></li>
-     	<li><a href="sports_inner.php?type=Cricket Clubs&code=<?php echo $defaultState;?>">Cricket Clubs </a></li>
-		<li><a href="sports_inner.php?type=Shuttle (Badminton)&code=<?php echo $defaultState;?>">Shuttle (Badminton) </a></li>
-		<li><a href="sports_inner.php?type=Board Games (Carom Board, Chess, Checkers, Brain Vita)&code=<?php echo $defaultState;?>">Board games ( carom board , chess , checkers , brain vita ) </a></li>
-		<li><a href="sports_inner.php?type=GOLF Clubs&code=<?php echo $defaultState;?>">GOLF clubs </a></li>
-		<li><a href="sports_inner.php?type=Swimming Pools&code=<?php echo $defaultState;?>">Swimming pools </a></li>
-		<li><a href="sports_inner.php?type=Kayaking&code=<?php echo $defaultState;?>">Kayaking </a></li>
-		<li><a href="sports_inner.php?type=Hiking&code=<?php echo $defaultState;?>">Hiking </a></li>
-		<li><a href="sports_inner.php?type=Skating&code=<?php echo $defaultState;?>">Skating </a></li>
-		<li><a href="sports_inner.php?type=Surfing&code=<?php echo $defaultState;?>">Surfing </a></li>
-		<li><a href="sports_inner.php?type=Para Sailing&code=<?php echo $defaultState;?>">Para sailing </a></li>
-		<li><a href="sports_inner.php?type=Boating&code=<?php echo $defaultState;?>">Boating </a></li>
-		<li><a href="sports_inner.php?type=Other&code=<?php echo $defaultState;?>">Other </a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Tennis Clubs&code=<?php echo $defaultState;?>">Tennis clubs </a></li>
+     	<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Cricket Clubs&code=<?php echo $defaultState;?>">Cricket Clubs </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Shuttle (Badminton)&code=<?php echo $defaultState;?>">Shuttle (Badminton) </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Board Games (Carom Board, Chess, Checkers, Brain Vita)&code=<?php echo $defaultState;?>">Board games ( carom board , chess , checkers , brain vita ) </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=GOLF Clubs&code=<?php echo $defaultState;?>">GOLF clubs </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Swimming Pools&code=<?php echo $defaultState;?>">Swimming pools </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Kayaking&code=<?php echo $defaultState;?>">Kayaking </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Hiking&code=<?php echo $defaultState;?>">Hiking </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Skating&code=<?php echo $defaultState;?>">Skating </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Surfing&code=<?php echo $defaultState;?>">Surfing </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Para Sailing&code=<?php echo $defaultState;?>">Para sailing </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Boating&code=<?php echo $defaultState;?>">Boating </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>sports_inner?type=Other&code=<?php echo $defaultState;?>">Other </a></li>
         </ul>
         </li>
         
         
         <li><a href="javascript:;">Pub/Party Places</a>
         <ul>
-        <li><a href="pub_places.php?type=Spots Bars&code=<?php echo $defaultState;?>">Sports bars </a></li>
-		<li><a href="pub_places.php?type=Bowling Bars&code=<?php echo $defaultState;?>">Bowling bars </a></li>
-		<li><a href="pub_places.php?type=Night Clubs&code=<?php echo $defaultState;?>">Night Clubs </a></li>
-		<li><a href="pub_places.php?type=Hukkah Bars&code=<?php echo $defaultState;?>">Hukkah Bars </a></li>
-		<li><a href="pub_places.php?type=Dancing clubs&code=<?php echo $defaultState;?>">Dancing clubs </a></li>
-		<li><a href="pub_places.php?type=Salsa Bars&code=<?php echo $defaultState;?>">Salsa bars </a></li>		
-		<li><a href="pub_places.php?type=Other&code=<?php echo $defaultState;?>">Other </a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>pub_places?type=Spots Bars&code=<?php echo $defaultState;?>">Sports bars </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>pub_places?type=Bowling Bars&code=<?php echo $defaultState;?>">Bowling bars </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>pub_places?type=Night Clubs&code=<?php echo $defaultState;?>">Night Clubs </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>pub_places?type=Hukkah Bars&code=<?php echo $defaultState;?>">Hukkah Bars </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>pub_places?type=Dancing clubs&code=<?php echo $defaultState;?>">Dancing clubs </a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>pub_places?type=Salsa Bars&code=<?php echo $defaultState;?>">Salsa bars </a></li>		
+		<li><a href="<?php echo $siteUrlConstant;?>pub_places?type=Other&code=<?php echo $defaultState;?>">Other </a></li>
         </ul>
         </li>
         
         <li><a href="javascript:;"><?php echo $defaultState;?> Carpool</a>
         <ul>
-        <li><a href="localcarpool.php"><?php echo $defaultState; ?> Local carpool</a></li>
-		<li><a href="carpool.php">Inter state Carpool</a></li>
-		<li><a href="intercarpool.php">International carpool</a></li>		
+        <li><a href="<?php echo $siteUrlConstant;?>localcarpool"><?php echo $defaultState; ?> Local carpool</a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>carpool">Inter state Carpool</a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>intercarpool">International carpool</a></li>		
         </ul>
         </li>
         
         
-        <li><a href="groceries.php?code=<?php echo $defaultState;?>">groceries</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>groceries?code=<?php echo $defaultState;?>">groceries</a></li>
         <li><a href="javascript:;">Movies/Videos </a>
   
 			 <ul>
@@ -200,7 +210,7 @@ elseif(isset($_GET['state']))
 			while($rs_video_lang=mysql_fetch_array($result_video_lang))
 			{?>
 				
-            <li><a href="videos_inner.php?lang=<?php echo $rs_video_lang['name'] ?>"><?php echo $rs_video_lang['name'] ?></a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>videos_inner?lang=<?php echo $rs_video_lang['name'] ?>"><?php echo $rs_video_lang['name'] ?></a></li>
 			<?php } ?>
             </ul>
         </li>
@@ -208,7 +218,7 @@ elseif(isset($_GET['state']))
         <li>
 				<?php
 						if(isset($_SESSION['Nris_session'])) {
-								echo '<a href="add_university.php">Student\'s Talk</a>';
+								echo '<a href="'.$siteUrlConstant.'add_university">Student\'s Talk</a>';
 						} else {
 								echo '<a href="#"  data-toggle="modal" data-target="#myModal">Student\'s Talk</a>';
 						}
@@ -222,7 +232,7 @@ elseif(isset($_GET['state']))
 						?>
 						
 								<?php while($resStuTalk = mysql_fetch_array($resultStudentTalk)) { ?>		
-										<li><a href="university_student_talk.php?universityId=<?php echo $resStuTalk['id'];?>"><?php echo $resStuTalk['uni_name'];?></a></li>
+										<li><a href="<?php echo $siteUrlConstant;?>university_student_talk?universityId=<?php echo $resStuTalk['id'];?>"><?php echo $resStuTalk['uni_name'];?></a></li>
 								<?php } ?>
 						<?php
 								}
@@ -230,7 +240,7 @@ elseif(isset($_GET['state']))
 						<li>
 								<?php
 										if(isset($_SESSION['Nris_session'])) {
-												echo '<a href="add_university.php">Request for University</a>';
+												echo '<a href="'.$siteUrlConstant.'add_university">Request for University</a>';
 										} else {
 												echo '<a href="#"  data-toggle="modal" data-target="#myModal">Student\'s Talk</a>';
 										}
@@ -238,8 +248,8 @@ elseif(isset($_GET['state']))
 						</li>
 				</ul>
         </li>
-        <li><a href="advertising_inner.php">Advertise </a></li>
-        <li><a href="contact_inner.php">Contact </a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>advertising_inner">Advertise </a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>contact?State=<?php echo $defaultState;?>">Contact </a></li>
  
       </ul>
     </nav>
@@ -260,7 +270,7 @@ elseif(isset($_GET['state']))
           <h4 class="modal-title"><center><img src="img/logo.png" height="65" width="184" /></center></h4>
         </div>
         <div class="modal-body">
-			 <form name="formLogin" id="formLogin" method="post" class="form-horizontal" action="verify.php">
+			 <form name="formLogin" id="formLogin" method="post" class="form-horizontal" action="verify">
              <div id="myLoginuser"></div>  
             <div style="width:60%;float:left;">
             <h5>Existing user? Login</h5>
@@ -284,7 +294,7 @@ elseif(isset($_GET['state']))
 <div class="form-group">
 	<div class="col-sm-offset-2 col-sm-8">		
 		<!--<button type="button" class="btn btn-success" tabindex="3" style="float:right;" onclick="showUser();">Sign In</button>-->
-		&nbsp;&nbsp;<a href="forgot_password.php" class="read-btn-tab" style="float:right;">Forgot Password</a>
+		&nbsp;&nbsp;<a href="forgot_password" class="read-btn-tab" style="float:right;">Forgot Password</a>
         <button type="submit" name="cmdLoginbtn" id="cmdLoginbtn" class="btn btn-success" tabindex="3" style="float:right;">Sign In</button>
 	</div>
 </div>
@@ -293,7 +303,7 @@ elseif(isset($_GET['state']))
             
             <div style="width:38%;float:right;">
 			<center>
-            <h3><a href="register.php"><img src="img/register.png" /></a></h3><br />
+            <h3><a href="register"><img src="img/register.png" /></a></h3><br />
             <?php
             include_once("fb_login/config.php");
             include_once("google_login/config.php");
@@ -309,7 +319,7 @@ elseif(isset($_GET['state']))
                     echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png"></a>';    
                 }
                 ?>
-                <!-- <a href="<?php echo SITE_BASE_URL.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
+                <!-- <a href="<?php echo $siteUrlConstant.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
             </h3>
             <h3>
             <?php
@@ -318,7 +328,7 @@ elseif(isset($_GET['state']))
             ?>
             </h3>
             <h3>
-                <?php echo '<a href="twitter_login/process.php"><img src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
             </h3>
 			</center>
             </div>

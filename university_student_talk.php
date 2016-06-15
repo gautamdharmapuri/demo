@@ -1,5 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	   
-//echo $_SESSION['state'];
+<?php error_reporting(0);  include"config/connection.php";
 ?>
 
 
@@ -12,7 +11,7 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'] ?> - University Student talk | NRIs</title>
+	<title><?php echo $defaultState ?> - University Student talk | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -175,9 +174,9 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
    				
 
 <div class="widget-temple">
-				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Student's Talk >> University Student Talk</h4>
+				<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Student's Talk >> University Student Talk</h4>
 				<?php if($_GET['universityId'] > 0) { ?>
-					<a href="add_university_student_talk.php?universityId=<?php echo $_GET['universityId'];?>" class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>
+					<a href="<?php echo $siteUrlConstant;?>add_university_student_talk?universityId=<?php echo $_GET['universityId'];?>" class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>
 				<?php } ?>
 				<br>
 </div>
@@ -194,7 +193,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
         
         ?>
 		<?php
-			$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+			$state = $defaultState;
 			$universityId = ($_GET['universityId'] > 0) ? $_GET['universityId'] : 0;
 		?>
 		<div class="col-md-12">
@@ -220,7 +219,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 										while($row=mysql_fetch_array($sql)) {
 								?>
 										<p>
-											<a href="university_student_talk_view.php?id=<?php echo $row['id'];?>" onmousemove="this.style.color='red'"
+											<a href="<?php echo $siteUrlConstant;?>university_student_talk_view?id=<?php echo $row['id'];?>" onmousemove="this.style.color='red'"
 											  onmouseout="this.style.color='black'"
 											  style="background-color: #E6E6E6 !important;border: 1px solid white;">
 											  <span style="color:black !important;"><?php echo $row['title'];?></span>
@@ -235,7 +234,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 								?>
 							</div>
 							<?php if(mysql_numrows($sql) > 0) { ?>
-								<a href="student_talk_all.php?universityId=<?php echo $universityId;?>&type=Accommodation" class="read-btn-tab studenttalk_viewmore" style="padding: 4px;background-color: #3B6CA6;color:white;">View More</a>
+								<a href="<?php echo $siteUrlConstant;?>student_talk_all?universityId=<?php echo $universityId;?>&type=Accommodation" class="read-btn-tab studenttalk_viewmore" style="padding: 4px;background-color: #3B6CA6;color:white;">View More</a>
 							<?php } ?>
 						</li>
 					</ul>
@@ -263,7 +262,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 										while($row=mysql_fetch_array($sql)) {
 								?>
 										<p>
-											<a href="university_student_talk_view.php?id=<?php echo $row['id'];?>" onmousemove="this.style.color='red'"
+											<a href="<?php echo $siteUrlConstant;?>university_student_talk_view?id=<?php echo $row['id'];?>" onmousemove="this.style.color='red'"
 											  onmouseout="this.style.color='black'"
 											  style="background-color: #E6E6E6 !important;border: 1px solid white;">
 											  <span style="color:black !important;"><?php echo $row['title'];?></span>
@@ -279,7 +278,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 								?>
 							</div>
 							<?php if(mysql_numrows($sql) > 0) { ?>
-								<a href="student_talk_all.php?universityId=<?php echo $universityId;?>&type=CampusJobs" class="read-btn-tab studenttalk_viewmore" style="padding: 4px;background-color: #3B6CA6;color:white;">View More</a>
+								<a href="<?php echo $siteUrlConstant;?>student_talk_all?universityId=<?php echo $universityId;?>&type=CampusJobs" class="read-btn-tab studenttalk_viewmore" style="padding: 4px;background-color: #3B6CA6;color:white;">View More</a>
 							<?php } ?>
 						</li>
 					</ul>
@@ -310,7 +309,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 										while($row=mysql_fetch_array($sql)) {
 								?>
 										<p>
-											<a href="university_student_talk_view.php?id=<?php echo $row['id'];?>" onmousemove="this.style.color='red'"
+											<a href="<?php echo $siteUrlConstant;?>university_student_talk_view?id=<?php echo $row['id'];?>" onmousemove="this.style.color='red'"
 											  onmouseout="this.style.color='black'"
 											  style="background-color: #E6E6E6 !important;border: 1px solid white;">
 											  <span style="color:black !important;"><?php echo $row['title'];?></span>
@@ -326,7 +325,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 								?>
 							</div>
 							<?php if(mysql_numrows($sql) > 0) { ?>
-								<a href="student_talk_all.php?universityId=<?php echo $universityId;?>&type=ChangeGroups" class="read-btn-tab studenttalk_viewmore" style="padding: 4px;background-color: #3B6CA6;color:white;">View More</a>
+								<a href="<?php echo $siteUrlConstant;?>student_talk_all?universityId=<?php echo $universityId;?>&type=ChangeGroups" class="read-btn-tab studenttalk_viewmore" style="padding: 4px;background-color: #3B6CA6;color:white;">View More</a>
 							<?php } ?>
 						</li>
 					</ul>
@@ -355,7 +354,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 										while($row=mysql_fetch_array($sql)) {
 								?>
 										<p>
-											<a href="university_student_talk_view.php?id=<?php echo $row['id'];?>" onmousemove="this.style.color='red'"
+											<a href="<?php echo $siteUrlConstant;?>university_student_talk_view?id=<?php echo $row['id'];?>" onmousemove="this.style.color='red'"
 											  onmouseout="this.style.color='black'"
 											  style="background-color: #E6E6E6 !important;border: 1px solid white;">
 											  <span style="color:black !important;"><?php echo $row['title'];?></span>
@@ -371,7 +370,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 								?>
 							</div>
 							<?php if(mysql_numrows($sql) > 0) { ?>
-								<a href="student_talk_all.php?universityId=<?php echo $universityId;?>&type=OtherTopics" class="read-btn-tab studenttalk_viewmore" style="padding: 4px;background-color: #3B6CA6;color:white;">View More</a>
+								<a href="<?php echo $siteUrlConstant;?>student_talk_all?universityId=<?php echo $universityId;?>&type=OtherTopics" class="read-btn-tab studenttalk_viewmore" style="padding: 4px;background-color: #3B6CA6;color:white;">View More</a>
 							<?php } ?>
 						</li>
 					</ul>

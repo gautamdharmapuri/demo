@@ -1,21 +1,6 @@
 <?php error_reporting(0);  include"config/connection.php";	  
 
-$current_date = date('Y-m-d');
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
-	/*echo $_SESSION['state']; */
-
-
- ?>
+$current_date = date('Y-m-d');?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -24,7 +9,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Jobs Ads | NRIs</title>
+	<title><?php echo $defaultState;  ?> Jobs Ads | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -191,8 +176,8 @@ else
             <div class="col-md-8" style="text-align:left;color:#000000;"> 
   
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Jobs</h4>
+	<?php $state = $defaultState;?>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Jobs</h4>
   <?php
 		if(isset($_SESSION['Nris_session']))	  
 		{ ?>
@@ -245,10 +230,10 @@ else
 									<img src="images/image-icon.png">
 								<?php } ?>
 								
-								<a href="national_jobs_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	
-						<td><a href="national_jobs_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	
-						<td><a href="national_jobs_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['role']);?></a></td>
-						<td><a href="national_jobs_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
+								<a href="<?php echo $siteUrlConstant;?>national_jobs_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	
+						<td><a href="<?php echo $siteUrlConstant;?>national_jobs_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	
+						<td><a href="<?php echo $siteUrlConstant;?>national_jobs_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['role']);?></a></td>
+						<td><a href="<?php echo $siteUrlConstant;?>national_jobs_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
 						</tr>
 				<?php }   ?>
 			<?php } else { ?>
@@ -328,11 +313,12 @@ else
 				if($cnt%3==0){						
 				echo "<tr>";
 				}
+				$siteUrlConstant = $protocol . "://" .str_replace(' ','',$fs_state['state']).'.'.$_SERVER['SERVER_NAME'].'/';
 					?>
 
             <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
-            <a href="job_create.php?code=<?php echo $fs_state['state_code']; ?>&type=premium"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
-            <?php if($fs_state['state_code']==$_SESSION['state']) { 
+            <a href="<?php echo $siteUrlConstant;?>job_create?code=<?php echo $fs_state['state_code']; ?>&type=premium"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+            <?php if($fs_state['state_code']==$defaultState) { 
 			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
 			else { 	echo $fs_state['state'];  } ?>
             </a>
@@ -386,11 +372,12 @@ else
 				if($cnt%3==0){						
 				echo "<tr>";
 				}
+				$siteUrlConstant = $protocol . "://" .str_replace(' ','',$fs_state['state']).'.'.$_SERVER['SERVER_NAME'].'/';
 					?>
 
             <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
-            <a href="job_create.php?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
-            <?php if($fs_state['state_code']==$_SESSION['state']) { 
+            <a href="<?php echo $siteUrlConstant;?>job_create?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+            <?php if($fs_state['state_code']==$defaultState) { 
 			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
 			else { 	echo $fs_state['state'];  } ?>
             </a>

@@ -1,17 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-//	echo $_SESSION['state'];
+<?php error_reporting(0);  include"config/connection.php";
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -21,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Announcement | NRIs</title>
+	<title><?php echo $defaultState;  ?> Announcement | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -148,7 +135,7 @@ else
 					    ?>
                         
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Announcement >> <?php echo ucwords($rs['title']); ?></h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> Announcement >> <?php echo ucwords($rs['title']); ?></h4>
 </div>    <br>  
 
 <p class="mydata" align="center" style="text-align:center;">
@@ -178,15 +165,7 @@ else
 </p>
 <p class="mydata"><b>Other Details  :</b> <?php echo $rs['other_details']; ?></p>
 
-
-					
-                    
-<?php /*?><div style="float:right;">  
-Give your rating
-<a href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">Click here to rate</a>
-</div><?php */?>
-
-                    
+        
 <br><br><br><br><br>
 
  <div class="dividerHeading">

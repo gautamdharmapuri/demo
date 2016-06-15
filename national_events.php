@@ -171,16 +171,7 @@ else
 	
 
      
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+     <?php include_once('top_container_links.php');?>
      
     
 <!-- Section-1 WRAP START-->	
@@ -208,7 +199,7 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="index.php" style="color:#0033FF;">Home</a> >> National Events >> <?php echo $_SESSION['ViewId'];  ?> </h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> National Events >> <?php echo $_SESSION['ViewId'];  ?> </h4>
 </div>   <br>
                        
 
@@ -227,7 +218,7 @@ else
                                                                               <?php
 
 	$tableName=" national_events";		
-	$targetpage = "national_events.php"; 	
+	$targetpage = "national_events"; 	
 	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where edate >= '".$current_date."' and category='".$_SESSION['ViewId']."' and status='Active' order by total_views desc";
@@ -348,15 +339,15 @@ else
 				{ ?> 
                      <tr>                                                                             
                   	<td>
-					<a href="national_event_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+					<a href="<?php echo $siteUrlConstant;?>national_event_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 					<?php echo date("d M Y",strtotime($rs['sdate'])); ?></a></td>
                   
-                    <td  style="text-align:left;" align="left"><a href="national_event_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+                    <td  style="text-align:left;" align="left"><a href="<?php echo $siteUrlConstant;?>national_event_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 					<?php echo ucwords($rs['title']);?></a></td> 
                     
                   
                   
-                    <td><a href="national_event_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
+                    <td><a href="<?php echo $siteUrlConstant;?>national_event_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>
 			 <?php }  } else {  ?>
                     <tr><td colspan="4"><br><br><h6>No Records Found.</h6><br></td></tr> <?php } ?>

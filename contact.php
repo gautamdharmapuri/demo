@@ -74,26 +74,18 @@
 
 
 
-	<?php include "config/menu.php" ;  ?>
+	<?php if(isset($_GET['State']) && $_GET['State'] != '') { ?>
+		<?php include "config/menu_inner_state.php" ;  ?>
+	<?php } else { ?>
+		<?php include "config/menu_home.php" ;  ?>
+	<?php } ?>
 	
 	<div class="clearfix"></div>
 
     
 		<?php include_once('stock_block.php');?>     
 	
-	
-
-     
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+    <?php include_once('top_container_links.php');?>
      
     
 <!-- Section-1 WRAP START-->	
@@ -124,7 +116,14 @@
 
 
 <div class="widget-temple">
-							<h4><a href="index.php" style="color:#0033FF;">Home</a>  >>   Contact Us </h4>
+							<h4>
+								<?php if(isset($defaultState) && $defaultState != '') { ?>
+									<a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a>
+								<?php } else { ?>
+									<a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a>
+								<?php } ?>
+							
+							>>   Contact Us </h4>
 			</div><br>
 
 

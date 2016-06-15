@@ -6,14 +6,14 @@ include_once("includes/functions.php");
 
 // print_r($_SESSION['Nris_session']);exit;
 if (!empty($_SESSION['Nris_session'])) {
-	header('Location:'.SITE_BASE_URL);
+	header('Location:'.$siteUrlConstant);
 }
 
 if(isset($_REQUEST['oauth_token']) && $_SESSION['token']  !== $_REQUEST['oauth_token']) {
 
 	//If token is old, distroy session and redirect user to index.php
 	session_destroy();
-	header('Location: index.php');
+	header('Location: '.$siteUrlConstant);
 	
 }elseif(isset($_REQUEST['oauth_token']) && $_SESSION['token'] == $_REQUEST['oauth_token']) {
 
@@ -52,7 +52,7 @@ if(isset($_REQUEST['oauth_token']) && $_SESSION['token']  !== $_REQUEST['oauth_t
 
 	if(isset($_GET["denied"]))
 	{
-		header('Location: index.php');
+		header('Location: '.$siteUrlConstant);
 		die();
 	}
 

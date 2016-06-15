@@ -274,14 +274,7 @@ font-weight:bold;
      
      
     
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+    <?php include_once('top_container_links.php');?>
      
     
 <!-- Section-1 WRAP START-->	
@@ -301,9 +294,9 @@ font-weight:bold;
                                                  <ul style="padding-left:5px;padding-right:5px;height:100px;">
                                                       
                                                        
-                                                        <li><img src="img/list.jpg">&nbsp;<a href="profile.php">My Profile</a></li>
-                                                        <li><img src="img/list.jpg">&nbsp;<a href="myads.php">My Ads</a></li>
-                                                        <li style="border-bottom:none;"><img src="img/list.jpg">&nbsp;<a href="profile.php?action=edit">Edit Profile</a></li>                                                                                                                
+                                                        <li><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile">My Profile</a></li>
+                                                        <li><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>myads">My Ads</a></li>
+                                                        <li style="border-bottom:none;"><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile?action=edit">Edit Profile</a></li>                                                                                                                
                                                       
                                                         
                                               </ul>                                                         
@@ -355,13 +348,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>auto_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>auto_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=auto">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=auto">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						
@@ -395,13 +388,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="baby_sitting_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>baby_sitting_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="baby_sitting_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>baby_sitting_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=baby_sitting">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=baby_sitting">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						
@@ -435,13 +428,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>education_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="education_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>education_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=education">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=education">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						
@@ -476,13 +469,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="electronics_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>electronics_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="electronics_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>electronics_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=electronics">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=electronics">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						
@@ -516,13 +509,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>free_stuff_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>free_stuff_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=free_stuff">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=free_stuff">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						
@@ -556,13 +549,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="garagesale_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>garagesale_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="garagesale_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>garagesale_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=garagesale">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=garagesale">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						
@@ -596,13 +589,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="jobs_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>jobs_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="jobs_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>jobs_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=jobs">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=jobs">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						
@@ -636,13 +629,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="mypartner_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>mypartner_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="mypartner_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>mypartner_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=mypartner">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=mypartner">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						
@@ -676,13 +669,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="roommates_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>roommates_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="roommates_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>roommates_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=roommates">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=roommates">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						
@@ -716,13 +709,13 @@ font-weight:bold;
 																											<img src="images/image-icon.png">
 																										<?php } ?>
 																										
-																										<a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																										<a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																										onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 																										<?php echo ucwords($rs['TitleAD']);?></a></td>
 																							<td>
-																									<a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
+																									<a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a>
 																							</td>
-																							<td><a href="delete.php?id=<?php echo $rs['id'];?>&type=realestate">Delete</a></td>
+																							<td><a href="delete?id=<?php echo $rs['id'];?>&type=realestate">Delete</a></td>
 																							   </tr>
 																						<?php }   
 																						

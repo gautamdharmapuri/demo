@@ -109,14 +109,8 @@ font-size:12px;
 		<?php include_once('stock_block.php');?>    
 	
 	
-<div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+<?php include_once('top_container_links.php');?>
+
      
      
 
@@ -155,7 +149,7 @@ font-size:12px;
 	?>         
                        
         <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> National Auto</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> National Auto</h4>
 
 <?php
 if(isset($_SESSION['Nris_session']))	  
@@ -279,7 +273,7 @@ if(isset($_SESSION['Nris_session']))
                                      <thead>
                                        		<tr>
                                        		<th>State</th>                                         
-                                             <th> <?php echo $_SESSION['state'];  ?> </th>
+                                             <th> <?php echo $rs['state'];  ?> </th>
                                          	</tr>
                                      </thead>
                                      
@@ -360,66 +354,9 @@ if(isset($_SESSION['Nris_session']))
                                          	</tr>
                                        </thead>
                                     
-                                    
-                                    
-                                    
-                                    
-                                        <?php /*?><tr>
-                                            
-                                            <th colspan="2" align="center" style="text-align:center">
-
-											<?php   if (strpos($rs['image1'],'.') !== false) {  ?>
-                             			   <img src="uploads/auto/<?php echo $rs['image1'];?>" width="150" height="auto"> 	<?php }  else {  ?>
-                                           <img src="admin/img/no_image.png" height="auto" width="150">
-                                           <?php } ?>
-                                           
-                                           
-                                           <?php   if (strpos($rs['image2'],'.') !== false) {  ?>
-                             			   <img src="uploads/auto/<?php echo $rs['image2'];?>" width="150" height="auto"> 	<?php }  else {  ?>
-                                           <img src="admin/img/no_image.png" height="auto" width="150">
-                                           <?php } ?>
-                                           
-                                           
-                                            <?php   if (strpos($rs['image3'],'.') !== false) {  ?>
-                             			   <img src="uploads/auto/<?php echo $rs['image3'];?>" width="150" height="auto"> 	<?php }  else {  ?>
-                                           <img src="admin/img/no_image.png" height="auto" width="150">
-                                           <?php } ?>
-
-                                            </th>                                               
-                                        </tr><?php */?>
-                                 
-                                     
-                                        
                                     </table>      
                        
-                       
-                       
-
-
-					
- 
-
-                    
-<br><br><br><br><br>
-
-<?php /*?> <div class="dividerHeading">
-    <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
-</div>
-        
-            <form novalidate="novalidate" method="post" action="#" class="comment-form">               
-              <div class="form-div ">
-                    <div class="form-label">Message:</div>
-                    <div class="form-field">
-                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
-                    </div>            
-               </div>      
-             <div class="form-submit-buttons">               
-                <input name="comment_submit" value="Post Comment" class="no-comment btn btn-premium" type="submit" style="float:right">
-             </div>
-                <input class="form-control" name="post_id" value="623" type="hidden">
-                <input class="form-control" name="commented_by" value="" type="hidden"><br>
-           </form> <?php */?>
-<br><br><br><br><br><br><br><br><br>	
+<br><br><br><br><br><br><br><br>	
 		
             </div>
             <!-- TOP BUTTONS ENDS-->
@@ -496,11 +433,12 @@ if(isset($_SESSION['Nris_session']))
 				if($cnt%3==0){						
 				echo "<tr>";
 				}
+								$siteUrlConstant = $protocol . "://" .str_replace(' ','',$fs_state['state']).'.'.$_SERVER['SERVER_NAME'].'/';
 					?>
 
             <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
-            <a href="auto_create.php?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
-            <?php if($fs_state['state_code']==$_SESSION['state']) { 
+            <a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+            <?php if($fs_state['state_code']==$defaultState) { 
 			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
 			else { 	echo $fs_state['state'];  } ?>
             </a>

@@ -16,8 +16,7 @@ if(isset($_POST['Submit']))
 			$res = getCurlData($url);
 			$res = json_decode($res, true);
 			if($res['success']) {
-				$state = ($_GET['State'] != '') ? $_GET['State'] : $_SESSION['state'];
-				$redirect_url = $_GET['redirect'].'.php?code='.$state.'&verified=1';
+				$redirect_url = $_GET['redirect'].'?code='.$defaultState.'&verified=1';
 				echo '<script type="text/javascript">window.location.href="'.$redirect_url.'";</script>';
 				exit;
 			} else {
@@ -372,18 +371,11 @@ var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 		<?php include_once('stock_block.php');?>    
 	
 	
-
+		<?php include_once('top_container_links.php');?>  
      
      
     
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+    
      
     
 <!-- Section-1 WRAP START-->	

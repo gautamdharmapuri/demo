@@ -97,7 +97,7 @@ include"config/connection.php";
                     position: absolute;
                     top: -9999px;
                     left: -9999px;
-                }
+                } 
 
                 tr { border: 1px solid #ccc; }
 
@@ -187,9 +187,9 @@ include"config/connection.php";
                     <div class="col-md-12" style="text-align:left;color:#000000;"> 
 
                         <div class="widget-temple">
-                            <?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']); ?>
+                            <?php $state = $defaultState; ?>
 
-                            <h4><a href="state.php?State=<?php echo $state; ?>" style="color:#0033FF;">Home</a> >> Carpool</h4>
+                            <h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState; ?>" style="color:#0033FF;">Home</a> >> Carpool</h4>
                             <?php
                             if (isset($_SESSION['Nris_session'])) {
                                 ?>
@@ -255,22 +255,22 @@ include"config/connection.php";
                                     <?php while ($data = mysql_fetch_assoc($result)) { ?>
                                         <tr>
                                             <td>
-                                                <a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+                                                <a href="<?php echo $siteUrlConstant;?>carpool_view?id=<?php echo md5($data['id']); ?>">
 											<?php echo $data['from_cityname'].', '.$data['from_state']; ?>
 										</a>
                                             </td>
                                             <td>
-                                                <a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+                                                <a href="<?php echo $siteUrlConstant;?>carpool_view?id=<?php echo md5($data['id']); ?>">
 											<?php echo $data['to_cityname'].', '.$data['to_state']; ?>
 										</a>
                                             </td>
                                             <td>
-                                                <a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+                                                <a href="<?php echo $siteUrlConstant;?>carpool_view?id=<?php echo md5($data['id']); ?>">
                                                     <?php echo $data['start_date']; ?>
                                                 </a>
                                             </td>
                                             <td>
-                                                <a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+                                                <a href="<?php echo $siteUrlConstant;?>carpool_view?id=<?php echo md5($data['id']); ?>">
                                                     <?php echo $data['start_time']; ?>
                                                 </a>
                                             </td>
@@ -332,12 +332,13 @@ include"config/connection.php";
                                 if ($cnt % 3 == 0) {
                                     echo "<tr>";
                                 }
+                                $siteUrlConstant = $protocol . "://" .str_replace(' ','',$fs_state['state']).'.'.$_SERVER['SERVER_NAME'].'/';
                                 ?>
 
                                 <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
-                                    <a href="localcarpool_add.php?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color = 'red'" onMouseOut="this.style.color = 'black'">
+                                    <a href="<?php echo $siteUrlConstant;?>localcarpool_add?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color = 'red'" onMouseOut="this.style.color = 'black'">
                                         <?php
-                                        if ($fs_state['state_code'] == $_SESSION['state']) {
+                                        if ($fs_state['state_code'] == $defaultState) {
                                             echo '<i class="fa fa-check"></i> ' . $fs_state['state'];
                                         } else {
                                             echo $fs_state['state'];
@@ -391,7 +392,7 @@ include"config/connection.php";
         <script src="calender/jquery-1.10.2.js"></script>
         <script src="calender/jquery-ui.js"></script>
 
-<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']); ?>
+<?php $state = $defaultState; ?>
         <script>
                         $(function () {
 

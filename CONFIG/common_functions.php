@@ -1,5 +1,21 @@
 <?php
 
+
+if(isset($_GET['State']) && $_GET['State'] != '') {
+	
+	$_SESSION['state'] = $_GET['State'];
+	
+} elseif(isset($_GET['state']) && $_GET['state'] != '') {
+
+	$_SESSION['state']=$_GET['state'];
+	
+} elseif(isset($_GET['code']) && $_GET['code'] != '') {
+	
+	$_SESSION['state']=$_GET['code'];
+	
+} else {
+}
+$state = $defaultState = $_SESSION['state'];
 function send_respond_mail($data,$email) {   
 	global $config;
 	$frm = 'info@usnris.com';                 

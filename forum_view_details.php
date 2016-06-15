@@ -210,7 +210,7 @@ mysql_query("update forum_threads set total_views='".$total_views."' where id = 
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="index.php" style="color:#0033FF;">Home</a> >>  US National Forum >> <?php echo ucfirst($rs['title']); ?></h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >>  US National Forum >> <?php echo ucfirst($rs['title']); ?></h4>
 </div>    <br>
 
 <div style="border:1px solid #999999;width:100%;padding:10px;border-radius:5px;">
@@ -247,11 +247,11 @@ if (!empty($_SESSION['Nris_session']['id'])) { ?>
 					}
 		            ?>
 		            <div class="like_lnks_cnt">
-		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
+		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
 						</button></a>
-		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
+		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
 							<button type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
 							</button>
@@ -313,8 +313,8 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 	            	}
 	                ?>
 	                <div class="like_lnks_cnt">
-	            	    <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">Like</a>
-	            	    <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">DisLike</a>
+	            	    <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">Like</a>
+	            	    <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">DisLike</a>
 	                </div>
 	            <?php } ?>
 			
@@ -348,7 +348,7 @@ if(isset($_POST['cmdcomment']))
 		$query_cmt = "insert into  forum_thread_comment(thread_Pid,member_id,sub_cat_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$category_id."','".$a."','".$date."','".$time."')";		 
 		$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:forum_view_details.php?id='".$_SESSION['threadId']."'");
+		header("location:forum_view_details?id='".$_SESSION['threadId']."'");
 		/*		echo"<script language='javascript' type='text/javascript'>document.location='state_blog_details.php?viewId=.$_SESSION['viewId'].';</script>";*/
 
 }

@@ -213,7 +213,7 @@ mysql_query("update nris_talk set total_views='".$total_views."' where id = '".$
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="<?php echo SITE_BASE_URL;?>" style="color:#0033FF;">Home</a> >>  <a href="<?php echo SITE_BASE_URL.'/discussion_room_data.php';?>" class="breadcumb_link">US National Forum</a> >> <?php echo ucfirst($rs['title']); ?></h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >>  <a href="<?php echo $siteUrlConstant.'discussion_room_data';?>" class="breadcumb_link">US National Forum</a> >> <?php echo ucfirst($rs['title']); ?></h4>
 </div>    <br>
 
 <div style="border:1px solid #999999;width:100%;padding:10px;border-radius:5px;">
@@ -282,8 +282,7 @@ if(isset($_POST['cmdcomment']))
 		$query_cmt = "insert into  nris_talk_comment(thread_Pid,member_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."')";		 
 		$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:discussion_room_view.php?id='".$_SESSION['threadId']."'");
-		/*		echo"<script language='javascript' type='text/javascript'>document.location='state_blog_details.php?viewId=.$_SESSION['viewId'].';</script>";*/
+		header("location:discussion_room_view?id='".$_SESSION['threadId']."'");
 
 }
 ?>

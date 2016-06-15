@@ -1,18 +1,5 @@
 <?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-//	echo $_SESSION['state'];
- ?>
+?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -21,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Sport View | NRIs</title>
+	<title><?php echo $defaultState;  ?> Sport View | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -146,11 +133,11 @@ else
 									mysql_query("update fam_sports set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 					    ?>
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+	<?php $state = $defaultState;
 		$type = urlencode($rs['sport_type']);
 	?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
-	<a href="<?php echo SITE_BASE_URL.'/sports_inner.php?type='.$type.'&code='.$state;?>" class="breadcumb_link"><?php echo $_SESSION['state'];?> Sports</a>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
+	<a href="<?php echo $siteUrlConstant.'sports_inner?type='.$type.'&code='.$state;?>" class="breadcumb_link"><?php echo $defaultState;?> Sports</a>
 	>> <?php echo ucwords($rs['name']);  ?></h4>
 </div>    <br>                        
                         

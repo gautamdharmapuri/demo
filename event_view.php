@@ -1,17 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-//	echo $_SESSION['state'];
+<?php error_reporting(0);  include"config/connection.php";
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -21,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Events | NRIs</title>
+	<title><?php echo $defaultState;  ?> Events | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -145,7 +132,7 @@ else
 									mysql_query("update events set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 					    ?>
 <div class="widget-temple">
-    <h4><a href="state.php" style="color:#0033FF;">Home</a> >> Events >> <?php echo ucwords($rs['category']); ?></h4>
+    <h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Events >> <?php echo ucwords($rs['category']); ?></h4>
 </div>    <br>                          
                         
 
@@ -185,33 +172,6 @@ $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id'].
 <p class="mydata"><b>Event Start Date  :</b>&nbsp; <?php echo date("d M Y",strtotime($rs['sdate'])); ?><br>
 <b>Event End Date  :</b>&nbsp;&nbsp;&nbsp;&nbsp; <?php echo date("d M Y",strtotime($rs['edate'])); ?></p>
 
-					
-                    
-<?php /*?><div style="float:right;">  
-Give your rating
-<a href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">Click here to rate</a>
-</div><?php */?>
-
-                    
-<br><br><br><br><br>
-
-       <?php /*?> <div class="dividerHeading">
-        <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
-        </div>
-        
-        <form novalidate="novalidate" method="post" action="#" class="comment-form">               
-        <div class="form-div ">
-        <div class="form-label">Message:</div>
-        <div class="form-field">
-        <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
-        </div>            
-        </div>      
-        <div class="form-submit-buttons">               
-        <input name="comment_submit" value="Post Comment" class="no-comment btn btn-premium" type="submit" style="float:right">
-        </div>
-        <input class="form-control" name="post_id" value="623" type="hidden">
-        <input class="form-control" name="commented_by" value="" type="hidden"><br>
-        </form> <?php */?>
 <br><br><br><br><br><br><br><br><br>	
 		
             </div>
@@ -221,35 +181,13 @@ Give your rating
         </div><!-- COLUMN MIDDLE ENDS -->	
         
         
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
-    
-
-
 
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>

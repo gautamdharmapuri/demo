@@ -169,17 +169,7 @@ else
 
     <?php include_once('stock_block.php');?>
 
-     
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+     <?php include_once('top_container_links.php');?>
      
     
 <!-- Section-1 WRAP START-->	
@@ -207,7 +197,7 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="index.php" style="color:#0033FF;">Home</a> >> National Training & Placement >> 
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> National Training & Placement >> 
 	<?php 
 													$query_cats = "select name from national_batch_cat  where id = '".$_SESSION['ViewId']."'";
 													$result_cats = mysql_query($query_cats);
@@ -233,7 +223,7 @@ else
                                                                               <?php
 
 	$tableName="natioal_batches";		
-	$targetpage = "national_training.php"; 	
+	$targetpage = "national_training"; 	
 	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where expdate>='".$current_date."' and category = '".$_SESSION['ViewId']."' and status='Active' order by total_views desc";
@@ -353,16 +343,16 @@ else
 				{ ?> 
                     <tr>
                         <td style="padding:5px;">
-                        <a href="national_training_view.php?ViewId=<?php echo md5($rs['id']);?>">
+                        <a href="<?php echo $siteUrlConstant;?>national_training_view?ViewId=<?php echo md5($rs['id']);?>">
                         <?php   if (strpos($rs['image'],'.') !== false) {  ?>
                         <img src="admin/uploads/national_batches/<?php echo $rs['image'];?>" style="height:auto;width:100px;">
 							<?php }  else {  ?>
                           	  <img src="img/no.gif"  style="width:90px;height:auto;" >
                             <?php } ?>
                         </a></td>
-                        <td style="text-align:left;"><a href="national_training_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['title']);?></a></td>
+                        <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>national_training_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['title']);?></a></td>
                         
-                        <td><a href="national_training_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
+                        <td><a href="<?php echo $siteUrlConstant;?>national_training_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
                     </tr>
                     <?php }  ?>
                 

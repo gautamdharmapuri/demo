@@ -4,7 +4,7 @@ include_once("config.php");
 include_once("includes/functions.php");
 
 if (!empty($_SESSION['Nris_session'])) {
-	header('Location:'.SITE_BASE_URL);
+	header('Location:'.$siteUrlConstant);
 }
 //print_r($_GET);die;
 

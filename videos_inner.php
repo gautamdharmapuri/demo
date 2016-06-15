@@ -1,5 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	   
-//echo $_SESSION['state'];
+<?php error_reporting(0);  include"config/connection.php";
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +86,11 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 
 
 
-<?php   include "config/menu_inner_state.php" ;  ?>
+<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<?php include "config/menu_inner_state.php" ;  ?>
+	<?php } else { ?>
+		<?php include "config/menu.php" ;  ?>
+	<?php } ?>
 	
 	<div class="clearfix"></div>
 
@@ -109,7 +112,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 				$result_video_lang=mysql_query($query_video_lang);                                                
 				while($rs_video_lang=mysql_fetch_array($result_video_lang))
 				{?>
-				<a href="videos_inner.php?lang=<?php echo $rs_video_lang['name'] ?>">
+				<a href="<?php echo $siteUrlConstant;?>videos_inner?lang=<?php echo $rs_video_lang['name'] ?>">
 				<div class="col-xs-2 col-centered">
 					<div class="famous_btn" <?php if($rs_video_lang['name'] == $_GET['lang']) { ?>style="background-color: #2eb1fd;"<?php }?>>
 					<?php echo $rs_video_lang['name'] ?>
@@ -125,7 +128,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
               
 			  <?php
 			  $tableName="videos";		
-	$targetpage = "videos_inner.php?lang=".$_GET['lang']; 	
+	$targetpage = "videos_inner?lang=".$_GET['lang']; 	
 	$limit = 15; 
 	
 //	$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
@@ -261,7 +264,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 															
 															?>
                                                        
-                                                        <li style="padding-left:5px;padding-right:5px;background-color: <?php echo $color;?>"><a href="videos.php?lang=<?php echo $_GET['lang'] ?>&cat=<?php echo $row__video_cat['category_name'] ?>"><?php echo $row__video_cat['category_name'] ?></a></li>
+                                                        <li style="padding-left:5px;padding-right:5px;background-color: <?php echo $color;?>"><a href="<?php echo $siteUrlConstant;?>videos?lang=<?php echo $_GET['lang'] ?>&cat=<?php echo $row__video_cat['category_name'] ?>"><?php echo $row__video_cat['category_name'] ?></a></li>
                                                         <?php } ?>
                                                         
                                               </ul>                                                        
@@ -385,11 +388,11 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 					}
 		            ?>
 		            <div class="like_lnks_cnt" style="margin-top:4px;padding: 2px;">
-		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
+		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
 						</button></a>
-		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
+		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
 							<button type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
 							</button>

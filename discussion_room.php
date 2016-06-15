@@ -1,6 +1,6 @@
 <?php error_reporting(0);  include"config/connection.php";	
 $inseted_row ='';
-$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+$state = $defaultState;
 if(isset($_POST['cmdsave']))
 {
 	$mId = $_POST['memberId'];	
@@ -212,13 +212,13 @@ if(isset($_POST['cmdsave']))
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> NRI's Talk</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> NRI's Talk</h4>
                              
                              
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="discussion_room_create.php"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>discussion_room_create"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>    
   <?php } else { ?> 
 <a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Topic &nbsp;<img src="images/arrow.gif"></a>   
 <?php } ?>                               
@@ -247,7 +247,7 @@ if(isset($_SESSION['Nris_session']))
                                                                               <?php
 
 	$tableName="nris_talk";		
-	$targetpage = "discussion_room.php"; 	
+	$targetpage = "discussion_room"; 	
 	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where state_code = '".$state."' AND status='1' order by total_views desc";
@@ -371,7 +371,7 @@ if(isset($_SESSION['Nris_session']))
 				{ ?> 
                                                                          
                          <tr>
-                            <td><a href="discussion_room_view.php?id=<?php echo $rs['id']; ?>" style="color:#000" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#000'"><?php echo ucwords($rs['title']);  ?></a></td>
+                            <td><a href="<?php echo $siteUrlConstant;?>discussion_room_view?id=<?php echo $rs['id']; ?>" style="color:#000" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#000'"><?php echo ucwords($rs['title']);  ?></a></td>
                             <td>
                             	<?php echo $rs['total_views'] ;  ?>
                             </td>

@@ -38,7 +38,7 @@ switch($type) {
 }
 mysql_query($sql);
 }
-header('location:myads.php');
+header('location:myads');
 		exit;
 
 ?>

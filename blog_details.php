@@ -309,7 +309,11 @@ else
 
 
 
-	<?php   include "config/menu.php" ;  ?>
+	<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<?php include "config/menu_inner_state.php" ;  ?>
+	<?php } else { ?>
+		<?php include "config/menu.php" ;  ?>
+	<?php } ?>
 	
 	<div class="clearfix"></div>
 
@@ -334,7 +338,7 @@ if(isset($_POST['cmdcomment']))
 	$query_cmt = "insert into  blog_comment(blog_id,member_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$a."','".$date."','".$time."')";		 
 	$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:state_blog_details.php?viewId='".$_SESSION['viewId']."'");
+		header("location:state_blog_details?viewId='".$_SESSION['viewId']."'");
 	
 	/* Sending Notification mail starts here */
 			$query_user = "SELECT * FROM register WHERE id = ".$mId;
@@ -348,7 +352,7 @@ if(isset($_POST['cmdcomment']))
 			$headers = "From: kbknaidu@gmail.com \r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			$url = BASE_PATH . '/blog_details.php?viewId=' . md5($blogId);
+			$url = $siteUrlConstant . 'blog_details?viewId=' . md5($blogId);
 			
 			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
 			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
@@ -377,7 +381,11 @@ if(isset($_POST['cmdcomment']))
             <div class="col-md-10" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="index.php" style="color:#0033FF;">Home</a> >> Blog Deatils</h4>
+	<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> Blog Details</h4>
+	<?php } else { ?>
+		<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Blog Details </h4>
+	<?php } ?>
 </div>    
 <?php
 $query = "select a.*, b.category_name from blog a, blog_categories b where a.category_id  = b.id and a.visibility = 'Public' and status = 'Publish' and md5(a.id) = '".$_SESSION['viewId']."'" ;
@@ -427,11 +435,11 @@ if (!empty($_SESSION['Nris_session']['id'])) { ?>
 					}
 		            ?>
 		            <div class="like_lnks_cnt">
-		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
+		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
 						</button></a>
-		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
+		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
 							<button type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
 							</button>
@@ -534,7 +542,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
          <div class="col-md-2 inner-left">
 			
             <!-- left ad1 -->
-            <aside class="sidebar big-sidebar right-sidebar">
+            <aside class="sidebar big-sidebar right-sidebar" style="width:100%;">
 	
 	
             <ul style="list-style:none;border:1px solid #000000;margin-top:25px;">	
@@ -546,7 +554,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 					   	$query_cat = "select * from blog_categories order by category_name" ;
 						$result_cat = mysql_query($query_cat);
 						while($fs = mysql_fetch_array($result_cat)){ ?>
-                        <li><a href="blog_category.php?viewId=<?php echo md5($fs['id']); ?>" style="list-style:none;"><?php echo $fs['category_name']; ?></a></li>			
+                        <li><a href="<?php echo $siteUrlConstant;?>blog_category?viewId=<?php echo md5($fs['id']); ?>" style="list-style:none;"><?php echo $fs['category_name']; ?></a></li>			
                        <?php } ?> 
 
                     </ul>

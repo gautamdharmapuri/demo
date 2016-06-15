@@ -210,7 +210,7 @@ if(isset($_POST['cmdsave']))
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="index.php" style="color:#0033FF;">Home</a> >> Forum</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Forum</h4>
 </div>    <br>
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
@@ -238,7 +238,7 @@ if(isset($_POST['cmdsave']))
 							while($fs = mysql_fetch_array($result_inner)) { ?>
                         <tr>
                             <td style="padding-top:10px;padding-bottom:10px;"><img src="admin/uploads/forum/<?php echo $fs['image']; ?>" style="width:70px;height:auto;">&nbsp;
-								<a href="threads_data.php?id=<?php echo md5($fs['sub_id']); ?>" style="color:#0000FF" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#0000FF'"><?php echo ucwords($fs['sub_cat_name']) ; ?></a>
+								<a href="<?php echo $siteUrlConstant;?>threads_data?id=<?php echo md5($fs['sub_id']); ?>" style="color:#0000FF" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#0000FF'"><?php echo ucwords($fs['sub_cat_name']) ; ?></a>
                             </td>
                             <td style="text-align:left;">Threads : 
 							 <?php 

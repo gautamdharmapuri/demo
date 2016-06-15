@@ -1,11 +1,11 @@
     	<link rel="stylesheet" href="css/custom.css"> 
 
 <?php
-$state = ($_GET['State'] != '') ? $_GET['State'] : $_GET['code'];
+$state = $defaultState;
 //$chats=$obj->get_chat_msg();
-$state_id=$state; 
+$state_id=$defaultState; 
 	$today=date('Y-m-d',strtotime(date('Y-m-d') .'+1 days'));           
-		$query="SELECT * FROM `dt_homechat` WHERE DATE(created) ='$today' AND state_code = '".$state."'";
+		$query="SELECT * FROM `dt_homechat` WHERE DATE(created) ='$today' AND state_code = '".$defaultState."'";
 		$result=mysql_query($query);
 		$data = array();
 		while($row=mysql_fetch_assoc($result)) {
@@ -14,8 +14,8 @@ $state_id=$state;
 $chats = $data;
 
 //$online_users=$obj->get_online_user();
-if($state != '') {
-	$query="select COUNT(*) as count from register where state='$state' and login_status='Y'"; 
+if($defaultState != '') {
+	$query="select COUNT(*) as count from register where state='$defaultState' and login_status='Y'"; 
 } else {
 	$query="select COUNT(*) as count from register where login_status='Y'"; 	
 }
@@ -42,7 +42,7 @@ var auto_refresh = setInterval(function ()
     last_id = 0;
   }
   var chat_topic = jQuery('#chat_topic option:selected').val();
-jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id+"&State=<?php echo $state;?>&chat_topic="+chat_topic+"&isInitial="+isInitial,function(data)
+jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id+"&State=<?php echo $defaultState;?>&chat_topic="+chat_topic+"&isInitial="+isInitial,function(data)
 {
 	if (data == -1) {
 		alert('your session has timed out');
@@ -98,7 +98,7 @@ if(boxval.length > 0)
 jQuery.ajax({
 type: "POST",
 url: "chatajax.php",
-data: {user:user,msg:msg_text,State:'<?php echo $state;?>',chat_topic:chat_topic},
+data: {user:user,msg:msg_text,State:'<?php echo $defaultState;?>',chat_topic:chat_topic},
 cache: false,
 success: function(html)
 { 
@@ -116,7 +116,7 @@ return false;
 </script>
 <div class="shout_box">
    
-<div class="chat_header"><?php if($state != '') echo $state;else echo 'National';?> NRI'S Chat (<?php echo $online_users;?> users online)  <div class="open_btn">&nbsp;</div></div>
+<div class="chat_header"><?php if($defaultState != '') echo $defaultState;else echo 'National';?> NRI'S Chat (<?php echo $online_users;?> users online)  <div class="open_btn">&nbsp;</div></div>
 
   <div class="toggle_chat" style="display:none;">
 	<div style="padding: 5px;">

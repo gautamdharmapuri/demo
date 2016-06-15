@@ -1,34 +1,5 @@
 <?php error_reporting(0);  include"config/connection.php";	  
-$current_date = date('Y-m-d');
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
-if(isset($_GET['code']))
-{
-	$_SESSION['state']=$_GET['code'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
-
-
-	/*echo $_SESSION['state']; */
-
-
- ?>
+$current_date = date('Y-m-d');?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -37,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Real Estate Ads | NRIs</title>
+	<title><?php echo $defaultState;  ?> Real Estate Ads | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -240,23 +211,18 @@ else
    				
 
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Real Estate</h4>
+	<?php $state = $defaultState;?>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Real Estate</h4>
   <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="realestate_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
-<a href="realestate_create.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>realestate_create?code=<?php echo $defaultState ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>realestate_create?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
   <?php } else { ?> 
 <a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
 <a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
 <?php } ?>     
 </div><br>
-
-                     <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
-
-
-
 
 <table align="center" >
                                                                             <thead>
@@ -274,7 +240,7 @@ if(isset($_SESSION['Nris_session']))
                                                                               
 																				<?php
 																				
-		$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+		$state = $defaultState;
 			if(isset($_POST['cmdsubmit']))
 		{
 			$cat = $_POST['AdsCat'];
@@ -302,10 +268,10 @@ if(isset($_SESSION['Nris_session']))
 							<?php if($rs['image'] != '') { ?>
 								<img src="images/image-icon.png">
 							<?php } ?>
-						<a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	
-                    <td><a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	
-                    <td><a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['BuiltYear']);?></a></td>
-                    <td><a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
+						<a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	
+                    <td><a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	
+                    <td><a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['BuiltYear']);?></a></td>
+                    <td><a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>
 			<?php }   
             
@@ -322,10 +288,10 @@ if(isset($_SESSION['Nris_session']))
 							<?php if($rs['image'] != '') { ?>
 								<img src="images/image-icon.png">
 							<?php } ?>
-							<a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	
-                    <td><a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	
-                    <td><a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['BuiltYear']);?></a></td>
-                    <td><a href="realestate_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
+							<a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	
+                    <td><a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>                 	
+                    <td><a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['BuiltYear']);?></a></td>
+                    <td><a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>
 			<?php }   ?>
             

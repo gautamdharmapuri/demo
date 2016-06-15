@@ -342,16 +342,7 @@ var emailRegEx = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i;
 		<?php include_once('stock_block.php');?>
 
      
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+     <?php include_once('top_container_links.php');?>
      
     
 <!-- Section-1 WRAP START-->	
@@ -507,7 +498,7 @@ $subject = 'Activate Your Email';
 $headers = "From: kbknaidu@gmail.com \r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-$url= BASE_PATH . '/verify.php?email=' . urlencode($c) . "&key=$hash";
+$url= $siteUrlConstant . '/verify?email=' . urlencode($c) . "&key=$hash";
 
 $message ='<h1>NRIs.com</h1><h3>Registration Activate Link</h3><p>To activate your account please click on Activate buttton</p>';
 $message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
@@ -540,7 +531,7 @@ has been sent to <b>'. $email.' </b><br>Please click on the Activate Button to A
             }
 		}
 		else{
-		echo '<div class="error">Please verify with captcha. Please register again <a href="'.SITE_BASE_URL.'/register.php">Here</a></div>';}
+		echo '<div class="error">Please verify with captcha. Please register again <a href="'.$siteUrlConstant.'register">Here</a></div>';}
 				
 				
 				
@@ -722,14 +713,14 @@ if(true == $show_form)
                     echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png" style="width:165px;height:45px;"></a>';    
                 }
                 ?>
-                <!-- <a href="<?php echo SITE_BASE_URL.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
+                <!-- <a href="<?php echo $siteUrlConstant.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
            
             <?php
                 $authUrl = $gClient->createAuthUrl();
                 echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png"  style="width:154px;height:85px;" alt=""/></a>';
             ?>
             
-                <?php echo '<a href="twitter_login/process.php"><img style="width:129px;height:40px;" src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img style="width:129px;height:40px;" src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
             
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" class="button" name="Submit" id="Submit">Register</button> 

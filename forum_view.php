@@ -2,11 +2,11 @@
 
 if(isset($_GET['id']))
 {
-	$_SESSION['threadId']=$_GET['id'];
+	$_SESSION['threadId'] = $_GET['id'];
 }
 else
 {
-	$_SESSION['threadId']=$_SESSION['threadId'];
+	$_SESSION['threadId'] = $_SESSION['threadId'];
 	
 }
 
@@ -167,7 +167,11 @@ else
 
 
 
-	<?php   include "config/menu_inner_state.php" ;  ?>
+	<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<?php include "config/menu_inner_state.php" ;  ?>
+	<?php } else { ?>
+		<?php include "config/menu.php" ;  ?>
+	<?php } ?>
 	
 	<div class="clearfix"></div>
 
@@ -219,7 +223,13 @@ mysql_query("update forum_threads set total_views='".$total_views."' where id = 
 	
 	?>
 	
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >>  US National Forum >> <?php echo ucfirst($rs['title']); ?></h4>
+	<h4>
+		<?php if(isset($defaultState) && $defaultState != '') { ?>
+			<a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a>
+		<?php } else { ?>
+			<a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a>
+		<?php } ?>
+	>>  US National Forum >> <?php echo ucfirst($rs['title']); ?></h4>
 </div>    <br>
 
 <div style="border:1px solid #999999;width:100%;padding:10px;border-radius:5px;">
@@ -244,10 +254,11 @@ if(isset($_POST['cmdcomment']))
 		$date = date("Y-m-d");
 		$time = date("h:m:s");	
 		
-		$query_cmt = "insert into  forum_thread_comment(thread_Pid,member_id,sub_cat_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$category_id."','".$a."','".$date."','".$time."')";		 
+		$query_cmt = "insert into  forum_thread_comment(thread_Pid,member_id,sub_cat_id,comment,cmnt_date,cmnt_time) values('".$blogId."','".$mId."','".$category_id."','".$a."','".$date."','".$time."')";
+		//echo $query_cmt;exit;
 		$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:forum_view.php?id='".$_SESSION['threadId']."'");
+		header("location:forum_view?id='".$_SESSION['threadId']."'");
 		
 		/* Sending Notification mail starts here */
 			$query_user = "SELECT * FROM register WHERE id = ".$mId;
@@ -261,7 +272,7 @@ if(isset($_POST['cmdcomment']))
 			$headers = "From: kbknaidu@gmail.com \r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			$url = BASE_PATH . '/forum_view.php?id=' . urlencode($blogId);
+			$url = $siteUrlConstant . 'forum_view?id=' . urlencode($blogId);
 			
 			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
 			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
@@ -278,7 +289,8 @@ if(isset($_POST['cmdcomment']))
 
 <br><br><br>                    
 <?php
-$query_blog_cmnt = "select a.*, b.* from forum_thread_comment a, register b where a.member_id = b.id  and a.sub_cat_id  = '".$rs['category_id']."' and a.reply_status='0' order by a.cmnt_id desc" ;
+$query_blog_cmnt = "select a.*, b.* from forum_thread_comment a, register b where a.member_id = b.id
+		and a.sub_cat_id  = '".$rs['category_id']."' and a.thread_Pid = ".$_SESSION['threadId']." and a.reply_status='0' order by a.cmnt_id desc" ;
 $result_cmnt = mysql_query($query_blog_cmnt);
 if(mysql_num_rows($result_cmnt) > 0)
 {
@@ -334,7 +346,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 </div>
 
 <div class="form-submit-buttons">
-<input type="hidden" name="postId" id="postId" value="<?php echo $rs['id'] ; ?>">
+<input type="hidden" name="postId" id="postId" value="<?php echo $_SESSION['threadId'] ; ?>">
 <input type="hidden" name="subcatId" id="subcatId" value="<?php echo $rs['category_id'] ; ?>">
 <input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">
 <?php if($_SESSION['Nris_session']['id'] > 0) { ?>

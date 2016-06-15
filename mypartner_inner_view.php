@@ -1,17 +1,4 @@
 <?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
 if(isset($_GET['ViewId']))
 {
 	$_SESSION['ViewId']=$_GET['ViewId'];
@@ -22,7 +9,7 @@ else
 	
 }
 
-//	echo $_SESSION['state'];
+//	echo $defaultState;
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -32,7 +19,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> My Partner Ad View | NRIs</title>
+	<title><?php echo $defaultState;  ?> My Partner Ad View | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -146,7 +133,7 @@ if(isset($_POST['cmdcomment']))
 		//echo $query_cmt;exit;
 		$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:mypartner_inner_view.php?ViewId='".md5($postId)."'");
+		header("location:mypartner_inner_view?ViewId='".md5($postId)."'");
 		
 		/* Sending Notification mail starts here */
 			$query_user = "SELECT * FROM register WHERE id = ".$mId;
@@ -160,7 +147,7 @@ if(isset($_POST['cmdcomment']))
 			$headers = "From: kbknaidu@gmail.com \r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			$url = BASE_PATH . '/mypartner_inner_view.php?ViewId=' . md5($postId);
+			$url = $siteUrlConstant . 'mypartner_inner_view?ViewId=' . md5($postId);
 			
 			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
 			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
@@ -221,12 +208,12 @@ if(isset($_POST['cmdcomment']))
 			?>               
                        
         <div class="widget-temple">
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> My Partner</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> My Partner</h4>
  <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="mypartner_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
-<a href="mypartner_create.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>mypartner_create?code=<?php echo $defaultState ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>mypartner_create?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
  <?php } else { ?> 
 <a href="#"  data-toggle="modal" data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
 <a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>

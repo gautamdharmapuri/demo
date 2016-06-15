@@ -113,7 +113,7 @@
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-			<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Blog</h4>
+			<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> Blog</h4>
 </div><br>
 
 
@@ -123,7 +123,7 @@
 <?php
 
 	$tableName="blog_categories";		
-	$targetpage = "state_blog.php"; 	
+	$targetpage = "state_blog"; 	
 	$limit = 2; 
 	
 	
@@ -288,11 +288,11 @@
 					}
 		            ?>
 		            <div class="like_lnks_cnt">
-		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
+		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
 						</button></a>
-		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
+		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
 							<button type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
 							</button>
@@ -312,7 +312,7 @@
 						</a>
 		            </div>
 				<?php } ?>
-                <span style="float:right;"><a href="state_blog_details.php?viewId=<?php echo md5($rs['id']); ?>">Read More...</a></span>
+                <span style="float:right;"><a href="<?php echo $siteUrlConstant;?>state_blog_details?viewId=<?php echo md5($rs['id']); ?>">Read More...</a></span>
                 <br>                        
             </div>
         </div>

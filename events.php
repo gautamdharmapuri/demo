@@ -10,22 +10,6 @@ else
 	$_SESSION['ViewId']=$_SESSION['ViewId'];
 	
 }
-
-
-	
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-	/*echo $_SESSION['ViewId']; */
-
-
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -35,7 +19,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Events | NRIs</title>
+	<title><?php echo $defaultState;  ?> Events | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -214,7 +198,7 @@ else
    				
 
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Events >> <?php echo $_SESSION['ViewId'];  ?></h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Events >> <?php echo $_SESSION['ViewId'];  ?></h4>
 
 </div><br>
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
@@ -243,10 +227,10 @@ else
 	<?php
 
 	$tableName="events";		
-	$targetpage = "events.php"; 	
+	$targetpage = "events"; 	
 	$limit = 10; 
 	
-	$query = "SELECT COUNT(*) as num FROM $tableName where edate >= '".$current_date."' and category='".$_SESSION['ViewId']."' and state_code ='".$_SESSION['state']."' and status='Active' order by total_views desc";
+	$query = "SELECT COUNT(*) as num FROM $tableName where edate >= '".$current_date."' and category='".$_SESSION['ViewId']."' and state_code ='".$defaultState."' and status='Active' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -259,7 +243,7 @@ else
 		}	
 	
     // Get page data
-	$query1 = "SELECT * FROM $tableName where state_code ='".$_SESSION['state']."' and status='Active'  order by total_views desc LIMIT $start, $limit";
+	$query1 = "SELECT * FROM $tableName where state_code ='".$defaultState."' and status='Active'  order by total_views desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
 	
 	// Initial page num setup
@@ -364,19 +348,19 @@ else
 				{ ?> 
                     <tr>                                                                             
                   	<td>
-					<a href="event_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+					<a href="<?php echo $siteUrlConstant;?>event_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 					<?php echo date("d M Y",strtotime($rs['sdate'])); ?></a></td>
                   
-                    <td  style="text-align:left;" align="left"><a href="event_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+                    <td  style="text-align:left;" align="left"><a href="<?php echo $siteUrlConstant;?>event_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 					<?php echo ucwords($rs['title']);?></a></td> 
                     
-                   <td  style="text-align:left;" align="left"><a href="event_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+                   <td  style="text-align:left;" align="left"><a href="<?php echo $siteUrlConstant;?>event_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 					<?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
                     $rcity = mysql_fetch_array($query_city);
                     echo ucwords($rcity['city']);  ?></a> 
 				  </td>
                   
-                    <td><a href="event_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
+                    <td><a href="<?php echo $siteUrlConstant;?>event_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>
 			 <?php }  } else {  ?>
                     <tr><td colspan="4"><br><br><h6>No Records Found.</h6><br></td></tr> <?php } ?>
@@ -399,25 +383,10 @@ else
         
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
-                    
+		 
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

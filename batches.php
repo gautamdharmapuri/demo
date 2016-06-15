@@ -10,22 +10,6 @@ else
 	
 } 
 
-	
-	
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-/*echo $_SESSION['state'];
-echo "<br>";
-echo $_SESSION['ViewId'];
-*/ 
-
 $current_date = date('Y-m-d');
  ?>
 <!DOCTYPE html>
@@ -36,7 +20,7 @@ $current_date = date('Y-m-d');
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Teaching & Learning | NRIs</title>
+	<title><?php echo $defaultState;  ?> Teaching & Learning | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="nris.com">
 	
@@ -218,7 +202,7 @@ $current_date = date('Y-m-d');
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Teaching & Learning >> 
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Teaching & Learning >> 
 	<?php 
 													$query_cats = "select name from batch_category  where id = '".$_SESSION['ViewId']."'";
 													$result_cats = mysql_query($query_cats);
@@ -242,10 +226,10 @@ $current_date = date('Y-m-d');
                                                                               <?php
 
 	$tableName="batches";		
-	$targetpage = "batches.php"; 	
+	$targetpage = "batches"; 	
 	$limit = 10; 
 	
-	$query = "SELECT COUNT(*) as num FROM $tableName where expdate>='".$current_date."' and category = '".$_SESSION['ViewId']."' and state_code ='".$_SESSION['state']."'  and status='Active' order by total_views desc";
+	$query = "SELECT COUNT(*) as num FROM $tableName where expdate>='".$current_date."' and category = '".$_SESSION['ViewId']."' and state_code ='".$defaultState."'  and status='Active' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -258,7 +242,7 @@ $current_date = date('Y-m-d');
 		}	
 	
     // Get page data
-	$query1 = "SELECT * FROM $tableName  where expdate>='".$current_date."' and category = '".$_SESSION['ViewId']."' and state_code ='".$_SESSION['state']."'  and status='Active'  order by total_views desc LIMIT $start, $limit";
+	$query1 = "SELECT * FROM $tableName  where expdate>='".$current_date."' and category = '".$_SESSION['ViewId']."' and state_code ='".$defaultState."'  and status='Active'  order by total_views desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
 	
 	// Initial page num setup
@@ -363,16 +347,16 @@ $current_date = date('Y-m-d');
 				{ ?> 
                     <tr>
                         <td style="padding:5px;">
-                        <a href="batches_view.php?ViewId=<?php echo md5($rs['id']);?>">
+                        <a href="<?php echo $siteUrlConstant;?>batches_view?ViewId=<?php echo md5($rs['id']);?>">
                         <?php   if (strpos($rs['image'],'.') !== false) {  ?>
                         <img src="admin/uploads/batches/<?php echo $rs['image'];?>" style="height:auto;width:100px;">
 							<?php }  else {  ?>
                           	  <img src="img/no.gif"  style="width:90px;height:auto;" >
                             <?php } ?>
                         </a></td>
-                        <td style="text-align:left;"><a href="batches_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['title']);?></a></td>
+                        <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>batches_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['title']);?></a></td>
                         
-                        <td><a href="batches_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
+                        <td><a href="<?php echo $siteUrlConstant;?>batches_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
                     </tr>
                     <?php }  } else {  ?>
                     <tr><td colspan="3"><br><h6>No Records Found.</h6><br></td></tr> <?php } ?>

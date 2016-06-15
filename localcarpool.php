@@ -1,21 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
-	/*echo $_SESSION['state']; */
-
-
- ?>
+<?php error_reporting(0);  include"config/connection.php";?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -24,7 +7,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Carpool | NRIs</title>
+	<title><?php echo $defaultState;  ?> Carpool | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -209,7 +192,7 @@ else
 							                <br>
                                             
 												<input type="submit" value="Submit" name="cmdsubmit" id="cmdsubmit" class="btn btn-success">
-												<a href="localcarpool.php">
+												<a href="<?php echo $siteUrlConstant;?>localcarpool">
 													<input type="button" value="Reset" name="reset" id="reset" class="btn btn-success">
 												</a>
                                             </form>
@@ -233,12 +216,12 @@ else
             <div class="col-md-8" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>  <a href="localcarpool.php">Local Carpool</a></h4>
+	<?php $state = $defaultState;?>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>  <a href="<?php echo $siteUrlConstant;?>localcarpool">Local Carpool</a></h4>
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="localcarpool_add.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Carpool<img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>localcarpool_add?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Carpool<img src="images/arrow.gif"></a>    
   <?php } else { ?> 
 <a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Carpool<img src="images/arrow.gif"></a>
 <?php } ?>     
@@ -272,26 +255,26 @@ if(isset($_SESSION['Nris_session']))
 							while($data = mysql_fetch_assoc($result)) {?>
 								<tr>
 									<td>
-										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+										<a href="<?php echo $siteUrlConstant;?>carpool_view?id=<?php echo md5($data['id']); ?>">
 											<?php
 											$from_state = ($data['from_state'] != '0') ? ', '.$data['from_state'] : '';
 											echo $data['from_cityname'].$from_state; ?>
 										</a>
 									</td>
 									<td>
-										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+										<a href="<?php echo $siteUrlConstant;?>carpool_view?id=<?php echo md5($data['id']); ?>">
 											<?php
 											$to_state = ($data['to_state'] != '0') ? ', '.$data['to_state'] : '';
 											echo $data['to_cityname'].$to_state; ?>
 										</a>
 									</td>
 									<td>
-										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+										<a href="<?php echo $siteUrlConstant;?>carpool_view?id=<?php echo md5($data['id']); ?>">
 											<?php echo $data['start_date']; ?>
 										</a>
 									</td>
 									<td>
-										<a href="carpool_view.php?id=<?php echo md5($data['id']); ?>">
+										<a href="<?php echo $siteUrlConstant;?>carpool_view?id=<?php echo md5($data['id']); ?>">
 											<?php echo $data['start_time']; ?>
 										</a>
 									</td>

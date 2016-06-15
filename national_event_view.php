@@ -115,17 +115,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     
 		<?php include_once('stock_block.php');?>
      
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
-     
+     <?php include_once('top_container_links.php');?>
     
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap">	
@@ -162,7 +152,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 					    ?>
                       
                        <br><h4 class="myheadline4">
-                       <a href="index.php" style="color:#0033FF;">Home</a> >> National Events >>  <?php echo ucwords($rs['category']); ?>
+                       <a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> National Events >>  <?php echo ucwords($rs['category']); ?>
 					  	</h4>
                         
 
@@ -208,57 +198,18 @@ $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id'].
                     
 <br style="clear:both;"><br><br><br><br>
 
- <?php /*?><div class="dividerHeading">
-    <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
-</div>
-        
-            <form novalidate="novalidate" method="post" action="#" class="comment-form">               
-              <div class="form-div ">
-                    <div class="form-label">Message:</div>
-                    <div class="form-field">
-                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
-                    </div>            
-               </div>      
-             <div class="form-submit-buttons">               
-                <input name="comment_submit" value="Post Comment" class="no-comment btn btn-premium" type="submit" style="float:right">
-             </div>
-                <input class="form-control" name="post_id" value="623" type="hidden">
-                <input class="form-control" name="commented_by" value="" type="hidden"><br>
-           </form> 
-<br><br><br><br><br><br><br><br><br><?php */?>	
 		
             </div>
             <!-- TOP BUTTONS ENDS-->
             
             
         </div><!-- COLUMN MIDDLE ENDS -->	
-        
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
-			
-            
-
-               
-               
-               
-                 
                     
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

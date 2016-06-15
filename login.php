@@ -11,7 +11,7 @@
 		echo "Sucess";
 	//	header("Refresh:2; url=page2.php");
 	//	echo "<meta http-equiv='refresh' content='0'>";
-		header('location:next.php');
+		header('location:next');
 		exit;
 	}
 	else

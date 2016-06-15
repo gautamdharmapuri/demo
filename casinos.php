@@ -156,21 +156,8 @@
 
     
 		<?php include_once('stock_block.php');?>   
-	
-	
+	<?php include_once('top_container_links.php');?>
 
-     
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
-     
     
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap">	
@@ -198,7 +185,7 @@
    				
 
             <div class="widget-temple">
-				<h4><a href="index.php" style="color:#0033FF;">Home</a> >> Casinos</h4>
+				<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Casinos</h4>
 			</div><br>
 
 
@@ -218,13 +205,8 @@
                                                                               <?php
 
 	$tableName="fam_casinos";		
-	$targetpage = "casinos.php"; 	
+	$targetpage = "casinos"; 	
 	$limit = 10; 
-	
-	/*$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
-	$total_pages = mysql_fetch_array(mysql_query($query));
-	$total_pages = $total_pages[num];*/
-	
 	$query = "SELECT DISTINCT  * FROM fam_casinos LEFT OUTER JOIN rating_casinos ON fam_casinos.id = rating_casinos.casino_id GROUP BY(fam_casinos.id) order by rating_casinos.rate desc, fam_casinos.total_views desc";
 
 	$total_pages = mysql_query($query);
@@ -343,7 +325,7 @@
 				{ ?> 
                             <tr>
                             <td style="padding:5px;"><img src="admin/uploads/casinos/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></td>
-                            <td style="text-align:left;"><a href="casinos_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
+                            <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>casinos_view?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                             <td style="text-align:left;">
                             <?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
                             $rcity = mysql_fetch_array($query_city);

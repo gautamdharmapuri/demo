@@ -1,6 +1,10 @@
  <script type="text/javascript">
-		var site_url = '<?php echo SITE_BASE_URL.'/';?>';
-	</script>   
+		var site_url = '<?php echo $siteUrlConstant;?>';
+	</script>
+ <?php
+	   unset($_SESSION['state']);
+	   $state = $defaultState = '';
+ ?>
 <header id="header" class="header-3">
 <div class="menu-wrap clearfix">
 
@@ -17,15 +21,15 @@
     <div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');">
 	   
 	   <div class="col-md-4">
-			  <div class="logo"><a href="index.php"><img alt="" src="img/logo.png"></a></div>
+			  <div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="" src="img/logo.png"></a></div>
 	   </div>
 	   <div class="col-md-8">
 			  <?php
 					 if(isset($_SESSION['Nris_session'])) { ?>
 							<div class="new-uer-right-div">
 								   <?php include_once('top_social.php');?>
-								   <a href="logout.php" class="reg">Logout</a>
-								   <a href="profile.php" class="reg"><i class="fa fa-user"></i>&nbsp;Profile</a>
+								   <a href="<?php echo $siteUrlConstant;?>logout" class="reg">Logout</a>
+								   <a href="<?php echo $siteUrlConstant;?>profile" class="reg"><i class="fa fa-user"></i>&nbsp;Profile</a>
 								   
 								   
 							</div>          
@@ -33,7 +37,7 @@
 							<div class="new-uer-right-div">
 								   <?php include_once('top_social.php');?>
 								  <a class="reg" href="javascript:;" data-toggle="modal" data-target="#myModal"><i class="fa fa-lock"></i>&nbsp;login</a>
-								  <a class="reg" href="register.php">Register</a>
+								  <a class="reg" href="register">Register</a>
 							</div>
 			  <?php  } ?>
 			  
@@ -114,14 +118,14 @@
         <ul>
 
             
-        <li><a href="index.php">Home</a></li>
-        <li><a href="aboutus.php">About Us</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>">Home</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>aboutus">About Us</a></li>
         <li><a href="#" data-toggle="modal" data-target="#nri_post">NRI's talk</a></li>
-        <li><a href="discussion_board_data.php">Forum</a></li>
-        <li><a href="realestate.php">National Real Estate</a></li>
-        <li><a href="education.php">Education& Teaching</a></li>
-        <li><a href="auto.php">National Autos</a></li>
-        <li><a href="mypartner.php">My Partner</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>discussion_board_data">Forum</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>realestate">National Real Estate</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>education">Education& Teaching</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>auto">National Autos</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>mypartner">My Partner</a></li>
        
   <li><a href="javascript:;"> National Jobs</a>
             <ul class="subnav">
@@ -130,27 +134,27 @@
 					 $resultJob = mysql_query($jobQuery);                                                
 					 while($jobTop = mysql_fetch_array($resultJob)) {
 			  ?>
-					 <li><a href="national_jobs.php?type=<?php echo $jobTop['id'];?>"><?php echo rtrim($jobTop['name'],'Jobs');?> Jobs</a></li>
+					 <li><a href="<?php echo $siteUrlConstant;?>national_jobs?type=<?php echo $jobTop['id'];?>"><?php echo rtrim($jobTop['name'],'Jobs');?> Jobs</a></li>
 			  <?php } ?>
             </ul>
         </li>
         
   <li><a href="javascript:;">Best Visiting Spots</a>
             <ul class="subnav">
-            <li><a href="best_casinos.php">Casinos </a></li>
-            <li><a href="best_restaurants.php">Restaurants </a></li>
-            <li><a href="best_temples.php">Temples </a></li>
-            <li><a href="best_pubs.php">Pubs </a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>best_casinos">Casinos </a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>best_restaurants">Restaurants </a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>best_temples">Temples </a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>best_pubs">Pubs </a></li>
              </ul>
         </li>
         <!-- <li id="famousTemples"><a href="#famousIndianTemples">Famous Indian Temples</a></li> -->
         <li><a href="javascript:;">Carpool</a>
             <ul>
-            <li><a href="carpool_data.php?type=interstate">Inter state Carpool</a></li>
-            <li><a href="carpool_data.php?type=international">International carpool</a></li>		
+            <li><a href="<?php echo $siteUrlConstant;?>carpool_data?type=interstate">Inter state Carpool</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>carpool_data?type=international">International carpool</a></li>		
             </ul>
         </li>
-  <li><a href="videos.php">Movies/Videos </a>
+  <li><a href="<?php echo $siteUrlConstant;?>videos">Movies/Videos </a>
   
 			 <ul>
             <?php
@@ -159,18 +163,18 @@
 			$result_video_lang=mysql_query($query_video_lang);                                                
 			while($rs_video_lang=mysql_fetch_array($result_video_lang))
 			{?>				
-            <li><a href="videos.php?lang=<?php echo $rs_video_lang['name'] ?>"><?php echo $rs_video_lang['name'] ?></a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>videos?lang=<?php echo $rs_video_lang['name'] ?>"><?php echo $rs_video_lang['name'] ?></a></li>
 			<?php } ?>
             </ul>
         </li>
         
         
-		<li><a href="blog.php">Blog</a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>blog">Blog</a></li>
         <li>
 			  <a href="javascript:;"  data-toggle="modal" data-target="#student_talk">Student's Talk</a>
         </li>
-        <li><a href="advertising.php">Advertise </a></li>
-        <li><a href="contact.php">Contact </a></li>      
+        <li><a href="<?php echo $siteUrlConstant;?>advertising">Advertise </a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>contact">Contact </a></li>      
       </ul>
     </nav><!-- End navigation -->
 </div>
@@ -189,7 +193,7 @@
           <h4 class="modal-title"><center><img src="img/logo.png" height="65" width="184" /></center></h4>
         </div>
         <div class="modal-body">
-			 <form name="formLogin" id="formLogin" method="post" class="form-horizontal" action="verify.php">
+			 <form name="formLogin" id="formLogin" method="post" class="form-horizontal" action="verify">
              <div id="myLoginuser"></div>  
             <div style="width:60%;float:left;">
             <h5>Existing user? Login</h5>
@@ -214,7 +218,7 @@
 	<div class="col-sm-offset-2 col-sm-8">		
 		<!--<button type="button" class="btn btn-success" tabindex="3" style="float:right;" onclick="showUser();">Sign In</button>-->
         <input type="hidden" name="currentURL" id="currentURL" value="<?php echo $actual_link ; ?>" />
-		&nbsp;&nbsp;<a href="forgot_password.php" class="read-btn-tab" style="float:right;">Forgot Password</a>
+		&nbsp;&nbsp;<a href="forgot_password" class="read-btn-tab" style="float:right;">Forgot Password</a>
         <button type="submit" name="cmdLoginbtn" id="cmdLoginbtn" class="btn btn-success" tabindex="3" style="float:right;">Sign In</button>
 	</div>
 </div>
@@ -223,7 +227,7 @@
             
             <div style="width:38%;float:right;">
 			<center>
-            <h3><a href="register.php"><img src="img/register.png" /></a></h3><br />
+            <h3><a href="<?php echo $siteUrlConstant;?>register"><img src="img/register.png" /></a></h3><br />
             <?php
             include_once("fb_login/config.php");
             include_once("google_login/config.php");
@@ -236,7 +240,7 @@
                     echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png"></a>';    
                 }
                 ?>
-                <!-- <a href="<?php echo SITE_BASE_URL.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
+                <!-- <a href="<?php echo $siteUrlConstant.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
             </h3>
             <h3>
             <?php
@@ -245,7 +249,7 @@
             ?>
             </h3>
             <h3>
-                <?php echo '<a href="twitter_login/process.php"><img src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
             </h3>
 			</center>
             </div>

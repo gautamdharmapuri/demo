@@ -155,19 +155,6 @@
 	<div class="clearfix"></div>
 <?php include_once('stock_block.php');?>
 	
-	
-
-     
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
      
     
 <!-- Section-1 WRAP START-->	
@@ -195,7 +182,7 @@
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 			<div class="widget-temple">
-				<h4><a href="index.php" style="color:#0033FF;">Home</a> >> Pubs/Bars</h4>
+				<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Pubs/Bars</h4>
 			</div><br>
 
 
@@ -216,12 +203,8 @@
                                                                               <?php
 
 	$tableName="fam_pubs";		
-	$targetpage = "pubs.php"; 	
+	$targetpage = "pubs"; 	
 	$limit = 10; 
-	
-	/*$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
-	$total_pages = mysql_fetch_array(mysql_query($query));
-	$total_pages = $total_pages[num];*/
 	
 	$query = "SELECT DISTINCT  * FROM fam_pubs LEFT OUTER JOIN rating_pubs ON fam_pubs.id = rating_pubs.pub_id GROUP BY(fam_pubs.id) order by rating_pubs.rate desc, fam_pubs.total_views desc";
 
@@ -341,7 +324,7 @@
 				{ ?> 
                             <tr>
                             <td style="padding:5px;"><img src="admin/uploads/pubs/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></td>
-                            <td style="text-align:left;"><a href="pub_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
+                            <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>pub_view?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                             <td style="text-align:left;">
                             <?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
                             $rcity = mysql_fetch_array($query_city);
@@ -373,36 +356,13 @@
             
         </div><!-- COLUMN MIDDLE ENDS -->	
         
-        
-        
-        
-        
-        
         <!-- COLUMN RIGHT -->	
         <?php include_once('home_common_right.php');?><!-- COLUMN RIGHT ENDS -->	
 			
-            
-
-               
-               
-               
-                 
-                    
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
 
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
-    
-
-
 
 <div class="go-up"><i class="fa fa-chevron-up"></i></div>
 <script src="js/tab/jquery-2.1.1.js"></script>

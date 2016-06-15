@@ -7,7 +7,7 @@
 	},
 	'map_1':{
 		'hover': 'ALABAMA', //state hover content
-		'url':site_url+'state.php?State=AL', //Goto URL
+		'url':'http://alabama.'+map_url+'state?State=AL', //Goto URL
 		'target':'new_window', //open link in new window:new_window, open in current window:same_window, or none for nothing.
 		'upColor':'transparent', //state's color when page loads
 		'overColor':'#FFEE88', //state's color when mouse hover
@@ -16,7 +16,7 @@
 	},
 	'map_2':{
 		'hover': 'ALASKA',
-		'url':site_url+'state.php?State=AK',
+		'url':'http://alaska.'+map_url+'state?State=AK',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -25,7 +25,7 @@
 	},
 	'map_3':{
 		'hover': 'ARIZONA',
-		'url':site_url+'state.php?State=AZ',
+		'url':'http://arizona.'+map_url+'state?State=AZ',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -34,7 +34,7 @@
 	},
 	'map_4':{
 		'hover': 'ARKANSAS',
-		'url':site_url+'state.php?State=AR',
+		'url':'http://arkansas.'+map_url+'state?State=AR',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -43,7 +43,7 @@
 	},
 	'map_5':{
 		'hover': 'CALIFORNIA',
-		'url':site_url+'state.php?State=CA',
+		'url':'http://california.'+map_url+'state?State=CA',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -52,7 +52,7 @@
 	},
 	'map_6':{
 		'hover': 'COLORADO',
-		'url':site_url+'state.php?State=CO',
+		'url':'http://colorado.'+map_url+'state?State=CO',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -61,7 +61,7 @@
 	},
 	'map_7':{
 		'hover': 'CONNECTICUT',
-		'url':site_url+'state.php?State=CT',
+		'url':'http://connecticut.'+map_url+'state?State=CT',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -70,7 +70,7 @@
 	},
 	'map_8':{
 		'hover': 'DELAWARE',
-		'url':site_url+'state.php?State=DE',
+		'url':'http://delaware.'+map_url+'state?State=DE',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -79,7 +79,7 @@
 	},
 	'map_9':{
 		'hover': 'FLORIDA',
-		'url':site_url+'state.php?State=FL',
+		'url':'http://florida.'+map_url+'state?State=FL',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -88,7 +88,7 @@
 	},
 	'map_10':{
 		'hover': 'GEORGIA',
-		'url':site_url+'state.php?State=GA',
+		'url':'http://georgia.'+map_url+'state?State=GA',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -97,7 +97,7 @@
 	},
 	'map_11':{
 		'hover': 'HAWAII',
-		'url':site_url+'state.php?State=HI',
+		'url':'http://hawaii.'+map_url+'state?State=HI',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -106,7 +106,7 @@
 	},
 	'map_12':{
 		'hover': 'IDAHO',
-		'url':site_url+'state.php?State=ID',
+		'url':'http://idaho.'+map_url+'state?State=ID',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -115,7 +115,7 @@
 	},
 	'map_13':{
 		'hover': 'ILLINOIS',
-		'url':site_url+'state.php?State=IL',
+		'url':'http://illinois.'+map_url+'state?State=IL',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -124,7 +124,7 @@
 	},
 	'map_14':{
 		'hover': 'INDIANA',
-		'url':site_url+'state.php?State=IN',
+		'url':'http://indiana.'+map_url+'state?State=IN',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -133,7 +133,7 @@
 	},
 	'map_15':{
 		'hover': 'IOWA',
-		'url':site_url+'state.php?State=IA',
+		'url':'http://iowa.'+map_url+'state?State=IA',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -142,7 +142,7 @@
 	},
 	'map_16':{
 		'hover': 'KANSAS',
-		'url':site_url+'state.php?State=KS',
+		'url':'http://kansas.'+map_url+'state?State=KS',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -151,7 +151,7 @@
 	},
 	'map_17':{
 		'hover': 'KENTUCKY',
-		'url':site_url+'state.php?State=KY',
+		'url':'http://kentucky.'+map_url+'state?State=KY',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -160,7 +160,7 @@
 	},
 	'map_18':{
 		'hover': 'LOUISIANA',
-		'url':site_url+'state.php?State=LA',
+		'url':'http://louisiana.'+map_url+'state?State=LA',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -169,7 +169,7 @@
 	},
 	'map_19':{
 		'hover': 'MAINE',
-		'url':site_url+'state.php?State=ME',
+		'url':'http://maine.'+map_url+'state?State=ME',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -178,7 +178,7 @@
 	},
 	'map_20':{
 		'hover': 'MARYLAND',
-		'url':site_url+'state.php?State=MD',
+		'url':'http://maryland.'+map_url+'state?State=MD',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -187,7 +187,7 @@
 	},
 	'map_21':{
 		'hover': 'MASSACHUSETTS',
-		'url':site_url+'state.php?State=MA',
+		'url':'http://massachusetts.'+map_url+'state?State=MA',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -196,7 +196,7 @@
 	},
 	'map_22':{
 		'hover': 'MICHIGAN',
-		'url':site_url+'state.php?State=MI',
+		'url':'http://michigan.'+map_url+'state?State=MI',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -205,7 +205,7 @@
 	},
 	'map_23':{
 		'hover': 'MINNESOTA',
-		'url':site_url+'state.php?State=MN',
+		'url':'http://minnesota.'+map_url+'state?State=MN',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -214,7 +214,7 @@
 	},
 	'map_24':{
 		'hover': 'MISSISSIPPI',
-		'url':site_url+'state.php?State=MS',
+		'url':'http://mississippi.'+map_url+'state?State=MS',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -223,7 +223,7 @@
 	},
 	'map_25':{
 		'hover': 'MISSOURI',
-		'url':site_url+'state.php?State=MO',
+		'url':'http://missouri.'+map_url+'state?State=MO',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -232,7 +232,7 @@
 	},
 	'map_26':{
 		'hover': 'MONTANA',
-		'url':site_url+'state.php?State=MT',
+		'url':'http://montana.'+map_url+'state?State=MT',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -241,7 +241,7 @@
 	},
 	'map_27':{
 		'hover': 'NEBRASKA',
-		'url':site_url+'state.php?State=NE',
+		'url':'http://nebraska.'+map_url+'state?State=NE',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -250,7 +250,7 @@
 	},
 	'map_28':{
 		'hover': 'NEVADA',
-		'url':site_url+'state.php?State=NV',
+		'url':'http://nevada.'+map_url+'state?State=NV',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -259,7 +259,7 @@
 	},
 	'map_29':{
 		'hover': 'NEW HAMPSHIRE',
-		'url':site_url+'state.php?State=NH',
+		'url':'http://newhampshire.'+map_url+'state?State=NH',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -268,7 +268,7 @@
 	},
 	'map_30':{
 		'hover': 'NEW JERSEY',
-		'url':site_url+'state.php?State=NJ',
+		'url':'http://newjersey.'+map_url+'state?State=NJ',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -277,7 +277,7 @@
 	},
 	'map_31':{
 		'hover': 'NEW MEXICO',
-		'url':site_url+'state.php?State=NM',
+		'url':'http://newmexico.'+map_url+'state?State=NM',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -286,7 +286,7 @@
 	},
 	'map_32':{
 		'hover': 'NEW YORK',
-		'url':site_url+'state.php?State=NY',
+		'url':'http://newyork.'+map_url+'state?State=NY',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -295,7 +295,7 @@
 	},
 	'map_33':{
 		'hover': 'NORTH CAROLINA',
-		'url':site_url+'state.php?State=NC',
+		'url':'http://northcarolina.'+map_url+'state?State=NC',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -304,7 +304,7 @@
 	},
 	'map_34':{
 		'hover': 'NORTH DAKOTA',
-		'url':site_url+'state.php?State=ND',
+		'url':'http://northdakota.'+map_url+'state?State=ND',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -313,7 +313,7 @@
 	},
 	'map_35':{
 		'hover': 'OHIO',
-		'url':site_url+'state.php?State=OH',
+		'url':'http://ohio.'+map_url+'state?State=OH',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -322,7 +322,7 @@
 	},
 	'map_36':{
 		'hover': 'OKLAHOMA',
-		'url':site_url+'state.php?State=OK',
+		'url':'http://oklahoma.'+map_url+'state?State=OK',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -331,7 +331,7 @@
 	},
 	'map_37':{
 		'hover': 'OREGON',
-		'url':site_url+'state.php?State=OR',
+		'url':'http://oregon.'+map_url+'state?State=OR',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -340,7 +340,7 @@
 	},
 	'map_38':{
 		'hover': 'PENNSYLVANIA',
-		'url':site_url+'state.php?State=PA',
+		'url':'http://pennsylvania.'+map_url+'state?State=PA',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -349,7 +349,7 @@
 	},
 	'map_39':{
 		'hover': 'RHODE ISLAND',
-		'url':site_url+'state.php?State=RI',
+		'url':'http://rhodeisland.'+map_url+'state?State=RI',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -358,7 +358,7 @@
 	},
 	'map_40':{
 		'hover': 'SOUTH CAROLINA',
-		'url':site_url+'state.php?State=SC',
+		'url':'http://southcarolina.'+map_url+'state?State=SC',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -367,7 +367,7 @@
 	},
 	'map_41':{
 		'hover': 'SOUTH DAKOTA',
-		'url':site_url+'state.php?State=SD',
+		'url':'http://southdakota.'+map_url+'state?State=SD',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -376,7 +376,7 @@
 	},
 	'map_42':{
 		'hover': 'TENNESSEE',
-		'url':site_url+'state.php?State=TN',
+		'url':'http://tennessee.'+map_url+'state?State=TN',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -385,7 +385,7 @@
 	},
 	'map_43':{
 		'hover': 'TEXAS',
-		'url':site_url+'state.php?State=TX',
+		'url':'http://texas.'+map_url+'state?State=TX',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -394,7 +394,7 @@
 	},
 	'map_44':{
 		'hover': 'UTAH',
-		'url':site_url+'state.php?State=UT',
+		'url':'http://utah.'+map_url+'state?State=UT',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -403,7 +403,7 @@
 	},
 	'map_45':{
 		'hover': 'VERMONT',
-		'url':site_url+'state.php?State=VT',
+		'url':'http://vermont.'+map_url+'state?State=VT',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -412,7 +412,7 @@
 	},
 	'map_46':{
 		'hover': 'VIRGINIA',
-		'url':site_url+'state.php?State=VA',
+		'url':'http://virginia.'+map_url+'state?State=VA',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -421,7 +421,7 @@
 	},
 	'map_47':{
 		'hover': 'WASHINGTON',
-		'url':site_url+'state.php?State=WA',
+		'url':'http://washington.'+map_url+'state?State=WA',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -430,7 +430,7 @@
 	},
 	'map_48':{
 		'hover': 'WEST VIRGINIA',
-		'url':site_url+'state.php?State=WV',
+		'url':'http://westvirfinia.'+map_url+'state?State=WV',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -439,7 +439,7 @@
 	},
 	'map_49':{
 		'hover': 'WISCONSIN',
-		'url':site_url+'state.php?State=WI',
+		'url':'http://wisconsin.'+map_url+'state?State=WI',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',
@@ -448,7 +448,7 @@
 	},
 	'map_50':{
 		'hover': 'WYOMING',
-		'url':site_url+'state.php?State=WY',
+		'url':'http://wyoming.'+map_url+'state?State=WY',
 		'target':'new_window',
 		'upColor':'transparent',
 		'overColor':'#FFEE88',

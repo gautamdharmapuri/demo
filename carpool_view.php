@@ -1,17 +1,4 @@
 <?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-//	echo $_SESSION['state'];
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -21,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Carpool View | NRIs</title>
+	<title><?php echo $defaultState;  ?> Carpool View | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -103,7 +90,11 @@ font-size:12px;
 
 
 
-		<?php   include "config/menu_inner_state.php" ;  ?>
+		<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<?php include "config/menu_inner_state.php" ;  ?>
+	<?php } else { ?>
+		<?php include "config/menu.php" ;  ?>
+	<?php } ?>
 	
 	<div class="clearfix"></div>
 
@@ -139,7 +130,7 @@ if(isset($_POST['cmdcomment']))
 		//echo $query_cmt;exit;
 		$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:carpool_view.php?id='".md5($postId)."'");
+		header("location:carpool_view?id='".md5($postId)."'");
 		
 		/* Sending Notification mail starts here */
 			$query_user = "SELECT * FROM register WHERE id = ".$mId;
@@ -153,7 +144,7 @@ if(isset($_POST['cmdcomment']))
 			$headers = "From: kbknaidu@gmail.com \r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			$url = BASE_PATH . '/carpool_view.php?id=' . md5($postId);
+			$url = $siteUrlConstant . 'carpool_view?id=' . md5($postId);
 			
 			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
 			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 
@@ -206,7 +197,7 @@ if(isset($_POST['cmdcomment']))
 				
 					   ?>               
         <div class="widget-temple">
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Carpool</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> Carpool</h4>
        
 </div>
 <br>

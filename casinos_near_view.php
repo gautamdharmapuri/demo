@@ -1,17 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-//	echo $_SESSION['state'];
+<?php error_reporting(0);  include"config/connection.php";
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -21,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Casinos Near Me View | NRIs</title>
+	<title><?php echo $defaultState;  ?> Casinos Near Me View | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -146,8 +133,8 @@ else
 									mysql_query("update fam_near_casinos set total_views='".$total_views."' where md5(id) = '".$_GET['ViewId']."'");
 					    ?>
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> <a href="<?php echo SITE_BASE_URL.'/casinos_near.php?code='.$state;?>" class="breadcumb_link">Casinos Near Me</a> >> <?php echo ucwords($rs['name']); ?></h4>
+	<?php $state = $defaultState;?>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> <a href="<?php echo $siteUrlConstant.'casinos_near?code='.$defaultState;?>" class="breadcumb_link">Casinos Near Me</a> >> <?php echo ucwords($rs['name']); ?></h4>
 </div>    <br>                          
                         
 

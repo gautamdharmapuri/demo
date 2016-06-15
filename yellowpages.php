@@ -1,21 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
-	/*echo $_SESSION['state']; */
-
-
- ?>
+<?php error_reporting(0);  include"config/connection.php";?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -24,7 +7,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Electronics Ads | NRIs</title>
+	<title><?php echo $defaultState;  ?> Electronics Ads | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -194,12 +177,12 @@ else
 if(isset($_POST['cmdsubmit']))
 {
 	$type = $_POST['AdsCat'];
-	$code = $_SESSION['state'];	
+	$code = $defaultState;	
 
 	$type =  md5($type);
 //	echo $code;
 //	exit;
-echo "<script language='javascript' type='text/javascript'>document.location='deshiads.php?type=$type&code=$code';</script>";
+echo "<script language='javascript' type='text/javascript'>document.location='deshiads?type=$type&code=$code';</script>";
 exit; 
 
 
@@ -251,7 +234,7 @@ exit;
             <div class="col-md-8" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Deshi Pages By Category</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Deshi Pages By Category</h4>
  
 
 
@@ -288,7 +271,7 @@ exit;
         while($sub_result = mysql_fetch_array($resulname1)) { 
 //			$q = "select * from "
 		?>
-        <li  style="list-style:none;"><a href="deshiads.php?type=<?php echo md5($sub_result['name']); ?>&code=<?php echo $_SESSION['state'] ?>"><?php echo ucwords($sub_result['name']);  ?></a></li>
+        <li  style="list-style:none;"><a href="<?php echo $siteUrlConstant;?>deshiads?type=<?php echo md5($sub_result['name']); ?>&code=<?php echo $defaultState ?>"><?php echo ucwords($sub_result['name']);  ?></a></li>
         <?php } ?>
         </ul><br>
            <!-- <p>Quick text. Fusce aliquet neque et accumsan fermentum. Aliquam lobortis neque in nulla  tempus, molestie fermentum purus euismod.</p>-->

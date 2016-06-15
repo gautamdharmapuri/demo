@@ -10,7 +10,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Teaching & Learning | NRIs</title>
+	<title><?php echo $defaultState;  ?> Teaching & Learning | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="nris.com">
 	
@@ -202,7 +202,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Teaching & Learning >> 
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Teaching & Learning >> 
 	<?php 
 	
 					  				 $query="select a.*, b.name from batches a, batch_category  b where a.category = b.id and md5(a.id) = '".$_GET['ViewId']."'";							

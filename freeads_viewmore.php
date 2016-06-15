@@ -1,20 +1,4 @@
 <?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
-	/*echo $_SESSION['state']; */
-
-
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -24,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Free Ads | NRIs</title>
+	<title><?php echo $defaultState;  ?> Free Ads | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -203,8 +187,8 @@ else
    				
 
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Free Ads</h4>
+	<?php $state = $defaultState;?>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Free Ads</h4>
    
 </div><br>
 
@@ -229,7 +213,7 @@ else
 																				
 
 	$tableName = "post_free_stuff";		
-	$targetpage = "freeads_viewmore.php"; 	
+	$targetpage = "freeads_viewmore"; 	
 	$limit = 10; 
 	
 	$count_query = "SELECT s.* from ((SELECT id,TitleAD,'auto' as type,image1 as image,Address as address,total_views,'auto' as category,total_views as totViews  FROM post_free_auto WHERE TitleAD != '' AND  AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL' OR States_Details LIKE '%".$state."%') ORDER BY post_free_auto.total_views DESC)
@@ -264,8 +248,7 @@ else
 		}	
 	
     // Get page data
-	$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-	//$query1 = "SELECT * FROM $tableName  where EndDate> now() and States IN ('".$state."','All') order by total_views desc LIMIT $start, $limit";
+	$state = $defaultState;
 	$query1 = $count_query." LIMIT $start, $limit";
 	#echo $query1;
 	$result = mysql_query($query1);
@@ -377,11 +360,11 @@ else
 							<?php if($rs['image'] != '') { ?>
 								<img src="images/image-icon.png">
 							<?php } ?>
-						<a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
-					<td><a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['category']);?></a>
-					<td><a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['address']);?></a>
+						<a href="<?php echo $siteUrlConstant;?><?php echo $rs['type'];?>_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
+					<td><a href="<?php echo $siteUrlConstant;?>free_stuff_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['category']);?></a>
+					<td><a href="<?php echo $siteUrlConstant;?>free_stuff_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['address']);?></a>
 						</td>
-                    <td><a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
+                    <td><a href="<?php echo $siteUrlConstant;?><?php echo $rs['type'];?>_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>
 			<?php }   ?>
                                                             

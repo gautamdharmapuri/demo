@@ -1,23 +1,5 @@
 <?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
-
-	/*echo $_SESSION['state'];
-	echo $_SESSION['type'];		*/
-
-
- ?>
+?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -26,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Top Rated Casinos | NRIs</title>
+	<title><?php echo $defaultState;  ?> Top Rated Casinos | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -202,7 +184,11 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Top Rated Casinos</h4>
+	<h4>
+		
+		<a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a>
+	
+	>> Top Rated Casinos</h4>
 </div>    <br>
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
@@ -223,7 +209,7 @@ else
                                                                               <?php
 
 	$tableName="fam_casinos";		
-	$targetpage = "top_rated_casinos.php"; 	
+	$targetpage = "top_rated_casinos"; 	
 	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
@@ -340,11 +326,11 @@ else
 				while($rs=mysql_fetch_array($result))
 				{ ?> 
                                                                             <tr>
-                                                                                <td style="padding:5px;"><a href="top_rated_casinos_view.php?ViewId=<?php echo md5($rs['id']);?>"> 
+                                                                                <td style="padding:5px;"><a href="<?php echo $siteUrlConstant;?>top_rated_casinos_view?ViewId=<?php echo md5($rs['id']);?>"> 
                                                                                 <img src="admin/uploads/casinos/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
-                                                                                <td style="text-align:left;"><a href="top_rated_casinos_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
+                                                                                <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>top_rated_casinos_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                                                                                 <td style="text-align:left;">
-                                                                                <a href="top_rated_casinos_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
+                                                                                <a href="<?php echo $siteUrlConstant;?>top_rated_casinos_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
                                                                                 <?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
 															$rcity = mysql_fetch_array($query_city);
 															echo ucwords($rcity['city']);  ?></a>
@@ -363,7 +349,7 @@ else
                         ?>
 																					
 																				</td>
-                                                                                <td><a href="top_rated_casinos_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
+                                                                                <td><a href="<?php echo $siteUrlConstant;?>top_rated_casinos_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
 																				<?php echo $rs['total_views'];?></a></td>
                                                                             </tr>
                                                                             <?php } } else { ?>

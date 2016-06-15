@@ -1,17 +1,5 @@
 <?php error_reporting(0);  include"config/connection.php";	  
 
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
 if(isset($_GET['type']))
 {
 	$_SESSION['type']=$_GET['type'];
@@ -21,11 +9,6 @@ else
 	$_SESSION['type']=$_SESSION['type'];
 	
 }
-
-	/*echo $_SESSION['state'];
-	echo $_SESSION['type'];		*/
-
-
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -35,7 +18,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Pubs | NRIs</title>
+	<title><?php echo $defaultState;  ?> Pubs | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -213,7 +196,7 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> <?php echo $_SESSION['state'];  ?> Pubs</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> <?php echo $defaultState;  ?> Pubs</h4>
 </div>    <br>
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
@@ -234,10 +217,10 @@ else
  <?php
 
 	$tableName="fam_pubs";		
-	$targetpage = "pub_places.php"; 	
+	$targetpage = "pub_places"; 	
 	$limit = 10; 
 
-	$query = "SELECT DISTINCT  * FROM fam_pubs LEFT OUTER JOIN rating_pubs ON fam_pubs.id = rating_pubs.pub_id where  fam_pubs.pub_type='".$_SESSION['type']."' and fam_pubs.state_code='".$_SESSION['state']."' GROUP BY(fam_pubs.id) order by rating_pubs.rate desc, fam_pubs.total_views desc";
+	$query = "SELECT DISTINCT  * FROM fam_pubs LEFT OUTER JOIN rating_pubs ON fam_pubs.id = rating_pubs.pub_id where  fam_pubs.pub_type='".$_SESSION['type']."' and fam_pubs.state_code='".$defaultState."' GROUP BY(fam_pubs.id) order by rating_pubs.rate desc, fam_pubs.total_views desc";
 	$total_pages = mysql_query($query);
 	$total_pages = mysql_num_rows($total_pages);
 		
@@ -249,7 +232,7 @@ else
 	}else{
 		$start = 0;	
 		}	
-	$query1 = "SELECT DISTINCT  * FROM fam_pubs LEFT OUTER JOIN rating_pubs ON fam_pubs.id = rating_pubs.pub_id where  fam_pubs.pub_type='".$_SESSION['type']."' and fam_pubs.state_code='".$_SESSION['state']."' GROUP BY(fam_pubs.id) order by rating_pubs.rate desc, fam_pubs.total_views desc LIMIT $start, $limit";
+	$query1 = "SELECT DISTINCT  * FROM fam_pubs LEFT OUTER JOIN rating_pubs ON fam_pubs.id = rating_pubs.pub_id where  fam_pubs.pub_type='".$_SESSION['type']."' and fam_pubs.state_code='".$defaultState."' GROUP BY(fam_pubs.id) order by rating_pubs.rate desc, fam_pubs.total_views desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
 	
 	// Initial page num setup
@@ -354,11 +337,11 @@ else
 				while($rs=mysql_fetch_array($result))
 				{ ?> 
                         <tr>
-                        <td style="padding:5px;"><a href="pub_places_view.php?ViewId=<?php echo md5($rs[0]);?>">
+                        <td style="padding:5px;"><a href="<?php echo $siteUrlConstant;?>pub_places_view?ViewId=<?php echo md5($rs[0]);?>">
                         <img src="admin/uploads/pubs/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
-                        <td style="text-align:left;"><a href="pub_places_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
+                        <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>pub_places_view?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                         <td style="text-align:left;">
-                        <a href="pub_places_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+                        <a href="<?php echo $siteUrlConstant;?>pub_places_view?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
                         <?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
                         $rcity = mysql_fetch_array($query_city);
                         echo ucwords($rcity['city']);  ?></a>
@@ -373,7 +356,7 @@ else
                         if($rs['rate']=='NULL')  { echo "<img src='images/0.png'>" ; }
                         
                         ?>  </td>
-                        <td><a href="pub_places_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+                        <td><a href="<?php echo $siteUrlConstant;?>pub_places_view?ViewId=<?php echo md5($rs[0]);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
                         <?php echo $rs['total_views'];?></a></td>
                         </tr>
                         <?php } } else { ?>

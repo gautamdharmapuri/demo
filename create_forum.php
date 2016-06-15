@@ -207,12 +207,12 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >>  US National Forum >> Threads >> Add Topic</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >>  US National Forum >> Threads >> Add Topic</h4>
 </div>    <br>
 
 
 				
-<form class="form-horizontal" role="form" method="post" action="discussion_board.php">
+<form class="form-horizontal" role="form" method="post" action="discussion_board">
 
 <div class="form-group">
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:right;">Title*</label>

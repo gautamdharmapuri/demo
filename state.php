@@ -1,9 +1,8 @@
 <?php error_reporting(0);  include"config/connection.php";	  
 $current_date = date('Y-m-d');
 
-			$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
-			$_SESSION['state'] = $state;
-//	echo $_SESSION['state'];
+			$state = $defaultState;
+//	echo $defaultState;
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -246,7 +245,7 @@ $current_date = date('Y-m-d');
 																				$color = '#CCC';	
 																		}
 															?>
-																		<a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+																		<a href="<?php echo $siteUrlConstant;?><?php echo $rs['type'];?>_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 																		onMouseMove="this.style.color='red'"
 																		onMouseOut="this.style.color='black'"
 																		style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
@@ -280,7 +279,7 @@ $current_date = date('Y-m-d');
                         </div>
                         
                         <div class="full-btn-orange">
-                        	<a href="<?php echo SITE_BASE_URL;?>" style="padding: 5px 5px;">National NRIs Page</a>
+                        	<a href="<?php echo $siteUrlConstant;?>" style="padding: 5px 5px;">National NRIs Page</a>
                         </div>
                         
                         <div class="movies">
@@ -368,7 +367,7 @@ $current_date = date('Y-m-d');
 										<?php foreach($movieArr as $movie) { if(count($movie) > 0) { ?>
 													<li>
 																<?php $movieId = $movie['id'];?>
-																<a href="desi_movie_detail.php?id=<?php echo md5($movie['id']);?>">
+																<a href="<?php echo $siteUrlConstant;?>desi_movie_detail?id=<?php echo md5($movie['id']);?>">
 																			<?php echo $movie['name'];?>
 																</a>
 													</li>
@@ -396,7 +395,7 @@ $current_date = date('Y-m-d');
                     <div class="right-imgs">
                     	<div class="col-md-12 padding-no">
 									<?php
-												$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+												$state = $defaultState;
 												$query = "SELECT * FROM fam_advertisement
 															WHERE image != '' AND edate >= now() AND ad_position = 'Right Side'
 															AND NOW() <= sdate + INTERVAL 30 DAY
@@ -448,16 +447,16 @@ $current_date = date('Y-m-d');
                        <div class="left-table">
                        
                             <div id="doc-menu">
-                            <a href="auto_inner.php?code=<?php echo $_SESSION['state'] ?>">Autos</a>
-                            <a href="baby_sitting_inner.php?code=<?php echo $_SESSION['state'] ?>">Baby Sitting</a>
-                            <a href="education_inner.php?code=<?php echo $_SESSION['state'] ?>">Education & Teaching</a>
-							<a href="electronics_inner.php?code=<?php echo $_SESSION['state'] ?>">Electronics</a>    
-                            <a href="free_stuff_inner.php?code=<?php echo $_SESSION['state'] ?>">Free Stuff</a>
-							 <a href="garagesale_inner.php?code=<?php echo $_SESSION['state'] ?>">Garage Sale</a>							
-                            <a href="jobs_inner.php?code=<?php echo $_SESSION['state'] ?>">Jobs</a>
-                            <a href="mypartner_inner.php?code=<?php echo $_SESSION['state'] ?>">My Partner</a> 
-                            <a href="roommates_inner.php?code=<?php echo $_SESSION['state'] ?>">Roommates</a>
-                            <a href="realestate_inner.php?code=<?php echo $_SESSION['state'] ?>">Real Estate</a>                           
+                            <a href="<?php echo $siteUrlConstant;?>auto_inner?code=<?php echo $defaultState ?>">Autos</a>
+                            <a href="<?php echo $siteUrlConstant;?>baby_sitting_inner?code=<?php echo $defaultState ?>">Baby Sitting</a>
+                            <a href="<?php echo $siteUrlConstant;?>education_inner?code=<?php echo $defaultState ?>">Education & Teaching</a>
+							<a href="<?php echo $siteUrlConstant;?>electronics_inner?code=<?php echo $defaultState ?>">Electronics</a>    
+                            <a href="<?php echo $siteUrlConstant;?>free_stuff_inner?code=<?php echo $defaultState ?>">Free Stuff</a>
+							 <a href="<?php echo $siteUrlConstant;?>garagesale_inner?code=<?php echo $defaultState ?>">Garage Sale</a>							
+                            <a href="<?php echo $siteUrlConstant;?>jobs_inner?code=<?php echo $defaultState ?>">Jobs</a>
+                            <a href="<?php echo $siteUrlConstant;?>mypartner_inner?code=<?php echo $defaultState ?>">My Partner</a> 
+                            <a href="<?php echo $siteUrlConstant;?>roommates_inner?code=<?php echo $defaultState ?>">Roommates</a>
+                            <a href="<?php echo $siteUrlConstant;?>realestate_inner?code=<?php echo $defaultState ?>">Real Estate</a>                           
                     </div>   
                                         
                                
@@ -481,16 +480,16 @@ $current_date = date('Y-m-d');
             <div>
            
             <ul class="home_category_model_ul">
-                <li><a href="auto_create.php?code=<?php echo $_SESSION['state'] ?>">Auto</a></li>
-                <li><a href="baby_sitting_create.php?code=<?php echo $_SESSION['state'] ?>">Baby Sitting</a></li>  
-                <li><a href="education_create.php?code=<?php echo $_SESSION['state'] ?>">Education & Teaching</a></li>   
-                <li><a href="electronics_create.php?code=<?php echo $_SESSION['state'] ?>">Electronics</a></li>
-                <li><a href="create_free_stuff.php?code=<?php echo $_SESSION['state'] ?>">Free Stuff</a></li>                       
-                <li><a href="garagesale_create.php?code=<?php echo $_SESSION['state'] ?>">Garage Sale</a></li>                          
-                <li><a href="job_create.php?code=<?php echo $_SESSION['state'] ?>">Jobs</a></li>
-                <li><a href="mypartner_create.php?code=<?php echo $_SESSION['state'] ?>">My Partner</a></li>            
-                <li><a href="roommates_create.php?code=<?php echo $_SESSION['state'] ?>">Roommates</a></li>          
-                <li><a href="realestate_create.php?code=<?php echo $_SESSION['state'] ?>">Real Estate</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>">Auto</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>baby_sitting_create?code=<?php echo $defaultState ?>">Baby Sitting</a></li>  
+                <li><a href="<?php echo $siteUrlConstant;?>education_create?code=<?php echo $defaultState ?>">Education & Teaching</a></li>   
+                <li><a href="<?php echo $siteUrlConstant;?>electronics_create?code=<?php echo $defaultState ?>">Electronics</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>create_free_stuff?code=<?php echo $defaultState ?>">Free Stuff</a></li>                       
+                <li><a href="<?php echo $siteUrlConstant;?>garagesale_create?code=<?php echo $defaultState ?>">Garage Sale</a></li>                          
+                <li><a href="<?php echo $siteUrlConstant;?>job_create?code=<?php echo $defaultState ?>">Jobs</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>mypartner_create?code=<?php echo $defaultState ?>">My Partner</a></li>            
+                <li><a href="<?php echo $siteUrlConstant;?>roommates_create?code=<?php echo $defaultState ?>">Roommates</a></li>          
+                <li><a href="<?php echo $siteUrlConstant;?>realestate_create?code=<?php echo $defaultState ?>">Real Estate</a></li>
 
             </ul>
 
@@ -530,16 +529,16 @@ $current_date = date('Y-m-d');
             <div>
            
             <ul style="text-align:left;line-height:28px;">
-                <li><a href="auto_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium">Auto</a></li>
-                <li><a href="baby_sitting_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium">Baby Sitting</a></li>  
-                <li><a href="education_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium">Education & Teaching</a></li>   
-                <li><a href="electronics_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium">Electronics</a></li> 
-                 <li><a href="create_free_stuff.php?code=<?php echo $_SESSION['state'] ?>&type=premium">Free Stuff</a></li>                                    
-                <li><a href="garagesale_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium">Garage Sale</a></li>                          
-                <li><a href="job_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium">Jobs</a></li>
-                <li><a href="mypartner_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium">My Partner</a></li>            
-                <li><a href="roommates_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium">Roommates</a></li>          
-                <li><a href="realestate_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium">Real Estate</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>&type=premium">Auto</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>baby_sitting_create?code=<?php echo $defaultState ?>&type=premium">Baby Sitting</a></li>  
+                <li><a href="<?php echo $siteUrlConstant;?>education_create?code=<?php echo $defaultState ?>&type=premium">Education & Teaching</a></li>   
+                <li><a href="<?php echo $siteUrlConstant;?>electronics_create?code=<?php echo $defaultState ?>&type=premium">Electronics</a></li> 
+                 <li><a href="<?php echo $siteUrlConstant;?>create_free_stuff?code=<?php echo $defaultState ?>&type=premium">Free Stuff</a></li>                                    
+                <li><a href="<?php echo $siteUrlConstant;?>garagesale_create?code=<?php echo $defaultState ?>&type=premium">Garage Sale</a></li>                          
+                <li><a href="<?php echo $siteUrlConstant;?>job_create?code=<?php echo $defaultState ?>&type=premium">Jobs</a></li>
+                <li><a href="<?php echo $siteUrlConstant;?>mypartner_create?code=<?php echo $defaultState ?>&type=premium">My Partner</a></li>            
+                <li><a href="<?php echo $siteUrlConstant;?>roommates_create?code=<?php echo $defaultState ?>&type=premium">Roommates</a></li>          
+                <li><a href="<?php echo $siteUrlConstant;?>realestate_create?code=<?php echo $defaultState ?>&type=premium">Real Estate</a></li>
 
             </ul>
 
@@ -618,7 +617,7 @@ $current_date = date('Y-m-d');
 																				$color = '#CCC';	
 																		}
 															?>
-                                                             <a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+                                                             <a href="<?php echo $siteUrlConstant;?><?php echo $rs['type'];?>_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
 																		<div class="col-md-12" style="padding: 0px;">
 																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
@@ -632,7 +631,7 @@ $current_date = date('Y-m-d');
 																		</div>
 																		</a>
 															<?php } ?>
-															<div style="float: right !important;"><a href="freeads_viewmore.php?type=free&State=<?php echo $state;?>" >View more</a></div>
+															<div style="float: right !important;"><a href="<?php echo $siteUrlConstant;?>freeads_viewmore?type=free&State=<?php echo $state;?>" >View more</a></div>
                                                           </div> 
                                                       </li>
                                                       
@@ -675,7 +674,7 @@ $current_date = date('Y-m-d');
 																				$color = '#CCC';	
 																		}
 															?>
-                                                              <a href="<?php echo $rs['type'];?>_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+                                                              <a href="<?php echo $siteUrlConstant;?><?php echo $rs['type'];?>_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
 																		<div class="col-md-12" style="padding: 0px;">
 																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
@@ -699,7 +698,7 @@ $current_date = date('Y-m-d');
 																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;">Views</span></div>
 																		</div>
                                                              <?php
-															 $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+															 $state = $defaultState;
 															 $query = "SELECT * FROM post_free_stuff WHERE TitleAD != '' AND AdPostType != 'premium' AND (States = '".$state."' OR States = 'ALL') AND EndDate >= now() ORDER BY id desc LIMIT 8;";
 															 
 																		$result = mysql_query($query);
@@ -712,7 +711,7 @@ $current_date = date('Y-m-d');
 																				$color = '#CCC';	
 																		}
 															 ?>
-                                                              <a href="free_stuff_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
+                                                              <a href="<?php echo $siteUrlConstant;?>free_stuff_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
 																		<div class="col-md-12" style="padding: 0px;">
 																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
 																					<img src="images/map-icon.png">
@@ -774,13 +773,13 @@ $current_date = date('Y-m-d');
 												  if(mysql_num_rows($result_Events_cul) > 0) {
 												  while($rs_event1=mysql_fetch_array($result_Events_cul))
 												  {?>   
-												  <p><a href="events.php?ViewId=<?php echo ucfirst($eventCat);?>"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
+												  <p><a href="<?php echo $siteUrlConstant;?>events?ViewId=<?php echo ucfirst($eventCat);?>"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
 												  <?php } } else {  ?>
 												  <p><h4>No Data Found.</h4></p>
 												  <?php } ?>
 												
 											</div>    
-											<a href="events.php?ViewId=Cultural" class="read-btn-tab">View more</a>
+											<a href="<?php echo $siteUrlConstant;?>events?ViewId=Cultural" class="read-btn-tab">View more</a>
 										</li>
                                       <?php } ?>
                                                       
@@ -807,7 +806,7 @@ $current_date = date('Y-m-d');
                            <div class="padding-no">
                         
                                 <?php
-												$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+												$state = $defaultState;
 												$query = "SELECT * FROM fam_advertisement
 															WHERE image != '' AND edate >= now() AND ad_position = 'Left Side'
 															AND NOW() <= sdate + INTERVAL 30 DAY
@@ -884,7 +883,7 @@ $current_date = date('Y-m-d');
                                                      
                                                       <div class="content-tab" style="background-color: <?php echo $color;?> !important;">
                                                        <?php
-                                                                $state = ($_ET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+                                                                $state = $defaultState;
 																$query_Nation_tran_SAP="select  * from  batches where expdate>='".$current_date."' and category = '".$rsfs['id']."' and state_code ='".$state."'  and status='Active' order by id desc limit 5";
 																$result_SAP=mysql_query($query_Nation_tran_SAP);                                                
 																if(mysql_num_rows($result_SAP) > 0) {
@@ -894,7 +893,7 @@ $current_date = date('Y-m-d');
 																		
 																		?>												
                                                       
-                                                          <p><a href="batches.php?ViewId=<?php echo $rsfs['id'] ; ?>&State=<?php echo $_SESSION['state']; ?>">
+                                                          <p><a href="<?php echo $siteUrlConstant;?>batches?ViewId=<?php echo $rsfs['id'] ; ?>&State=<?php echo $defaultState; ?>">
 														  <?php echo date("d M ",strtotime($rs_SAP['date'])); ?><span>&nbsp; <?php echo ucwords($rs_SAP['title']);?></span></a></p>
                                                         <?php } } else {  ?>
                                                         <p><h4>No Data Found.</h4></p>
@@ -903,7 +902,7 @@ $current_date = date('Y-m-d');
                                                       
                                                           
                                                       </div>    
-                                                      <a href="batches.php?ViewId=<?php echo $rsfs['id'] ; ?>&State=<?php echo $_SESSION['state']; ?>" class="read-btn-tab">View more</a>
+                                                      <a href="<?php echo $siteUrlConstant;?>batches?ViewId=<?php echo $rsfs['id'] ; ?>&State=<?php echo $defaultState; ?>" class="read-btn-tab">View more</a>
                                                   </li>
                                                    <?php  $edudata++ ; } ?>  
                                                  <?php ?>
@@ -922,7 +921,7 @@ $current_date = date('Y-m-d');
                                 <div class="bord-cla">
                                  <ul style="padding-left:5px;padding-right:5px;">
                                        <?php
-									   $state = ($_ET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+									   $state = $defaultState;
                                         $query_nritalk="select  * from  nris_talk where title != '' and state_code = '".$state."' order by id desc limit 5";																
                                         $result_nritalk=mysql_query($query_nritalk);
 										$i = 0;
@@ -936,13 +935,13 @@ $current_date = date('Y-m-d');
 																				$color = '#CCC';	
 																		} 
 												?>	
-                                        <li style="background-color: <?php echo $color;?> !important;border: 1px solid white;"><a href="discussion_room_view.php?id=<?php echo $fs_gro['id'];?>" ><?php echo ucwords($fs_gro['title']);?></a></li>
+                                        <li style="background-color: <?php echo $color;?> !important;border: 1px solid white;"><a href="<?php echo $siteUrlConstant;?>discussion_room_view?id=<?php echo $fs_gro['id'];?>" ><?php echo ucwords($fs_gro['title']);?></a></li>
                                         <?php } } else {  ?>
                                                         <li><h4>No Data Found.</h4></li>
                                                         <?php } ?>
                                         
                               </ul>    
-                                      <a href="discussion_room.php?State=<?php echo $state;?>" class="read-btn-b">View more</a>
+                                      <a href="<?php echo $siteUrlConstant;?>discussion_room?State=<?php echo $state;?>" class="read-btn-b">View more</a>
                               </div>        
                             </div>
                             
@@ -954,7 +953,7 @@ $current_date = date('Y-m-d');
                                 <div class="bord-cla">
                                  <ul style="padding-left:5px;padding-right:5px;">
                                  <?php
-                                    $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+                                    $state = $defaultState;
 									if($_SESSION['Nris_session']['id'] > 0) {
 												$query_Gro = "SELECT fam_groceries.*,rate FROM fam_groceries
 									left join rating_grocery on rating_grocery.grocery_id = fam_groceries.id and login_id = ".$_SESSION['Nris_session']['id']."
@@ -980,7 +979,7 @@ $current_date = date('Y-m-d');
 												
 												?>                                 
                                        <li style="background-color: <?php echo $color;?>">
-												<a href="groceries_view.php?ViewId=<?php echo md5($rs_Gro['id']);?>">
+												<a href="<?php echo $siteUrlConstant;?>groceries_view?ViewId=<?php echo md5($rs_Gro['id']);?>">
 															<?php echo ucwords($rs_Gro['name']);?>
 												</a>
 												<?php 
@@ -999,7 +998,7 @@ $current_date = date('Y-m-d');
                                        <?php } ?>
                                         
                               </ul>    
-                                      <a href="groceries.php?State=<?php echo $state; ?>" class="read-btn-b">View more</a>
+                                      <a href="<?php echo $siteUrlConstant;?>groceries?State=<?php echo $state; ?>" class="read-btn-b">View more</a>
                               </div>  
                  </div>
                             
@@ -1030,14 +1029,14 @@ $current_date = date('Y-m-d');
 												}
 												?>  
                                          <li style="background-color: <?php echo $color;?>">
-										 <a href="restaurant_inner_view.php?ViewId=<?php echo md5($rs['id']);?>">
+										 <a href="<?php echo $siteUrlConstant;?>restaurant_inner_view?ViewId=<?php echo md5($rs['id']);?>">
 										 <?php echo ucwords($rs['rest_name']);?></a></li>
                                     <?php } } else { ?> 
                                    <li>No Records Found.</li>
                                    <?php } ?>
                                         
                               </ul>    
-                                      <a href="restaurants_inner.php?type=Top%20Rated%20Restaurants&code=<?php echo $state;?>" class="read-btn-b">View more</a>
+                                      <a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Top%20Rated%20Restaurants&code=<?php echo $state;?>" class="read-btn-b">View more</a>
                               </div>  
                             </div>
                             
@@ -1049,7 +1048,7 @@ $current_date = date('Y-m-d');
                                  <div class="bord-cla">
                                  <ul style="padding-left:5px;padding-right:5px;">
                                   <?php
-                                  $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+                                  $state = $defaultState;
 									$query_anc = "SELECT * FROM announcement where  state_code='".$state."' and status='Active' order by total_views desc LIMIT 5";
 									$result_anc = mysql_query($query_anc);
 									if(mysql_num_rows($result_anc) > 0) 
@@ -1062,7 +1061,7 @@ $current_date = date('Y-m-d');
 																				$color = '#CCC';	
 																		}
 												?>  
-                                         <li style="background-color: <?php echo $color;?>"><a href="announcement_view.php?ViewId=<?php echo md5($rs_anc['id']);?>"><?php echo ucwords($rs_anc['title']);?></a></li>
+                                         <li style="background-color: <?php echo $color;?>"><a href="<?php echo $siteUrlConstant;?>announcement_view?ViewId=<?php echo md5($rs_anc['id']);?>"><?php echo ucwords($rs_anc['title']);?></a></li>
                                     <?php } } else { ?> 
                                    <li>No Records Found.</li>
                                    <?php } ?>
@@ -1070,7 +1069,7 @@ $current_date = date('Y-m-d');
                                         
                                         
                               </ul>    
-                                      <a href="announcement.php?State=<?php echo $state; ?>" class="read-btn-b">View more</a>
+                                      <a href="<?php echo $siteUrlConstant;?>announcement?State=<?php echo $state; ?>" class="read-btn-b">View more</a>
                               </div>  
                  </div>
                          </div><!-- MIDDLE SECTION ENDS -->
@@ -1115,11 +1114,12 @@ $current_date = date('Y-m-d');
 				if($cnt%3==0){						
 				echo "<tr>";
 				}
+				$siteUrlConstant = $protocol . "://" .str_replace(' ','',$fs_state['state']).'.'.$_SERVER['SERVER_NAME'].'/';
 					?>
 
             <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
-            <a href="state.php?State=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
-            <?php if($fs_state['state_code']==$_SESSION['state']) { 
+            <a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+            <?php if($fs_state['state_code']==$defaultState) { 
 			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
 			else { 	echo $fs_state['state'];  } ?>
             </a>

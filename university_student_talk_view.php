@@ -196,8 +196,8 @@ $rs = mysql_fetch_array($result_main);
 }
 		?>
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>  <a href="university_student_talk.php?universityId=<?php echo $rs['universityId'];?>">Student's Talk</a> >> <?php echo ucfirst($rs['title']); ?></h4>
+	<?php $state = $defaultState;?>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>  <a href="<?php echo $siteUrlConstant;?>university_student_talk?universityId=<?php echo $rs['universityId'];?>">Student's Talk</a> >> <?php echo ucfirst($rs['title']); ?></h4>
 </div>    <br>
 <div style="border:1px solid #999999;width:100%;padding:10px;border-radius:5px;">
 <div style="font-size:18px;font-weight:bold;"><?php echo ucwords($rs['title']); ?></div>
@@ -222,7 +222,7 @@ if(isset($_POST['cmdcomment']))
 		values('".$postId."','".$_SESSION['Nris_session']['id']."','".$a."')";		 
 		$result=mysql_query($query_cmt);
 		echo "<script language='javascript' type='text/javascript'>alert('Your Comment Posted sucsessfully');</script>";		 
-		header("location:university_student_talk_view.php?id='".$postId."'");
+		header("location:university_student_talk_view?id='".$postId."'");
 		
 		/* Sending Notification mail starts here */
 			$query_user = "SELECT * FROM register WHERE id = ".$mId;
@@ -236,7 +236,7 @@ if(isset($_POST['cmdcomment']))
 			$headers = "From: kbknaidu@gmail.com \r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-			$url = BASE_PATH . '/university_student_talk_view.php?id=' . urlencode($postId);
+			$url = $siteUrlConstant . 'university_student_talk_view?id=' . urlencode($postId);
 			
 			$message ='<h1>NRIs.com</h1><h3>Notification Mail</h3><p> Dear '.$name.'<br>Someone has commented to your post.</p>';
 			$message.='<table cellspacing="0" cellpadding="0"> <tr>'; 

@@ -194,7 +194,7 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> <a href="<?php echo SITE_BASE_URL.'/discussion_room_data.php';?>" class="breadcumb_link">Forum</a> >> 
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> <a href="<?php echo $siteUrlConstant.'discussion_room_data';?>" class="breadcumb_link">Forum</a> >> 
 							<?php $query_inner = "select * from forum_sub_categories where md5(sub_id) ='".$_GET['id']."'";  
 							$result_inner = mysql_query($query_inner) ; 
 							$fs = mysql_fetch_array($result_inner) ;
@@ -206,7 +206,7 @@ else
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="create_forum.php?cat=<?php echo $fs['sub_id']; ?>"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>create_forum?cat=<?php echo $fs['sub_id']; ?>"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>    
   <?php } else { ?> 
 <a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Topic Ad&nbsp;<img src="images/arrow.gif"></a>   
 <?php } ?>                               
@@ -228,7 +228,7 @@ if(isset($_SESSION['Nris_session']))
                                                                               <?php
 
 	$tableName="forum_threads";		
-	$targetpage = "threads.php"; 	
+	$targetpage = "threads"; 	
 	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where md5(category_id)='".$_SESSION['cat_id']."' and status='1' order by total_views desc";
@@ -350,7 +350,7 @@ if(isset($_SESSION['Nris_session']))
 				{ ?> 
                                                                          
                          <tr>
-                            <td><a href="forum_view.php?id=<?php echo $rs['id']; ?>" style="color:#000" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#000'"><?php echo ucwords($rs['title']);  ?></a></td>
+                            <td><a href="<?php echo $siteUrlConstant;?>forum_view?id=<?php echo $rs['id']; ?>" style="color:#000" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#000'"><?php echo ucwords($rs['title']);  ?></a></td>
                             <td align="left" style="text-align:left;">
                             	Views : <?php echo $rs['total_views'] ;  ?><br>
                                 Post :

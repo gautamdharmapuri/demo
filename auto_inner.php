@@ -1,18 +1,9 @@
 <?php error_reporting(0);  include"config/connection.php";	  
 $current_date = date('Y-m-d');
 
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
 
 
-	/*echo $_SESSION['state']; */
+	/*echo $defaultState; */
 
 
  ?>
@@ -24,7 +15,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Auto Ads | NRIs</title>
+	<title><?php echo $defaultState;  ?> Auto Ads | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -246,13 +237,13 @@ else
             <div class="col-md-8" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Auto Ads</h4>
+	<?php $state = $defaultState;?>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Auto Ads</h4>
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="auto_create.php?code=<?php echo $_SESSION['state'] ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
-<a href="auto_create.php?code=<?php echo $_SESSION['state'] ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
   <?php } else { ?> 
 <a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
 <a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
@@ -292,14 +283,14 @@ if(isset($_SESSION['Nris_session']))
 			if($min!='' && $max!='' && $cat=='' && $yr=='')
 			{
 				$query1 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.Price between '".$min."' and '".$max."'  and  a.States  IN ('ALL')  order by a.total_views desc";			
-				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.Price between '".$min."' and '".$max."'  and  FIND_IN_SET('".$_SESSION['state']."',  a.States_Details) order by a.total_views desc";									
+				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.Price between '".$min."' and '".$max."'  and  FIND_IN_SET('".$defaultState."',  a.States_Details) order by a.total_views desc";									
 			}
 			
 			
 			if($min!='' && $max!='' && $cat!='' && $yr=='')
 			{
 				$query1 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.Price between '".$min."' and '".$max."'  and '".$cat."' = b.id   and  a.States  IN ('ALL')  order by a.total_views desc";			
-				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.Price between '".$min."' and '".$max."'  and '".$cat."' = b.id  and  FIND_IN_SET('".$_SESSION['state']."',  a.States_Details) order by a.total_views desc";				
+				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.Price between '".$min."' and '".$max."'  and '".$cat."' = b.id  and  FIND_IN_SET('".$defaultState."',  a.States_Details) order by a.total_views desc";				
 
 			}
 			
@@ -307,7 +298,7 @@ if(isset($_SESSION['Nris_session']))
 			if($min!='' && $max!='' && $cat!='' && $yr!='')
 			{
 				$query1 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.Price between '".$min."' and '".$max."'  and '".$cat."' = b.id  and '".$yr."' = a.Year  and  a.States  IN ('ALL')  order by a.total_views desc";			
-				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.Price between '".$min."' and '".$max."'  and '".$cat."' = b.id and '".$yr."' = a.Year and  FIND_IN_SET('".$_SESSION['state']."',  a.States_Details) order by a.total_views desc";									
+				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.Price between '".$min."' and '".$max."'  and '".$cat."' = b.id and '".$yr."' = a.Year and  FIND_IN_SET('".$defaultState."',  a.States_Details) order by a.total_views desc";									
 			
 			}
 			
@@ -315,7 +306,7 @@ if(isset($_SESSION['Nris_session']))
 			if($cat !='' && $yr != '')
 			{
 				$query1 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and '".$cat."' = b.id  and '".$yr."' = a.Year and  a.States  IN ('ALL')  order by a.total_views desc";			
-				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and '".$cat."' = b.id  and '".$yr."' = a.Year and  FIND_IN_SET('".$_SESSION['state']."',  a.States_Details) order by a.total_views desc";						
+				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and '".$cat."' = b.id  and '".$yr."' = a.Year and  FIND_IN_SET('".$defaultState."',  a.States_Details) order by a.total_views desc";						
 				
 			}			
 
@@ -323,14 +314,14 @@ if(isset($_SESSION['Nris_session']))
 			if($cat !='' && $yr == '')
 			{
 				$query1 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and '".$cat."' = b.id and  a.States  IN ('ALL')  order by a.total_views desc";			
-				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and '".$cat."' = b.id  and  FIND_IN_SET('".$_SESSION['state']."',  a.States_Details) order by a.total_views desc";						
+				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and '".$cat."' = b.id  and  FIND_IN_SET('".$defaultState."',  a.States_Details) order by a.total_views desc";						
 				
 			}
 			
 			if($yr !='' && $cat == '')
 			{
 				$query1 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and '".$yr."' = a.Year and  a.States  IN ('ALL')  order by a.total_views desc";			
-				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and '".$cat."' = a.Year and  FIND_IN_SET('".$_SESSION['state']."',  a.States_Details) order by a.total_views desc";						
+				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and '".$cat."' = a.Year and  FIND_IN_SET('".$defaultState."',  a.States_Details) order by a.total_views desc";						
 				
 			}
 			
@@ -338,14 +329,14 @@ if(isset($_SESSION['Nris_session']))
 			if($min=='' && $max=='' && $cat=='' && $yr=='')
 			{
 				$query1 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and  a.States  IN ('ALL')  order by a.total_views desc";
-				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_SESSION['state']."',  a.States_Details)   order by a.total_views desc";				
+				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$defaultState."',  a.States_Details)   order by a.total_views desc";				
 			}
 			
 
 		}
 		else {
-				$query1 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and  a.States  IN ('".$_GET['code']."','ALL')  group by a.id order by a.total_views desc";
-				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$_GET['code']."',  a.States_Details)   order by a.total_views desc";				
+				$query1 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and  a.States  IN ('".$defaultState."','ALL')  group by a.id order by a.total_views desc";
+				$query2 = "select a.*, b.name, c.model_name from post_free_auto a, auto_makes b, auto_models c where a.EndDate >= now() and a.Brand = b.id and a.SubBrand=c.id  and   FIND_IN_SET('".$defaultState."',  a.States_Details)   order by a.total_views desc";				
 					
 		}
 		
@@ -362,12 +353,12 @@ if(isset($_SESSION['Nris_session']))
 								<img src="images/image-icon.png">
 							<?php } ?>
 							
-							<a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"
+							<a href="<?php echo $siteUrlConstant;?>auto_inner_view?ViewId=<?php echo md5($rs['id']);?>"
 							onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 							<?php echo ucwords($rs['TitleAD']);?></a></td>
-                <td><a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
-                <td><a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['model_name']);?></a></td>
-                <td><a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+                <td><a href="<?php echo $siteUrlConstant;?>auto_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
+                <td><a href="<?php echo $siteUrlConstant;?>auto_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['model_name']);?></a></td>
+                <td><a href="<?php echo $siteUrlConstant;?>auto_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
 				<?php
 					$query1 = "SELECT * FROM cities WHERE id = '".$rs['City']."'";
 					$result_city = mysql_query($query1);
@@ -375,7 +366,7 @@ if(isset($_SESSION['Nris_session']))
 					echo ucwords($result_city2['city']);
 				?>
 				</a></td>
-                <td><a href="auto_inner_view.php?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
+                <td><a href="<?php echo $siteUrlConstant;?>auto_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php  echo $rs['total_views'];?></a></td>
                     </tr>
 			<?php }   
 			

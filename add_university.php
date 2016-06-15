@@ -1,5 +1,4 @@
 <?php error_reporting(0);  include"config/connection.php";	   
-//echo $_SESSION['state'];
 ?>
 
 
@@ -12,7 +11,7 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'] ?> - Add University | NRIs</title>
+	<title><?php echo $defaultState ?> - Add University | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -157,7 +156,7 @@ if(isset($_POST['cmdSubmit'])) {
 	$headers = "From: ".$email_id." \r\n";
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
-	$url = 'university_student_talk.php?universityId='.$universityId;
+	$url = $siteUrlConstant.'university_student_talk?universityId='.$universityId;
 	$message ='<h1>NRIs.com</h1><h3>University Added</h3>
 				<p>
 				Name : '.$uni_name.'
@@ -210,7 +209,8 @@ if(isset($_POST['cmdSubmit'])) {
    				
 
 <div class="widget-temple">
-				<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Student's Talk >> Add University</h4>
+				<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a>
+				>> Student's Talk >> Add University</h4>
 </div><br>
 
 

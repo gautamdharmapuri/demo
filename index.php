@@ -7,7 +7,8 @@ $current_date = date('Y-m-d');
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
 <head>
 <script type="text/javascript">
-		var site_url = '<?php echo SITE_BASE_URL.'/';?>';
+		var site_url = '<?php echo $siteUrlConstant;?>';
+		var map_url = '<?php echo $_SERVER['SERVER_NAME'].'/';?>';
 	</script>
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
@@ -2206,13 +2207,13 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 												  if(mysql_num_rows($result_Events_cul) > 0) {
 												  while($rs_event1=mysql_fetch_array($result_Events_cul))
 												  {?>   
-												  <p><a href="national_events.php?ViewId=<?php echo ucfirst($eventCat);?>"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
+												  <p><a href="<?php echo $siteUrlConstant;?>national_events?ViewId=<?php echo ucfirst($eventCat);?>"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
 												  <?php } } else {  ?>
 												  <p><h4>No Data Found.</h4></p>
 												  <?php } ?>
 												
 											</div>    
-											<a href="national_events.php?ViewId=Cultural" class="read-btn-tab">View more</a>
+											<a href="<?php echo $siteUrlConstant;?>national_events?ViewId=Cultural" class="read-btn-tab">View more</a>
 										</li>
                                       <?php } ?>
                                   </ul> <!-- cd-tabs-content ends -->
@@ -2228,8 +2229,8 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
            
            <!-- BUTTON COLUMN FIRST -->
            		<div class="col-md-4 full-wid">
-                    <div class="btn-1"><a href="temples.php">Famous Temples<br> rated by NRI's</a></div>
-                    <div class="btn-1"><a href="restaurants.php">Famous Restaurants<br> rated by NRI's</a></div>
+                    <div class="btn-1"><a href="<?php echo $siteUrlConstant;?>temples">Famous Temples<br> rated by NRI's</a></div>
+                    <div class="btn-1"><a href="<?php echo $siteUrlConstant;?>restaurants">Famous Restaurants<br> rated by NRI's</a></div>
                 </div>
           <!-- BUTTON COLUMN SECOND -->
            		<div class="col-md-4 full-wid">
@@ -2240,8 +2241,8 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
                 </div>
           <!-- BUTTON COLUMN THIRD -->
            		<div class="col-md-4 full-wid">
-                    <div class="btn-1"><a href="casinos.php">Famous Casinos<br> rated by NRI's</a></div>
-                    <div class="btn-1"><a href="pubs.php">Famous Pubs/Bars<br> rated by NRI's</a></div>
+                    <div class="btn-1"><a href="<?php echo $siteUrlConstant;?>casinos">Famous Casinos<br> rated by NRI's</a></div>
+                    <div class="btn-1"><a href="<?php echo $siteUrlConstant;?>pubs">Famous Pubs/Bars<br> rated by NRI's</a></div>
                 </div>      
                       
                
@@ -2501,12 +2502,12 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 																while($rs_SAP=mysql_fetch_array($result_SAP))
 																{?>												
                                                       
-                                                          <p><a href="national_training.php?ViewId=<?php echo $rsfs['id'] ; ?>"><?php echo date("d M ",strtotime($rs_SAP['date'])); ?><span>&nbsp; <?php echo ucwords($rs_SAP['title']);?></span></a></p>
+                                                          <p><a href="<?php echo $siteUrlConstant;?>national_training?ViewId=<?php echo $rsfs['id'] ; ?>"><?php echo date("d M ",strtotime($rs_SAP['date'])); ?><span>&nbsp; <?php echo ucwords($rs_SAP['title']);?></span></a></p>
                                                         <?php } } else {  ?>
                                                         <p><h4>No Data Found.</h4></p>
                                                         <?php } ?>
                                                       </div>    
-                                                      <a href="national_training.php?ViewId=<?php echo $rsfs['id'] ; ?>" class="read-btn-tab">View more</a>
+                                                      <a href="<?php echo $siteUrlConstant;?>national_training?ViewId=<?php echo $rsfs['id'] ; ?>" class="read-btn-tab">View more</a>
                                                   </li>
                                                 <?php  $edudata++ ; } ?>  
                                                   
@@ -2538,7 +2539,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 																				$color = '#CCC';	
 																		} 
 												?>		
-                                        <li style="background-color: <?php echo $color;?> !important;border: 1px solid white;"><a href="grocery_view.php?ViewId=<?php echo md5($fs_gro['id']);?>" ><?php echo ucwords($fs_gro['name']);?></a></li>
+                                        <li style="background-color: <?php echo $color;?> !important;border: 1px solid white;"><a href="<?php echo $siteUrlConstant;?>grocery_view?ViewId=<?php echo md5($fs_gro['id']);?>" ><?php echo ucwords($fs_gro['name']);?></a></li>
                                         <?php } } else {  ?>
                                                         <li><h4>No Data Found.</h4></li>
                                                         <?php } ?>
@@ -2603,7 +2604,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
 																				$color = '#CCC';	
 																		} 
 												?>	
-                                        <li style="background-color: <?php echo $color;?> !important;border: 1px solid white;"><a href="discussion_room_view.php?id=<?php echo $fs_gro['id'];?>" ><?php echo ucwords($fs_gro['title']);?></a></li>
+                                        <li style="background-color: <?php echo $color;?> !important;border: 1px solid white;"><a href="<?php echo $siteUrlConstant;?>discussion_room_view?id=<?php echo $fs_gro['id'];?>" ><?php echo ucwords($fs_gro['title']);?></a></li>
                                         <?php } } else {  ?>
                                                         <li><h4>No Data Found.</h4></li>
                                                         <?php } ?>
@@ -2855,7 +2856,7 @@ u/N1cI7/FWAAwuL1LpbcIO8AAAAASUVORK5CYII=" transform="matrix(1 0 0 1 0 1)">
       minLength: 1,
       select: function( event, ui ) {
 			//$('#State').val(ui.item.id);
-			window.location.href = site_url+'state.php?State='+ui.item.id;
+			window.location.href = site_url+'state?State='+ui.item.id;
       }
     });
 		

@@ -105,19 +105,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     
 		<?php include_once('stock_block.php');?>
 	
-	
-
-     
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+	<?php include_once('top_container_links.php');?>
      
     
 <!-- Section-1 WRAP START-->	
@@ -145,7 +133,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
 
                        <br><h4 class="myheadline4">
-                       <a href="index.php" style="color:#0033FF;">Home</a> >> <a href="national_training.php?ViewId=3">National Training & Placement</a> >> 
+                       <a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> <a href="<?php echo $siteUrlConstant;?>national_training?ViewId=3">National Training & Placement</a> >> 
 					   <?php 
 												   
 					   

@@ -1,6 +1,6 @@
 <?php
 session_start();
-if(!isset($_SESSION['google_data'])):header("Location:index.php");endif;
+if(!isset($_SESSION['google_data'])):header("Location:".$siteUrlConstant);endif;
 ?>
 <html>
 <head>

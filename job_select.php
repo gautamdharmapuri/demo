@@ -1,14 +1,8 @@
-<?php error_reporting(0);   session_start();
+<?php error_reporting(0);
 	  include"config/connection.php";	  
 	 
-/*			echo $_SESSION['USNRIs_session']['username'];
-			echo $_SESSION['USNRIs_session']['category'];			*/
-
-
 	$unm=$_GET['q'];
 	$query_cities="select * from job_role where job_cat_id='".$unm."'";		
-	/*echo $query_cities;
-	exit;*/
 	$result_citites=mysql_query($query_cities);
 		
 		echo '<select class="form-control select" name="SubBrand" id="SubBrand" tabindex="4">';

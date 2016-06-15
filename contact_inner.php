@@ -1,5 +1,4 @@
-<?php error_reporting(0);  include"config/connection.php";	   
-//echo $_SESSION['state'];
+<?php error_reporting(0);  include"config/connection.php";
 ?>
 
 
@@ -199,7 +198,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
    				
 
 <div class="widget-temple">
-				<h4><a href="state.php" style="color:#0033FF;">Home</a>  >>   Contact Us </h4>
+				<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a>  >>   Contact Us </h4>
 </div><br>
 
 

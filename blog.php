@@ -74,8 +74,11 @@
 <div class="loader"><div class="loader_html"></div></div>
 
 
-
-	<?php include "config/menu.php" ;  ?>
+	<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<?php include "config/menu_inner_state.php" ;  ?>
+	<?php } else { ?>
+		<?php include "config/menu.php" ;  ?>
+	<?php } ?>
 	
 	<div class="clearfix"></div>
 
@@ -84,17 +87,8 @@
 	
 	
 
-     
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Rstaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
+     <?php include_once('top_container_links.php');?>
+
      
     
 <!-- Section-1 WRAP START-->	
@@ -122,7 +116,11 @@
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-			<h4><a href="index.php" style="color:#0033FF;">Home</a> >> Blog</h4>
+	<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<h4><a href="<?php echo $siteUrlConstant;?>/state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> Blog</h4>
+	<?php } else { ?>
+		<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Blog</h4>
+	<?php } ?>
 </div><br>
 
 
@@ -132,7 +130,7 @@
 <?php
 
 	$tableName="blog_categories";		
-	$targetpage = "blog.php"; 	
+	$targetpage = "blog"; 	
 	$limit = 2; 
 	
 	
@@ -298,11 +296,11 @@
 					}
 		            ?>
 		            <div class="like_lnks_cnt">
-		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
+		                <a class='like_dislike_lnk _like <?php echo $like_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=like&like_type='.$type.'' ?>">
 						<button type="button" class="btn btn-default btn-sm">
 							<span class="glyphicon glyphicon-thumbs-up"></span> <span id="likeCnt"><?php echo $likeQueryRes;?></span>
 						</button></a>
-		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo SITE_BASE_URL.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
+		                <a class='like_dislike_lnk _dislike <?php echo $disliked_cls ?>' href="<?php echo $siteUrlConstant.'/like_dislike.php?assoc_id='.$assoc_id.'&button_type=dislike&like_type='.$type.'' ?>" style="margin : 0 10px">
 							<button type="button" class="btn btn-default btn-sm">
 								<span class="glyphicon glyphicon-thumbs-down"></span> <span id="unlikeCnt"><?php echo $dislikeQueryRes;?></span>
 							</button>
@@ -322,7 +320,7 @@
 						</a>
 		            </div>
 				<?php } ?>
-                <span style="float:right;"><a href="blog_details.php?viewId=<?php echo md5($rs['id']); ?>">Read More...</a></span>
+                <span style="float:right;"><a href="<?php echo $siteUrlConstant;?>blog_details?viewId=<?php echo md5($rs['id']); ?>">Read More...</a></span>
                 <br>                        
             </div>
         </div>

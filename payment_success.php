@@ -8,7 +8,7 @@ $action = $_GET['status'];
 $id = $_GET['id'];
 $state = $_GET['state'];
 
-$redirectUrl = $type.'_inner.php?code='.$state;
+$redirectUrl = $type.'_inner?code='.$state;
 
 if($action == 'success') {
     $isPayed = 'Y';

@@ -71,7 +71,7 @@ include_once("inc/twitteroauth.php");
 		$oauth_token_secret = $_SESSION['request_vars']['oauth_token_secret'];
 	
 		//Show welcome message
-		echo '<div class="welcome_txt">Welcome <strong>'.$screen_name.'</strong> (Twitter ID : '.$twitter_id.'). <a href="logout.php?logout">Logout</a>!</div>';
+		echo '<div class="welcome_txt">Welcome <strong>'.$screen_name.'</strong> (Twitter ID : '.$twitter_id.'). <a href="logout?logout">Logout</a>!</div>';
 		$connection = new TwitterOAuth(CONSUMER_KEY, CONSUMER_SECRET, $oauth_token, $oauth_token_secret);
 		
 		//If user wants to tweet using form.
@@ -79,7 +79,7 @@ include_once("inc/twitteroauth.php");
 		{
 			//Post text to twitter
 			$my_update = $connection->post('statuses/update', array('status' => $_POST["updateme"]));
-			die('<script type="text/javascript">window.top.location="index.php"</script>'); //redirect back to index.php
+			die('<script type="text/javascript">window.top.location="'.$siteUrlConstant.'"</script>'); //redirect back to index.php
 		}
 		
 		//show tweet form
@@ -105,7 +105,7 @@ include_once("inc/twitteroauth.php");
 			
 	}else{
 		//Display login button
-		echo '<a href="process.php"><img src="images/sign-in-with-twitter.png" width="151" height="24" border="0" /></a>';
+		echo '<a href="process"><img src="images/sign-in-with-twitter.png" width="151" height="24" border="0" /></a>';
 	}
 ?>  
 </body>

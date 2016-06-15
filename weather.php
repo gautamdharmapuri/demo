@@ -27,8 +27,6 @@
                     loadWeather(pos.latitude + ',' + pos.longitude); //load weather using your lat/lng coordinates
                 });
 
-                //loadWeather(pos.latitude + ',' + pos.longitude); //load weather using your lat/lng coordinates
-
                 function loadWeather(location, woeid) {
                     jQuery.simpleWeather({
                         location: location,

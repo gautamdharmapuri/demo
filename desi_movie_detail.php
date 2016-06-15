@@ -10,10 +10,6 @@ else
 	$_SESSION['ViewId']=$_SESSION['ViewId'];
 	
 }
-
-	/*echo $_SESSION['state'];
-	echo $_SESSION['type'];		*/
-
 $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
  ?>
 <!DOCTYPE html>
@@ -24,7 +20,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Desi movie details | NRIs</title>
+	<title><?php echo $defaultState;  ?> Desi movie details | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -166,10 +162,10 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 					    ?>
                         
 <div class="widget-temple">
-	<?php $state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+	<?php $state = $defaultState;
 		$type = urlencode($rs['rest_type']);
 	?>
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >>
 				<?php echo ucwords($rs['name']); ?></h4>
 </div>    <br>      
 

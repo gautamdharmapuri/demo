@@ -1,22 +1,4 @@
 <?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
-
-	/*echo $_SESSION['state'];
-	echo $_SESSION['type'];		*/
-
-
  ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -26,7 +8,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Casinos Near Me | NRIs</title>
+	<title><?php echo $defaultState;  ?> Casinos Near Me | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -204,7 +186,7 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Casinos Near Me</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Casinos Near Me</h4>
 </div>    <br>
 
 <div style="width: 100%; height: 500px; margin: 0 0 20px 0;" id="map_canvas"></div>
@@ -216,10 +198,10 @@ else
 <?php
 
 $tableName="fam_casinos";		
-	$targetpage = "casinos_near.php"; 	
+	$targetpage = "casinos_near"; 	
 	$limit = 10; 
 	
-	$query = "SELECT COUNT(id) as num FROM $tableName where state_code='".$_SESSION['state']."' order by total_views desc";
+	$query = "SELECT COUNT(id) as num FROM $tableName where state_code='".$defaultState."' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -230,10 +212,10 @@ $tableName="fam_casinos";
 	}else{
 		$start = 0;	
 		}	
-	$state = ($_GET['State'] != '') ? $_GET['State'] : (($_GET['code'] != '') ? $_GET['code'] : $_SESSION['state']);
+	$state = $defaultState;
     // Get page data
 	$query1 = "SELECT $tableName.*,cities.city FROM $tableName,cities
-				where $tableName.state_code='".$state."'
+				where $tableName.state_code='".$defaultState."'
 				AND cities.id = $tableName.city_id
 				order by $tableName.id desc LIMIT 20";
 				//echo $query1;exit;

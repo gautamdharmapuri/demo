@@ -35,26 +35,26 @@ if (!$con) {
 
 
 
-if (!defined('SITE_BASE_URL')) {
+if (!defined('$siteUrlConstant')) {
 	if(isset($_SERVER['HTTPS'])){
         $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
     }
     else{
         $protocol = 'http';
     }
-	$site_url = $protocol . "://" .$_SERVER['SERVER_NAME'];
+	$siteUrlConstant = $protocol . "://" .$_SERVER['SERVER_NAME'].'/';
+	define('SITE_BASE_URL', $siteUrlConstant);
+	
 	if ($_SERVER['SERVER_NAME'] == 'localhost') {
-		$site_url = $site_url. '/demo';
+		$siteUrlConstant = $siteUrlConstant. '/demo';
 	}
-
-	define('SITE_BASE_URL', $site_url);
 }
 if (!defined('BASE_PATH')) {
-	DEFINE('BASE_PATH', $site_url);
+	DEFINE('BASE_PATH', $siteUrlConstant);
 }
 // echo $_SERVER['_SERVERR_NAME'] . $_SERVER['REQUEST_URI'];
 if (!defined('AFTER_LOGIN_REDIRECT_URL')) {
-	define('AFTER_LOGIN_REDIRECT_URL', SITE_BASE_URL);
+	define('AFTER_LOGIN_REDIRECT_URL', $siteUrlConstant);
 }
 
 function createLoginSession($data = array()) {
@@ -81,7 +81,7 @@ if(($currentTime-$loggedInTime) > 15*60) {
 	unset($_SESSION['ViewId']);		
 	
 	echo "<script>alert('your session has timed out');</script>";
-	header('location:index.php');
+	header('location:'.$siteUrlConstant);
 	exit;
 }
 }

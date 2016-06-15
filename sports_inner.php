@@ -1,17 +1,4 @@
 <?php error_reporting(0);  include"config/connection.php";	  
-
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['State'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
 if(isset($_GET['type']))
 {
 	$_SESSION['type']=$_GET['type'];
@@ -20,13 +7,7 @@ else
 {
 	$_SESSION['type']=$_SESSION['type'];
 	
-}
-
-	/*echo $_SESSION['state'];
-	echo $_SESSION['type'];		*/
-
-
- ?>
+}?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -35,7 +16,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Famous Sports | NRIs</title>
+	<title><?php echo $defaultState;  ?> Famous Sports | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -212,7 +193,7 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Sports</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> Sports</h4>
 </div>    <br>
                      <!--  <br><h5 id="classifieds">Home >> Sports</h5>-->
 
@@ -233,10 +214,10 @@ else
                                                                               <?php
 
 	$tableName="fam_sports";		
-	$targetpage = "sports_inner.php"; 	
+	$targetpage = "sports_inner"; 	
 	$limit = 10; 
 	
-	$query = "SELECT COUNT(*) as num FROM $tableName where sport_type='".$_SESSION['type']."' and state_code='".$_SESSION['state']."' order by total_views desc";
+	$query = "SELECT COUNT(*) as num FROM $tableName where sport_type='".$_SESSION['type']."' and state_code='".$defaultState."' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -251,7 +232,7 @@ else
     // Get page data
 	$query1 = "SELECT $tableName.*,rate FROM $tableName
 	left join rating_sports on rating_sports.sport_id = $tableName.id and login_id = ".$_SESSION['Nris_session']['id']."
-	where sport_type='".$_SESSION['type']."' and state_code='".$_SESSION['state']."' order by total_views desc LIMIT $start, $limit";
+	where sport_type='".$_SESSION['type']."' and state_code='".$defaultState."' order by total_views desc LIMIT $start, $limit";
 	$result = mysql_query($query1);
 	
 	// Initial page num setup
@@ -356,11 +337,11 @@ else
 				while($rs=mysql_fetch_array($result))
 				{ ?> 
                                                                             <tr>
-                                                                                <td style="padding:5px;"><a href="sports_inner_view.php?ViewId=<?php echo md5($rs['id']);?>">
+                                                                                <td style="padding:5px;"><a href="<?php echo $siteUrlConstant;?>sports_inner_view?ViewId=<?php echo md5($rs['id']);?>">
                                                                                 <img src="admin/uploads/sports/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
-                                                                                <td style="text-align:left;"><a href="sports_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
+                                                                                <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>sports_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                                                                                 <td style="text-align:left;">
-                                                                                <a href="sports_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
+                                                                                <a href="<?php echo $siteUrlConstant;?>sports_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
 																				<?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
 															$rcity = mysql_fetch_array($query_city);
 															echo ucwords($rcity['city']);  ?></a>
@@ -379,7 +360,7 @@ else
                         ?>
 																					
 																				</td>
-                                                                                <td><a href="sports_inner_view.php?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
+                                                                                <td><a href="<?php echo $siteUrlConstant;?>sports_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
                                                                             </tr>
                                                                             <?php } } else { ?>
                                                                             <tr>

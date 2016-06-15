@@ -1,17 +1,5 @@
 <?php error_reporting(0);  include"config/connection.php";	  
 
-
-if(isset($_GET['State']))
-{
-	$_SESSION['state']=$_GET['code'];
-}
-else
-{
-	$_SESSION['state']=$_SESSION['state'];
-	
-}
-
-
 if(isset($_GET['type']))
 {
 	$_SESSION['type']=$_GET['type'];
@@ -20,13 +8,7 @@ else
 {
 	$_SESSION['type']=$_SESSION['type'];
 	
-}
-
-	/*echo $_SESSION['state'];
-	echo $_SESSION['type'];		*/
-
-
- ?>
+} ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -35,7 +17,7 @@ else
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $_SESSION['state'];  ?> Famous Temples | NRIs</title>
+	<title><?php echo $defaultState;  ?> Famous Temples | NRIs</title>
 	<meta name="description" content="NRIs">
 	<meta name="author" content="NRIs">
 	
@@ -213,7 +195,7 @@ else
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> <?php echo $_SESSION['state'];  ?> Temples</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> <?php echo $defaultState;  ?> Temples</h4>
 </div>    <br>
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
 
@@ -232,11 +214,11 @@ else
 <?php
 
 	$tableName="fam_temples";		
-	$targetpage = "temples_inner.php"; 	
+	$targetpage = "temples_inner"; 	
 	$limit = 10; 
 	
-//	$query = "SELECT COUNT(*) as num FROM $tableName where temple_type='".$_SESSION['type']."' and state_code='".$_SESSION['state']."' order by total_views desc";
-	$query = "SELECT DISTINCT  * FROM fam_temples LEFT OUTER JOIN rating_temple ON fam_temples.id = rating_temple.temple_id where  fam_temples.temple_type='".$_SESSION['type']."' and fam_temples.state_code='".$_SESSION['state']."' GROUP BY(fam_temples.id) order by rating_temple.rate desc, fam_temples.total_views desc";
+//	$query = "SELECT COUNT(*) as num FROM $tableName where temple_type='".$_SESSION['type']."' and state_code='".$defaultState."' order by total_views desc";
+	$query = "SELECT DISTINCT  * FROM fam_temples LEFT OUTER JOIN rating_temple ON fam_temples.id = rating_temple.temple_id where  fam_temples.temple_type='".$_SESSION['type']."' and fam_temples.state_code='".$defaultState."' GROUP BY(fam_temples.id) order by rating_temple.rate desc, fam_temples.total_views desc";
 	$total_pages = mysql_query($query);
 	$total_pages = mysql_num_rows($total_pages);
 	
@@ -249,8 +231,8 @@ else
 		}	
 	
     // Get page data
-//	$query1 = "SELECT * FROM $tableName where temple_type='".$_SESSION['type']."' and state_code='".$_SESSION['state']."' order by total_views desc LIMIT $start, $limit";
-	$query1 = "SELECT DISTINCT  * FROM fam_temples LEFT OUTER JOIN rating_temple ON fam_temples.id = rating_temple.temple_id where fam_temples.temple_type='".$_SESSION['type']."' and fam_temples.state_code='".$_SESSION['state']."' GROUP BY(fam_temples.id) order by rating_temple.rate desc, fam_temples.total_views desc   LIMIT $start, $limit";
+//	$query1 = "SELECT * FROM $tableName where temple_type='".$_SESSION['type']."' and state_code='".$defaultState."' order by total_views desc LIMIT $start, $limit";
+	$query1 = "SELECT DISTINCT  * FROM fam_temples LEFT OUTER JOIN rating_temple ON fam_temples.id = rating_temple.temple_id where fam_temples.temple_type='".$_SESSION['type']."' and fam_temples.state_code='".$defaultState."' GROUP BY(fam_temples.id) order by rating_temple.rate desc, fam_temples.total_views desc   LIMIT $start, $limit";
 	
 	$result = mysql_query($query1);
 	
@@ -356,11 +338,11 @@ else
 				while($rs=mysql_fetch_array($result))
 				{ ?> 
                                                                             <tr>
-                                                                                <td style="padding:5px;"><a href="temple_inner_view.php?ViewId=<?php echo md5($rs[0]);?>">
+                                                                                <td style="padding:5px;"><a href="<?php echo $siteUrlConstant;?>temple_inner_view?ViewId=<?php echo md5($rs[0]);?>">
                                                                                 <img src="admin/uploads/temples/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
-                                                                                <td style="text-align:left;"><a href="temple_inner_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['temple_name']);?></a></td>
+                                                                                <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>temple_inner_view?ViewId=<?php echo md5($rs[0]);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['temple_name']);?></a></td>
                                                                                 <td style="text-align:left;">
-                                                                                <a href="temple_inner_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
+                                                                                <a href="<?php echo $siteUrlConstant;?>temple_inner_view?ViewId=<?php echo md5($rs[0]);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
 																				<?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");
 															$rcity = mysql_fetch_array($query_city);
 															echo ucwords($rcity['city']);  ?></a>
@@ -376,7 +358,7 @@ else
                                                                             
                                                                             ?>  </td>
                                                                                 <td>
-                                                                                <a href="temple_inner_view.php?ViewId=<?php echo md5($rs[0]);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
+                                                                                <a href="<?php echo $siteUrlConstant;?>temple_inner_view?ViewId=<?php echo md5($rs[0]);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
 																				<?php echo $rs['total_views'];?></a></td>
                                                                             </tr>
                                                                             <?php } } else { ?>

@@ -184,17 +184,7 @@ font-weight:bold;
     <?php include_once('stock_block.php');?>
 
      
-     
-    
-    <div class="container">
-    <div class="row row-centered">
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="temples.php" >Famous Temples rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="restaurants.php" >Famous Restaurants rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="casinos.php" >Famous Casino rated by nri's</a></div></div>
-        <div class="col-xs-3 col-centered"><div class="famous_btn"><a href="pubs.php" >Famous Pubs/Bars rated by NRI's</a></div></div>
-    </div>
-</div>
-     
+     <?php include_once('top_container_links.php');?>
     
 <!-- Section-1 WRAP START-->	
 <div class="section-1-wrap" style="min-height:600px;">	
@@ -212,9 +202,9 @@ font-weight:bold;
                                                  <ul style="padding-left:5px;padding-right:5px;height:100px;">
                                                       
                                                        
-                                                        <li><img src="img/list.jpg">&nbsp;<a href="profile.php">My Profile</a></li>
-                                                        <li><img src="img/list.jpg">&nbsp;<a href="myads.php">My Ads</a></li>
-                                                        <li style="border-bottom:none;"><img src="img/list.jpg">&nbsp;<a href="profile.php?action=edit">Edit Profile</a></li>                                                                                                                
+                                                        <li><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile">My Profile</a></li>
+                                                        <li><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>myads">My Ads</a></li>
+                                                        <li style="border-bottom:none;"><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile?action=edit">Edit Profile</a></li>                                                                                                                
                                                       
                                                         
                                               </ul>                                                         

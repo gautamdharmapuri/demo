@@ -24,7 +24,7 @@ if (session_id() != '' && is_array($_SESSION['Nris_session'])) {
 }
 $today=date('Y-m-d',strtotime(date('Y-m-d')));  
 $last_id = $_GET['id'];
-$state = ($_GET['State'] != '') ? $_GET['State'] : '';
+$state = $defaultState;
 $chat_topic = ($_GET['chat_topic'] != '') ? $_GET['chat_topic'] : 'General';
 
 if($_GET['isInitial'] == "true") {
@@ -40,13 +40,6 @@ if($_GET['isInitial'] == "true") {
 }
 $rows=mysql_num_rows($query);
 if($rows) {
-    /*$row=mysql_fetch_array($query);
-    $username=$row['user_name'];
-    $id=$row['id'];
-    $msg=stripslashes($row['msg']);
-    $msg_time = date('h:i A M d',strtotime($row['created']));
-        $data['posts']=array('id'=>$id,'user'=>$username,'msg'=>$msg,'msg_time'=>$msg_time);
-	echo json_encode($data);*/
         while ($row = mysql_fetch_array($query)) {
             $username = $row['user_name'];
             $id = $row['id'];

@@ -333,12 +333,12 @@ else
             <div class="col-md-10" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php" style="color:#0033FF;">Home</a> >> Blog Deatils</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> Blog Deatils</h4>
 </div>    
 <?php
 
 	$tableName="blog_categories";		
-	$targetpage = "stae_blog_category.php"; 	
+	$targetpage = "stae_blog_category"; 	
 	$limit = 2; 
 	
 	
@@ -470,13 +470,13 @@ else
 
 <?php 
 if (strpos($rs['image'],'.') !== false) {  ?>
-		<div class="featured-image"><a href="state_blog_details.php?viewId=<?php echo md5($rs['id']); ?>">
+		<div class="featured-image"><a href="<?php echo $siteUrlConstant;?>state_blog_details?viewId=<?php echo md5($rs['id']); ?>">
         <img alt="" src="admin/uploads/blog/<?php echo $rs['image']; ?>" style="width:100%;" class="imgframe"></a> </div>
 <?php } ?>
 
 <p style="text-align:justify;margin:10px 0 90px 0;color:#666666;">
  <?php echo substr($rs['blog_desc'],0,350)."..."; ?>
- <span style="float:right;"><a href="state_blog_details.php?viewId=<?php echo md5($rs['id']); ?>" onMouseOver="this.style.color='Red'" onMouseOut="this.style.color='Blue'" style="color:#0033FF;">Read More...</a></span>
+ <span style="float:right;"><a href="<?php echo $siteUrlConstant;?>state_blog_details?viewId=<?php echo md5($rs['id']); ?>" onMouseOver="this.style.color='Red'" onMouseOut="this.style.color='Blue'" style="color:#0033FF;">Read More...</a></span>
 </p>
 
 
@@ -509,7 +509,7 @@ if (strpos($rs['image'],'.') !== false) {  ?>
 					   	$query_cat = "select * from blog_categories order by category_name" ;
 						$result_cat = mysql_query($query_cat);
 						while($fs = mysql_fetch_array($result_cat)){ ?>
-                        <li><a href="stae_blog_category.php?viewId=<?php echo md5($fs['id']); ?>" style="list-style:none;"><?php echo $fs['category_name']; ?></a></li>			
+                        <li><a href="<?php echo $siteUrlConstant;?>stae_blog_category?viewId=<?php echo md5($fs['id']); ?>" style="list-style:none;"><?php echo $fs['category_name']; ?></a></li>			
                        <?php } ?> 
 
                     </ul>

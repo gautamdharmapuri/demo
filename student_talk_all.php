@@ -185,13 +185,13 @@
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<h4><a href="state.php?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> NRI's Talk</h4>
+	<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> NRI's Talk</h4>
                              
                              
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="add_university_student_talk.php?universityId=<?php echo $_GET['universityId'];?>"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>add_university_student_talk?universityId=<?php echo $_GET['universityId'];?>"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>    
   <?php } else { ?> 
 <a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Topic &nbsp;<img src="images/arrow.gif"></a>   
 <?php } ?>                               
@@ -219,7 +219,7 @@ if(isset($_SESSION['Nris_session']))
                                                                               <?php
 
 	$tableName="university_student_talk";		
-	$targetpage = "student_talk_all.php?universityId=".$_GET['universityId']."&type=".$_GET['type'].""; 	
+	$targetpage = "student_talk_all?universityId=".$_GET['universityId']."&type=".$_GET['type'].""; 	
 	$limit = 10; 
 	
 	$query = "SELECT COUNT(*) as num FROM $tableName where state_code = '".$state."' AND type='".$_GET['type']."'
@@ -345,7 +345,7 @@ if(isset($_SESSION['Nris_session']))
 				{ ?> 
                          <tr>
                             <td>
-								<a href="university_student_talk_view.php?id=<?php echo $rs['id']; ?>" style="color:#000"
+								<a href="<?php echo $siteUrlConstant;?>university_student_talk_view?id=<?php echo $rs['id']; ?>" style="color:#000"
 								onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#000'">
 								<?php echo ucwords($rs['title']);  ?>
 								</a>
