@@ -230,9 +230,16 @@ else
 		}	
 	
     // Get page data
-	$query1 = "SELECT $tableName.*,rate FROM $tableName
-	left join rating_sports on rating_sports.sport_id = $tableName.id and login_id = ".$_SESSION['Nris_session']['id']."
-	where sport_type='".$_SESSION['type']."' and state_code='".$defaultState."' order by total_views desc LIMIT $start, $limit";
+	if($_SESSION['Nris_session']['id'] > 0) {
+		$query1 = "SELECT $tableName.*,rate FROM $tableName
+		left join rating_sports on rating_sports.sport_id = $tableName.id and login_id = ".$_SESSION['Nris_session']['id']."
+		where sport_type='".$_SESSION['type']."' and state_code='".$defaultState."' order by total_views desc LIMIT $start, $limit";	
+	} else {
+		$query1 = "SELECT $tableName.*,rate FROM $tableName
+		left join rating_sports on rating_sports.sport_id = $tableName.id
+		where sport_type='".$_SESSION['type']."' and state_code='".$defaultState."' order by total_views desc LIMIT $start, $limit";	
+	}
+	
 	$result = mysql_query($query1);
 	
 	// Initial page num setup

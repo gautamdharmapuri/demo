@@ -1,5 +1,20 @@
 <?php error_reporting(0);  include"config/connection.php";	   
 $current_date = date('Y-m-d');
+
+$serverName = $_SERVER['SERVER_NAME'];
+$originalName = '.nris.com';
+
+$pos = strpos($serverName, $originalName);
+if ($pos !== false) {
+		$selectedState = str_replace($originalName,'',$serverName);
+		
+		$queryState = "select state_code from states where state = '".$selectedState."'";
+		$stateRes = mysql_query($queryState);
+		$stateRes = mysql_fetch_array($stateRes);
+		header('Location: /state?State='.$stateRes['state_code']);
+		exit;		
+}
+
 ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
