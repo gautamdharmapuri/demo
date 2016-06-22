@@ -11,7 +11,7 @@ if ($pos !== false) {
 		$queryState = "select state_code from states where state = '".$selectedState."'";
 		$stateRes = mysql_query($queryState);
 		$stateRes = mysql_fetch_array($stateRes);
-		header('Location: /state?State='.$stateRes['state_code']);
+		echo "<script>window.location.href='/state?State=".$stateRes['state_code']."';</script>";
 		exit;		
 }
 
