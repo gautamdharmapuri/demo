@@ -74,7 +74,7 @@
 
 
 
-	<?php if(isset($_GET['State']) && $_GET['State'] != '') { ?>
+	<?php if(isset($defaultState) && $defaultState != '') { ?>
 		<?php include "config/menu_inner_state.php" ;  ?>
 	<?php } else { ?>
 		<?php include "config/menu_home.php" ;  ?>
@@ -117,11 +117,7 @@
 
 <div class="widget-temple">
 							<h4>
-								<?php if(isset($defaultState) && $defaultState != '') { ?>
-									<a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a>
-								<?php } else { ?>
-									<a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a>
-								<?php } ?>
+								<a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a>
 							
 							>>   Contact Us </h4>
 			</div><br>

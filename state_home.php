@@ -1114,11 +1114,11 @@ $current_date = date('Y-m-d');
 				if($cnt%3==0){						
 				echo "<tr>";
 				}
-				$siteUrlConstant = $protocol . "://" .str_replace(' ','',$fs_state['state']).'.'.$_SERVER['SERVER_NAME'].'/';
+				$siteUrlConstant = $protocol . "://" .$fs_state['state'].$originalName.'/';
 					?>
 
             <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
-            <a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
+            <a href="<?php echo $siteUrlConstant;?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
             <?php if($fs_state['state_code']==$defaultState) { 
 			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
 			else { 	echo $fs_state['state'];  } ?>

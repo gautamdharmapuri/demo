@@ -2,9 +2,6 @@
 include"config/connection.php";	   
 $current_date = date('Y-m-d');
 
-$serverName = $_SERVER['SERVER_NAME'];
-$originalName = '.nris.com';
-
 $pos = strpos($serverName, $originalName);
 if ($pos !== false) {
 		$selectedState = str_replace($originalName,'',$serverName);

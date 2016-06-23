@@ -172,7 +172,7 @@
     <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
 </div>
         
-            <form novalidate="novalidate" method="post" action="#" class="comment-form">               
+            <form novalidate="novalidate" method="post" action="" class="comment-form">               
               <div class="form-div ">
                     <div class="form-label">Message:</div>
                     <div class="form-field">

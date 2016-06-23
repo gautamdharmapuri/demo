@@ -16,6 +16,16 @@ if(isset($_GET['State']) && $_GET['State'] != '') {
 } else {
 }
 $state = $defaultState = $_SESSION['state'];
+
+$serverName = $_SERVER['SERVER_NAME'];
+
+$pos = strpos($serverName, 'gautam.com');
+if ($pos !== false) {
+		$originalName = '.gautam.com';
+} else{
+		$originalName = '.nris.com';
+}
+
 function send_respond_mail($data,$email) {   
 	global $config;
 	$frm = 'info@usnris.com';                 

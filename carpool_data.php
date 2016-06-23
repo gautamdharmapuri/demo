@@ -201,7 +201,7 @@ include"config/connection.php";
                         </div>		
 
 
-                        <form class="form-horizontal" role="form" method="get" action="#" enctype="multipart/form-data">
+                        <form class="form-horizontal" role="form" method="get" action="" enctype="multipart/form-data">
 
                             <div class="form-group">
                                 <div class="col-sm-3">

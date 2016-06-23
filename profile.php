@@ -294,7 +294,7 @@ if(true == $show_form)
 <div class="span-email"><?php echo strtolower($_SESSION['Nris_session']['email']); ?></div>
 <br>
 
-<form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data" onSubmit="return checkForm(this);" name="form" id="form">
+<form class="form-horizontal" role="form" method="post" action="" enctype="multipart/form-data" onSubmit="return checkForm(this);" name="form" id="form">
 
 <div class="col-md-5">
 <div class="form-group">

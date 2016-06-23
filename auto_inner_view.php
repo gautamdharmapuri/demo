@@ -513,7 +513,7 @@ geocoder = new google.maps.Geocoder();
     <h4 style="background:#ccc;padding:4px;font-weight:bold;text-align:center;"><span>Bid / Bargain </span></h4>
 </div>
         
-            <form method="post" action="#" class="comment-form" autocomplete="off">  
+            <form method="post" action="" class="comment-form" autocomplete="off">  
             <div>
            <input type="text" style="float:left;width:250px;margin:10px;background-image:url('images/dollar-sign.gif');background-position: left;
   background-size: 25px;  height: 28px;background-repeat: no-repeat;padding-left:30px;" placeholder="Enter your bid amount"  maxlength="10" class="form-control" name="bid" required onkeypress='return event.charCode >= 48 && event.charCode <= 57'>

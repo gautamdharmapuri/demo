@@ -360,7 +360,7 @@ function test_input($data) {
         
         ?>
  
-<form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" method="post" action="" enctype="multipart/form-data">
 
 
 

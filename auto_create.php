@@ -730,7 +730,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 
 		
  
-<form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" method="post" action="" enctype="multipart/form-data">
 
 
 

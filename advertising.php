@@ -118,7 +118,11 @@ font-weight:bold;
 
 
 
-	<?php include "config/menu.php" ;  ?>
+	<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<?php include "config/menu_inner_state.php" ;  ?>
+	<?php } else { ?>
+		<?php include "config/menu_home.php" ;  ?>
+	<?php } ?>
 	
 	<div class="clearfix"></div>
 
@@ -363,7 +367,7 @@ if(isset($_POST['Submit']))
 if(true == $show_form)
 {
 ?>
-<form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" method="post" action="" enctype="multipart/form-data">
 
 <div class="col-md-6">
 <div class="form-group">

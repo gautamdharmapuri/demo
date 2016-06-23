@@ -56,11 +56,7 @@ var site_url = '<?php echo $siteUrlConstant;?>';
 				<div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');background-position: 0px 0px;background-repeat: no-repeat;background-size: 100% 116px;">
 		<?php } ?>
         <div class="col-md-4">
-				<?php if($defaultState != '') { ?>
-						<div class="logo"><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>"><img alt="" src="img/logo.png"></a></div>
-				<?php } else { ?>
-						<div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="" src="img/logo.png"></a></div>
-				<?php } ?>
+				<div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="" src="img/logo.png"></a></div>
 	   </div>
 	   <div class="col-md-8">
 			  <?php
@@ -102,7 +98,7 @@ var site_url = '<?php echo $siteUrlConstant;?>';
                 <li><a href="<?php echo $siteUrlConstant;?>realestate_inner?code=<?php echo $defaultState;?>">Real Estate</a></li>
             </ul>
         </li>
-        <li><a href="<?php echo $siteUrlConstant;?>blog?State=<?php echo $defaultState;?>">Blog</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>blog">Blog</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>discussion_room"><?php echo $defaultState;?> NRI's talk</a></li>
         <li><a href="javascript:;"> <?php echo $defaultState;?> Box Office</a>
             <ul class="subnav">
@@ -248,8 +244,8 @@ var site_url = '<?php echo $siteUrlConstant;?>';
 						</li>
 				</ul>
         </li>
-        <li><a href="<?php echo $siteUrlConstant;?>advertising_inner">Advertise </a></li>
-        <li><a href="<?php echo $siteUrlConstant;?>contact?State=<?php echo $defaultState;?>">Contact </a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>advertising">Advertise </a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>contact">Contact </a></li>
  
       </ul>
     </nav>

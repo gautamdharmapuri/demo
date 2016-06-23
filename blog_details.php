@@ -492,7 +492,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
             
             
 <h3>Post a comment</h3>            
-<form class="form-horizontal" role="form" method="post" action="#">
+<form class="form-horizontal" role="form" method="post" action="">
 
 
 

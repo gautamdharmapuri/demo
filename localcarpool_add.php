@@ -326,7 +326,7 @@ function showDiv2(elem){
         
         ?>
  
-<form class="form-horizontal" role="form" method="post" action="#" enctype="multipart/form-data">
+<form class="form-horizontal" role="form" method="post" action="" enctype="multipart/form-data">
 
 <input type="hidden" value="<?php echo $state?>" id="State">
 <div class="col-md-6">
