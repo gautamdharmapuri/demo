@@ -5,7 +5,7 @@ $current_date = date('Y-m-d');?>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
+<head><base href="/">
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
@@ -207,8 +207,8 @@ $current_date = date('Y-m-d');?>
 		<?php
 		if(isset($_GET['type']))
 		{
-			$cat = $_GET['type'];
-			$query2 = "select a.*, b.name, c.role from post_free_job a, job_category b, job_role c where a.EndDate >= now() and a.Category = b.id and a.Job_Role=c.id  and a.Category='".$cat."' group by a.id order by a.total_views desc";
+			$cat = urldecode($_GET['type']);
+			$query2 = "select a.*, b.name, c.role from post_free_job a, job_category b, job_role c where a.EndDate >= now() and a.Category = b.id and a.Job_Role=c.id  and b.name ='".$cat."' group by a.id order by a.total_views desc";
 		}
 		else
 		{	

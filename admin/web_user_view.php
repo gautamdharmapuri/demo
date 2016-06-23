@@ -15,7 +15,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>        
+    <head><base href="/">        
         <!-- META SECTION -->
         <title><?php if(isset($_GET['editId'])) { echo "View "; } else { echo "Add  "; } ?> Website User Management | NRIs</title>       
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

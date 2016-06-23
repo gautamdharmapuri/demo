@@ -1,7 +1,20 @@
 RewriteEngine on
-RewriteCond $1 !^(index\.php|resources|robots\.txt)
+
+RewriteRule ^national_jobs/([^.*]+)$ national_jobs.php?type=$1 [NC,L]
+RewriteRule ^carpool_data/([^.*]+)$ carpool_data.php?type=$1 [NC,L]
+RewriteRule ^videos/([^.*]+)$ videos.php?lang=$1 [NC,L]
+RewriteRule ^videos_inner/([^.*]+)$ videos_inner.php?lang=$1 [NC,L]
+
+
 RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-d 
 
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 RewriteCond %{HTTP_HOST} ^(^.*)\.nris.com
+
+
+<FilesMatch "\.(css|js|ttf|otf|eot|woff|gz)$">
+	<IfModule mod_headers.c>
+                Header set Access-Control-Allow-Origin "*"
+        </IfModule>
+</FilesMatch>

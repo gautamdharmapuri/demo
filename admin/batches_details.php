@@ -144,7 +144,7 @@ if(isset($_POST['submit']))
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head>        
+    <head><base href="/">        
         <!-- META SECTION -->
         <title><?php if(isset($_GET['editId'])) { echo "Edit "; } else { echo "Add  "; } ?> Batches | NRIs</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

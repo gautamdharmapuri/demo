@@ -9,7 +9,7 @@ include"config/connection.php";
 ?>	   
 <!DOCTYPE html>
 <html lang="en">
-    <head>        
+    <head><base href="/">        
         <!-- META SECTION -->
         <title>Manage Profile | NRIs</title>                   
        <title>NRIs Dashboard</title>            

@@ -4,7 +4,7 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
+<head><base href="/">
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
@@ -151,7 +151,7 @@ font-size:12px;
 				$headers .= 'From:' . $frm . "\r\n";            
 				$htmlmsg='<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 							<html xmlns="http://www.w3.org/1999/xhtml">
-							<head>
+							<head><base href="/">
 							<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 							</head>
 							<body style="background-color:#F6F6F6;">

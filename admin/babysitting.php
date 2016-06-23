@@ -32,7 +32,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head>        
+    <head><base href="/">        
         <!-- META SECTION -->
         <title>Baby Sitting Ads Management	 | NRIs</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

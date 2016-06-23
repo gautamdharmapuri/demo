@@ -131,7 +131,7 @@
 					 $resultJob = mysql_query($jobQuery);                                                
 					 while($jobTop = mysql_fetch_array($resultJob)) {
 			  ?>
-					 <li><a href="<?php echo $siteUrlConstant;?>national_jobs?type=<?php echo $jobTop['id'];?>"><?php echo rtrim($jobTop['name'],'Jobs');?> Jobs</a></li>
+					 <li><a href="<?php echo $siteUrlConstant;?>national_jobs/<?php echo $jobTop['name'];?>"><?php echo rtrim($jobTop['name'],'Jobs');?> Jobs</a></li>
 			  <?php } ?>
             </ul>
         </li>
@@ -147,8 +147,8 @@
         <!-- <li id="famousTemples"><a href="#famousIndianTemples">Famous Indian Temples</a></li> -->
         <li><a href="javascript:;">Carpool</a>
             <ul>
-            <li><a href="<?php echo $siteUrlConstant;?>carpool_data?type=interstate">Inter state Carpool</a></li>
-            <li><a href="<?php echo $siteUrlConstant;?>carpool_data?type=international">International carpool</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>carpool_data/interstate">Inter state Carpool</a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>carpool_data/international">International carpool</a></li>
             </ul>
         </li>
   <li><a href="<?php echo $siteUrlConstant;?>videos">Movies/Videos </a>
@@ -160,7 +160,7 @@
 			$result_video_lang=mysql_query($query_video_lang);                                                
 			while($rs_video_lang=mysql_fetch_array($result_video_lang))
 			{?>				
-            <li><a href="<?php echo $siteUrlConstant;?>videos?lang=<?php echo $rs_video_lang['name'] ?>"><?php echo $rs_video_lang['name'] ?></a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>videos/<?php echo $rs_video_lang['name'] ?>"><?php echo $rs_video_lang['name'] ?></a></li>
 			<?php } ?>
             </ul>
         </li>

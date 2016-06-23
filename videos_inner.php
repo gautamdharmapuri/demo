@@ -5,7 +5,7 @@
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
 <!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
-<head>
+<head><base href="/">
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
@@ -128,7 +128,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
               
 			  <?php
 			  $tableName="videos";		
-	$targetpage = "videos_inner?lang=".$_GET['lang']; 	
+	$targetpage = "videos_inner/".$_GET['lang']; 	
 	$limit = 15; 
 	
 //	$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
