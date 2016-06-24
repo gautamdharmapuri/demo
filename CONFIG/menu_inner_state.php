@@ -206,7 +206,7 @@ var site_url = '<?php echo $siteUrlConstant;?>';
 			while($rs_video_lang=mysql_fetch_array($result_video_lang))
 			{?>
 				
-            <li><a href="<?php echo $siteUrlConstant;?>videos_inner/<?php echo $rs_video_lang['name'] ?>"><?php echo $rs_video_lang['name'] ?></a></li>
+            <li><a href="<?php echo $siteUrlConstant;?>videos/<?php echo $rs_video_lang['name'] ?>"><?php echo $rs_video_lang['name'] ?></a></li>
 			<?php } ?>
             </ul>
         </li>

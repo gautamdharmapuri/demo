@@ -1,5 +1,5 @@
 <?php
-include_once "../CONFIG/connection.php";
+include_once "../config/connection.php";
 
 class Users {
 	// public $table_name = 'users';

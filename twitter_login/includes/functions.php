@@ -1,5 +1,5 @@
 <?php
-require_once "../CONFIG/connection.php";
+require_once "../config/connection.php";
 class Users {
 	public $table_name = 'register';
 	

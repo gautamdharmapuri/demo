@@ -1,4 +1,4 @@
-<?php  error_reporting(0); include"config/connection.php";	   ?>
+<?php  include"config/connection.php";	   ?>
 
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->

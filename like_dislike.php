@@ -1,5 +1,5 @@
 <?php
-require_once 'CONFIG/connection.php';
+require_once 'config/connection.php';
 if (empty($_REQUEST['assoc_id'])) {
 	echo json_encode(array(
 		'success' => 0,
