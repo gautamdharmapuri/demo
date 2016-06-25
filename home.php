@@ -5,7 +5,7 @@
 <head><base href="/">
 <script type="text/javascript">
 		var site_url = '<?php echo $siteUrlConstant;?>';
-		var map_url = '<?php echo $_SERVER['SERVER_NAME'].'/';?>';
+		var map_url = '<?php echo str_replace('www.','',$_SERVER['SERVER_NAME']).'/';?>';
 	</script>
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
