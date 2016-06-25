@@ -3,7 +3,7 @@ include"config/connection.php";
 $current_date = date('Y-m-d');
 
 $pos = strpos($serverName, $originalName);
-if ($pos !== false) {
+if ($serverName != $originalName && $serverName != 'www.'.$originalName) {
 		$selectedState = str_replace($originalName,'',$serverName);
 		
 		$queryState = "select state_code from states where state = '".$selectedState."'";

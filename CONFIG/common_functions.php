@@ -21,9 +21,9 @@ $serverName = $_SERVER['SERVER_NAME'];
 
 $pos = strpos($serverName, 'gautam.com');
 if ($pos !== false) {
-		$originalName = '.gautam.com';
+		$originalName = 'gautam.com';
 } else{
-		$originalName = '.nris.com';
+		$originalName = 'nris.com';
 }
 
 function send_respond_mail($data,$email) {   
