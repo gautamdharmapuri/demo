@@ -89,7 +89,7 @@
 
     
 		<div id="stock_div">
-			<iframe id="myFrame" src="http://nris.com/New-Site/stock_block_state.php" frameborder="0" width="100%" height="41px" scrolling="auto" style="margin: 0px !important;padding: 0px !important;"></iframe>
+			<iframe id="myFrame" src="http://nris.com/stock_block_state.php" frameborder="0" width="100%" height="41px" scrolling="auto" style="margin: 0px !important;padding: 0px !important;"></iframe>
 		</div> 
 	
 	
