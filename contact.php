@@ -7,8 +7,8 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Contact Us | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Contact Us | NRIS</title>
+	<meta name="description" content="Contact us at admin@nris.com for any business, partnership and corporate affairs. We would like to hear any suggestions, complaints and enquiries from you.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

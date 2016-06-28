@@ -9,8 +9,8 @@ $current_date = date('Y-m-d');
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>National Real Estate Ads | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>National Real Estate Ads in USA | NRIS</title>
+	<meta name="description" content="Choose your state and Get the latest real estate ads in your nearby area of USA. Find the best property and House for Sale at your favourite location.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

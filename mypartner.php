@@ -9,8 +9,8 @@ $current_date = date('Y-m-d');
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>My Partner Ads | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Find Your Perfect Partner | My Partner | NRIS</title>
+	<meta name="description" content="Find the right partner of your match, whether you need a boyfriend or a girlfriend. Our portal has latest Ads on some of the perfect partners for you in USA.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

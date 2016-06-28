@@ -32,8 +32,8 @@ if(isset($_POST['cmdsave']))
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Forum | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Forums Discussion Boards and Topics | NRIS</title>
+	<meta name="description" content="Forums at NRIS have all the discussion threads based on Bollywood & Hollywood movies, Indian & Global news, sports including Cricket, Football and many more.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

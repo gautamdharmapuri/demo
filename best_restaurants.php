@@ -8,8 +8,8 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Best Visting  Restaurants | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Best Visiting Restaurants in USA | NRIS</title>
+	<meta name="description" content="Get a list of some of the best restaurants in USA with all the information and customer ratings. Choose your location and get the details of nearest restaurants.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

@@ -7,8 +7,8 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Blog | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Our Blogs | NRIS</title>
+	<meta name="description" content="Get the latest updates and information from the portal of NRIs community in USA. Read our blogs and stay updated with the latest posts.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

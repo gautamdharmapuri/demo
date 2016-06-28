@@ -7,8 +7,8 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>About Us | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>About US | NRIS</title>
+	<meta name="description" content="Know about our services and features for non resident Indians in USA. Information on restaurants, visiting spots, jobs, Indian movies and visiting spots etc">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

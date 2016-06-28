@@ -9,8 +9,8 @@ $current_date = date('Y-m-d');
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Education & Teaching Ads | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Teaching and Education Ads in USA | NRIS</title>
+	<meta name="description" content="Select your state and find the latest education and teaching Ads in your nearby area of USA. Get the information on best courses and teachers in USA.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

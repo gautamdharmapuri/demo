@@ -9,8 +9,8 @@ $current_date = date('Y-m-d');
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>National Auto Ads | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Ads on National Automobiles in USA | Auto Ads | NRIS</title>
+	<meta name="description" content="Buy/Sell Cars, automobiles at best prices with exciting offers and deals. Just select your state and find the latest auto Ads for cars, autos in USA.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

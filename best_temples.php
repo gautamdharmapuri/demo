@@ -7,8 +7,8 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Best Visiting Temples | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Famous Temples, Gurudwara and Churches in USA | NRIS</title>
+	<meta name="description" content="A list of best Hindu and Buddhist temples, Sikh Gurudwara and churches nearby you in USA. Select your state and visit the place of your worship today.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

@@ -8,8 +8,8 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Best Visiting Pubs/Bars | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Best Visiting Pubs and Bars in USA | NRIS</title>
+	<meta name="description" content="Looking for the best place for your party? Here you will find the best pubs and bars to enjoy your night parties in USA. Select your state and go for it!">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

@@ -7,8 +7,8 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Advertise with Us | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title>Advertise with Us | NRIS</title>
+	<meta name="description" content="Get in touch with our portal by filling a simple form and Advertise with us for your Jobs, Visiting places, real estate, automobiles and many more.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

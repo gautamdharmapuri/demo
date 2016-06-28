@@ -9,8 +9,8 @@
 	</script>
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Home | NRIs</title>
-	<meta name="description" content="NRI's">
+	<title>Indian Website for Nris in USA | NRIS</title>
+	<meta name="description" content="An Indian community website for all NRI'S residing in United States. Get information on local real estate, Indian movies, restaurants, visiting spots etc.">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->
