@@ -348,7 +348,7 @@ $rs = mysql_fetch_array($result) ;
 
 <?php 
 if (strpos($rs['image'],'.') !== false) {  ?>
-		<div class="featured-image"> <img alt="" src="admin/uploads/blog/<?php echo $rs['image']; ?>" style="width:100%;" class="imgframe"> </div>
+		<div class="featured-image"> <img alt="" src="admin/uploads/blog/<?php echo $rs['image']; ?>" style="width:100%;" class="imgframe" alt="<?php echo ucwords($rs['blog_title']);?>"> </div>
 <?php } ?>
 
 <p style="text-align:justify;margin:10px 0 90px 0;color:#666666;">

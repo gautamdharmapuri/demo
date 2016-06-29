@@ -218,9 +218,9 @@ $current_date = date('Y-m-d');
 if(isset($_SESSION['Nris_session']))	  
 { ?>
 
-<a href="#" data-toggle="modal" data-target="#change_state" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a> 
+<a href="#" data-toggle="modal" data-target="#change_state" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a> 
  <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
 <?php } ?>    
 
 

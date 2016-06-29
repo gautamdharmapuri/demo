@@ -190,7 +190,7 @@
 </div>    <br>
 
 <div style="width: 100%; height: 500px; margin: 0 0 20px 0;" id="map_canvas"></div>
-<div id="loadingMap" class="text-center"><center><img src="images/fancybox/fancybox_loading.gif"></center></div>
+<div id="loadingMap" class="text-center"><center><img src="images/fancybox/fancybox_loading.gif" alt="Loading...."></center></div>
 
 <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?v=3&amp;sensor=false"></script>
 <script type="text/javascript" src="js/googlemap.js"></script>

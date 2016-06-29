@@ -338,7 +338,7 @@ else
 				{ ?> 
                                                                             <tr>
                                                                                 <td style="padding:5px;"><a href="<?php echo $siteUrlConstant;?>deshiads_view?ViewId=<?php echo md5($rs['id']);?>">
-                                                                                <img src="admin/uploads/desipages/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
+                                                                                <img src="admin/uploads/desipages/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;" alt="<?php echo ucwords($rs['title']);?>"></a></td>
                                                                                 <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>deshiads_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['title']);?></a></td>
                                                                                 <td style="text-align:left;">
                                                                                 <a href="<?php echo $siteUrlConstant;?>deshiads_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">

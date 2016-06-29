@@ -325,7 +325,7 @@
 				while($rs=mysql_fetch_array($result))
 				{ ?> 
             <tr>
-            <td style="padding:5px;"><a href="<?php echo $siteUrlConstant;?>announcement_view?ViewId=<?php echo md5($rs['id']);?>"><img src="admin/uploads/announcements/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
+            <td style="padding:5px;"><a href="<?php echo $siteUrlConstant;?>announcement_view?ViewId=<?php echo md5($rs['id']);?>"><img src="admin/uploads/announcements/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;" alt="<?php echo ucwords($rs['title']);?>"></a></td>
             <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>announcement_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['title']);?></a></td>           
             <td><a href="<?php echo $siteUrlConstant;?>announcement_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
             </tr>

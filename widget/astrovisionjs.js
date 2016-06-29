@@ -1110,16 +1110,16 @@ Widget.prototype.header = function()
 	var tpl =	'<div class="haeder"><div class="ddmmyy">'+
             	'	<div class="dateday fl">'+
                 '		<div class="date fa">'+
-				'    		<div class="date_p fl"><img src="'+srv_root+'images/p_left.gif" width="4" height="5" class="padt10 cp"/></div>'+
+				'    		<div class="date_p fl"><img alt="" src="'+srv_root+'images/p_left.gif" width="4" height="5" class="padt10 cp"/></div>'+
                 '			<div class="date_dd fl ac b">'+lpad(curDate.getDate()+'')+'</div>'+
-                '			<div class="date_n fr"><img src="'+srv_root+'images/n_right.gif" width="4" height="5" class="padt10 cp"/></div>'+
+                '			<div class="date_n fr"><img alt="" src="'+srv_root+'images/n_right.gif" width="4" height="5" class="padt10 cp"/></div>'+
                 '   	</div>'+
                 '  		<div class="day ac b fa">'+wlist[curDate.getDay()].substring(0,3)+'</div>'+
                 '	</div>'+
                 '	<div class="month fl">'+
-                '		<div class="month_p  ac"><img src="'+srv_root+'images/empty.gif" width="5" height="4" class="padt4" /></div>'+
+                '		<div class="month_p  ac"><img alt="" src="'+srv_root+'images/empty.gif" width="5" height="4" class="padt4" /></div>'+
                 '		<div class="month_mm ac b fa"><span class=" cp"> <u>'+mlist[curDate.getMonth()].substring(0,3)+'</u></span></div>'+
-                '		<div class="month_n ac"><img src="'+srv_root+'images/empty.gif" width="5" height="4" /></div>'+
+                '		<div class="month_n ac"><img alt="" src="'+srv_root+'images/empty.gif" width="5" height="4" /></div>'+
                 '	</div>'+
                 '	<div class="year fr b ac fa">'+curDate.getFullYear()+'</div>'+
                     
@@ -1163,7 +1163,7 @@ Widget.prototype.chart = function()
 	var tpl =	'<div class="resultbox">'+
 			    '     <div class="resultbox_head ac fa pt12 b">Instant Astro Chart</div>'+
 				'<div class="shim1px">&nbsp;</div>'+
-				'     <img src="'+this.getCurChart()+'" style="width:142px; height:112px; " onmousemove="viewChart(\''+this.getCurChart()+'\')" onmouseout="hideChart()" />'+
+				'     <img alt="" src="'+this.getCurChart()+'" style="width:142px; height:112px; " onmousemove="viewChart(\''+this.getCurChart()+'\')" onmouseout="hideChart()" />'+
 				'	<input type="image" id="floatimage" src="'+this.getCurChart()+'" border="0" class="floatimage" />'+
 				'</div>';
 	return new Element('div',{'class':'',html:tpl}).create();
@@ -1329,20 +1329,20 @@ Widget.prototype.FreePredMenu = function()
 				'</div>' + 
                     	'<div class="p5">' + 
                         	'<div class="cb shim4px"></div>' + 
-                        	'<img src="'+srv_root+'images/Aries_'+ predictionOptions.type+ '.gif" class="fl cp" onclick="prediction(1)" title=' +  gettitle(1,predictionOptions.type) + '>' +
-                            '<img src="'+srv_root+'images/Taurus_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(2)" title=' +  gettitle(2,predictionOptions.type) + '>' +
-                            '<img src="'+srv_root+'images/Gemini_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(3)" title=' +  gettitle(3,predictionOptions.type) + '>' +
-                            '<img src="'+srv_root+'images/Cancer_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(4)" title=' +  gettitle(4,predictionOptions.type) + '>' +
+                        	'<img alt="" src="'+srv_root+'images/Aries_'+ predictionOptions.type+ '.gif" class="fl cp" onclick="prediction(1)" title=' +  gettitle(1,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Taurus_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(2)" title=' +  gettitle(2,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Gemini_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(3)" title=' +  gettitle(3,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Cancer_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(4)" title=' +  gettitle(4,predictionOptions.type) + '>' +
                             '<div class="cb shim15px"></div>' +
-                            '<img src="'+srv_root+'images/Leo_'+ predictionOptions.type+ '.gif" class="fl  cp"  onclick="prediction(5)" title=' +  gettitle(5,predictionOptions.type) + '>' +
-                            '<img src="'+srv_root+'images/Virgo_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(6)" title=' +  gettitle(6,predictionOptions.type) + '>' +
-                            '<img src="'+srv_root+'images/Libra_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(7)" title=' +  gettitle(7,predictionOptions.type) + '>' +
-                            '<img src="'+srv_root+'images/Scorpio_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(8)" title=' +  gettitle(8,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Leo_'+ predictionOptions.type+ '.gif" class="fl  cp"  onclick="prediction(5)" title=' +  gettitle(5,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Virgo_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(6)" title=' +  gettitle(6,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Libra_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(7)" title=' +  gettitle(7,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Scorpio_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(8)" title=' +  gettitle(8,predictionOptions.type) + '>' +
                             '<div class="cb shim15px"></div>' +
-                            '<img src="'+srv_root+'images/Sagittarius_'+ predictionOptions.type+ '.gif" class="fl cp"  onclick="prediction(9)" title=' +  gettitle(9,predictionOptions.type) + '>' +
-                            '<img src="'+srv_root+'images/Capricorn_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(10)" title=' +  gettitle(10,predictionOptions.type) + '>' +
-                            '<img src="'+srv_root+'images/Aquarius_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(11)" title=' +  gettitle(11,predictionOptions.type) + '>' +
-                            '<img src="'+srv_root+'images/Pisces_'+ predictionOptions.type+ '.gif"" class="fl pl6 cp"  onclick="prediction(12)" title=' +  gettitle(12,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Sagittarius_'+ predictionOptions.type+ '.gif" class="fl cp"  onclick="prediction(9)" title=' +  gettitle(9,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Capricorn_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(10)" title=' +  gettitle(10,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Aquarius_'+ predictionOptions.type+ '.gif" class="fl pl6 cp"  onclick="prediction(11)" title=' +  gettitle(11,predictionOptions.type) + '>' +
+                            '<img alt="" src="'+srv_root+'images/Pisces_'+ predictionOptions.type+ '.gif"" class="fl pl6 cp"  onclick="prediction(12)" title=' +  gettitle(12,predictionOptions.type) + '>' +
                                          
                             '</div></div>' ;
 	return new Element('div',{'class':'',html:tpl}).create();
@@ -1377,12 +1377,12 @@ Widget.prototype.FreePredictions = function()
 		'</div>' +
 		'<div class="p5 ">' +
 			'<div class="h91">' +
-				'<div class="pt12 b "><img src="'+srv_root+'images/' + predictionOptions.sign + '_'+ predictionOptions.type+'.gif"  align="absmiddle"> ' + predictionOptions.caption +'</div>' +
+				'<div class="pt12 b "><img alt="" src="'+srv_root+'images/' + predictionOptions.sign + '_'+ predictionOptions.type+'.gif"  align="absmiddle"> ' + predictionOptions.caption +'</div>' +
 				'<div class=" pt11">' + signprediction +'</div>' +
 			'</div>' +
 			'<div class="pt12 blk">' +
-				'<a onclick="showsignmenu()"><div class="fl cp"><img src="'+srv_root+'images/dbullet_grey_rt.gif"> back</div></a>' +
-				'<a href="http://www.clickastro.com/widget/dailyprediction.php?sign=' + predictionOptions.signId + '&name=' +predictionOptions.sign + '&type=' + predictionOptions.type + '&wclient=' + options.clientid +'"  class="blk"  target="_blank"><div class="fr cp">read more <img src="'+srv_root+'images/dbullet_grey.gif"></div></a>' +
+				'<a onclick="showsignmenu()"><div class="fl cp"><img alt="" src="'+srv_root+'images/dbullet_grey_rt.gif"> back</div></a>' +
+				'<a href="http://www.clickastro.com/widget/dailyprediction.php?sign=' + predictionOptions.signId + '&name=' +predictionOptions.sign + '&type=' + predictionOptions.type + '&wclient=' + options.clientid +'"  class="blk"  target="_blank"><div class="fr cp">read more <img alt="" src="'+srv_root+'images/dbullet_grey.gif"></div></a>' +
 			'</div>' +
 		'</div>' +
 	'</div>';
@@ -1401,7 +1401,7 @@ Widget.prototype.astroCal = function(isChMod)
 	reg = (isChMod)?strSelRegion():reg;
 	var tpl = '<div class="calnstar">'+
               '	<div class="calnstar_2">'+
-              '  	<div class="calnstar_head pt11 b cp pl3 fa"><u>'+astroData.header.regional.year_caption+'</u>&nbsp;<img src="'+srv_root+'images/p_bot.gif" class="cp blk" width="5" height="4"/> </div>'+
+              '  	<div class="calnstar_head pt11 b cp pl3 fa"><u>'+astroData.header.regional.year_caption+'</u>&nbsp;<img alt="" src="'+srv_root+'images/p_bot.gif" class="cp blk" width="5" height="4"/> </div>'+
               '     <div class="shim2px cb">&nbsp;</div>'+
 			  '      <div class="calnstar_text red pt12 b ac fa" id="regional_result">'+reg+'</div>'+
               '  </div>'+
@@ -1420,7 +1420,7 @@ Widget.prototype.astroCal = function(isChMod)
 
 Widget.prototype.linkChart = function()
 {
-	var tpl = '<div class="linkbox ar red pt12 b pr4 fa">Instant astro chart<img src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
+	var tpl = '<div class="linkbox ar red pt12 b pr4 fa">Instant astro chart<img alt="" src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
 	//li.onclick = function(){ loadWidget('chart',false);};
 	return li;
@@ -1428,7 +1428,7 @@ Widget.prototype.linkChart = function()
 
 Widget.prototype.linkMain = function()
 {
-	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Main Screen<img src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
+	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Main Screen<img alt="" src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
 	li.onclick = function(){ loadWidget('basic',false);};
 	return li;
@@ -1451,7 +1451,7 @@ Widget.prototype.linkDualChart = function(i)
 
 Widget.prototype.linkPanchang = function()
 {
-	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Today\'s Panchagam<img src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
+	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Today\'s Panchagam<img alt="" src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
 	//li.onclick = function(){ loadWidget('panch',false);};
 	return li;
@@ -1459,7 +1459,7 @@ Widget.prototype.linkPanchang = function()
 
 Widget.prototype.linkSpeciality = function()
 {
-	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Speciality of this day<img src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
+	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Speciality of this day<img alt="" src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
 	//li.onclick = function(){ loadWidget('signf',false);};
 	return li;
@@ -1467,14 +1467,14 @@ Widget.prototype.linkSpeciality = function()
 
 Widget.prototype.linkAstroDay = function()
 {
-	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Astroday<img src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
+	var tpl = '<div class="linkbox ar blk pt12 b pr4 fa">Astroday<img alt="" src="'+srv_root+'images/dbullet_grey.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
 	//li.onclick = function(){ loadWidget('astro',false);};
 	return li;
 };
 Widget.prototype.linkFreePredictions = function()
 {
-	var tpl = '<div class="linkboxrev ar wht pt12 b pr4 fa">Free Predictions<img src="'+srv_root+'images/dbullet_white.gif" width="10" height="9" class="pl3"/></div>';
+	var tpl = '<div class="linkboxrev ar wht pt12 b pr4 fa">Free Predictions<img alt="" src="'+srv_root+'images/dbullet_white.gif" width="10" height="9" class="pl3"/></div>';
 	li = new Element('div',{'class':'cp cb',html:tpl}).create();
 	//li.onclick = function(){ loadWidget('frpred',false);};
 	return li;

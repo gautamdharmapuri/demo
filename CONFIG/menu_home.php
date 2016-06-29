@@ -21,7 +21,7 @@
     <div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');">
 	   
 	   <div class="col-md-4">
-			  <div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="" src="img/logo.png"></a></div>
+			  <div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="Nris" src="img/logo.png"></a></div>
 	   </div>
 	   <div class="col-md-8">
 			  <?php
@@ -57,7 +57,7 @@
 				{
 
 				$home_fs1['url'] = ($home_fs1['url'] != '') ? $home_fs1['url'] : 'javascript:;';
-				 echo '<a href="' . $home_fs1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_fs1['image'].'"></a>';
+				 echo '<a href="' . $home_fs1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_fs1['image'].'" alt="'.$home_fs1['image'].'"></a>';
 				} else { 
 			?>		
                 <img src="img/home1.jpg" alt="Advertisement">
@@ -77,7 +77,7 @@
 				if($home_fs2['edate'] >= $current_date && $home_fs2['image'] != '')
 				{
 					$home_fs2['url'] = ($home_fs2['url'] != '') ? $home_fs2['url'] : 'javascript:;';	
-					echo '<a href="' . $home_fs2['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_fs2['image'].'"></a>';
+					echo '<a href="' . $home_fs2['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_fs2['image'].'" alt="'.$home_fs2['image'].'"></a>';
 				} else { 
 				 $home_ad_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Top-Large' and ad_position_no='1' and edate < '".$current_date."' ");
 			?>		            
@@ -187,7 +187,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><center><img src="img/logo.png" height="65" width="184" /></center></h4>
+          <h4 class="modal-title"><center><img src="img/logo.png" height="65" width="184" alt="Nris"/></center></h4>
         </div>
         <div class="modal-body">
 			 <form name="formLogin" id="formLogin" method="post" class="form-horizontal" action="verify">
@@ -224,7 +224,7 @@
             
             <div style="width:38%;float:right;">
 			<center>
-            <h3><a href="<?php echo $siteUrlConstant;?>register"><img src="img/register.png" /></a></h3><br />
+            <h3><a href="<?php echo $siteUrlConstant;?>register"><img src="img/register.png" alt="Register"/></a></h3><br />
             <?php
             include_once("fb_login/config.php");
             include_once("google_login/config.php");
@@ -234,7 +234,7 @@
                 if(!$fbuser){
                     $fbuser = null;
                     $loginUrl = $facebook->getLoginUrl(array('redirect_uri'=>$homeurl,'scope'=>$fbPermissions));
-                    echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png"></a>';    
+                    echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png" alt="Facebook"></a>';    
                 }
                 ?>
                 <!-- <a href="<?php echo $siteUrlConstant.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
@@ -242,11 +242,11 @@
             <h3>
             <?php
                 $authUrl = $gClient->createAuthUrl();
-                echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png" alt=""/></a>';
+                echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png" alt="Google"/></a>';
             ?>
             </h3>
             <h3>
-                <?php echo '<a href="twitter_login/process"><img src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img src="twitter_login/images/sign-in-with-twitter.png" border="0" alt="Twitter"/></a>'; ?>
             </h3>
 			</center>
             </div>

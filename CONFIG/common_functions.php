@@ -43,7 +43,7 @@ function send_respond_mail($data,$email) {
 				<body style="background-color:#F6F6F6;">
 				<div id="container" style="width:600px;padding:0;margin:0 auto;height:auto;background-color:#FFF;">
 				<div id="head2" style="background:#325D88;height:18%;padding:4px;">
-				<div><img src="img/logo.png" width=350px height=100px></div>
+				<div><img src="img/logo.png" alt="Nris" width=350px height=100px></div>
 				</div>
 				<div id="message" style="height:auto;border-bottom:1px solid #ccc;margin:10px;">
 				<h3>'.date('M d,Y').'</h3>

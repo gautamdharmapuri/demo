@@ -142,9 +142,9 @@ font-size:12px;
 if(isset($_SESSION['Nris_session']))	  
 { ?>
 
-<a href="#" data-toggle="modal" data-target="#change_state" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a> 
+<a href="#" data-toggle="modal" data-target="#change_state" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a> 
  <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
 <?php } ?>   
 
 
@@ -253,59 +253,7 @@ if(isset($_SESSION['Nris_session']))
                                              <th> <?php echo date("d M, Y",strtotime($rs['EndDate'])); ?> </th>
                                          	</tr>
                                        </thead>
-                                    
-                                    
-                                    
-                                    
-                                    
-                                        <?php /*?><tr>
-                                            
-                                            <th colspan="2" align="center" style="text-align:center">
-
-											<?php   if (strpos($rs['image'],'.') !== false) {  ?>
-                             			   <img src="uploads/education/<?php echo $rs['image'];?>" width="300" height="auto"> 	<?php }  else {  ?>
-                                           <img src="admin/img/no_image.png" height="auto" width="300">
-                                           <?php } ?>
-                                           
-                                           
-                                          
-
-                                            </th>                                               
-                                        </tr><?php */?>
-                                 
-                                     
-                                        
-                                    </table>           
-                       
-                       
-                       
-                       
-
-
-					
-                    
-
-
-                    
-<br><br><br><br><br>
-
-<?php /*?> <div class="dividerHeading">
-    <h5 style="background:#ccc;padding:8px;font-weight:bold;text-align:center;"><span>Comment on this post</span></h5>
-</div>
-        
-            <form novalidate="novalidate" method="post" action="" class="comment-form">               
-              <div class="form-div ">
-                    <div class="form-label">Message:</div>
-                    <div class="form-field">
-                    <textarea placeholder="Message" name="comment" class="form-control tiny" id="message" required=""></textarea>
-                    </div>            
-               </div>      
-             <div class="form-submit-buttons">               
-                <input name="comment_submit" value="Post Comment" class="no-comment btn btn-premium" type="submit" style="float:right">
-             </div>
-                <input class="form-control" name="post_id" value="623" type="hidden">
-                <input class="form-control" name="commented_by" value="" type="hidden"><br>
-           </form> <?php */?>	
+                                    </table>   
 <br><br><br><br><br><br><br><br><br>
 		
             </div>
@@ -331,15 +279,6 @@ if(isset($_SESSION['Nris_session']))
                     
         </div><!-- Section-1 ENDS -->
 </div><!-- End Section-1 WRAP -->
-
-	
-    
-    	
-	
-    
-    
-    
-	
 	 <?php include "config/footer.php" ; ?><!--End footer -->
     
 

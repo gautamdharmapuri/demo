@@ -26,7 +26,7 @@ if(isset($_POST['cmdLoginbtn']))
 			$Lrow=mysql_num_rows($Lresult);
 			if($Lrow>0)
 			{
-				echo '<center><img src="img/loading.gif"></center>'	;				
+				echo '<center><img src="img/loading.gif" alt="Loading...."></center>'	;				
 
 				$Lrow=mysql_fetch_array($Lresult);
 				$_SESSION['Nris_session'] = $Lrow;

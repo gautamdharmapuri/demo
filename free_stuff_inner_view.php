@@ -167,9 +167,9 @@ font-size:12px;
   <?php
 	if(isset($_SESSION['Nris_session']))	  
 	{ ?>
-<a href="<?php echo $siteUrlConstant;?>create_free_stuff?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>create_free_stuff?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a>    
  <?php } else { ?> 
-<a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
 <?php } ?>  
 </div><br>
                <div class="col-md-12" >
@@ -183,7 +183,7 @@ font-size:12px;
 						if($rs['image'.$tempVar] != '') { ?>
 							<div class="col-sm-12">
 								<a href="javascript:;">
-									<img class="myImageClass" src="<?php echo 'uploads/free_stuff/'.$rs['image'.$tempVar];?>" style="width:100%;height:140px;">
+									<img class="myImageClass" src="<?php echo 'uploads/free_stuff/'.$rs['image'.$tempVar];?>" style="width:100%;height:140px;" alt="<?php echo ucwords($rs['TitleAD']);?>">
 								</a>
 							</div>
 					<?php } ?>

@@ -180,11 +180,11 @@ $current_date = date('Y-m-d');
                                             <table border="0" cellpadding="0" cellspacing="10" style="width:100%;">
                                             	<tr  style="background-color:#FFFFFF;">
                                                 	<td style="vertical-align:top;">Min Price</td>
-                                                    <td style="vertical-align:middle;"><img src="images/Dollar.png" style="float:left;"><input type="text" name="MinPrice" id="MinPrice" style="width:150px;"></td>
+                                                    <td style="vertical-align:middle;"><img src="images/Dollar.png" style="float:left;" alt="$"><input type="text" name="MinPrice" id="MinPrice" style="width:150px;"></td>
                                                 </tr>
                                             	<tr>
                                                 	<td style="vertical-align:top;">Max Price</td>
-                                                    <td style="vertical-align:middle;"><img src="images/Dollar.png" style="float:left;"><input type="text" name="MaxPrice" id="MaxPrice" style="width:150px;"></td>
+                                                    <td style="vertical-align:middle;"><img src="images/Dollar.png" style="float:left;" alt="$"><input type="text" name="MaxPrice" id="MaxPrice" style="width:150px;"></td>
                                                 </tr>                                                
                                             </table>
                                             <select name="AdsCat" id="AdsCat"  class="form-control" >              
@@ -239,9 +239,9 @@ $current_date = date('Y-m-d');
 if(isset($_SESSION['Nris_session']))	  
 { ?>
 
-<a href="#" data-toggle="modal" data-target="#change_state" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a> 
+<a href="#" data-toggle="modal" data-target="#change_state" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a> 
  <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
 <?php } ?>    
 
 

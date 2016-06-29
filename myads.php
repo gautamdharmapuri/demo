@@ -294,9 +294,9 @@ font-weight:bold;
                                                  <ul style="padding-left:5px;padding-right:5px;height:100px;">
                                                       
                                                        
-                                                        <li><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile">My Profile</a></li>
-                                                        <li><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>myads">My Ads</a></li>
-                                                        <li style="border-bottom:none;"><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile?action=edit">Edit Profile</a></li>                                                                                                                
+                                                        <li><img src="img/list.jpg" alt=">">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile">My Profile</a></li>
+                                                        <li><img src="img/list.jpg" alt=">">&nbsp;<a href="<?php echo $siteUrlConstant;?>myads">My Ads</a></li>
+                                                        <li style="border-bottom:none;"><img src="img/list.jpg" alt=">">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile?action=edit">Edit Profile</a></li>                                                                                                                
                                                       
                                                         
                                               </ul>                                                         
@@ -342,10 +342,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['Address'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image1'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>auto_inner_view?ViewId=<?php echo md5($rs['id']);?>"
@@ -382,10 +382,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['City'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>baby_sitting_inner_view?ViewId=<?php echo md5($rs['id']);?>"
@@ -422,10 +422,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['City'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image'] != '' || $rs['image1'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>education_inner_view?ViewId=<?php echo md5($rs['id']);?>"
@@ -463,10 +463,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['City'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image'] != '' || $rs['image1'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>electronics_inner_view?ViewId=<?php echo md5($rs['id']);?>"
@@ -503,10 +503,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['City'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image'] != '' || $rs['image1'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>free_stuff_inner_view?ViewId=<?php echo md5($rs['id']);?>"
@@ -543,10 +543,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['City'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image'] != '' || $rs['image1'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>garagesale_inner_view?ViewId=<?php echo md5($rs['id']);?>"
@@ -583,10 +583,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['City'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image'] != '' || $rs['image1'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>jobs_inner_view?ViewId=<?php echo md5($rs['id']);?>"
@@ -623,10 +623,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['City'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image'] != '' || $rs['image1'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>mypartner_inner_view?ViewId=<?php echo md5($rs['id']);?>"
@@ -663,10 +663,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['City'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image'] != '' || $rs['image1'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>roommates_inner_view?ViewId=<?php echo md5($rs['id']);?>"
@@ -703,10 +703,10 @@ font-weight:bold;
 																								<tr>
 																									<td>
 																										<?php if($rs['City'] != '') { ?>
-																											<img src="images/map-icon.png">
+																											<img src="images/map-icon.png" alt="Map">
 																										<?php } ?>
 																										<?php if($rs['image'] != '' || $rs['image1'] != '') { ?>
-																											<img src="images/image-icon.png">
+																											<img src="images/image-icon.png" alt="Image">
 																										<?php } ?>
 																										
 																										<a href="<?php echo $siteUrlConstant;?>realestate_inner_view?ViewId=<?php echo md5($rs['id']);?>"

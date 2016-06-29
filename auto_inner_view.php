@@ -152,7 +152,7 @@ font-size:12px;
 							<body style="background-color:#F6F6F6;">
 							<div id="container" style="width:600px;padding:0;margin:0 auto;height:auto;background-color:#FFF;">
 							<div id="head2" style="background:#325D88;height:18%;padding:4px;">
-							<div><img src="'.$config['siteurl'].'img/logo.png" width=350px height=100px/></div>
+							<div><img src="'.$config['siteurl'].'img/logo.png" width=350px height=100px alt="Nris"/></div>
 							</div>
 							<div id="message" style="height:auto;border-bottom:1px solid #ccc;margin:10px;">
 							<h3>'.date('M d,Y').'</h3>
@@ -211,11 +211,11 @@ font-size:12px;
   <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
-<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif" alt="New"></a>    
+<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a>    
   <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
-<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>   
+<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
 <?php } ?>     
 </div>
 <br>
@@ -225,7 +225,7 @@ if(isset($_SESSION['Nris_session']))
 					<?php if($rs['image'.$k] != '') { ?>
 						<div class="col-sm-12">
 							<a href="javascript:;">
-								<img class="myImageClass" src="<?php echo 'uploads/auto/'.$rs['image'.$k];?>" style="width:100%;height:140px;">
+								<img class="myImageClass" src="<?php echo 'uploads/auto/'.$rs['image'.$k];?>" style="width:100%;height:140px;" alt="<?php echo $rs['image'.$k];?>">
 							</a>
 						</div>
 					<?php } ?>

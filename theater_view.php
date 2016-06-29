@@ -171,8 +171,8 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 
 <p class="mydata" align="center" style="text-align:center;">
 		<?php   if (strpos($rs['image'],'.') !== false) {  ?>
-        <img src="admin/uploads/theaters/<?php echo $rs['image'];?>" width="80%" style="height:400px !important;"  class="imgframe"> 	<?php }  else {  ?>
-        <img src="admin/img/no_image.png" height="auto" width="300" class="imgframe">
+        <img alt="<?php echo ucwords($rs['name']); ?>" src="admin/uploads/theaters/<?php echo $rs['image'];?>" width="80%" style="height:400px !important;"  class="imgframe"> 	<?php }  else {  ?>
+        <img alt="<?php echo ucwords($rs['name']); ?>" src="admin/img/no_image.png" height="auto" width="300" class="imgframe">
         <?php } ?>
 
 </p>

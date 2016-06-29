@@ -10,7 +10,7 @@ if (!empty($_SESSION['Nris_session'])) {
 if(!$fbuser){
 	$fbuser = null;
 	$loginUrl = $facebook->getLoginUrl(array('redirect_uri'=>$homeurl,'scope'=>$fbPermissions));
-	$output = '<a href="'.$loginUrl.'"><img src="images/fb_login.png"></a>'; 	
+	$output = '<a href="'.$loginUrl.'"><img src="images/fb_login.png" alt="Facebook"></a>'; 	
 }else{
 	$user_profile = $facebook->api('/me?fields=id,first_name,last_name,email,gender,locale,picture');
 	// print_r($user_profile);exit;

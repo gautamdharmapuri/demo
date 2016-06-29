@@ -345,9 +345,9 @@ else
                         <td style="padding:5px;">
                         <a href="<?php echo $siteUrlConstant;?>national_training_view?ViewId=<?php echo md5($rs['id']);?>">
                         <?php   if (strpos($rs['image'],'.') !== false) {  ?>
-                        <img src="admin/uploads/national_batches/<?php echo $rs['image'];?>" style="height:auto;width:100px;">
+                        <img src="admin/uploads/national_batches/<?php echo $rs['image'];?>" style="height:auto;width:100px;" alt="<?php echo ucwords($rs['title']);?>">
 							<?php }  else {  ?>
-                          	  <img src="img/no.gif"  style="width:90px;height:auto;" >
+                          	  <img src="img/no.gif"  style="width:90px;height:auto;" alt="<?php echo ucwords($rs['title']);?>">
                             <?php } ?>
                         </a></td>
                         <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>national_training_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['title']);?></a></td>

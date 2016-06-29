@@ -105,7 +105,7 @@ include_once("inc/twitteroauth.php");
 			
 	}else{
 		//Display login button
-		echo '<a href="process"><img src="images/sign-in-with-twitter.png" width="151" height="24" border="0" /></a>';
+		echo '<a href="process"><img src="images/sign-in-with-twitter.png" width="151" height="24" border="0" alt="Twitter"/></a>';
 	}
 ?>  
 </body>

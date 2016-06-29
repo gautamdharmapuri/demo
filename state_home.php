@@ -174,7 +174,7 @@ $current_date = date('Y-m-d');
                                 
 									<?php
                                     if($home_dm1['edate'] >= $current_date) {
-                                        echo '<a href="' . $home_dm1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_dm1 ['image'].'"></a>';
+                                        echo '<a href="' . $home_dm1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_dm1 ['image'].'" alt="Advertisement"></a>';
                                     } else { 
                                         $home_middle_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Top-Center-4' and ad_position_no='1' and edate < '".$current_date."' "); 
                                     ?>		            
@@ -251,12 +251,12 @@ $current_date = date('Y-m-d');
 																		style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
 																		<div class="col-md-12" style="padding: 0px;">
 																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
-																					<img src="images/map-icon.png">
+																					<img src="images/map-icon.png" alt="Map">
 																		<?php } ?>
 																		<?php if($rs['image'] != '') { ?>
-																					<img src="images/image-icon.png">
+																					<img src="images/image-icon.png" alt="Image">
 																		<?php } ?>
-																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,28);?></span>&nbsp;<img src="images/New_icon2.gif"></div>
+																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,28);?></span>&nbsp;<img src="images/New_icon2.gif" alt="New"></div>
 																				<div class="col-md-3" style="padding: 1px;"><span><?php echo $rs['category'];?></span></div>
 																				<div class="col-md-2" style="padding: 1px;"><span style="color:black !important;"><?php echo $rs['totViews'];?></span></div>
 																		</div>
@@ -414,7 +414,7 @@ $current_date = date('Y-m-d');
                                 <?php } } else { ?>
 									<div class="adv-big">
 												<a href="<?php echo ($rs['url'] != '') ? $rs['url'] : 'javascript:;';?>" target="_blank">
-													<img src="img/2_x_1-ad.jpg">
+													<img src="img/2_x_1-ad.jpg" alt="Advertisement">
 												</a>
 											</div>
 								<?php } ?>
@@ -434,11 +434,11 @@ $current_date = date('Y-m-d');
                                         <?php
                                         if(isset($_SESSION['Nris_session']))	  
                                         { ?>
-                                        <a href="#"  data-toggle="modal" data-target="#PostFreeAd" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif"></a>                                        
-                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-target="#PostPremiumAd"  class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>
+                                        <a href="#"  data-toggle="modal" data-target="#PostFreeAd" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>                                        
+                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-target="#PostPremiumAd"  class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>
                                         <?php } else { ?> 
-                                         <a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif"></a>                                        
-                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-toggle="modal" data-target="#myModal" class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
+                                         <a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>                                        
+                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-toggle="modal" data-target="#myModal" class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>   
 
                                          <?php } ?>   <br>  
 						</div>
@@ -620,10 +620,10 @@ $current_date = date('Y-m-d');
                                                              <a href="<?php echo $siteUrlConstant;?><?php echo $rs['type'];?>_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
 																		<div class="col-md-12" style="padding: 0px;">
 																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
-																					<img src="images/map-icon.png">
+																					<img src="images/map-icon.png" alt="Map">
 																		<?php } ?>
 																		<?php if($rs['image'] != '') { ?>
-																					<img src="images/image-icon.png">
+																					<img src="images/image-icon.png" alt="Image">
 																		<?php } ?>
 																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
 																				<div class="col-md-3" style="padding: 1px;"><span><?php echo $rs['category'];?></span></div>
@@ -677,10 +677,10 @@ $current_date = date('Y-m-d');
                                                               <a href="<?php echo $siteUrlConstant;?><?php echo $rs['type'];?>_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
 																		<div class="col-md-12" style="padding: 0px;">
 																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
-																					<img src="images/map-icon.png">
+																					<img src="images/map-icon.png" alt="Map">
 																		<?php } ?>
 																		<?php if($rs['image'] != '') { ?>
-																					<img src="images/image-icon.png">
+																					<img src="images/image-icon.png" alt="Image">
 																		<?php } ?>
 																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
 																				<div class="col-md-3" style="padding: 1px;"><span><?php echo $rs['category'];?></span></div>
@@ -714,10 +714,10 @@ $current_date = date('Y-m-d');
                                                               <a href="<?php echo $siteUrlConstant;?>free_stuff_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"style="background-color: <?php echo $color;?> !important;border: 1px solid white;">
 																		<div class="col-md-12" style="padding: 0px;">
 																				<div class="col-md-7" style="padding: 1px;"><?php if($rs['address'] != '') { ?>
-																					<img src="images/map-icon.png">
+																					<img src="images/map-icon.png" alt="Map">
 																		<?php } ?>
 																		<?php if($rs['image'] != '') { ?>
-																					<img src="images/image-icon.png">
+																					<img src="images/image-icon.png" alt="Image">
 																		<?php } ?>
 																					<span style="color:black !important;"><?php echo substr($rs['TitleAD'],0,30);?></span></div>
 																				<div class="col-md-3" style="padding: 1px;"><span>Free Stuff</span></div>
@@ -819,7 +819,7 @@ $current_date = date('Y-m-d');
 									?>
                                 <div class="adv-big">
                                     <a href="<?php echo ($rs['url'] != '') ? $rs['url'] : 'javascript:;';?>" target="_blank">
-                                        <img src="admin/uploads/myadimg/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">                        
+                                        <img src="admin/uploads/myadimg/<?php echo $rs['image'];?>" alt="<?php echo $rs['ad_title'];?>">
                                     </a>
                                 </div>
                                 <?php } }?>

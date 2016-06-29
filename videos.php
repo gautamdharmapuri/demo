@@ -308,7 +308,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 							   <div class="col-md-6" style="padding:5px;margin:10px;padding-right: 20px;margin-right: 0px;border-right:2px solid lightgrey;">
 						   <a class="various fancybox.iframe" title="<?php echo ucfirst($rs2['title']); ?>"
 						   href="http://www.youtube.com/v/<?php echo $rs2['video_id']; ?>?fs=1&amp;autoplay=1">
-						   <img src="http://img.youtube.com/vi/<?php echo $rs2['video_id']; ?>/0.jpg" title="<?php echo $rs2['title'];?>">
+						   <img alt="<?php echo ucfirst($rs2['title']); ?>" src="http://img.youtube.com/vi/<?php echo $rs2['video_id']; ?>/0.jpg" title="<?php echo $rs2['title'];?>">
 						   </a>
 					   </div>
 					   <div class="col-md-5" style="padding-left:0px;">
@@ -367,14 +367,14 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 							<?php
 							$strlen = 12;
 							if(strlen($rs['title']) > $strlen) {
-								echo substr($rs['title'],0,$strlen).'..';
+								$finalTitle = substr($rs['title'],0,$strlen).'..';
 							} else {
-								echo $rs['title'];
-							} ?>
+								$finalTitle = $rs['title'];
+							} echo $finalTitle;?>
 						</div>
                     	<a class="various fancybox.iframe" title="<?php echo ucfirst($rs['title']); ?>"
 						href="http://www.youtube.com/v/<?php echo $rs['video_id']; ?>?fs=1&amp;autoplay=1">
-						<img src="http://img.youtube.com/vi/<?php echo $rs['video_id']; ?>/0.jpg" title="<?php echo $rs['title'];?>">
+						<img alt="<?php echo $finalTitle;?>" src="http://img.youtube.com/vi/<?php echo $rs['video_id']; ?>/0.jpg" title="<?php echo $rs['title'];?>">
 						</a>
 								<?php
 							

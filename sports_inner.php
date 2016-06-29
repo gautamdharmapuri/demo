@@ -345,7 +345,7 @@ else
 				{ ?> 
                                                                             <tr>
                                                                                 <td style="padding:5px;"><a href="<?php echo $siteUrlConstant;?>sports_inner_view?ViewId=<?php echo md5($rs['id']);?>">
-                                                                                <img src="admin/uploads/sports/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
+                                                                                <img alt="<?php echo ucwords($rs['name']);?>" src="admin/uploads/sports/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></a></td>
                                                                                 <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>sports_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                                                                                 <td style="text-align:left;">
                                                                                 <a href="<?php echo $siteUrlConstant;?>sports_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">
@@ -353,20 +353,16 @@ else
 															$rcity = mysql_fetch_array($query_city);
 															echo ucwords($rcity['city']);  ?></a>
 																				</td>
-																				<td>
-																					
-																					<?php 
-                        if($rs['rate']==5)  { echo "<img src='images/5.png'>" ; }
-                        if($rs['rate']==4)  { echo "<img src='images/4.png'>" ; }
-                        if($rs['rate']==3)  { echo "<img src='images/3.png'>" ; }
-                        if($rs['rate']==2)  { echo "<img src='images/2.png'>" ; }
-                        if($rs['rate']==1)  { echo "<img src='images/1.png'>" ; }
-                        if($rs['rate']==0)  { echo "<img src='images/0.png'>" ; }
-                        if($rs['rate']=='NULL')  { echo "<img src='images/0.png'>" ; }
-                        
-                        ?>
-																					
-																				</td>
+																				<td><?php 
+                                if($rs['rate']==5)  { echo "<img src='images/5.png' alt='5'>" ; }
+                                if($rs['rate']==4)  { echo "<img src='images/4.png' alt='4'>" ; }
+                                if($rs['rate']==3)  { echo "<img src='images/3.png' alt='3'>" ; }
+                                if($rs['rate']==2)  { echo "<img src='images/2.png' alt='2'>" ; }
+                                if($rs['rate']==1)  { echo "<img src='images/1.png' alt='1'>" ; }
+                                if($rs['rate']==0)  { echo "<img src='images/0.png' alt='0'>" ; }
+                                if($rs['rate']=='NULL')  { echo "<img src='images/0.png' alt='0'>" ; }
+                                
+                                ?>  </td>
                                                                                 <td><a href="<?php echo $siteUrlConstant;?>sports_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo $rs['total_views'];?></a></td>
                                                                             </tr>
                                                                             <?php } } else { ?>

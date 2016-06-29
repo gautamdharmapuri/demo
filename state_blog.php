@@ -257,7 +257,7 @@
                 <h5 style="margin-bottom:5px;"><?php echo ucwords($rs['blog_title']);?></h5>
 				<div style="color: #808080;font-weight: 300;line-height: 24px;margin-bottom: 12px;">Posted <?php echo date("d M, Y",strtotime($rs['date'])); ?> by Admin / Category: <?php echo ucwords($rs['category_name']);?></div>
                 <p style="clear:both;">
-                <img src="admin/uploads/blog/<?php echo $rs['image']; ?>" height="auto" width="200" style="float:left;margin: 0 10px 10px 0;"  class="imgframe">
+                <img src="admin/uploads/blog/<?php echo $rs['image']; ?>" height="auto" width="200" style="float:left;margin: 0 10px 10px 0;"  class="imgframe" alt="<?php echo ucwords($rs['blog_title']);?>">
                 <?php echo substr($rs['blog_desc'],0,350)."..."; ?>
                 
                  </p>

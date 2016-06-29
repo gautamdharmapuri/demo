@@ -202,9 +202,9 @@ font-weight:bold;
                                                  <ul style="padding-left:5px;padding-right:5px;height:100px;">
                                                       
                                                        
-                                                        <li><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile">My Profile</a></li>
-                                                        <li><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>myads">My Ads</a></li>
-                                                        <li style="border-bottom:none;"><img src="img/list.jpg">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile?action=edit">Edit Profile</a></li>                                                                                                                
+                                                        <li><img src="img/list.jpg" alt=">">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile">My Profile</a></li>
+                                                        <li><img src="img/list.jpg" alt=">">&nbsp;<a href="<?php echo $siteUrlConstant;?>myads">My Ads</a></li>
+                                                        <li style="border-bottom:none;"><img src="img/list.jpg" alt=">">&nbsp;<a href="<?php echo $siteUrlConstant;?>profile?action=edit">Edit Profile</a></li>                                                                                                                
                                                       
                                                         
                                               </ul>                                                         

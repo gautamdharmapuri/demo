@@ -191,9 +191,9 @@
   <?php
 	if(isset($_SESSION['Nris_session']))	  
 	{ ?>
-<a href="<?php echo $siteUrlConstant;?>create_free_stuff?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>create_free_stuff?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a>    
  <?php } else { ?> 
-<a href="#" data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#" data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
 <?php } ?>  
 </div><br>
                      <!--  <br><h5 id="classifieds">Home >> Temples</h5>-->
@@ -342,10 +342,10 @@
                     <tr>                                                                             
                     <td>
 						<?php if($rs['City'] != '') { ?>
-								<img src="images/map-icon.png">
+								<img src="images/map-icon.png" alt="Map">
 							<?php } ?>
 							<?php if($rs['image'] != '') { ?>
-								<img src="images/image-icon.png">
+								<img src="images/image-icon.png" alt="Image">
 							<?php } ?>
 						<a href="<?php echo $siteUrlConstant;?>free_stuff_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>
 					<td><a href="<?php echo $siteUrlConstant;?>free_stuff_inner_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">

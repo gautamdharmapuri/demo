@@ -218,9 +218,9 @@ if(isset($_POST['cmdsave']))
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="<?php echo $siteUrlConstant;?>discussion_room_create"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>discussion_room_create"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif" alt=">"></a>    
   <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Topic &nbsp;<img src="images/arrow.gif"></a>   
+<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Topic &nbsp;<img src="images/arrow.gif" alt=">"></a>   
 <?php } ?>                               
 </div>    <br>
 

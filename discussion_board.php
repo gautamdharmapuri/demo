@@ -237,7 +237,7 @@ if(isset($_POST['cmdsave']))
 							$result_inner = mysql_query($query_inner) ; 
 							while($fs = mysql_fetch_array($result_inner)) { ?>
                         <tr>
-                            <td style="padding-top:10px;padding-bottom:10px;"><img src="admin/uploads/forum/<?php echo $fs['image']; ?>" style="width:70px;height:auto;">&nbsp;
+                            <td style="padding-top:10px;padding-bottom:10px;"><img src="admin/uploads/forum/<?php echo $fs['image']; ?>" style="width:70px;height:auto;" alt="<?php echo ucwords($fs['sub_cat_name']) ; ?>">&nbsp;
 								<a href="<?php echo $siteUrlConstant;?>threads?id=<?php echo md5($fs['sub_id']); ?>" style="color:#0000FF" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='#0000FF'"><?php echo ucwords($fs['sub_cat_name']) ; ?></a>
                             </td>
                             <td style="text-align:left;">Threads : 

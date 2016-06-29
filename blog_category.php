@@ -472,7 +472,7 @@ else
 <?php 
 if (strpos($rs['image'],'.') !== false) {  ?>
 		<div class="featured-image"><a href="<?php echo $siteUrlConstant;?>blog_details?viewId=<?php echo md5($rs['id']); ?>">
-        <img alt="" src="admin/uploads/blog/<?php echo $rs['image']; ?>" style="width:100%;" class="imgframe"></a> </div>
+        <img alt="" src="admin/uploads/blog/<?php echo $rs['image']; ?>" style="width:100%;" class="imgframe" alt="<?php echo ucwords($rs['blog_title']);?>"></a> </div>
 <?php } ?>
 
 <p style="text-align:justify;margin:10px 0 90px 0;color:#666666;">

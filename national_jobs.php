@@ -181,11 +181,11 @@ $current_date = date('Y-m-d');?>
   <?php
 		if(isset($_SESSION['Nris_session']))	  
 		{ ?>
-<a href="#" data-toggle="modal" data-target="#change_state"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
-<a href="#" data-toggle="modal" data-target="#change_state2"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="#" data-toggle="modal" data-target="#change_state"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif" alt="New"></a>    
+<a href="#" data-toggle="modal" data-target="#change_state2"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a>    
   <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
-<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>   
+<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
 <?php } ?>   
 </div><br>
 
@@ -224,10 +224,10 @@ $current_date = date('Y-m-d');?>
 						<tr>
 							<td>
 								<?php if($rs['City'] != '') { ?>
-									<img src="images/map-icon.png">
+									<img src="images/map-icon.png" alt="Map">
 								<?php } ?>
 								<?php if($rs['image1'] != '') { ?>
-									<img src="images/image-icon.png">
+									<img src="images/image-icon.png" alt="Image">
 								<?php } ?>
 								
 								<a href="<?php echo $siteUrlConstant;?>national_jobs_view?ViewId=<?php echo md5($rs['id']);?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['TitleAD']);?></a></td>                 	

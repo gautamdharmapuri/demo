@@ -186,11 +186,11 @@ $current_date = date('Y-m-d');
                                             <table border="0" cellpadding="0" cellspacing="10" style="width:100%;">
                                             	<tr  style="background-color:#FFFFFF;">
                                                 	<td style="vertical-align:top;">Min Price</td>
-                                                    <td style="vertical-align:middle;"><img src="images/Dollar.png" style="float:left;"><input type="text" name="MinPrice" id="MinPrice" style="width:150px;"></td>
+                                                    <td style="vertical-align:middle;"><img src="images/Dollar.png" alt="$" style="float:left;"><input type="text" name="MinPrice" id="MinPrice" style="width:150px;"></td>
                                                 </tr>
                                             	<tr>
                                                 	<td style="vertical-align:top;">Max Price</td>
-                                                    <td style="vertical-align:middle;"><img src="images/Dollar.png" style="float:left;"><input type="text" name="MaxPrice" id="MaxPrice" style="width:150px;"></td>
+                                                    <td style="vertical-align:middle;"><img src="images/Dollar.png" alt="$" style="float:left;"><input type="text" name="MaxPrice" id="MaxPrice" style="width:150px;"></td>
                                                 </tr>                                                
                                             </table>
                                             <select name="AdsCat" id="AdsCat"  class="form-control" >              
@@ -242,11 +242,11 @@ $current_date = date('Y-m-d');
    <?php
 if(isset($_SESSION['Nris_session']))	  
 { ?>
-<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif"></a>    
-<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif"></a>    
+<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>&type=premium"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif" alt="New"></a>
+<a href="<?php echo $siteUrlConstant;?>auto_create?code=<?php echo $defaultState ?>"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a>    
   <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif"></a>   
-<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif"></a>
+<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>   
+<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
 <?php } ?>     
 
 
@@ -347,10 +347,10 @@ if(isset($_SESSION['Nris_session']))
                     <tr>
 						<td>
 							<?php if($rs['Address'] != '') { ?>
-								<img src="images/map-icon.png">
+								<img src="images/map-icon.png" alt="Map">
 							<?php } ?>
 							<?php if($rs['image1'] != '') { ?>
-								<img src="images/image-icon.png">
+								<img src="images/image-icon.png" alt="Image">
 							<?php } ?>
 							
 							<a href="<?php echo $siteUrlConstant;?>auto_inner_view?ViewId=<?php echo md5($rs['id']);?>"

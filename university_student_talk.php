@@ -176,7 +176,7 @@ txtMsg.value = txtMsg.value.substring(0, CharLength);
 <div class="widget-temple">
 				<h4><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $state;?>" style="color:#0033FF;">Home</a> >> Student's Talk >> University Student Talk</h4>
 				<?php if($_GET['universityId'] > 0) { ?>
-					<a href="<?php echo $siteUrlConstant;?>add_university_student_talk?universityId=<?php echo $_GET['universityId'];?>" class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif"></a>
+					<a href="<?php echo $siteUrlConstant;?>add_university_student_talk?universityId=<?php echo $_GET['universityId'];?>" class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif" alt=">"></a>
 				<?php } ?>
 				<br>
 </div>

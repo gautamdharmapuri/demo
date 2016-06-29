@@ -19,7 +19,7 @@
 		<?php } } else { ?>
 						<div class="inner-left-ad-wrap">
 						<a href="javascript:;">
-							<img src="img/2_x_1-ad.jpg">
+							<img src="img/2_x_1-ad.jpg" alt="Advertisement">
 						</a>
 					</div>
 		<?php } ?>

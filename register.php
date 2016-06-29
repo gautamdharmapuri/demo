@@ -710,17 +710,16 @@ if(true == $show_form)
                 if(!$fbuser){
                     $fbuser = null;
                     $loginUrl = $facebook->getLoginUrl(array('redirect_uri'=>$homeurl,'scope'=>$fbPermissions));
-                    echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png" style="width:165px;height:45px;"></a>';    
+                    echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png" alt="Facebook" style="width:165px;height:45px;"></a>';    
                 }
                 ?>
-                <!-- <a href="<?php echo $siteUrlConstant.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
            
             <?php
                 $authUrl = $gClient->createAuthUrl();
-                echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png"  style="width:154px;height:85px;" alt=""/></a>';
+                echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png" alt="Google" style="width:154px;height:85px;" alt=""/></a>';
             ?>
             
-                <?php echo '<a href="twitter_login/process"><img style="width:129px;height:40px;" src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img style="width:129px;height:40px;" alt="Twitter" src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
             
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" class="button" name="Submit" id="Submit">Register</button> 

@@ -325,7 +325,7 @@
 				while($rs=mysql_fetch_array($result))
 				{ ?> 
                                                                             <tr>
-                                                                                <td style="padding:5px;"><img src="admin/uploads/groceries/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;"></td>
+                                                                                <td style="padding:5px;"><img src="admin/uploads/groceries/<?php echo $rs['image'];?>" style="height:50px;width:50px;border-radius: 50%;" alt="<?php echo ucwords($rs['name']);?>"></td>
                                                                                 <td style="text-align:left;"><a href="<?php echo $siteUrlConstant;?>groceries_inner_view?ViewId=<?php echo md5($rs['id']);?>" onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'"><?php echo ucwords($rs['name']);?></a></td>
                                                                                 <td style="text-align:left;">
                                                                                 <?php $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id']."'");

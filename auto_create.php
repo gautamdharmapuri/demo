@@ -960,7 +960,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 
 <div class="form-group">
 	<label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;">Price
-    <img src="images/Dollar.png" style="float:right;margin-top:5px;">
+    <img src="images/Dollar.png" style="float:right;margin-top:5px;" alt="$">
     </label>
 	<div class="col-sm-8">
 		<input type="number" class="form-control" id="Price" name="Price" placeholder="Price" style="width:100%;" tabindex="12" />
