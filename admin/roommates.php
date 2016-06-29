@@ -32,7 +32,7 @@
 
 <!DOCTYPE html>
 <html lang="en">
-    <head><base href="/">        
+    <head>        
         <!-- META SECTION -->
         <title>Room Mate Classifieds Management	 | NRIs</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

@@ -157,7 +157,7 @@ if(isset($_POST['submit']))
 ?>
 <!DOCTYPE html>
 <html lang="en">
-    <head><base href="/">        
+    <head>        
         <!-- META SECTION -->
         <title><?php if(isset($_GET['editId'])) { echo "Edit "; } else { echo "Add  "; } ?> Famous Restaurant | NRIs</title>            
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />

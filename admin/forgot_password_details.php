@@ -115,7 +115,7 @@ has been sent to <b>'. $to.' </b><br>Please click on the Link to Reset your Pass
 ?>
 
 <html>
-<head><base href="/">
+<head>
 <link rel="stylesheet" href="css/mystyle.css" />
 </head>
 <body>
