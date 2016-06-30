@@ -121,7 +121,7 @@
 <div id="images_popup" style="display:none;">
     <a style="float:right;cursor: pointer;" onClick="popup('images_popup')">X</a>
 				<div id="col-md-12">
-					<img src="" id="myImage" alt="image">
+					<img src="img/logo.png" id="myImage" alt="image">
                 </div>
 	</div>
     <div id="blanket" style="display:none;"></div>
@@ -138,7 +138,7 @@
 </div>
 <div class="modal-body">
 
-<table border="0" cellpadding="2" cellspacing="1" width="100%" style="line-height:28px;">
+<table style="line-height:28px;width: 100%;border: none;border-spacing: 1px;">
            
          	<?php 
 			$cnt=0;
@@ -152,7 +152,7 @@
 				$siteUrlConstant = $protocol . "://" .str_replace(' ','',$fs_state['state']).'.'.$_SERVER['SERVER_NAME'].'/';
 					?>
 
-            <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">
+            <td style="vertical-align:middle;width:auto;text-align:left;padding: 2px;padding-left:10px;">
             <a href="<?php echo $siteUrlConstant;?>state?code=<?php echo $fs_state['state_code']; ?>"  onMouseMove="this.style.color='red'" onMouseOut="this.style.color='black'">
             <?php if($fs_state['state_code']==$defaultState) { 
 			echo '<i class="fa fa-check"></i> '.$fs_state['state']; }
@@ -187,7 +187,7 @@
     <a style="float:right;cursor: pointer;" onClick="popup('terms_conditions_popup')">X</a>
     	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
        
-<center><h4>Terms And Conditions!</h4></center>
+	 <h4 style="text-align: center;">Terms And Conditions!</h4>
 
                     
                         <p class="mydata">
@@ -230,7 +230,7 @@
 					<p class="mydata">
 						 We thank you in advance for your understanding and continued support.
 					</p>
-					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('terms_conditions_popup')" class="btn btn-success" style="">Accept</button></span></p>
+					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('terms_conditions_popup')" class="btn btn-success" style="">Accept</button></span></p>
                 </div>
 	</div>	
 <!-- / POPUP-->
@@ -247,7 +247,7 @@
     <a style="float:right;cursor: pointer;" onClick="popup('chat_terms_conditions_popup')">X</a>
     	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
        
-<center><h4>Terms And Conditions!</h4></center>
+<h4 style="text-align: center;">Terms And Conditions!</h4>
 
                     
                         <p class="mydata">
@@ -271,7 +271,7 @@
 					<p class="mydata">
 						 Thanks for joining us in chat!
 					</p>
-					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled readonly>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;
+					<p class="mydata"> <input type="checkbox" value="y" id="chkAll1" checked disabled>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;
 					<button onClick="chat_condition_click();" class="btn btn-success" style="">Agree</button></span></p>
                 </div>
 	</div>	

@@ -199,7 +199,8 @@
                                 $home_righttop_ad_res1 = mysql_query($home_righttop_query1);                               
 								$home_righttop1 = mysql_fetch_array($home_righttop_ad_res1);
 								 if($home_righttop1['edate'] >= $current_date)
-                                {                                
+                                {
+										$home_righttop1['url'] = ($home_righttop1['url'] != '') ? $home_righttop1['url'] : 'javascript:;';
                                 echo '<a href="' . $home_righttop1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_righttop1['image'].'" alt="'.$home_righttop1['image'].'"></a>';
                                 } else { 
 								$home_righttop_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Top-8' and ad_position_no='1' and edate < '".$current_date."' "); 
@@ -217,7 +218,7 @@
 								$home_righttop2 = mysql_fetch_array($home_righttop_ad_res2);
                                  if($home_righttop2['edate'] >= $current_date)
                                 {
-                                
+                                $home_righttop2['url'] = ($home_righttop2['url'] != '') ? $home_righttop2['url'] : 'javascript:;';
                                 echo '<a href="' . $home_righttop2['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_righttop2['image'].'" alt="'.$home_righttop2['image'].'"></a>';
                                 } else { 
 								$home_righttop_query2 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Top-8' and ad_position_no='2' and edate < '".$current_date."' "); 
@@ -234,7 +235,8 @@
                                 $home_righttop_ad_res3 = mysql_query($home_righttop_query3);
 								$home_righttop3 = mysql_fetch_array($home_righttop_ad_res3);
                                  if($home_righttop3['edate'] >= $current_date)
-                                {                                
+                                {
+										$home_righttop3['url'] = ($home_righttop3['url'] != '') ? $home_righttop3['url'] : 'javascript:;';
                                 echo '<a href="' . $home_righttop3['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_righttop3['image'].'" alt="'.$home_righttop3['image'].'"></a>';
                                 } else { 
 								$home_righttop_query3 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Top-8' and ad_position_no='3' and edate < '".$current_date."' "); 
@@ -250,7 +252,8 @@
                                 $home_righttop_ad_res4 = mysql_query($home_righttop_query4);
 								$home_righttop4 = mysql_fetch_array($home_righttop_ad_res4);
                                  if($home_righttop4['edate'] >= $current_date)
-                                {                                
+                                {
+										$home_righttop4['url'] = ($home_righttop4['url'] != '') ? $home_righttop4['url'] : 'javascript:;';
                                 echo '<a href="' . $home_righttop4['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_righttop4['image'].'" alt="'.$home_righttop4['image'].'"></a>';
                                 } else { 
 								$home_righttop_query4 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Top-8' and ad_position_no='4' and edate < '".$current_date."' "); 
@@ -266,7 +269,8 @@
                                 $home_righttop_ad_res5 = mysql_query($home_righttop_query5);
 								$home_righttop5 = mysql_fetch_array($home_righttop_ad_res5);
                                  if($home_righttop5['edate'] >= $current_date)
-                                {                                
+                                {
+										$home_righttop5['url'] = ($home_righttop5['url'] != '') ? $home_righttop5['url'] : 'javascript:;';
                                 echo '<a href="' . $home_righttop5['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_righttop5['image'].'" alt="'.$home_righttop5['image'].'"></a>';
                                 } else { 
 								$home_righttop_query5 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Top-8' and ad_position_no='5' and edate < '".$current_date."' "); 
@@ -283,7 +287,7 @@
                                 $home_righttop6 = mysql_fetch_array($home_righttop_ad_res6);								
                                  if($home_righttop6['edate'] >= $current_date)
                                 {
-
+$home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url'] : 'javascript:;';
                                 echo '<a href="' . $home_righttop6['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_righttop6['image'].'" alt="'.$home_righttop6['image'].'"></a>';
                                 } else { 
 								$home_righttop_query6 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Top-8' and ad_position_no='6' and edate < '".$current_date."' "); 
@@ -299,7 +303,8 @@
                                 $home_righttop_ad_res7 = mysql_query($home_righttop_query7);
 								$home_righttop7 = mysql_fetch_array($home_righttop_ad_res7);
                                  if($home_righttop7['edate'] >= $current_date)
-                                {                                
+                                {
+										$home_righttop7['url'] = ($home_righttop7['url'] != '') ? $home_righttop7['url'] : 'javascript:;';
                                 echo '<a href="' . $home_righttop7['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_righttop7['image'].'" alt="'.$home_righttop7['image'].'"></a>';
                                 } else {
 								$home_righttop_query7 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Top-8' and ad_position_no='7' and edate < '".$current_date."' ");  
@@ -314,7 +319,8 @@
                                 $home_righttop_ad_res8 = mysql_query($home_righttop_query8);
 								$home_righttop8 = mysql_fetch_array($home_righttop_ad_res8);
                                  if($home_righttop8['edate'] >= $current_date)
-                                {                                
+                                {
+										$home_righttop8['url'] = ($home_righttop8['url'] != '') ? $home_righttop8['url'] : 'javascript:;';
                                 echo '<a href="' . $home_righttop8['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_righttop8['image'].'" alt="'.$home_righttop8['image'].'"></a>';
                                 } else { 
 								$home_righttop_query8 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Top-8' and ad_position_no='8' and edate < '".$current_date."' "); 
@@ -362,7 +368,7 @@
 												  {?>   
 												  <p><a href="<?php echo $siteUrlConstant;?>national_events?ViewId=<?php echo ucfirst($eventCat);?>"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
 												  <?php } } else {  ?>
-												  <p><h4>No Data Found.</h4></p>
+												  <h4>No Data Found.</h4>
 												  <?php } ?>
 												
 											</div>    
@@ -472,7 +478,7 @@
 									$home_left1 = mysql_fetch_array($home_left_ad_res1);
                                     if($home_left1['edate'] >= $current_date)
                                     {
-                                  		 
+                                  		 $home_left1['url'] = ($home_left1['url'] != '') ? $home_left1['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_left1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_left1['image'].'" alt="'.$home_left1['image'].'"></a>';
                                     } else {
 									 $home_left1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Left-Bottom' and ad_position_no='1' and edate < '".$current_date."' "); 
@@ -489,7 +495,7 @@
 									$home_left2 = mysql_fetch_array($home_left_ad_res2);
                                      if($home_left2['edate'] >= $current_date)
                                     {
-                                  		 
+                                  		 $home_left2['url'] = ($home_left2['url'] != '') ? $home_left2['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_left2['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_left2['image'].'" alt="'.$home_left2['image'].'"></a>';
                                     } else {
 							 $home_left2 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Left-Bottom' and ad_position_no='2' and edate < '".$current_date."' "); 
@@ -504,7 +510,8 @@
                                     $home_left_ad_res3 = mysql_query($home_left_query3);
 									$home_left3 = mysql_fetch_array($home_left_ad_res3);
                                     if($home_left3['edate'] >= $current_date)
-                                    {                                  		
+                                    {
+										$home_left3['url'] = ($home_left3['url'] != '') ? $home_left3['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_left3['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_left3['image'].'" alt="'.$home_left3['image'].'"></a>';
                                     } else { 
 									 $home_left3 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Left-Bottom' and ad_position_no='3' and edate < '".$current_date."' ");   ?>		
@@ -518,7 +525,8 @@
                                     $home_left_ad_res4 = mysql_query($home_left_query4);
 									$home_left4 = mysql_fetch_array($home_left_ad_res4);
                                     if($home_left4['edate'] >= $current_date)
-                                    {                                  		
+                                    {
+										$home_left4['url'] = ($home_left4['url'] != '') ? $home_left4['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_left4['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_left4['image'].'" alt="'.$home_left4['image'].'"></a>';
                                     } else { 
 									$home_left4 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Left-Bottom' and ad_position_no='4' and edate < '".$current_date."' ");   ?>			
@@ -532,7 +540,8 @@
                                     $home_left_ad_res5 = mysql_query($home_left_query5);
 									$home_left5 = mysql_fetch_array($home_left_ad_res5);
                                     if($home_left5['edate'] >= $current_date)
-                                    {                                  		
+                                    {
+										$home_left5['url'] = ($home_left5['url'] != '') ? $home_left5['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_left5['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_left5['image'].'" alt="'.$home_left5['image'].'"></a>';
                                     } else { 
 									$home_left5 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Left-Bottom' and ad_position_no='5' and edate < '".$current_date."' ");   ?>			   
@@ -546,7 +555,7 @@
 									 $home_left6 = mysql_fetch_array($home_left_ad_res6);
                                      if($home_left6['edate'] >= $current_date)
                                     {
-                                  		
+                                  		$home_left6['url'] = ($home_left6['url'] != '') ? $home_left6['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_left6['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_left6['image'].'" alt="'.$home_left6['image'].'"></a>';
                                     } else { 
                                     $home_left6 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Left-Bottom' and ad_position_no='6' and edate < '".$current_date."' ");   ?>			   
@@ -559,7 +568,8 @@
                                     $home_left_ad_res7 = mysql_query($home_left_query7);
 									 $home_left7 = mysql_fetch_array($home_left_ad_res7);
                                     if($home_left7['edate'] >= $current_date)
-                                    {                                  		
+                                    {
+										$home_left7['url'] = ($home_left7['url'] != '') ? $home_left7['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_left7['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_left7['image'].'" alt="'.$home_left7['image'].'"></a>';
                                     } else { 
                                       $home_left7 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Left-Bottom' and ad_position_no='7' and edate < '".$current_date."' ");   ?>			   
@@ -572,7 +582,8 @@
                                     $home_left_ad_res8 = mysql_query($home_left_query8);
 									$home_left8 = mysql_fetch_array($home_left_ad_res8);
                                     if($home_left8['edate'] >= $current_date)
-                                    {                                  		 
+                                    {
+										$home_left8['url'] = ($home_left8['url'] != '') ? $home_left8['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_left8['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_left8['image'].'" alt="'.$home_left8['image'].'"></a>';
                                     } else { 
                                      $home_left8 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Left-Bottom' and ad_position_no='8' and edate < '".$current_date."' ");   ?>			   
@@ -638,7 +649,7 @@
                                                       
                                                           <p><a href="<?php echo $siteUrlConstant;?>national_training?ViewId=<?php echo $rsfs['id'] ; ?>"><?php echo date("d M ",strtotime($rs_SAP['date'])); ?><span>&nbsp; <?php echo ucwords($rs_SAP['title']);?></span></a></p>
                                                         <?php } } else {  ?>
-                                                        <p><h4>No Data Found.</h4></p>
+                                                        <h4>No Data Found.</h4>
                                                         <?php } ?>
                                                       </div>    
                                                       <a href="<?php echo $siteUrlConstant;?>national_training?ViewId=<?php echo $rsfs['id'] ; ?>" class="read-btn-tab">View more</a>
@@ -756,13 +767,14 @@
                                     $home_bottom_ad_res1 = mysql_query($home_bottom_query1);
 									$home_btm1 = mysql_fetch_array($home_bottom_ad_res1);
                                     if($home_btm1['edate'] >= $current_date)
-                                    {                                  		 
-                                   	 	echo '<a href="' . $home_btm1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_btm1['image'].'" alt="'.$home_btm1['image'].'"><a/>';
+                                    {
+										$home_btm1['url'] = ($home_btm1['url'] != '') ? $home_btm1['url'] : 'javascript:;';
+                                   	 	echo '<a href="' . $home_btm1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_btm1['image'].'" alt="'.$home_btm1['image'].'"></a>';
                                     } else { 
 							$home_bottom_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Bottom-Small' and ad_position_no='1' and edate < '".$current_date."' ");
                                     ?>		
                                         
-                                        <img src="images/ads1.gif" height="115" width="336" style="height:115px;" width="336px;" alt="Advertisement">
+                                        <img src="images/ads1.gif" height="115" width="336" style="height:115px;" alt="Advertisement">
                                           <?php } ?>
                                     
                                 </div>
@@ -775,13 +787,13 @@
 									$home_btm2 = mysql_fetch_array($home_bottom_ad_res2);
                                     if($home_btm2['edate'] >= $current_date)
                                     {
-                                  		 
+                                  		$home_btm2['url'] = ($home_btm2['url'] != '') ? $home_btm2['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_btm2['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_btm2['image'].'" alt="'.$home_btm2['image'].'"></a>';
                                     } else {
 									$home_bottom_query2 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Bottom-Small' and ad_position_no='2' and edate < '".$current_date."' "); 
                                     ?>		
                                         
-                                       <img src="images/ads1.gif" height="115" width="336" style="height:115px;" width="336px;" alt="Advertisement">
+                                       <img src="images/ads1.gif" height="115" width="336" style="height:115px;"  alt="Advertisement">
                                           <?php } ?>
                                     
                                 </div>
@@ -794,13 +806,13 @@
 									 $home_btm3 = mysql_fetch_array($home_bottom_ad_res3);
                                     if($home_btm3['edate'] >= $current_date)
                                     {
-                                  		
+                                  		$home_btm3['url'] = ($home_btm3['url'] != '') ? $home_btm3['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_btm3['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_btm3['image'].'" alt="'.$home_btm3['image'].'"></a>';
                                     } else { 
 							$home_bottom_query2 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Bottom-Small' and ad_position_no='3' and edate < '".$current_date."' "); 		
                                     ?>		
                                         
-                                        <img src="images/ads1.gif" height="115" width="336" style="height:115px;" width="336px;" alt="Advertisement">
+                                        <img src="images/ads1.gif" height="115" width="336" style="height:115px;"  alt="Advertisement">
                                           <?php } ?>
                                     
                                 </div>
@@ -816,7 +828,7 @@
 									$home_btm4 = mysql_fetch_array($home_bottom_ad_res4);
                                      if($home_btm4['edate'] >= $current_date)
                                     {
-                                  		 
+                                  		 $home_btm4['url'] = ($home_btm4['url'] != '') ? $home_btm4['url'] : 'javascript:;';
 										 echo '<a href="' . $home_btm4['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_btm4['image'].'" alt="'.$home_btm4['image'].'"></a>';
                                    	 	
                                     } else {
@@ -841,13 +853,14 @@
                                     $home_right_ad_res1 = mysql_query($home_right_query1);
 									$home_right1 = mysql_fetch_array($home_right_ad_res1);
                                     if($home_right1['edate'] >= $current_date)
-                                    {                                  		 
+                                    {
+										$home_right1['url'] = ($home_right1['url'] != '') ? $home_right1['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_right1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_right1['image'].'" alt="'.$home_right1['image'].'"></a>';
                                     } else {
 							$home_right_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Bottom' and ad_position_no='1' and edate < '".$current_date."' "); 
                                     ?>		
                                         
-                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" width="192px;" alt="Advertisement">
+                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" alt="Advertisement">
                                           <?php } ?>           
                                     
                                 </div>
@@ -855,115 +868,122 @@
                               
                               
                                 <div class="image-big">
-                                    <a href="javascript:;" >
+                                    
                                         <?php                                    
                                     $home_right_query2 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='2' and status='Active' order by id desc limit 1";
                                     $home_right_ad_res2 = mysql_query($home_right_query2);
 									$home_right2 = mysql_fetch_array($home_right_ad_res2);
                                     if($home_right2['edate'] >= $current_date)
-                                    {                                  		 
+                                    {
+										$home_right2['url'] = ($home_right2['url'] != '') ? $home_right2['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_right2['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_right2['image'].'" alt="'.$home_right2['image'].'"></a>';
                                     } else { 
                                    $home_right_query2 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Bottom' and ad_position_no='2' and edate < '".$current_date."' "); 
                                     ?>		                                       
-                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" width="192px;" alt="Advertisement">
+                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" alt="Advertisement">
                                           <?php } ?>                
-                                    </a>
+                                   
                                 </div>
                                 
                                 <div class="image-big">
-                                    <a href="javascript:;" >
+                                    
                                         <?php                                    
                                     $home_right_query3 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='3' and status='Active' order by id desc limit 1";
                                     $home_right_ad_res3 = mysql_query($home_right_query3);
 									 $home_right3 = mysql_fetch_array($home_right_ad_res3);
                                     if($home_right3['edate'] >= $current_date)
-                                    {                                  		
+                                    {
+										$home_right3['url'] = ($home_right3['url'] != '') ? $home_right3['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_right3['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_right3['image'].'" alt="'.$home_right3['image'].'"></a>';
                                     } else { 
                                     $home_right_query3 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Bottom' and ad_position_no='3' and edate < '".$current_date."' "); 
                                     ?>	                                       
-                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" width="192px;" alt="Advertisement">
+                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" alt="Advertisement">
                                           <?php } ?>        
-                                    </a>
+                                    
                                 </div>	
                                 
                                 <div class="image-big">
-                                    <a href="javascript:;" >
+                                    
                                          <?php                                    
                                     $home_right_query4 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='4' and status='Active' order by id desc limit 1";
                                     $home_right_ad_res4 = mysql_query($home_right_query4);
 									$home_right4 = mysql_fetch_array($home_right_ad_res4);
                                     if($home_right4['edate'] >= $current_date)
                                     {
-                                  		 
+                                  		$home_right4['url'] = ($home_right4['url'] != '') ? $home_right4['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_right4['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_right4['image'].'" alt="'.$home_right4['image'].'"></a>';
                                     } else { 
                                      $home_right_query4 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Bottom' and ad_position_no='4' and edate < '".$current_date."' ");  ?>	                                       
-                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" width="192px;" alt="Advertisement">
+                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" alt="Advertisement">
                                           <?php } ?>                        
-                                    </a>
+                                    
                                 </div>
                                 
                                 <div class="image-big">
-                                    <a href="javascript:;" >
+                                    
                                          <?php                                    
                                     $home_right_query5 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='5' and status='Active' order by id desc limit 1";
                                     $home_right_ad_res5 = mysql_query($home_right_query5);
 									 $home_right5 = mysql_fetch_array($home_right_ad_res5);
                                      if($home_right5['edate'] >= $current_date)
-                                    {                                  		
+                                    {
+										$home_right5['url'] = ($home_right5['url'] != '') ? $home_right5['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_right5['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_right5['image'].'" alt="'.$home_right5['image'].'"></a>';
                                     } else { 
                                     $home_right_query5 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Bottom' and ad_position_no='5' and edate < '".$current_date."' ");  ?>	                                       
-                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" width="192px;" alt="Advertisement">
+                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" alt="Advertisement">
                                           <?php } ?>                        
-                                    </a>
+                                    
                                 </div>
                                 <div class="image-big">
-                                    <a href="javascript:;" >
+                                    
                                          <?php                                    
                                     $home_right_query6 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='6' and status='Active' order by id desc limit 1";
                                     $home_right_ad_res6 = mysql_query($home_right_query6);
 									 $home_right6 = mysql_fetch_array($home_right_ad_res6);
                                      if($home_right6['edate'] >= $current_date)
-                                    {                                  		
+                                    {
+										$home_right6['url'] = ($home_right6['url'] != '') ? $home_right6['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_right6['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_right6['image'].'" alt="'.$home_right6['image'].'"></a>';
                                     } else { 
                                     $home_right_query6 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Bottom' and ad_position_no='6' and edate < '".$current_date."' ");  ?>	                                       
-                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" width="192px;" alt="Advertisement">
+                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" alt="Advertisement">
                                           <?php } ?>                        
-                                    </a>
+                                    
                                 </div>	
                                 <div class="image-big">
-                                    <a href="javascript:;" >
+                                    
                                          <?php                                    
                                     $home_right_query2 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='7' and status='Active' order by id desc limit 1";
                                     $home_right_ad_res7 = mysql_query($home_right_query7);
 									$home_right7 = mysql_fetch_array($home_right_ad_res7);
                                     if($home_right7['edate'] >= $current_date)
-                                    {                                  		 
+                                    {
+										$home_right7['url'] = ($home_right7['url'] != '') ? $home_right7['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_right7['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_right7['image'].'" alt="'.$home_right7['image'].'"></a>';
                                     } else { 
                                      $home_right_query7 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Bottom' and ad_position_no='7' and edate < '".$current_date."' ");  ?>	                                       
-                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" width="192px;" alt="Advertisement">
+                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" alt="Advertisement">
                                           <?php } ?>                
-                                    </a>
+                                    
                                 </div>
                                 <div class="image-big">
-                                    <a href="javascript:;" >
+                                    
                                         <?php                                    
                                     $home_right_query2 = "select * from us_ads where ad_position='Home-Right-Bottom' and ad_position_no='8' and status='Active' order by id desc limit 1";
                                     $home_right_ad_res8 = mysql_query($home_right_query8);
 									 $home_right8 = mysql_fetch_array($home_right_ad_res8);
                                     if($home_right8['edate'] >= $current_date)
-                                    {                                  		
+                                    {
+										
+										$home_right8['url'] = ($home_right8['url'] != '') ? $home_right8['url'] : 'javascript:;';
                                    	 	echo '<a href="' . $home_right8['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_right8['image'].'" alt="'.$home_right8['image'].'"></a>';
                                     } else { 
                                     $home_right_query8 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Right-Bottom' and ad_position_no='8' and edate < '".$current_date."' ");  ?>	                                       
-                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" width="192px;" alt="Advertisement">
+                                         <img src="images/ads1.gif" height="96" width="192" style="height:96px;" alt="Advertisement">
                                           <?php } ?>                       
-                                    </a>
+                                    
                                 </div>
                                
                            </div> 

@@ -76,7 +76,7 @@ for(var i=0; i<arrStr.length; i++)
   {  
   if(arrStr[i]!='')
   {
-    var img_src=jQuery("img[smily='"+arrStr[i]+"']").attr('src');
+    var img_src=jQuery("img[data-smily='"+arrStr[i]+"']").attr('src');
     if(typeof img_src !== "undefined")
     {
       arrStr[i]="<img src='"+img_src+"' />";
@@ -89,7 +89,7 @@ var user = '<?php echo $user;?>';
 //var dataString = 'user='+ user + '&msg=' + boxval;
 if(boxval.length > 0)
 { 
-	 if(document.getElementById('chkAll').checked==false){
+	 if(document.getElementById('chkAll1').checked==false){
 					popup('terms_conditions_popup');
 					return false;
 
@@ -187,10 +187,11 @@ jQuery(".chat_header").click(function (e) {
 for($i=0;$i<count($emoticons);$i++){
 $csm=explode(' ',$emoticons[$i]);
 if(isset($csm[1])){
-print '<img class="link" src="images/smilies/'.$csm[2].'" onmouseover="document.getElementById(\'sprv\').innerHTML=\''.$csm[0].'\'" onmouseout="document.getElementById(\'sprv\').innerHTML=\'\'" onclick="ad_emo(\''.$csm[0].'\')" alt="" smily="'.$csm[0].'" />'."\r\n";
+print '<img class="link" src="images/smilies/'.$csm[2].'" onmouseover="document.getElementById(\'sprv\').innerHTML=\''.$csm[0].'\'" onmouseout="document.getElementById(\'sprv\').innerHTML=\'\'" onclick="ad_emo(\''.$csm[0].'\')" alt="" data-smily="'.$csm[0].'" />'."\r\n";
 }}
 
 ?>
+</div>
 <br style="clear:both" />
 <div class="title2 box_close_button" style="float:right">
 <span class="link_color">Close</span>

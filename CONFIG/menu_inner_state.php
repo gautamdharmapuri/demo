@@ -271,14 +271,14 @@ var site_url = '<?php echo $siteUrlConstant;?>';
             <div style="width:60%;float:left;">
             <h5>Existing user? Login</h5>
             <div class="form-group">
-    <label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Email Id</label>            
+    <label for="Loginemail" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Email Id</label>            
 	<div class="col-sm-8">
 		<input type="text" class="form-control" id="Loginemail" name="Loginemail" placeholder="Enter E-mail" style="width:100%;" tabindex="1"  required="required" />
 	</div>
 </div>
 
 <div class="form-group">
-    <label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Password</label>
+    <label for="LoginPassword" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Password</label>
 	<div class="col-sm-8">
 		<input type="password" class="form-control" id="LoginPassword" name="LoginPassword" placeholder="Enter Password" style="width:100%;" tabindex="2" required="required"  />
          <input type="hidden" name="currentURL" id="currentURL" value="<?php echo $actual_link ; ?>" />

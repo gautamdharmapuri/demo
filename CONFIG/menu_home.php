@@ -188,7 +188,7 @@
       <div class="modal-content">
         <div class="modal-header">
           <button type="button" class="close" data-dismiss="modal">&times;</button>
-          <h4 class="modal-title"><center><img src="img/logo.png" height="65" width="184" alt="Nris"/></center></h4>
+          <h4 class="modal-title"><img src="img/logo.png" height="65" width="184" alt="Nris" style="margin-left:25%;"/></h4>
         </div>
         <div class="modal-body">
 			 <form name="formLogin" id="formLogin" method="post" class="form-horizontal" action="verify">
@@ -196,13 +196,13 @@
             <div style="width:60%;float:left;">
             <h5>Existing user? Login</h5>
             <div class="form-group">
-    <label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Email Id</label>            
+    <label for="Loginemail" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Email Id</label>            
 	<div class="col-sm-8">
 		<input type="text" class="form-control" id="Loginemail" name="Loginemail" placeholder="Enter E-mail" style="width:100%;" tabindex="1"  required="required"  value="<?php if(isset($_COOKIE['username'])) echo $_COOKIE['username']; ?>" />
 	</div>
 </div>
 <div class="form-group">
-    <label for="inputEmail3" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Password</label>
+    <label for="LoginPassword" class="col-sm-4 control-label"  style="text-align:left;font-weight:bold;">Password</label>
 	<div class="col-sm-8">
 		<input type="password" class="form-control" id="LoginPassword" name="LoginPassword" placeholder="Enter Password" style="width:100%;" tabindex="2" required="required"  value="<?php if(isset($_COOKIE['password'])) echo $_COOKIE['password']; ?>" />
 	</div>
@@ -223,8 +223,8 @@
             </div>
             </form>
             
-            <div style="width:38%;float:right;">
-			<center>
+            <div style="width:38%;float:right;text-align: center;">
+			
             <h3><a href="<?php echo $siteUrlConstant;?>register"><img src="img/register.png" alt="Register"/></a></h3><br />
             <?php
             include_once("fb_login/config.php");
@@ -249,7 +249,6 @@
             <h3>
                 <?php echo '<a href="twitter_login/process"><img src="twitter_login/images/sign-in-with-twitter.png" style="border:none;" alt="Twitter"/></a>'; ?>
             </h3>
-			</center>
             </div>
             
         </div>
@@ -260,7 +259,6 @@
       
     </div>
   </div>
-</form>  
 <!-- Modal -->
 <!-- Modal  Free Post  -->
   <div class="modal fade" id="nri_post" role="dialog">
