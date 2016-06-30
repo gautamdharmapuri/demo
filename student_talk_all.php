@@ -193,7 +193,7 @@ if(isset($_SESSION['Nris_session']))
 { ?>
 <a href="<?php echo $siteUrlConstant;?>add_university_student_talk?universityId=<?php echo $_GET['universityId'];?>"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Topic <img src="images/arrow.gif" alt=">"></a>    
   <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Topic &nbsp;<img src="images/arrow.gif" alt=">"></a>   
+<a href="javascript:;"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Topic &nbsp;<img src="images/arrow.gif" alt=">"></a>   
 <?php } ?>                               
 </div>    <br>
 

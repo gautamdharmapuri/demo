@@ -1005,7 +1005,7 @@ function test_input($data) {
 
 	<div class="col-sm-12">
     	<input type="checkbox" id="chkTerms" name="chkTerms" tabindex="11" checked />&nbsp;
-        <a href="#">I Accept Terms & Conditions</a>
+        <a href="javascript:;">I Accept Terms & Conditions</a>
 	</div>
 </div>
 </div>

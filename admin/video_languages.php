@@ -54,7 +54,7 @@ font-style:italic;
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="dashboard.php">Home</a></li>
-                    <li><a href="#">Videos</a></li>                    
+                    <li><a href="javascript:;">Videos</a></li>                    
                     <li class="active">Video Languages</li>
                 </ul>
                 <!-- END BREADCRUMB -->

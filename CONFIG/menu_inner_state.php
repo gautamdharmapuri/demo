@@ -216,7 +216,7 @@ var site_url = '<?php echo $siteUrlConstant;?>';
 						if(isset($_SESSION['Nris_session'])) {
 								echo '<a href="'.$siteUrlConstant.'add_university">Student\'s Talk</a>';
 						} else {
-								echo '<a href="#"  data-toggle="modal" data-target="#myModal">Student\'s Talk</a>';
+								echo '<a href="javascript:;"  data-toggle="modal" data-target="#myModal">Student\'s Talk</a>';
 						}
 				?>
 				<ul class="subnav">
@@ -238,7 +238,7 @@ var site_url = '<?php echo $siteUrlConstant;?>';
 										if(isset($_SESSION['Nris_session'])) {
 												echo '<a href="'.$siteUrlConstant.'add_university">Request for University</a>';
 										} else {
-												echo '<a href="#"  data-toggle="modal" data-target="#myModal">Student\'s Talk</a>';
+												echo '<a href="javascript:;"  data-toggle="modal" data-target="#myModal">Student\'s Talk</a>';
 										}
 								?>
 						</li>
@@ -324,7 +324,7 @@ var site_url = '<?php echo $siteUrlConstant;?>';
             ?>
             </h3>
             <h3>
-                <?php echo '<a href="twitter_login/process"><img alt="Twitter" src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img alt="Twitter" src="twitter_login/images/sign-in-with-twitter.png" style="border:none;" /></a>'; ?>
             </h3>
 			</center>
             </div>

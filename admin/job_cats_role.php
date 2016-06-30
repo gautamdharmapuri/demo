@@ -116,7 +116,7 @@ if(isset($_POST['submit']))
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="dashboard.php">Home</a></li>   
-                    <li><a href="#">Free Ads Category Management</a></li>     
+                    <li><a href="javascript:;">Free Ads Category Management</a></li>     
                     <li><a href="job_cats.php">Jobs</a></li>            
                     <li class="active">Job Role</li>            
                 </ul>

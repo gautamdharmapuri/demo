@@ -81,7 +81,7 @@ font-style:italic;
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="dashboard.php">Home</a></li>                    
-                    <li><a href="#">Forum</a></li>
+                    <li><a href="javascript:;">Forum</a></li>
                     <li class="active">Forum Categories</li>
                 </ul>
                 <!-- END BREADCRUMB -->

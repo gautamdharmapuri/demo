@@ -834,7 +834,7 @@ elFinder.prototype.view = function(fm, el) {
 		.append(this.stb);
 
 	this.tree = $('<ul class="el-finder-tree"></ul>').appendTo(this.nav);
-	this.plc  = $('<ul class="el-finder-places"><li><a href="#" class="el-finder-places-root"><div/>'+this.fm.i18n(this.fm.options.places)+'</a><ul/></li></ul>').hide();
+	this.plc  = $('<ul class="el-finder-places"><li><a href="javascript:;" class="el-finder-places-root"><div/>'+this.fm.i18n(this.fm.options.places)+'</a><ul/></li></ul>').hide();
 
 	this.nav[this.fm.options.placesFirst ? 'prepend' : 'append'](this.plc);
 
@@ -867,7 +867,7 @@ elFinder.prototype.view = function(fm, el) {
 	*/
 	this.renderNav = function(tree) {
 		var d = tree.dirs.length ? traverse(tree.dirs) : '',
-			li = '<li><a href="#" class="el-finder-tree-root" key="'+tree.hash+'"><div'+(d ? ' class="collapsed expanded"' : '')+'/>'+tree.name+'</a>'+d+'</li>';
+			li = '<li><a href="javascript:;" class="el-finder-tree-root" key="'+tree.hash+'"><div'+(d ? ' class="collapsed expanded"' : '')+'/>'+tree.name+'</a>'+d+'</li>';
 		this.tree.html(li);
 		
 		this.fm.options.places && this.renderPlaces();
@@ -884,7 +884,7 @@ elFinder.prototype.view = function(fm, el) {
 					c = 'readonly';
 				} 
 				
-				html += '<li><a href="#" class="'+c+'" key="'+tree[i].hash+'"><div'+(tree[i].dirs.length ? ' class="collapsed"' : '')+'/>'+tree[i].name+'</a>';
+				html += '<li><a href="javascript:;" class="'+c+'" key="'+tree[i].hash+'"><div'+(tree[i].dirs.length ? ' class="collapsed"' : '')+'/>'+tree[i].name+'</a>';
 
 				if (tree[i].dirs.length) {
 					html += traverse(tree[i].dirs);
@@ -2442,7 +2442,7 @@ elFinder.prototype.quickLook = function(fm, el) {
 	this.kind = $('<span class="el-finder-ql-kind"/>')
 	this.size = $('<span class="el-finder-ql-size"/>')
 	this.date = $('<span class="el-finder-ql-date"/>')
-	this.url  = $('<a href="#"/>').hide().click(function(e) {
+	this.url  = $('<a href="javascript:;"/>').hide().click(function(e) {
 		e.preventDefault();
 		window.open($(this).attr('href'));
 		self.hide();

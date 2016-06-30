@@ -195,9 +195,9 @@ $cat=trim($_POST['userrole']);
                         &copy; 2015 NRIs.com
                     </div>
                     <?php /*?><div class="pull-right">
-                        <a href="#">About</a> |
-                        <a href="#">Privacy</a> |
-                        <a href="#">Contact Us</a>
+                        <a href="javascript:;">About</a> |
+                        <a href="javascript:;">Privacy</a> |
+                        <a href="javascript:;">Contact Us</a>
                     </div><?php */?>
                 </div>
             </div>

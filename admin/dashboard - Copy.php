@@ -24,10 +24,10 @@
                 <ul class="x-navigation">
                     <li class="xn-logo">
                         <a href="dashboard.php">NRIs</a>
-                        <a href="#" class="x-navigation-control"></a>
+                        <a href="javascript:;" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-profile">
-                        <a href="#" class="profile-mini">
+                        <a href="javascript:;" class="profile-mini">
                             <img src="assets/images/users/avatar.png" alt="NRIs"/>
                         </a>
                         <div class="profile">
@@ -49,52 +49,52 @@
                         <a href="dashboard.php"><span class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>                        
                     </li>
                     <li>
-                        <a href="#"><span class="fa fa-map-marker"></span> <span class="xn-text">State Management</span></a>                        
+                        <a href="javascript:;"><span class="fa fa-map-marker"></span> <span class="xn-text">State Management</span></a>                        
                     </li>
                   
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Category Management</span></a>
+                        <a href="javascript:;"><span class="fa fa-files-o"></span> <span class="xn-text">Category Management</span></a>
                         <ul class="animated zoomIn">                            
-                            <li><a href="#"><span class="fa fa-edit"></span> Manage Main Categories</a></li>
-                            <li><a href="#"><span class="fa fa-edit"></span> Manage Categories</a></li>
-                            <li><a href="#"><span class="fa fa-edit"></span> Add Main Category</a></li>
-                            <li><a href="#"><span class="fa fa-edit"></span> Add Category</a></li>
-                            <li><a href="#"><span class="fa fa-edit"></span> Add Subcategory</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Manage Main Categories</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Manage Categories</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Add Main Category</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Add Category</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Add Subcategory</a></li>
                         </ul>
                     </li>
                     
                     <li class="xn-openable">
-                        <a href="#"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Management</span></a>
+                        <a href="javascript:;"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Management</span></a>
                         <ul class="animated zoomIn">                            
-                            <li><a href="#"><span class="fa fa-car"></span> Autos</a></li>
-                            <li><a href="#"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
-                            <li><a href="#"><span class="fa fa-book"></span> Education and Teaching</a></li>
-                            <li><a href="#"><span class="fa fa-bolt"></span> Electronics</a></li>
-                            <li><a href="#"><span class="fa fa-search"></span> Jobs</a></li>
-                            <li><a href="#"><span class="fa fa-users"></span> My Partner</a></li>                            
-                            <li><a href="#"><span class="fa fa-home "></span> Real Estate</a></li>                            
+                            <li><a href="javascript:;"><span class="fa fa-car"></span> Autos</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-book"></span> Education and Teaching</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-bolt"></span> Electronics</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-search"></span> Jobs</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-users"></span> My Partner</a></li>                            
+                            <li><a href="javascript:;"><span class="fa fa-home "></span> Real Estate</a></li>                            
                         </ul>
                     </li>
                     
                     
                     <li>
-                        <a href="#"><span class="fa fa-user"></span> <span class="xn-text">User Management</span></a>
+                        <a href="javascript:;"><span class="fa fa-user"></span> <span class="xn-text">User Management</span></a>
 
                     </li>
                     
                      <li class="xn-openable">
-                        <a href="#"><span class="fa fa-play"></span> <span class="xn-text">Videoss</span></a>
+                        <a href="javascript:;"><span class="fa fa-play"></span> <span class="xn-text">Videoss</span></a>
                         <ul class="animated zoomIn">                            
-                            <li><a href="#"><span class="fa	fa-file-video-o"></span> Manage Videoss</a></li>
-                            <li><a href="#"><span class="fa fa-image"></span> Manage Categories</a></li>
-                            <li><a href="#"><span class="fa fa-book"></span> Manage Languages</a></li>                        
+                            <li><a href="javascript:;"><span class="fa	fa-file-video-o"></span> Manage Videoss</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-image"></span> Manage Categories</a></li>
+                            <li><a href="javascript:;"><span class="fa fa-book"></span> Manage Languages</a></li>                        
                         </ul>
 
                     </li>
                                         
                     
                     <li>
-                        <a href="#"><span class="fa fa-file"></span> <span class="xn-text">Site Ads</span></a>
+                        <a href="javascript:;"><span class="fa fa-file"></span> <span class="xn-text">Site Ads</span></a>
                     </li>
                     
                      <li>
@@ -121,7 +121,7 @@
                 <ul class="x-navigation x-navigation-horizontal x-navigation-panel">
                     <!-- TOGGLE NAVIGATION -->
                     <li class="xn-icon-button">
-                        <a href="#" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+                        <a href="javascript:;" class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
                     </li>
                     <!-- END TOGGLE NAVIGATION -->
                     <!-- SEARCH -->
@@ -133,7 +133,7 @@
                     <!-- END SEARCH -->
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="javascript:;" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->
                     <!-- MESSAGES -->
@@ -147,7 +147,7 @@
 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
+                    <li><a href="javascript:;">Home</a></li>                    
                     <li class="active">Dashboard</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
@@ -179,7 +179,7 @@
                                     </div>
                                 </div>                            
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
                                 </div>                             
                             </div>         
                             <!-- END WIDGET SLIDER -->
@@ -198,7 +198,7 @@
                                     <div class="widget-subtitle">In your mailbox</div>
                                 </div>      
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
                                 </div>
                             </div>                            
                             <!-- END WIDGET MESSAGES -->
@@ -217,7 +217,7 @@
                                     <div class="widget-subtitle">On your website</div>
                                 </div>
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="top" title="Remove Widget"><span class="fa fa-times"></span></a>
                                 </div>                            
                             </div>                            
                             <!-- END WIDGET REGISTRED -->
@@ -230,17 +230,17 @@
                                 <div class="widget-big-int plugin-clock">00:00</div>                            
                                 <div class="widget-subtitle plugin-date">Loading...</div>
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="left" title="Remove Widget"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right widget-remove" data-toggle="tooltip" data-placement="left" title="Remove Widget"><span class="fa fa-times"></span></a>
                                 </div>                            
                                 <div class="widget-buttons widget-c3">
                                     <div class="col">
-                                        <a href="#"><span class="fa fa-clock-o"></span></a>
+                                        <a href="javascript:;"><span class="fa fa-clock-o"></span></a>
                                     </div>
                                     <div class="col">
-                                        <a href="#"><span class="fa fa-bell"></span></a>
+                                        <a href="javascript:;"><span class="fa fa-bell"></span></a>
                                     </div>
                                     <div class="col">
-                                        <a href="#"><span class="fa fa-calendar"></span></a>
+                                        <a href="javascript:;"><span class="fa fa-calendar"></span></a>
                                     </div>
                                 </div>                            
                             </div>                        
@@ -274,7 +274,7 @@
                                     </div>
                                 </div>                            
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right"><span class="fa fa-times"></span></a>
                                 </div>                             
                             </div>
 
@@ -292,7 +292,7 @@
                                     <div class="widget-subtitle">On our website and app</div>
                                 </div>
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right"><span class="fa fa-times"></span></a>
                                 </div>                            
                             </div>
 
@@ -310,7 +310,7 @@
                                     <div class="widget-subtitle">That visited our site today</div>
                                 </div>
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right"><span class="fa fa-times"></span></a>
                                 </div>                            
                             </div>
 

@@ -106,7 +106,7 @@ font-style:italic;
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="dashboard.php">Home</a></li>                              
-                    <li><a href="#">Free Ads Management</a></li>                     
+                    <li><a href="javascript:;">Free Ads Management</a></li>                     
                     <li class="active">My Partner Classifieds</li>
                 </ul>
                 <!-- END BREADCRUMB -->

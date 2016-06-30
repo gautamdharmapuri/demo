@@ -171,7 +171,7 @@ $query_city=mysql_query("select id,city from  cities where id='".$rs['city_id'].
                     
 <?php /*?><div style="float:right;">  
 Give your rating
-<a href="#" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">Click here to rate</a>
+<a href="javascript:;" onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">Click here to rate</a>
 </div><?php */?>
 
                     

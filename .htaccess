@@ -1,6 +1,8 @@
 RewriteEngine on
 
-RewriteRule ^national_jobs/([^.*]+)$ national_jobs.php?type=$1 [NC,L]
+
+
+RewriteRule ^national_jobs/([^.%*]+)$ national_jobs.php?type=$1 [NC,L]
 RewriteRule ^carpool_data/([^.*]+)$ carpool_data.php?type=$1 [NC,L]
 RewriteRule ^videos/([^.*]+)$ videos.php?lang=$1 [NC,L]
 RewriteRule ^videos_inner/([^.*]+)$ videos_inner.php?lang=$1 [NC,L]

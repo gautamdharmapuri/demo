@@ -181,11 +181,11 @@ $current_date = date('Y-m-d');?>
   <?php
 		if(isset($_SESSION['Nris_session']))	  
 		{ ?>
-<a href="#" data-toggle="modal" data-target="#change_state"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif" alt="New"></a>    
-<a href="#" data-toggle="modal" data-target="#change_state2"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a>    
+<a href="javascript:;" data-toggle="modal" data-target="#change_state"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;">Create Premium Post <img src="images/New_icon2.gif" alt="New"></a>    
+<a href="javascript:;" data-toggle="modal" data-target="#change_state2"  class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;">Create Free Post <img src="images/arrow.gif" alt=">"></a>    
   <?php } else { ?> 
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>   
-<a href="#"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
+<a href="javascript:;"  data-toggle="modal" data-target="#myModal" class="btn btn-default" style="background-color:#990033;color:#FFFFFF;float:right;" >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>   
+<a href="javascript:;"  data-toggle="modal" data-target="#myModal"  class="btn btn-default" style="background-color:#0000FF;color:#FFFFFF;float:right;" >Create Free Post Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>
 <?php } ?>   
 </div><br>
 
@@ -205,9 +205,10 @@ $current_date = date('Y-m-d');?>
 				</thead>
 				<tbody>
 		<?php
-		if(isset($_GET['type']))
+		$type = str_replace('-','/',$_GET['type']);
+		if($type)
 		{
-			$cat = urldecode($_GET['type']);
+			$cat = urldecode($type);
 			$query2 = "select a.*, b.name, c.role from post_free_job a, job_category b, job_role c where a.EndDate >= now() and a.Category = b.id and a.Job_Role=c.id  and b.name ='".$cat."' group by a.id order by a.total_views desc";
 		}
 		else

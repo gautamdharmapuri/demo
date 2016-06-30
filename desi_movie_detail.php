@@ -256,7 +256,7 @@ else
 {?>
 <div style="float:right;">  
 Give your rating
-<a href="#" data-toggle="modal" data-target="#myModal"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">Click here to rate</a>
+<a href="javascript:;" data-toggle="modal" data-target="#myModal"  onMouseOver="this.style.color='red'" onMouseOut="this.style.color='black'">Click here to rate</a>
 </div>
 <?php }  ?>
 
@@ -413,7 +413,7 @@ if(isset($_SESSION['Nris_session']))
              <input type="submit" class="btn-danger" style="float:right;padding:5px;" name="cmdcomment" id="cmdcomment" value="Post Comment">
 
 <?php } else { ?>
-             <a href="#" data-toggle="modal" data-target="#myModal"  class="btn-danger" style="float:right;padding:5px;">Post Comment</a>           
+             <a href="javascript:;" data-toggle="modal" data-target="#myModal"  class="btn-danger" style="float:right;padding:5px;">Post Comment</a>           
 <?php } ?>             
 
              </div>

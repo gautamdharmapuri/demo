@@ -131,7 +131,7 @@ if(isset($_POST['submit']))
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="dashboard.php">Home</a></li>                    
-	                <li><a href="#">Forum</a></li>
+	                <li><a href="javascript:;">Forum</a></li>
                     <li class="active"><?php if(isset($_GET['editId'])) { echo "Edit "; } else { echo "Add  "; } ?> Forum Sub Category</li>
 
                 </ul>

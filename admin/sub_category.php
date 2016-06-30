@@ -54,7 +54,7 @@ font-style:italic;
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="dashboard.php">Home</a></li>
-                    <li><a href="#">Premium Categories</a></li>                                        
+                    <li><a href="javascript:;">Premium Categories</a></li>                                        
                     <li class="active">Sub Category</li>
                 </ul>
                 <!-- END BREADCRUMB -->

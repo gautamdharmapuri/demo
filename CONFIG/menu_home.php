@@ -117,7 +117,7 @@
             
         <li><a href="<?php echo $siteUrlConstant;?>">Home</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>aboutus">About Us</a></li>
-        <li><a href="#" data-toggle="modal" data-target="#nri_post">NRI's talk</a></li>
+        <li><a href="javascript:;" data-toggle="modal" data-target="#nri_post">NRI's talk</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>discussion_board_data">Forum</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>realestate">National Real Estate</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>education">Education& Teaching</a></li>
@@ -130,8 +130,9 @@
 					 $jobQuery = "select * from  job_category order by id asc";
 					 $resultJob = mysql_query($jobQuery);                                                
 					 while($jobTop = mysql_fetch_array($resultJob)) {
+							$jobName = str_replace('/','-',$jobTop['name']);
 			  ?>
-					 <li><a href="<?php echo $siteUrlConstant;?>national_jobs/<?php echo $jobTop['name'];?>"><?php echo rtrim($jobTop['name'],'Jobs');?> Jobs</a></li>
+					 <li><a href="<?php echo $siteUrlConstant;?>national_jobs/<?php echo urlencode($jobName);?>"><?php echo rtrim($jobTop['name'],'Jobs');?> Jobs</a></li>
 			  <?php } ?>
             </ul>
         </li>
@@ -246,7 +247,7 @@
             ?>
             </h3>
             <h3>
-                <?php echo '<a href="twitter_login/process"><img src="twitter_login/images/sign-in-with-twitter.png" border="0" alt="Twitter"/></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img src="twitter_login/images/sign-in-with-twitter.png" style="border:none;" alt="Twitter"/></a>'; ?>
             </h3>
 			</center>
             </div>

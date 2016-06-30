@@ -87,7 +87,7 @@ font-style:italic;
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="dashboard.php">Home</a></li>                    
-                    <li><a href="#">Home Page Link</a></li>                              
+                    <li><a href="javascript:;">Home Page Link</a></li>                              
                     <li class="active">National Events</li>
                 </ul>
                 <!-- END BREADCRUMB -->

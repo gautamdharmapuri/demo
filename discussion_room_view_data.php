@@ -303,7 +303,7 @@ if(isset($_POST['cmdcomment']))
 <div class="form-submit-buttons">
 <input type="hidden" name="postId" id="postId" value="<?php echo $rs['id'] ; ?>">
 <input type="hidden" name="memberId" id="memberId" value="<?php echo $_SESSION['Nris_session']['id'];  ?>">
-<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right;" >Post Comment</a>   
+<a href="javascript:;"  data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right;" >Post Comment</a>   
 </div>
 
 </form>

@@ -46,7 +46,7 @@ include"config/connection.php";
                 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                   <li><a href="#">Home</a></li>                    
+                   <li><a href="javascript:;">Home</a></li>                    
                     <li class="active">Dashboard</li>
                     <li class="active">Settings</li>
                 </ul>
@@ -69,9 +69,9 @@ include"config/connection.php";
                                 <div class="panel-heading">                                
                                     <h3 class="panel-title">User Login Profile</h3>
                                     <?php /*?><ul class="panel-controls">
-                                        <li><a href="#" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
-                                        <li><a href="#" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
-                                        <li><a href="#" class="panel-remove"><span class="fa fa-times"></span></a></li>
+                                        <li><a href="javascript:;" class="panel-collapse"><span class="fa fa-angle-down"></span></a></li>
+                                        <li><a href="javascript:;" class="panel-refresh"><span class="fa fa-refresh"></span></a></li>
+                                        <li><a href="javascript:;" class="panel-remove"><span class="fa fa-times"></span></a></li>
                                     </ul><?php */?>                                
                                 </div>
                                 <div class="panel-body">

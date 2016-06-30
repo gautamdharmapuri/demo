@@ -102,7 +102,7 @@ if(isset($_POST['submit']))
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="dashboard.php">Home</a></li>   
-                    <li><a href="#">State Famous Places</a></li>  
+                    <li><a href="javascript:;">State Famous Places</a></li>  
                     <li><a href="batches.php">Batches</a></li>                     
                     <li class="active">Batch Categories</li>
                 </ul>

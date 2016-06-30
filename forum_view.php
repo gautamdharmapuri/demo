@@ -352,7 +352,7 @@ while($rs_cmnt=mysql_fetch_array($result_cmnt))
 <?php if($_SESSION['Nris_session']['id'] > 0) { ?>
 	<input type="submit" class="btn btn-success" style="float:right;" value="Post Comment" name="cmdcomment">   
 <?php } else { ?>
-	<a href="#"  data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right;" >Post Comment</a>   
+	<a href="javascript:;"  data-toggle="modal" data-target="#myModal" class="btn btn-success" style="float:right;" >Post Comment</a>   
 <?php } ?>
 
 </div>

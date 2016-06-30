@@ -569,7 +569,7 @@ function test_input($data) {
     <div id="blanket" style="display:none;"></div>
 	<div id="popUpDiv" style="display:none;">
     
-    	<!--<a href="#" onClick="popup('popUpDiv')" >X</a>-->
+    	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
        
 <center><h4>Terms And Conditions!</h4></center>
                     
@@ -1000,7 +1000,7 @@ function test_input($data) {
 
 	<div class="col-sm-12">
     	<input type="checkbox" id="ChkTerms" name="ChkTerms" tabindex="11" disabled readonly checked/>&nbsp;
-        <a href="#" style="color:#6A6A6A;">I Accept Terms & Conditions</a>
+        <a href="javascript:;" style="color:#6A6A6A;">I Accept Terms & Conditions</a>
 	</div>
 </div>
 </div>

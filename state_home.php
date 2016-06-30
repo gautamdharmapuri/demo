@@ -126,7 +126,7 @@ $current_date = date('Y-m-d');
 	<div class="clearfix"></div>
 
 		<div id="stock_div">
-			<iframe id="myFrame" src="http://nris.com/stock_block_state.php" frameborder="0" width="100%" height="41px" scrolling="auto" style="margin: 0px !important;padding: 0px !important;"></iframe>
+			<iframe id="myFrame" src="http://nris.com/stock_block_state.php" style="margin: 0px !important;padding: 0px !important;width:100%;height:41px;"></iframe>
 		</div>     
 	
 	
@@ -275,7 +275,7 @@ $current_date = date('Y-m-d');
                     <!-- TOP SECTION RIGHT STARTS -->
                     <div class="top-section-one-right">
                     	<div class="full-btn-purple">
-                        	<a href="#" data-toggle="modal" data-target="#change_state1" style="padding: 5px 5px;">Switch State</a>
+                        	<a href="javascript:;" data-toggle="modal" data-target="#change_state1" style="padding: 5px 5px;">Switch State</a>
                         </div>
                         
                         <div class="full-btn-orange">
@@ -284,7 +284,7 @@ $current_date = date('Y-m-d');
                         
                         <div class="movies">
                             <div class="full-btn">
-                                <a href="#">Desi Movies</a>
+                                <a href="javascript:;">Desi Movies</a>
                             </div>
 							<?php
 									$query = "SELECT fam_city_movies.*,cities.city as cityname FROM fam_city_movies,cities
@@ -434,11 +434,11 @@ $current_date = date('Y-m-d');
                                         <?php
                                         if(isset($_SESSION['Nris_session']))	  
                                         { ?>
-                                        <a href="#"  data-toggle="modal" data-target="#PostFreeAd" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>                                        
-                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-target="#PostPremiumAd"  class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>
+                                        <a href="javascript:;"  data-toggle="modal" data-target="#PostFreeAd" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>                                        
+                                         <a href="javascript:;" id="premium_custom_btn" data-toggle="modal" data-target="#PostPremiumAd"  class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>
                                         <?php } else { ?> 
-                                         <a href="#"  data-toggle="modal"  data-toggle="modal" data-target="#myModal" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>                                        
-                                         <a href="#" id="premium_custom_btn" data-toggle="modal" data-toggle="modal" data-target="#myModal" class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>   
+                                         <a href="javascript:;"  data-toggle="modal"  data-toggle="modal" data-target="#myModal" class="CreatAd">Post Free Ad&nbsp;<img src="images/arrow.gif" alt=">"></a>                                        
+                                         <a href="javascript:;" id="premium_custom_btn" data-toggle="modal" data-toggle="modal" data-target="#myModal" class="CreatAd2"  >Create Premium Ad&nbsp;<img src="images/New_icon2.gif" alt="New"></a>   
 
                                          <?php } ?>   <br>  
 						</div>
@@ -1211,9 +1211,6 @@ $current_date = date('Y-m-d');
 												  jQuery("#weather").html('<p>'+error+'</p>');
 												}
 									});
-										
-										//jQuery('#stock_div').html('<iframe id="myFrame" src="http://nris.com/stock_block_state.php" frameborder="0" width="100%" height="41px" scrolling="auto"></iframe>');
-			
 									}
 								});			
 			}, "jsonp");

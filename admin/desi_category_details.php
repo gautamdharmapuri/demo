@@ -93,7 +93,7 @@ if(isset($_POST['submit']))
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
                     <li><a href="dashboard.php">Home</a></li>                    
-                    <li><a href="#">State Famous Places</a></li>
+                    <li><a href="javascript:;">State Famous Places</a></li>
                     <li><a href="desi_pages.php">Desi Pages</a></li>                                        
                     <li class="active"><?php if(isset($_GET['editId'])) { echo "Edit "; } else { echo "Add  "; } ?> Desi Page Category</li>
 

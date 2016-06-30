@@ -163,7 +163,7 @@ var sh = {
          */
         getButtonHtml: function(highlighter, commandName, label)
         {
-            return '<span><a href="#" class="toolbar_item'
+            return '<span><a href="javascript:;" class="toolbar_item'
                 + ' command_' + commandName
                 + ' ' + commandName
                 + '">' + label + '</a></span>'

@@ -42,7 +42,7 @@
 
                 <!-- START BREADCRUMB -->
                 <ul class="breadcrumb">
-                    <li><a href="#">Home</a></li>                    
+                    <li><a href="javascript:;">Home</a></li>                    
                     <li class="active">Dashboard</li>
                 </ul>
                 <!-- END BREADCRUMB -->                       
@@ -265,7 +265,7 @@
                                     </div>
                                 </div>                            
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right"><span class="fa fa-times"></span></a>
                                 </div>                             
                             </div>
 
@@ -283,7 +283,7 @@
                                     <div class="widget-subtitle">On our website and app</div>
                                 </div>
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right"><span class="fa fa-times"></span></a>
                                 </div>                            
                             </div>
 
@@ -301,7 +301,7 @@
                                     <div class="widget-subtitle">That visited our site today</div>
                                 </div>
                                 <div class="widget-controls">                                
-                                    <a href="#" class="widget-control-right"><span class="fa fa-times"></span></a>
+                                    <a href="javascript:;" class="widget-control-right"><span class="fa fa-times"></span></a>
                                 </div>                            
                             </div>
 

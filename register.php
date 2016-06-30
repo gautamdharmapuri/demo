@@ -719,7 +719,7 @@ if(true == $show_form)
                 echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png" alt="Google" style="width:154px;height:85px;" alt=""/></a>';
             ?>
             
-                <?php echo '<a href="twitter_login/process"><img style="width:129px;height:40px;" alt="Twitter" src="twitter_login/images/sign-in-with-twitter.png" border="0" /></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img style="width:129px;height:40px;border:none;" alt="Twitter" src="twitter_login/images/sign-in-with-twitter.png"/></a>'; ?>
             
 		&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <button type="submit" class="button" name="Submit" id="Submit">Register</button> 
@@ -770,7 +770,7 @@ if(true == $show_form)
 	<div id="popUpDiv" style="display:none;">
     
     	<a style="float:right;cursor: pointer;" onClick="popup('popUpDiv')">X</a>
-    	<!--<a href="#" onClick="popup('popUpDiv')" >X</a>-->
+    	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
        
 <center><h4>Terms And Conditions!</h4></center>
 

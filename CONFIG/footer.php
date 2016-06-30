@@ -93,7 +93,7 @@
 							<li class="social-facebook"><a href="https://www.facebook.com/us.nris" target="_blank"><i class="fa fa-facebook"></i></a></li>
 							<li class="social-twitter"><a href="https://twitter.com/nrisnetwork" target="_blank"><i class="fa fa-twitter"></i></a></li>
 							<li class="social-google"><a href="https://plus.google.com/collections/featured" target="_blank"><i class="fa fa-google-plus"></i></a></li>
-							<li class="social-linkedin"><a href="#"><i class="fa fa-linkedin"></i></a></li>							
+							<li class="social-linkedin"><a href="javascript:;"><i class="fa fa-linkedin"></i></a></li>							
 						</ul>
 					</div>
           <div class="link-ftr" style="width:100%;text-align:center;color:#FFFFFF;">
@@ -111,7 +111,7 @@
          
           </div>         
          <div class="copyright-n">
-         	<p>&copy; Copyrights 2016 <a href="#" target="_blank">nris.com</a></p>
+         	<p>&copy; Copyrights 2016 <a href="javascript:;" target="_blank">nris.com</a></p>
          </div>           
      </div>
 		
@@ -185,7 +185,7 @@
 	
 	<div id="terms_conditions_popup" style="display:none;">
     <a style="float:right;cursor: pointer;" onClick="popup('terms_conditions_popup')">X</a>
-    	<!--<a href="#" onClick="popup('popUpDiv')" >X</a>-->
+    	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
        
 <center><h4>Terms And Conditions!</h4></center>
 
@@ -245,7 +245,7 @@
 
 <div id="chat_terms_conditions_popup" style="display:none;">
     <a style="float:right;cursor: pointer;" onClick="popup('chat_terms_conditions_popup')">X</a>
-    	<!--<a href="#" onClick="popup('popUpDiv')" >X</a>-->
+    	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
        
 <center><h4>Terms And Conditions!</h4></center>
 
