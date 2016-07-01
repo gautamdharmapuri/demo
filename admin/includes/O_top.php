@@ -5,7 +5,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
 <ul class="x-navigation x-navigation-horizontal">
                     <li class="xn-logo">
                         <a href="dashboard.php">NRIs</a>
-                        <a href="javascript:;" class="x-navigation-control"></a>
+                        <a href="#" class="x-navigation-control"></a>
                     </li>
                    
                     <li class="active">
@@ -21,7 +21,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                     
                     
                      <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-th-list"></span> <span class="xn-text">Premium Category</span></a>
+                        <a href="#"><span class="fa fa-th-list"></span> <span class="xn-text">Premium Category</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="main_category_list.php"><span class="fa fa-list"></span> Main Category</a></li>
                             <li><a href="category.php"><span class="fa fa-list-ul"></span> Category</a></li>
@@ -31,7 +31,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                     
                     
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-map-marker"></span> <span class="xn-text">State Famous Places</span></a>
+                        <a href="#"><span class="fa fa-map-marker"></span> <span class="xn-text">State Famous Places</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="temples.php"><span class="fa fa-bell"></span> Temples</a></li>
                             <li><a href="restaurants.php"><span class="fa fa-cutlery"></span> Restaurants</a></li>
@@ -57,7 +57,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                     
                     
                      <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-play"></span> <span class="xn-text">Videos</span></a>
+                        <a href="#"><span class="fa fa-play"></span> <span class="xn-text">Videos</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="videos.php"><span class="fa fa-video-camera"></span> Manage Videos</a></li>
                             <li><a href="video_categories.php"><span class="fa fa-file-video-o"></span> Manage Categories</a></li>
@@ -68,7 +68,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                     
                     
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Category</span></a>
+                        <a href="#"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Category</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="auto_cats.php"><span class="fa fa-car"></span> Autos</a></li>
                             <li><a href="baby_cats.php"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
@@ -87,7 +87,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                     
                     
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-th-large"></span> <span class="xn-text">Free Ads Management</span></a>
+                        <a href="#"><span class="fa fa-th-large"></span> <span class="xn-text">Free Ads Management</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="auto.php"><span class="fa fa-car"></span> Autos Classified</a></li>
                             <li><a href="babysitting.php"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
@@ -103,7 +103,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                     </li>
                     
                      <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-link"></span> <span class="xn-text">Home Page Link</span></a>
+                        <a href="#"><span class="fa fa-link"></span> <span class="xn-text">Home Page Link</span></a>
                         <ul class="animated zoomIn">
                             <li><a href="us_ads.php"><span class="fa fa-image"></span> Home Page Ads</a></li>
                             <li><a href="homepage_header.php"><span class="fa fa-image"></span>Home Page Header</a></li>
@@ -113,32 +113,32 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                     </li>
                   
                    <?php /*?> <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-files-o"></span> <span class="xn-text">Category Management</span></a>
+                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Category Management</span></a>
                         <ul class="animated zoomIn">                            
-                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Manage Main Categories</a></li>
-                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Manage Categories</a></li>
-                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Add Main Category</a></li>
-                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Add Category</a></li>
-                            <li><a href="javascript:;"><span class="fa fa-edit"></span> Add Subcategory</a></li>
+                            <li><a href="#"><span class="fa fa-edit"></span> Manage Main Categories</a></li>
+                            <li><a href="#"><span class="fa fa-edit"></span> Manage Categories</a></li>
+                            <li><a href="#"><span class="fa fa-edit"></span> Add Main Category</a></li>
+                            <li><a href="#"><span class="fa fa-edit"></span> Add Category</a></li>
+                            <li><a href="#"><span class="fa fa-edit"></span> Add Subcategory</a></li>
                         </ul>
                     </li>
                     
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Management</span></a>
+                        <a href="#"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Management</span></a>
                         <ul class="animated zoomIn">                            
-                            <li><a href="javascript:;"><span class="fa fa-car"></span> Autos</a></li>
-                            <li><a href="javascript:;"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
-                            <li><a href="javascript:;"><span class="fa fa-book"></span> Education and Teaching</a></li>
-                            <li><a href="javascript:;"><span class="fa fa-bolt"></span> Electronics</a></li>
-                            <li><a href="javascript:;"><span class="fa fa-search"></span> Jobs</a></li>
-                            <li><a href="javascript:;"><span class="fa fa-users"></span> My Partner</a></li>                            
-                            <li><a href="javascript:;"><span class="fa fa-home "></span> Real Estate</a></li>                            
+                            <li><a href="#"><span class="fa fa-car"></span> Autos</a></li>
+                            <li><a href="#"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
+                            <li><a href="#"><span class="fa fa-book"></span> Education and Teaching</a></li>
+                            <li><a href="#"><span class="fa fa-bolt"></span> Electronics</a></li>
+                            <li><a href="#"><span class="fa fa-search"></span> Jobs</a></li>
+                            <li><a href="#"><span class="fa fa-users"></span> My Partner</a></li>                            
+                            <li><a href="#"><span class="fa fa-home "></span> Real Estate</a></li>                            
                         </ul>
                     </li>
                     
                     
                     <li>
-                        <a href="javascript:;"><span class="fa fa-user"></span> <span class="xn-text">User Management</span></a>
+                        <a href="#"><span class="fa fa-user"></span> <span class="xn-text">User Management</span></a>
 
                     </li>
                     
@@ -146,7 +146,7 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                                         
                     
                     <li>
-                        <a href="javascript:;"><span class="fa fa-file"></span> <span class="xn-text">Site Ads</span></a>
+                        <a href="#"><span class="fa fa-file"></span> <span class="xn-text">Site Ads</span></a>
                     </li><?php */?>
                     
                      <li><a href="web_users.php"><span class="fa fa-users"></span> <span class="xn-text">Web User Management</span></a></li>
@@ -163,10 +163,10 @@ if ($_SESSION['USNRIs_session']['category']=='Admistrator')
                     
                     
                      <li class="xn-icon-button pull-right">
-                        <a href="javascript:;" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li>
                     <li class="xn-icon-button pull-right" style="width:auto;">
-                        <a href="javascript:;" style="width:auto;">Welcome : <?php echo ucwords($_SESSION['USNRIs_session']['username']); ?></a>
+                        <a href="#" style="width:auto;">Welcome : <?php echo ucwords($_SESSION['USNRIs_session']['username']); ?></a>
                         
                                                 
                     </li> 
@@ -193,7 +193,7 @@ if ($_SESSION['USNRIs_session']['category']=='Director' || $_SESSION['USNRIs_ses
 <ul class="x-navigation x-navigation-horizontal">
                     <li class="xn-logo">
                         <a href="dashboard.php">NRIs</a>
-                        <a href="javascript:;" class="x-navigation-control"></a>
+                        <a href="#" class="x-navigation-control"></a>
                     </li>
                    
                     <li class="active">
@@ -209,7 +209,7 @@ if ($_SESSION['USNRIs_session']['category']=='Director' || $_SESSION['USNRIs_ses
                     
                     
                      <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-th-list"></span> <span class="xn-text">Premium Category</span></a>
+                        <a href="#"><span class="fa fa-th-list"></span> <span class="xn-text">Premium Category</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="main_category_list.php"><span class="fa fa-list"></span> Main Category</a></li>
                             <li><a href="category.php"><span class="fa fa-list-ul"></span> Category</a></li>
@@ -219,7 +219,7 @@ if ($_SESSION['USNRIs_session']['category']=='Director' || $_SESSION['USNRIs_ses
                     
                     
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-map-marker"></span> <span class="xn-text">State Famous Places</span></a>
+                        <a href="#"><span class="fa fa-map-marker"></span> <span class="xn-text">State Famous Places</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="temples.php"><span class="fa fa-bell"></span> Temples</a></li>
                             <li><a href="restaurants.php"><span class="fa fa-cutlery"></span> Restaurants</a></li>
@@ -244,7 +244,7 @@ if ($_SESSION['USNRIs_session']['category']=='Director' || $_SESSION['USNRIs_ses
                     
                     
                      <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-play"></span> <span class="xn-text">Videos</span></a>
+                        <a href="#"><span class="fa fa-play"></span> <span class="xn-text">Videos</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="videos.php"><span class="fa fa-video-camera"></span> Manage Videos</a></li>
                             <li><a href="video_categories.php"><span class="fa fa-file-video-o"></span> Manage Categories</a></li>
@@ -255,7 +255,7 @@ if ($_SESSION['USNRIs_session']['category']=='Director' || $_SESSION['USNRIs_ses
                     
                     
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Category</span></a>
+                        <a href="#"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Category</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="auto_cats.php"><span class="fa fa-car"></span> Autos</a></li>
                             <li><a href="baby_cats.php"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
@@ -274,7 +274,7 @@ if ($_SESSION['USNRIs_session']['category']=='Director' || $_SESSION['USNRIs_ses
                     
                     
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-th-large"></span> <span class="xn-text">Free Ads Management</span></a>
+                        <a href="#"><span class="fa fa-th-large"></span> <span class="xn-text">Free Ads Management</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="auto.php"><span class="fa fa-car"></span> Autos Classified</a></li>
                             <li><a href="babysitting.php"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
@@ -290,7 +290,7 @@ if ($_SESSION['USNRIs_session']['category']=='Director' || $_SESSION['USNRIs_ses
                     </li>
                     
                      <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-link"></span> <span class="xn-text">Home Page Link</span></a>
+                        <a href="#"><span class="fa fa-link"></span> <span class="xn-text">Home Page Link</span></a>
                         <ul class="animated zoomIn">
                             <li><a href="us_ads.php"><span class="fa fa-image"></span> Home Page Ads</a></li>
                             <li><a href="national_events.php"><span class="fa fa-calendar"></span> National Events</a></li>
@@ -302,10 +302,10 @@ if ($_SESSION['USNRIs_session']['category']=='Director' || $_SESSION['USNRIs_ses
                     
                     
                      <li class="xn-icon-button pull-right">
-                        <a href="javascript:;" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li>
                     <li class="xn-icon-button pull-right" style="width:auto;">
-                        <a href="javascript:;" style="width:auto;">Welcome : <?php echo ucwords($_SESSION['USNRIs_session']['username']); ?></a>
+                        <a href="#" style="width:auto;">Welcome : <?php echo ucwords($_SESSION['USNRIs_session']['username']); ?></a>
                         
                                                 
                     </li> 
@@ -330,7 +330,7 @@ if ($_SESSION['USNRIs_session']['category']=='Clerk')
 <ul class="x-navigation x-navigation-horizontal">
                     <li class="xn-logo">
                         <a href="dashboard.php">NRIs</a>
-                        <a href="javascript:;" class="x-navigation-control"></a>
+                        <a href="#" class="x-navigation-control"></a>
                     </li>
                    
                     <li class="active">
@@ -340,7 +340,7 @@ if ($_SESSION['USNRIs_session']['category']=='Clerk')
                     
                     
                     <?php /*?> <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-th-list"></span> <span class="xn-text">Premium Category</span></a>
+                        <a href="#"><span class="fa fa-th-list"></span> <span class="xn-text">Premium Category</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="main_category_list.php"><span class="fa fa-list"></span> Main Category</a></li>
                             <li><a href="category.php"><span class="fa fa-list-ul"></span> Category</a></li>
@@ -350,7 +350,7 @@ if ($_SESSION['USNRIs_session']['category']=='Clerk')
                     
                     
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-map-marker"></span> <span class="xn-text">State Famous Places</span></a>
+                        <a href="#"><span class="fa fa-map-marker"></span> <span class="xn-text">State Famous Places</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="temples.php"><span class="fa fa-bell"></span> Temples</a></li>
                             <li><a href="restaurants.php"><span class="fa fa-cutlery"></span> Restaurants</a></li>
@@ -375,7 +375,7 @@ if ($_SESSION['USNRIs_session']['category']=='Clerk')
                      <?php /*?>
                     
                      <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-play"></span> <span class="xn-text">Videos</span></a>
+                        <a href="#"><span class="fa fa-play"></span> <span class="xn-text">Videos</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="videos.php"><span class="fa fa-video-camera"></span> Manage Videos</a></li>
                             <li><a href="video_categories.php"><span class="fa fa-file-video-o"></span> Manage Categories</a></li>
@@ -386,7 +386,7 @@ if ($_SESSION['USNRIs_session']['category']=='Clerk')
                     
                     
                    <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Category</span></a>
+                        <a href="#"><span class="fa fa-file-text"></span> <span class="xn-text">Free Ads Category</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="auto_cats.php"><span class="fa fa-car"></span> Autos</a></li>
                             <li><a href="baby_cats.php"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
@@ -405,7 +405,7 @@ if ($_SESSION['USNRIs_session']['category']=='Clerk')
                     
                     
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-th-large"></span> <span class="xn-text">Free Ads Management</span></a>
+                        <a href="#"><span class="fa fa-th-large"></span> <span class="xn-text">Free Ads Management</span></a>
                         <ul class="animated zoomIn">                            
                             <li><a href="auto.php"><span class="fa fa-car"></span> Autos Classified</a></li>
                             <li><a href="babysitting.php"><span class="fa fa-wheelchair"></span> Baby Sitting</a></li>
@@ -421,7 +421,7 @@ if ($_SESSION['USNRIs_session']['category']=='Clerk')
                     </li>
                     
                      <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-link"></span> <span class="xn-text">Home Page Link</span></a>
+                        <a href="#"><span class="fa fa-link"></span> <span class="xn-text">Home Page Link</span></a>
                         <ul class="animated zoomIn">
                             <li><a href="us_ads.php"><span class="fa fa-image"></span> Home Page Ads</a></li>
                             <li><a href="national_events.php"><span class="fa fa-calendar"></span> National Events</a></li>
@@ -433,10 +433,10 @@ if ($_SESSION['USNRIs_session']['category']=='Clerk')
                     
                     
                      <li class="xn-icon-button pull-right">
-                        <a href="javascript:;" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li>
                     <li class="xn-icon-button pull-right" style="width:auto;">
-                        <a href="javascript:;" style="width:auto;">Welcome : <?php echo ucwords($_SESSION['USNRIs_session']['username']); ?></a>
+                        <a href="#" style="width:auto;">Welcome : <?php echo ucwords($_SESSION['USNRIs_session']['username']); ?></a>
                         
                                                 
                     </li> 

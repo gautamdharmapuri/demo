@@ -230,7 +230,10 @@
 					<p class="mydata">
 						 We thank you in advance for your understanding and continued support.
 					</p>
-					<p class="mydata"> <input type="checkbox" value="y" id="chkAll" checked disabled>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;<button onClick="popup('terms_conditions_popup')" class="btn btn-success" style="">Accept</button></span></p>
+					<p class="mydata">
+						 <input type="checkbox" value="y" id="chkAll" checked disabled>
+						 &nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;
+						 <button onClick="popup('terms_conditions_popup')" class="btn btn-success" style="">Accept</button></p>
                 </div>
 	</div>	
 <!-- / POPUP-->
@@ -272,7 +275,7 @@
 						 Thanks for joining us in chat!
 					</p>
 					<p class="mydata"> <input type="checkbox" value="y" id="chkAll1" checked disabled>&nbsp; I Accept Terms & Conditions.&nbsp;&nbsp;&nbsp;
-					<button onClick="chat_condition_click();" class="btn btn-success" style="">Agree</button></span></p>
+					<button onClick="chat_condition_click();" class="btn btn-success" style="">Agree</button></p>
                 </div>
 	</div>	
 <!-- / POPUP-->
@@ -281,7 +284,7 @@
 
 
 
-<style>
+<style type="text/css">
 /*STYLES FOR CSS POPUP*/
 .mydata { color:#000000;text-align:justify;line-height:22px;font-family: 'Roboto', sans-serif;font-size:16px;line-height:26px; }
 

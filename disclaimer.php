@@ -45,7 +45,7 @@
   <!--[if !IE]><!-->
 	
 	<!--<![endif]-->
-<style>
+<style type="text/css">
 .about
 {
 	font-family: 'Roboto', sans-serif;

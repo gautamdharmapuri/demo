@@ -1,23 +1,23 @@
 <ul class="x-navigation x-navigation-horizontal">
                     <li class="xn-logo">
                         <a href="dashboard.php">NRIs</a>
-                        <a href="javascript:;" class="x-navigation-control"></a>
+                        <a href="#" class="x-navigation-control"></a>
                     </li>
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
+                        <a href="#"><span class="fa fa-files-o"></span> <span class="xn-text">Pages</span></a>
                         <ul class="animated zoomIn">
                             <li><a href="pages-gallery.html"><span class="fa fa-image"></span> Gallery</a></li>
                             <li><a href="pages-profile.html"><span class="fa fa-user"></span> Profile</a></li>
                             <li><a href="pages-address-book.html"><span class="fa fa-users"></span> Address Book</a></li>
                             <li class="xn-openable">
-                                <a href="javascript:;"><span class="fa fa-clock-o"></span> Timeline</a>
+                                <a href="#"><span class="fa fa-clock-o"></span> Timeline</a>
                                 <ul>
                                     <li><a href="pages-timeline.html"><span class="fa fa-align-center"></span> Default</a></li>
                                     <li><a href="pages-timeline-simple.html"><span class="fa fa-align-justify"></span> Full Width</a></li>
                                 </ul>
                             </li>
                             <li class="xn-openable">
-                                <a href="javascript:;"><span class="fa fa-envelope"></span> Mailbox</a>
+                                <a href="#"><span class="fa fa-envelope"></span> Mailbox</a>
                                 <ul class="animated zoomIn">
                                     <li><a href="pages-mailbox-inbox.html"><span class="fa fa-inbox"></span> Inbox</a></li>
                                     <li><a href="pages-mailbox-message.html"><span class="fa fa-file-text"></span> Message</a></li>
@@ -31,7 +31,7 @@
                             <li><a href="pages-faq.html"><span class="fa fa-question-circle"></span> FAQ</a></li>
                             <li><a href="pages-search.html"><span class="fa fa-search"></span> Search</a></li>
                             <li class="xn-openable">
-                                <a href="javascript:;"><span class="fa fa-file"></span> Blog</a>
+                                <a href="#"><span class="fa fa-file"></span> Blog</a>
                                 
                                 <ul>                                    
                                     <li><a href="pages-blog-list.html"><span class="fa fa-copy"></span> List of Posts</a></li>
@@ -39,7 +39,7 @@
                                 </ul>
                             </li>
                             <li class="xn-openable">
-                                <a href="javascript:;"><span class="fa fa-sign-in"></span> Login</a>
+                                <a href="#"><span class="fa fa-sign-in"></span> Login</a>
                                 <ul>                                    
                                     <li><a href="pages-login.html">App Login</a></li>
                                     <li><a href="pages-login-website.html">Website Login</a></li>
@@ -47,7 +47,7 @@
                                 </ul>
                             </li>                            
                             <li class="xn-openable">
-                                <a href="javascript:;"><span class="fa fa-warning"></span> Error Pages</a>
+                                <a href="#"><span class="fa fa-warning"></span> Error Pages</a>
                                 <ul>                                    
                                     <li><a href="pages-error-404.html">Error 404 Sample 1</a></li>
                                     <li><a href="pages-error-404-2.html">Error 404 Sample 2</a></li>
@@ -57,7 +57,7 @@
                         </ul>
                     </li>
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-file-text-o"></span> <span class="xn-text">Layouts</span></a>
+                        <a href="#"><span class="fa fa-file-text-o"></span> <span class="xn-text">Layouts</span></a>
                         <ul class="animated zoomIn">
                             <li><a href="layout-boxed.html">Boxed</a></li>
                             <li><a href="layout-nav-toggled.html">Navigation Toggled</a></li>
@@ -72,7 +72,7 @@
                         </ul>
                     </li>
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>                        
+                        <a href="#"><span class="fa fa-cogs"></span> <span class="xn-text">UI Kits</span></a>                        
                         <ul class="animated zoomIn">
                             <li><a href="ui-widgets.html"><span class="fa fa-heart"></span> Widgets</a></li>                            
                             <li><a href="ui-elements.html"><span class="fa fa-cogs"></span> Elements</a></li>
@@ -88,7 +88,7 @@
                         </ul>
                     </li>                    
                     <li class="xn-openable">
-                        <a href="javascript:;"><span class="fa fa-pencil"></span> <span class="xn-text">Forms</span></a>
+                        <a href="#"><span class="fa fa-pencil"></span> <span class="xn-text">Forms</span></a>
                         <ul class="animated zoomIn">
                             <li>
                                 <a href="form-layouts-two-column.html"><span class="fa fa-tasks"></span> Form Layouts</a>
@@ -109,7 +109,7 @@
                     </li>
                     <!-- SIGN OUT -->
                     <li class="xn-icon-button pull-right">
-                        <a href="javascript:;" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
+                        <a href="#" class="mb-control" data-box="#mb-signout"><span class="fa fa-sign-out"></span></a>                        
                     </li> 
                     <!-- END SIGN OUT -->                                        
                 </ul>

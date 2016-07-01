@@ -44,7 +44,7 @@
 	  <script src="css/modal/jquery.min.js"></script>            
             <script src="css/modal/bootstrap.min.js"></script>
 	<!--<![endif]-->
-<style>
+<style type="text/css">
 .liked, .disliked {color : green !important; }
 .mydata { color:#000000;text-align:justify;line-height:22px; }
 
@@ -116,11 +116,7 @@
             <div class="col-md-12" style="text-align:left;color:#000000;"> 
    				
 <div class="widget-temple">
-	<?php if(isset($defaultState) && $defaultState != '') { ?>
-		<h4><a href="<?php echo $siteUrlConstant;?>/state?State=<?php echo $defaultState;?>" style="color:#0033FF;">Home</a> >> Blog</h4>
-	<?php } else { ?>
-		<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Blog</h4>
-	<?php } ?>
+	<h4><a href="<?php echo $siteUrlConstant;?>" style="color:#0033FF;">Home</a> >> Blog</h4>
 </div><br>
 
 

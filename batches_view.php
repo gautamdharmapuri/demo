@@ -46,7 +46,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 	            <script src="css/modal/jquery.min.js"></script>            
             <script src="css/modal/bootstrap.min.js"></script>
 	<!--<![endif]-->
-<style>
+<style type="text/css">
 .mydata { color:#000000;text-align:justify;line-height:22px; }
 
 .famous_btn
@@ -69,7 +69,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
 }
 
 </style>   
-<style>
+<style type="text/css">
 			th,td, tr {
 			text-align:center;
 			vertical-align:middle;

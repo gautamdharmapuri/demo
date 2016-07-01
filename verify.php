@@ -137,7 +137,7 @@ if (isset($email) && isset($key))
             <script src="css/modal/bootstrap.min.js"></script>
 	
 	<!--<![endif]-->
-<style>
+<style type="text/css">
 .mydata { color:#000000;text-align:justify;line-height:22px; }
 
 .famous_btn

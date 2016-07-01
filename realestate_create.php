@@ -62,7 +62,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
   <!--[if !IE]><!-->
 	
 	<!--<![endif]-->
-<style>
+<style type="text/css">
 .mydata { color:#000000;text-align:justify;line-height:22px; }
 
 .famous_btn
@@ -107,7 +107,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 #warning_popup a:hover, #images_popup a:hover{top:10%; float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
 </style>    
 
-<style>
+<style type="text/css">
 .button {
   display: inline-block;
   padding: 10px 15px;

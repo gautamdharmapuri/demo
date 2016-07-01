@@ -45,7 +45,7 @@
 	  <script src="css/modal/jquery.min.js"></script>            
             <script src="css/modal/bootstrap.min.js"></script>
 	<!--<![endif]-->
-<style>
+<style type="text/css">
 .about
 {
 	font-family: 'Roboto', sans-serif;

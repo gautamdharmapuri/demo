@@ -62,7 +62,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
   <!--[if !IE]><!-->
 	
 	<!--<![endif]-->
-<style>
+<style type="text/css">
 .mydata { color:#000000;text-align:justify;line-height:22px; }
 
 .famous_btn
@@ -86,7 +86,7 @@ if($_SESSION['Nris_session']['id'] > 0 && $_GET['verified'] == '') {
 
 </style>    
 
-<style>
+<style type="text/css">
 .button {
   display: inline-block;
   padding: 10px 15px;

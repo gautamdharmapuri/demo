@@ -48,7 +48,7 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.1.min.js"></script>
 	<script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 	<!--<![endif]-->
-<style>
+<style type="text/css">
 .mydata { color:#000000;text-align:justify;line-height:22px; }
 
 .famous_btn
@@ -71,7 +71,7 @@
 }
 
 </style>   
-<style>
+<style type="text/css">
 			th,td, tr {
 			text-align:center;
 			vertical-align:middle;

@@ -16,7 +16,6 @@ if(isset($_GET['State']) && $_GET['State'] != '') {
 } else {
 }
 $state = $defaultState = $_SESSION['state'];
-
 $serverName = $_SERVER['SERVER_NAME'];
 
 $pos = strpos($serverName, 'gautam.com');

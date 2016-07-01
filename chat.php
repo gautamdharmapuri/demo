@@ -197,7 +197,7 @@ print '<img class="link" src="images/smilies/'.$csm[2].'" onmouseover="document.
 <span class="link_color">Close</span>
 </div>
 
-<style>
+<style type="text/css">
 #blab_top_bar{position:fixed;top:0px;left:0px;right:0px;height:62px}
 #blab_bottom_bar{position:fixed;left:0px;right:0px;bottom:0px;height:45px;padding-top:4px}
 

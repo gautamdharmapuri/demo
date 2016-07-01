@@ -73,7 +73,7 @@ if(isset($_POST['Submit']))
 	            <script src="css/modal/jquery.min.js"></script>            
             <script src="css/modal/bootstrap.min.js"></script>
 	<!--<![endif]-->
-<style>
+<style type="text/css">
 .mydata { color:#000000;text-align:justify;line-height:22px; }
 
 .famous_btn
@@ -118,7 +118,7 @@ text-align:center;
 </style>    
 
 
-<style>
+<style type="text/css">
 .button {
   display: inline-block;
   padding: 10px 15px;
