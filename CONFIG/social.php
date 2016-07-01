@@ -17,30 +17,6 @@
 </div>
 <?php include_once('chat.php');?>
 
-<style type="text/css">
-    #playButton1,#playButton2,#playButton3 {
-        width: 30px;
-        height: 30px;
-        position: relative;
-        border: 3px solid #008000;
-        left: 45px;
-        top: -17px;
-    }
-    .circle {
-        border-radius: 50%;
-        display: inline-block;
-        margin-right: 20px;
-    }
-    #playTriangle1,#playTriangle2,#playTriangle3 {
-        color: black;
-        font-weight:bold;
-        font-size: 11px;
-        line-height: 25px;
-        position: relative;
-        z-index: 5555;
-        text-align: center;
-    }
-</style>
  <script src="js/webshim/minified/polyfiller.js"></script>
   
 <script> 
