@@ -1,4 +1,39 @@
-<?php  include"config/connection.php";	   ?>
+<?php  include"config/connection.php";
+
+		$category = $_GET['lang'];
+		$title = $description = 'Nri Movies, Movies';
+		if($category != '') {
+			switch($category) {
+				case 'Panjabi' :
+					$title = 'Panjabi Entertainment | Watch Punjabi Movies Online | NRIs';
+					$description = 'A movie of the day is here! Watch Panjabi movies in high-quality resolution anytime. Let the entertainment continues with latest hits of flash players.';
+					break;
+				case 'Tamil' :
+					$title = 'Full-on Entertainment | Tamil Movies Online | NRIs';
+					$description = 'Watch latest Tamil movies, trailers of various genres like action, comedy, romance, family, drama, horror etc at NRIs. Browse big collection of fun here!';
+					break;
+				case 'Hindi' :
+					$title = 'Hindi Cinema Fun | NRIs';
+					$description = 'Watch the latest Bollywood movies only at NRIs. From romantic to action, comedy to drama, emotional to horror, children’s fun to animation, all entertainment is here.';
+					break;
+				case 'English' :
+					$title = 'Hollywood Theatre in HD | NRIs';
+					$description = 'Don’t let the entertainment stop with latest Hollywood movies. Browse your favorite movies online for free streamed on flash players and enjoy watching.';
+					break;
+				case 'Telugu' :
+					$title = 'Desi Telugu Movies and Videos Online | NRIs';
+					$description = 'Let the fun begins! Watch desi movies and videos only at NRIs. Enjoy watching latest Telugu movies and trailers of various genres like action, comedy, romance, etc.';
+					break;
+				case 'kannada' :
+					$title = 'Watch Latest Kannada Movies Online | NRIs';
+					$description = 'Watch Kannada movies online! Enjoy the latest Kannada movies, trailers of various genres like action, comedy, romance, family, drama, horror etc at NRIs.';
+					break;
+				default :
+					$title = $category;
+					$description = $category;
+			}
+		}
+?>
 
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -8,8 +43,8 @@
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title>Movies / Videos | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title><?php echo $title;?></title>
+	<meta name="description" content="<?php echo $description;?>">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->
@@ -129,21 +164,11 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
               <?php
 			  if(isset($_GET['lang'])) { ?>
 			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
-			  
 			  <?php
 			  $tableName="videos";		
 	$targetpage = "videos/".$_GET['lang']; 	
 	$limit = 15; 
 	
-//	$query = "SELECT COUNT(*) as num FROM $tableName order by total_views desc";
 	$query = "SELECT DISTINCT  * FROM videos where status = 'Active' and language = '".$_GET['lang']."'";
 
 	$total_pages = mysql_query($query);

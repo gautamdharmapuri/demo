@@ -1,6 +1,37 @@
 <?php error_reporting(0);  include"config/connection.php";	  
 
-$current_date = date('Y-m-d');?>
+$current_date = date('Y-m-d');
+$type = str_replace('-','/',$_GET['type']);
+		$category = urldecode($type);
+		$title = $description = 'National Jobs';
+		if($category != '') {
+			switch($category) {
+				case 'Medical Jobs' :
+					$title = 'Post and Search Medical Jobs';
+					$description = 'Looking for the medical jobs near you? NRIs is the perfect classified search engine for you to post or find the medical jobs from registered organisations.';
+					break;
+				case 'Accounting/Clerical' :
+					$title = 'Free Accounting and Clerical Jobs';
+					$description = 'NRIs offers several accounting jobs for those looking for career in this field. Visit us to find and post your free accounting job ads.';
+					break;
+				case 'IT Jobs' :
+					$title = 'Find or Post Free IT Employement';
+					$description = 'NRIs let you to kick off your search for jobs in IT field in a better way. Post your IT jobs ad free and find thousands of qualified professionals here.';
+					break;
+				case 'PartTime/ Hourly' :
+					$title = 'Free Hourly Jobs Ads';
+					$description = 'Browse for best part time job listings at NRIs. You can find or post your job easily here to accelerate your career with flexible hours. Visit us for more!';
+					break;
+				case 'HR/Management Jobs' :
+					$title = 'HR and Management Job Ads';
+					$description = 'Post or find free HR and Management jobs ads with the expert advice from thousands of qualified professionals. NRIs welcomes you to browse the best level jobs here!';
+					break;
+				default :
+					$title = $category;
+					$description = $category;
+			}
+		}
+?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
 <!--[if IE 9 ]><html class="ie ie9" lang="en"> <![endif]-->
@@ -9,8 +40,8 @@ $current_date = date('Y-m-d');?>
 
 	<!-- Basic Page Needs -->
 	<meta charset="utf-8">
-	<title><?php echo $defaultState;  ?> Jobs Ads | NRIs</title>
-	<meta name="description" content="NRIs">
+	<title><?php echo $title; ?> | Post and Search Medical Jobs | National Jobs | NRIs</title>
+	<meta name="description" content="<?php echo $description; ?>">
 	<meta name="author" content="NRIs">
 	
 	<!-- Mobile Specific Metas -->

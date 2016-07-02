@@ -148,6 +148,7 @@ if(isset($_POST['submit']))
 				
 				$round=rand(1000,100000);
 				
+				$_FILES['txtimage']['name'] = preg_replace('/\s+/', '_', $_FILES['txtimage']['name']);
 				$image=$round."_".$_FILES['txtimage']['name'];
 				$img="uploads/us_ads/".$image;
 				move_uploaded_file($_FILES['txtimage']['tmp_name'],$img);

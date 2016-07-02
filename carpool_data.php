@@ -1,5 +1,14 @@
 <?php error_reporting(0);
 include"config/connection.php";
+
+$title = $description = 'Carpool';
+if ($_GET['type'] == 'interstate') {
+    $title = 'Find Your Perfect Carpool | Interstate | NRIs';
+    $description = "Look for commuters here who are already on the USA's biggest carpooling site. Find your perfect carpool to work or for any trip and save money on commuting!";
+} elseif ($_GET['type'] == 'international') {
+    $title = 'Share Your Journey With NRIs | International Carpool Ads- NRIs';
+    $description = "NRIs connects car owners and co-travellers to share city-to-city journeys through the largest carpool classified services in the world.";
+}
 ?>
 <!DOCTYPE html>
 <!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
@@ -9,8 +18,8 @@ include"config/connection.php";
 
         <!-- Basic Page Needs -->
         <meta charset="utf-8">
-        <title>NRI's Talk | NRIs</title>
-        <meta name="description" content="NRIs">
+        <title><?php echo $title;?></title>
+        <meta name="description" content="<?php echo $description;?>">
         <meta name="author" content="NRIs">
 
         <!-- Mobile Specific Metas -->
@@ -146,21 +155,10 @@ include"config/connection.php";
         </style> 
     </head>
     <body>
-
         <div class="loader"><div class="loader_html"></div></div>
-
-
-
         <?php include "config/menu.php"; ?>
-
         <div class="clearfix"></div>
-
-
         <?php include_once('stock_block.php'); ?>     
-
-
-
-
 
         <!-- Section-1 WRAP START-->	
         <div class="section-1-wrap" style="clear:both;">	
@@ -168,20 +166,11 @@ include"config/connection.php";
             <div class="section-1">
 
 
-
                 <!-- COLUMN LEFT -->	
                 <?php include_once('home_common_left.php'); ?><!-- COLUMN LEFT ENDS -->	
 
                 <!-- COLUMN MIDDLE -->	
                 <div class="col-md-8 inner-middle-wrap">
-
-                    <!-- TOP ADVERTISE -->
-                    <!-- TOP ADVERTISE END-->
-
-
-                    <!-- TOP BUTTONS -->
-
-                    <!-- TOP BUTTONS ENDS-->
 
                     <!-- FIRST TABLE -->
                     <div class="col-md-12" style="text-align:left;color:#000000;"> 
@@ -216,15 +205,9 @@ include"config/connection.php";
                                     <input type="hidden" name="City2" id="City2">
                                 </div>
 
-
-
-
                                 <button type="submit"  name="Submit" id="Submit" tabindex="28">Search</button>
-
                             </div>
-
                         </form>
-
                         <table align="center" >
                             <thead>
                                 <tr>
