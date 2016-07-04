@@ -1,3 +1,4 @@
+<script src="js/webshim/minified/polyfiller.js"></script>
 <script type="text/javascript" src="js/common.js"></script>
 
 <footer id="footer">

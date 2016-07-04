@@ -18,12 +18,6 @@
 	
 	<!-- Main Style -->
 	<link rel="stylesheet" href="css/style.css">
-	
-	<!-- Skins -->
-	<!--
-	<script type="text/javascript" src="map/overlibmws.js"></script>
-<link rel="stylesheet" type="text/css" href="map/om_maps.css" />-->
-    <!-- Responsive Style -->
 	<link rel="stylesheet" href="css/responsive.css">
 	
 	<!-- Favicons -->
@@ -36,12 +30,6 @@
   	<link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    
-    
-    <!--<link rel="stylesheet" href="css/animate-custom.css">-->
-	
-	
-    
     	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
 		<script src="js/tab/modernizr.js"></script> <!-- Modernizr -->
 
@@ -82,19 +70,11 @@
 	<?php   include "config/menu_home.php" ;  ?>
 	
 	<div class="clearfix"></div>
-
-    
 		<div id="stock_div">
 			<iframe id="myFrame" src="http://nris.com/stock_block_state.php" style="margin: 0px !important;padding: 0px !important;width:100%;height:41px;"></iframe>
 		</div> 
-	
-	
-	
 <div class="section-1-wrap">	
-	
 		<div class="section-1">
-			
-            
 <!-- WEATHER WIDGET -->
 				<div class="left-section-1 col-md-2" >
 				        <script src="widget/astrovisionjs.js"></script>
@@ -104,24 +84,17 @@
 </div>
 </div>
                 </div><!-- End Left-Section-1 -->
-                
-                
-
 <!-- MAIN MIDDLE SECTION-->
 <div class="middle-section">
-
 				<!-- TOP HALF AD STARTS-->              
-              
                 <div class="top-half">
                     <ul class="advert-grp" id="advert-grp">
                         <?php
-                        
                             $home_middle_query1 = "select * from us_ads where ad_position='Home-Top-Center-4'  and status='Active' order by id desc";
                             $home_middle_res1 = mysql_query($home_middle_query1);
                             while ($home_dm1 = mysql_fetch_array($home_middle_res1)) {
                         ?>
                         <li>
-                                
 									<?php
                                     if($home_dm1['edate'] >= $current_date) {
 										if($home_dm1['url'] != '') {
@@ -134,24 +107,16 @@
                                     ?>		            
                                         <a href="javascript:;" ><img src="img/middle.jpg" alt="Advertisement"></a>
                                     <?php } ?>                      
-                                
                             </li>	
                         <?php } ?>
-                    	
-                    
                   </ul><!-- TOP ADVERT FROUP ENDS -->
-              </div>            
-              
+              </div>
               <!-- TOP HALF AD SECTION ENDS -->
-              
-              
-                
                <!-- MIDDLE MAP SECTION -->                
 				<div class="right-section-map-wrap">
 				  <div class="text_map">
 						<input type="text" name="responsive_auto_states" id="responsive_auto_states" value="" placeholder="Choose State"/>
 				  </div>
-                   
                    <span id="map-tip"></span>
 <div id="mapwrapper">
 	<div id="map_base">
@@ -169,27 +134,13 @@
 		?>
 	</div>
 </div>
-<div class="clear"></div>        
-                        
-                        
-                   <!-- </div> -->
-                       
+<div class="clear"></div> 
 				</div><!-- MAP MODULE  ENDS-->
-                
-                
 </div><!-- MAIN MIDDLE SECTION  ENDS-->
-
-
-                
-
-                
                 <!-- RIGHT AD SECTION -->
 				<div class="right-section-ad">
-                
                    <div class="padding-no ad-right-top">
-                
 					<div class="advertise-1">
-                        
 							<?php                                    
                                 $home_righttop_query1 = "select * from us_ads where ad_position='Home-Right-Top-8' and ad_position_no='1' and status='Active' order by id desc limit 1";
                                 $home_righttop_ad_res1 = mysql_query($home_righttop_query1);                               
@@ -325,10 +276,7 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
                                 <a href="javascript:;" ><img src="img/home_right_top.jpg" alt="Advertisement"></a>
                             <?php } ?> 
                     </div>	
-                 
-				   </div><!-- RIGHT AD SECTION ENDS -->   
-                 
-                 
+				   </div><!-- RIGHT AD SECTION ENDS -->  
 <!-- EVENTS SECTION -->                 
                      <div class="events col-md-12 padding-no">
                         
@@ -399,16 +347,8 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
            		<div class="col-md-4 full-wid">
                     <div class="btn-1"><a href="<?php echo $siteUrlConstant;?>casinos">Famous Casinos<br> rated by NRI's</a></div>
                     <div class="btn-1"><a href="<?php echo $siteUrlConstant;?>pubs">Famous Pubs/Bars<br> rated by NRI's</a></div>
-                </div>      
-                      
-               
+                </div>  
            </div> <!-- btn-module ENDS -->
-                
-                                   
-    
-    
-    
-    
      <!-- Modal  Free Post  -->
   <div class="modal fade" id="free_post" role="dialog">
     <div class="modal-dialog">
@@ -431,8 +371,6 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
   </div>  
   <!-- Modal  Free Post  End -->
   
-  
-  
    <!-- Modal  Premium Post  -->
   <div class="modal fade" id="premium_post" role="dialog">
     <div class="modal-dialog">
@@ -453,22 +391,14 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
       
     </div>
   </div>
-  <!-- Modal  Premium Post  End -->  
-    
-    
-               
-               
+  <!-- Modal  Premium Post  End --> 
                 <!-- SECTION 2 NEW -->
                 <div class="section-new-2">
                 
                 <!-- RIGHT AD SECTION -->
                 <div class="left-image">
-                    
-                    
                            <div class="padding-no">
-                        
                                 <div class="image-big">
-                                    
                                           <?php                                    
                                     $home_left_query1 = "select * from us_ads where ad_position='Home-Left-Bottom' and ad_position_no='1' and status='Active' order by id desc limit 1";
                                     $home_left_ad_res1 = mysql_query($home_left_query1);
@@ -590,11 +520,7 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
                             
                            </div> 
                             
-               </div><!-- RIGHT AD SECTION ENDS -->   
-
-                    
-              
-                    
+               </div><!-- RIGHT AD SECTION ENDS -->
                <div class="middle-column-section-2">
                     
                                 <div class="events col-md-12 padding-no">
@@ -652,9 +578,6 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
                                                       <a href="<?php echo $siteUrlConstant;?>national_training?ViewId=<?php echo $rsfs['id'] ; ?>" class="read-btn-tab">View more</a>
                                                   </li>
                                                 <?php  $edudata++ ; } ?>  
-                                                  
-                                               
-                                                  
                                               </ul> <!-- cd-tabs-content ends -->
                                               
                                           </div> <!-- cd-tabs ends-->
@@ -689,11 +612,6 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
                                     </ul>
                                     <a href="javascript:;" class="read-btn" data-toggle="modal" data-target="#desi_market">View more</a>
                             </div>
-              
-              
-              
-              
-                                                  
                                                   <!-- Modal -->
                                       <div class="modal fade" id="desi_market" role="dialog">
                                         <div class="modal-dialog">
@@ -714,17 +632,6 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
                                           
                                         </div>
                                       </div>
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
-              
                             
             <!-- NRI TALK SECTION -->                                            
                             <div class="nri-talk col-md-6">
@@ -752,14 +659,10 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
                                                         <?php } ?>
                                     </ul>
                              </div>
-                            
-                            
-                            
              <!-- 3 AD SECTION -->                                            
                             <div class="three-ad-wrap">
                                 <div class="thr-ad">
 									<?php      
-									                              
                                     $home_bottom_query1 = "select * from us_ads where ad_position='Home-Bottom-Small' and ad_position_no='1' and status='Active' order by id desc limit 1";
                                     $home_bottom_ad_res1 = mysql_query($home_bottom_query1);
 									$home_btm1 = mysql_fetch_array($home_bottom_ad_res1);
@@ -814,9 +717,6 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
                                     
                                 </div>
                             </div>
-                            
-                            
-                            
                <!-- 1 AD SECTION -->
                             <div class="single-ad">
                             	<?php                                    
@@ -861,8 +761,6 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
                                           <?php } ?>           
                                     
                                 </div>
-                              
-                              
                               
                                 <div class="image-big">
                                     
@@ -1000,33 +898,24 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->
 
     <script src="calender/jquery-ui.js"></script>
-<script type="text/javascript">
-		
-		$( "#responsive_auto_states" ).autocomplete({
-      source: "state_auto.php",
-      minLength: 1,
-      select: function( event, ui ) {
-			//$('#State').val(ui.item.id);
-			window.location.href = site_url+'state?State='+ui.item.id;
-      }
-    });
-</script>
-<!-- js -->
-<!--<script src="js/html5.js"></script>
-<script src="js/custom.js"></script>-->
-<!-- End js -->
-<script type="text/javascript">var widget = new avWidgetAstroCalendar('astro_widget_home');</script>
 
     <script src="widget/jquery.simpleWeather.min.js"></script>
     <script src="widget/moment.js"></script>
     <script src="widget/moment-timezone.js"></script>
     <script src="widget/jstz.min.js"></script>
     <script src="widget/jqIpLocation.js"></script>
-	
-    <script>
-        //$.noConflict();
+    <script type="text/javascript">
+		
+		var widget = new avWidgetAstroCalendar('astro_widget_home');
         $(document).ready(function () {
 			
+			$( "#responsive_auto_states" ).autocomplete({
+      source: "state_auto.php",
+      minLength: 1,
+      select: function( event, ui ) {
+			window.location.href = site_url+'state?State='+ui.item.id;
+      }
+    });
 			
 			var locat = '<?php echo $state;?>';
 			var imgUrl = 'https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/36d.png';
