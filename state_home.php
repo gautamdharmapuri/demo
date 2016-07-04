@@ -31,7 +31,7 @@ $current_date = date('Y-m-d');
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="img/favicon.png">
     
-    <link href='https://fonts.googleapis.com/css?family=Roboto|Montserrat' rel='stylesheet' type='text/css'>
+    <link href='css/font.css' rel='stylesheet' type='text/css'>
     <script src="js/jquery.min.js"></script>
    <link rel="stylesheet" href="css/bootstrap.css"><!--
     <link rel="stylesheet" href="css/tab.css">-->
@@ -40,8 +40,8 @@ $current_date = date('Y-m-d');
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/prettyPhoto.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/fontello/css/fontello.css">
-    <link rel="stylesheet" href="css/settings.css">
+    
+    
     <link rel="stylesheet" href="css/animate-custom.css">    
     
     	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->

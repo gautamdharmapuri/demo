@@ -22,8 +22,8 @@
 	<!-- Skins -->
 	<link rel="stylesheet" href="css/skins/skins.css">
 	
-	<script type="text/javascript" src="map/overlibmws.js"></script>
-<link rel="stylesheet" type="text/css" href="map/om_maps.css" />
+	<!--<script type="text/javascript" src="map/overlibmws.js"></script>
+<link rel="stylesheet" type="text/css" href="map/om_maps.css" />-->
     <!-- Responsive Style -->
 	<link rel="stylesheet" href="css/responsive.css">
 	
@@ -35,13 +35,11 @@
     <link rel="stylesheet" href="css/bootstrap.css"><!--
     <link rel="stylesheet" href="css/tab.css">-->
   	<link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/lists.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/prettyPhoto.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/fontello/css/fontello.css">
-    <link rel="stylesheet" href="css/settings.css">
-    <link rel="stylesheet" href="css/animate-custom.css">
+    
+    
+    <!--<link rel="stylesheet" href="css/animate-custom.css">-->
 	
 	
     
@@ -49,7 +47,6 @@
 		<script src="js/tab/modernizr.js"></script> <!-- Modernizr -->
 
             <script src="css/modal/jquery.min.js"></script>
-			 <link rel="stylesheet" type="text/css" href="css/map-style.css" />
 	<script src="js/map-config.js" type="text/javascript"></script>
 	<script src="js/map-interact.js" type="text/javascript"></script>
             <script src="js/jquery.bxslider.js"></script>
@@ -329,7 +326,8 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
                                 <a href="javascript:;" ><img src="img/home_right_top.jpg" alt="Advertisement"></a>
                             <?php } ?> 
                     </div>	
-                 </div><!-- RIGHT AD SECTION ENDS -->   
+                 
+				   </div><!-- RIGHT AD SECTION ENDS -->   
                  
                  
 <!-- EVENTS SECTION -->                 
@@ -1015,8 +1013,8 @@ $home_righttop6['url'] = ($home_righttop6['url'] != '') ? $home_righttop6['url']
     });
 </script>
 <!-- js -->
-<script src="js/html5.js"></script>
-<script src="js/custom.js"></script>
+<!--<script src="js/html5.js"></script>
+<script src="js/custom.js"></script>-->
 <!-- End js -->
 <script type="text/javascript">var widget = new avWidgetAstroCalendar('astro_widget_home');</script>
 

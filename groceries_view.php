@@ -47,7 +47,7 @@ $current_URL = "http://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
     <link rel="stylesheet" href="css/lists.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/settings.css">
+    
     <link rel="stylesheet" href="css/animate-custom.css">
 	<link rel='stylesheet' type='text/css' href='css/rate.css'> 
     

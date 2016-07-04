@@ -40,7 +40,7 @@ $state = $defaultState;
     <link rel="stylesheet" href="css/lists.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="css/settings.css">
+    
     <link rel="stylesheet" href="css/animate-custom.css">    
     
     	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
