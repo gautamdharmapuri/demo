@@ -36,7 +36,7 @@
 <div id="images_popup" style="display:none;">
     <a style="float:right;cursor: pointer;" onClick="popup('images_popup')">X</a>
 				<div id="col-md-12">
-					<img src="img/logo.png" id="myImage" alt="image">
+					<img src="img/logo.png" id="myImage" alt="image" width="200" height="90">
                 </div>
 	</div>
     <div id="blanket" style="display:none;"></div>
