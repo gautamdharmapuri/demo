@@ -27,7 +27,7 @@ else
 	<link rel="stylesheet" href="css/style.css">
 	
 	<!-- Skins -->
-	<link rel="stylesheet" href="css/skins/skins.css">
+	
 	
 	<!-- Responsive Style -->
 	<link rel="stylesheet" href="css/responsive.css">

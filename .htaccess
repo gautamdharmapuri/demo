@@ -9,7 +9,7 @@ RewriteRule ^videos_inner/([^.*]+)$ videos_inner.php?lang=$1 [NC,L]
 
 ErrorDocument 404 /page-not-found
 
-
+AddDefaultCharset utf-8
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d 
@@ -17,6 +17,11 @@ RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^([^\.]+)$ $1.php [NC,L]
 RewriteCond %{HTTP_HOST} ^(^.*)\.nris.com
 
+<IfModule mod_headers.c>
+  <FilesMatch "\.(js|css|xml|gz)$">
+    Header append Vary: Accept-Encoding
+  </FilesMatch>
+</IfModule>
 
 <FilesMatch "\.(css|js|ttf|otf|eot|woff|gz)$">
 	<IfModule mod_headers.c>

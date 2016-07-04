@@ -20,9 +20,8 @@
 	<link rel="stylesheet" href="css/style.css">
 	
 	<!-- Skins -->
-	<link rel="stylesheet" href="css/skins/skins.css">
-	
-	<!--<script type="text/javascript" src="map/overlibmws.js"></script>
+	<!--
+	<script type="text/javascript" src="map/overlibmws.js"></script>
 <link rel="stylesheet" type="text/css" href="map/om_maps.css" />-->
     <!-- Responsive Style -->
 	<link rel="stylesheet" href="css/responsive.css">

@@ -43,7 +43,7 @@ mysql_query("update nris_talk set total_views='".$total_views."' where id = '".$
 	<link rel="stylesheet" href="css/style.css">
 	
 	<!-- Skins -->
-	<link rel="stylesheet" href="css/skins/skins.css">
+	
 	
 	<!-- Responsive Style -->
 	<link rel="stylesheet" href="css/responsive.css">
