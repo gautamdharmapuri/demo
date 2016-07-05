@@ -1,6 +1,6 @@
 .wbiscroller{width:100%;font-family:Arial, Helvetica, sans-serif;font-size:10pt;height:16px;width:100%;display:block;position:relative;overflow:hidden;line-height:normal;}
-.wbiscroller .changeup{background-image:url('http://widgets.freestockcharts.com/WidgetServer/images/greenGridBG.png');text-align:right;padding-left:3px;padding-right:3px;}
-.wbiscroller .changedown{background-image:url('http://widgets.freestockcharts.com/WidgetServer/images/redGridBG.png');text-align:right;padding-left:3px;padding-right:3px;}
+.wbiscroller .changeup{background-image:url('../images/greenGridBG.png');text-align:right;padding-left:3px;padding-right:3px;}
+.wbiscroller .changedown{background-image:url('../images/redGridBG.png');text-align:right;padding-left:3px;padding-right:3px;}
 .wbiscroller .quotedown{text-align:center;}
 .wbiscroller .quoteup{text-align:center;}
 .wbiscroller .dirup{margin-right:4px;}

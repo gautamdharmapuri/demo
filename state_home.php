@@ -36,7 +36,6 @@ $current_date = date('Y-m-d');
    <link rel="stylesheet" href="css/bootstrap.css"><!--
     <link rel="stylesheet" href="css/tab.css">-->
   	<link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/lists.css">
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/prettyPhoto.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">

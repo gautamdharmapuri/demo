@@ -1,6 +1,5 @@
 <div class="stock-scroll">
-<script src="widget/WBIHorizontalTicker2.js?ver=12334" type="text/javascript"></script> 
-<link href="widget/WBITickerblue.css" rel="stylesheet" type="text/css" />
+<script src="widget/WBIHorizontalTicker2.js" type="text/javascript"></script>
 <script>
     var gainTicker = new WBIHorizontalTicker('gainers');
     gainTicker.start();

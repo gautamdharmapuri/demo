@@ -1,6 +1,6 @@
 <div class="stock-scroll" style="width: 100%;background: #2eb1fd;float: left;color: #fff;text-align: center;">
-<script src="js/tab/jquery-2.1.1.js"></script>
-<script src="widget/WBIHorizontalTicker2.js?ver=12334" type="text/javascript"></script>
+	<script src="js/tab/jquery-2.1.1.js"></script>
+<script src="widget/WBIHorizontalTicker2.js" type="text/javascript"></script>
 <link rel="stylesheet" href="widget/WBITickerblue.css" type="text/css">
 <script>
 	

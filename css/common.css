@@ -6,7 +6,7 @@ ul.checks > li{margin:10px 0;list-style:outside none none;margin-left:30px;line-
 #chat_terms_conditions_popup h3, #terms_conditions_popup h3, #images_popup h3{font-size:14px;}
 #chat_terms_conditions_popup a, #terms_conditions_popup a, #images_popup a{top:10%;float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
 #chat_terms_conditions_popup a:hover,#terms_conditions_popup a:hover, #images_popup a:hover{top:10%;float:right;font-size:22px;font-weight:bold;color:#000000;margin:10px;}
-a.back-to-top{display:none;width:60px;height:60px;text-indent:-9999px;position:fixed;z-index:999;right:20px;bottom:20px;background:#27AE61 url("images/up-arrow.png") no-repeat center 43%;-webkit-border-radius:30px;-moz-border-radius:30px;border-radius:30px;}
+a.back-to-top{display:none;width:60px;height:60px;text-indent:-9999px;position:fixed;z-index:999;right:20px;bottom:20px;background:#27AE61 url("../images/up-arrow.png") no-repeat center 43%;-webkit-border-radius:30px;-moz-border-radius:30px;border-radius:30px;}
 a:hover.back-to-top{background-color:#000;}
 #playButton1,#playButton2,#playButton3{width:30px;height:30px;position:relative;border:3px solid #008000;left:45px;top:-17px;}
 .circle{border-radius:50%;display:inline-block;margin-right:20px;}
