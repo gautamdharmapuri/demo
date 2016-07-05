@@ -11,7 +11,7 @@ $current_date = date('Y-m-d');
 	<meta charset="utf-8">
 	<title>Teaching and Education Ads in USA | NRIS</title>
 	<meta name="description" content="Select your state and find the latest education and teaching Ads in your nearby area of USA. Get the information on best courses and teachers in USA.">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

@@ -56,7 +56,7 @@ var site_url = '<?php echo $siteUrlConstant;?>';
 				<div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');background-position: 0px 0px;background-repeat: no-repeat;background-size: 100% 116px;">
 		<?php } ?>
         <div class="col-md-4">
-				<div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="Nris" src="img/logo.png"></a></div>
+				<div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="Nris" src="img/logo.png" width="200" height="90"></a></div>
 	   </div>
 	   <div class="col-md-8">
 			  <?php
@@ -299,32 +299,28 @@ var site_url = '<?php echo $siteUrlConstant;?>';
             
             <div style="width:38%;float:right;">
 			<center>
-            <h3><a href="register"><img src="img/register.png" alt="Register"/></a></h3><br />
+            <h3><a href="register"><img src="img/register.png" alt="Register" width="216" height="47"/></a></h3><br />
             <?php
             include_once("fb_login/config.php");
             include_once("google_login/config.php");
             ?>
             <h3>
                 <?php
-                // include_once("fb_login/includes/functions.php");
-                //destroy facebook session if user clicks reset
-                // var_dump($fbuser);exit;
                 if(!$fbuser){
                     $fbuser = null;
                     $loginUrl = $facebook->getLoginUrl(array('redirect_uri'=>$homeurl,'scope'=>$fbPermissions));
-                    echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png" alt="Facebook"></a>';    
+                    echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png" alt="Facebook" width="216" height="47"></a>';    
                 }
                 ?>
-                <!-- <a href="<?php echo $siteUrlConstant.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
             </h3>
             <h3>
             <?php
                 $authUrl = $gClient->createAuthUrl();
-                echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png" alt="Google"/></a>';
+                echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png" alt="Google" width="216" height="89"/></a>';
             ?>
             </h3>
             <h3>
-                <?php echo '<a href="twitter_login/process"><img alt="Twitter" src="twitter_login/images/sign-in-with-twitter.png" style="border:none;" /></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img alt="Twitter" src="twitter_login/images/sign-in-with-twitter.png"  width="151" height="24" /></a>'; ?>
             </h3>
 			</center>
             </div>

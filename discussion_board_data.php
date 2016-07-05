@@ -34,7 +34,7 @@ if(isset($_POST['cmdsave']))
 	<meta charset="utf-8">
 	<title>Forums Discussion Boards and Topics | NRIS</title>
 	<meta name="description" content="Forums at NRIS have all the discussion threads based on Bollywood & Hollywood movies, Indian & Global news, sports including Cricket, Football and many more.">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

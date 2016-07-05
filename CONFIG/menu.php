@@ -21,7 +21,7 @@
     <div class="col-md-12 header-top-two" style="background-image: url('images/banner.jpg');">
 	   
 	   <div class="col-md-4">
-			  <div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="Nris" src="img/logo.png"></a></div>
+			  <div class="logo"><a href="<?php echo $siteUrlConstant;?>"><img alt="Nris" src="img/logo.png" width="200" height="90"></a></div>
 	   </div>
 	   <div class="col-md-8">
 			  <?php
@@ -42,60 +42,10 @@
 			  <?php  } ?>
 			  
 	   </div>
-        
-        
-		
-        <div class="advertise-header" style="display: none;">
-            
-               
-               <?php
-				$current_date = date('Y-m-d');
-			//	echo $current_date;
-				$home_ad_query1 = "select * from us_ads where ad_position='Home-Top-Small' and ad_position_no='1' and status='Active' order by id desc limit 1";
-			//	echo $home_ad_query1 ;
-				$home_ad_res1 = mysql_query($home_ad_query1);
-				//if(mysql_num_rows($home_ad_res1)>0)
-				$home_fs1 = mysql_fetch_array($home_ad_res1);
-				if($home_fs1['edate'] >= $current_date && $home_fs1['image'] != '')
-				{
-
-				$home_fs1['url'] = ($home_fs1['url'] != '') ? $home_fs1['url'] : 'javascript:;';
-				 echo '<a href="' . $home_fs1['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_fs1['image'].'" alt="'.$home_fs1['image'].'"></a>';
-				} else { 
-			?>		
-                <img src="img/home1.jpg" alt="Advertisement">
-                 <?php
-				 $home_ad_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Top-Small' and ad_position_no='1' and edate < '".$current_date."' ");
-				  } ?>
-          
-           
-           
-            
-             <?php
-
-				$home_ad_query2 = "select * from us_ads where ad_position='Home-Top-Large' and ad_position_no='1' and status='Active' order by id desc limit 1";
-			//	echo $home_ad_query2 ;
-				$home_ad_res2 = mysql_query($home_ad_query2);
-				$home_fs2 = mysql_fetch_array($home_ad_res2);
-				if($home_fs2['edate'] >= $current_date && $home_fs2['image'] != '')
-				{
-					$home_fs2['url'] = ($home_fs2['url'] != '') ? $home_fs2['url'] : 'javascript:;';	
-					echo '<a href="' . $home_fs2['url'] . '" target="_blank"><img src="admin/uploads/us_ads/'.$home_fs2['image'].'" alt="'.$home_fs2['image'].'"></a>';
-				} else { 
-				 $home_ad_query1 = mysql_query("update us_ads set status='De-Active' where ad_position='Home-Top-Large' and ad_position_no='1' and edate < '".$current_date."' ");
-			?>		            
-                <a href="javascript:;"><img src="img/home2.jpg" alt="Advertisement"></a>
-               <?php } ?>
-        </div>
-    
-    
-	
 	</div>
 	
 	<nav class="navigation">
         <ul>
-
-            
         <li><a href="<?php echo $siteUrlConstant;?>">Home</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>aboutus">About Us</a></li>
         <li><a href="javascript:;" data-toggle="modal" data-target="#nri_post">NRI's talk</a></li>
@@ -126,7 +76,6 @@
             <li><a href="<?php echo $siteUrlConstant;?>best_pubs">Pubs </a></li>
              </ul>
         </li>
-        <!-- <li id="famousTemples"><a href="#famousIndianTemples">Famous Indian Temples</a></li> -->
         <li><a href="javascript:;">Carpool</a>
             <ul>
             <li><a href="<?php echo $siteUrlConstant;?>carpool_data/interstate">Inter state Carpool</a></li>
@@ -206,7 +155,7 @@
             
             <div style="width:38%;float:right;">
 			<center>
-            <h3><a href="<?php echo $siteUrlConstant;?>register"><img src="img/register.png" alt="Register"/></a></h3><br />
+            <h3><a href="<?php echo $siteUrlConstant;?>register"><img src="img/register.png" alt="Register" width="216" height="47"/></a></h3><br />
             <?php
             include_once("fb_login/config.php");
             include_once("google_login/config.php");
@@ -216,19 +165,18 @@
                 if(!$fbuser){
                     $fbuser = null;
                     $loginUrl = $facebook->getLoginUrl(array('redirect_uri'=>$homeurl,'scope'=>$fbPermissions));
-                    echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png" alt="Nris"></a>';    
+                    echo '<a href="'.$loginUrl.'"><img src="img/login_fb.png" alt="Facebook" width="216" height="47"></a>';    
                 }
                 ?>
-                <!-- <a href="<?php echo $siteUrlConstant.'/fb_login' ?>"><img src="img/login_fb.png" /></a> -->
             </h3>
             <h3>
             <?php
                 $authUrl = $gClient->createAuthUrl();
-                echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png" alt="Google"/></a>';
+                echo '<a href="'.$authUrl.'"><img src="google_login/images/glogin.png" alt="Google" width="216" height="89"/></a>';
             ?>
             </h3>
             <h3>
-                <?php echo '<a href="twitter_login/process"><img src="twitter_login/images/sign-in-with-twitter.png" style="border:none;" alt="Twitter"/></a>'; ?>
+                <?php echo '<a href="twitter_login/process"><img src="twitter_login/images/sign-in-with-twitter.png" width="151" height="24" alt="Twitter"/></a>'; ?>
             </h3>
 			</center>
             </div>

@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<title>Advertise with Us | NRIS</title>
 	<meta name="description" content="Get in touch with our portal by filling a simple form and Advertise with us for your Jobs, Visiting places, real estate, automobiles and many more.">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

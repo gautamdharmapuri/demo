@@ -11,7 +11,7 @@ $current_date = date('Y-m-d');
 	<meta charset="utf-8">
 	<title>Ads on National Automobiles in USA | Auto Ads | NRIS</title>
 	<meta name="description" content="Buy/Sell Cars, automobiles at best prices with exciting offers and deals. Just select your state and find the latest auto Ads for cars, autos in USA.">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

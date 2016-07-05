@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<title>Famous Temples, Gurudwara and Churches in USA | NRIS</title>
 	<meta name="description" content="A list of best Hindu and Buddhist temples, Sikh Gurudwara and churches nearby you in USA. Select your state and visit the place of your worship today.">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

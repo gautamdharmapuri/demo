@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<title>Best Visiting Casions in USA | NRIS</title>
 	<meta name="description" content="Get all the information along with customer ratings about some of the best casinos in USA. Just select your state and choose the nearest casino to you.">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

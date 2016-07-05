@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<title>Our Blogs | NRIS</title>
 	<meta name="description" content="Get the latest updates and information from the portal of NRIs community in USA. Read our blogs and stay updated with the latest posts.">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

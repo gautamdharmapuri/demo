@@ -17,7 +17,7 @@ $current_date = date('Y-m-d');
 	<meta charset="utf-8">
 	<title><?php echo $defaultState;  ?> Auto Ads | NRIs</title>
 	<meta name="description" content="NRIs">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

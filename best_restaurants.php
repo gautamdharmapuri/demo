@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<title>Best Visiting Restaurants in USA | NRIS</title>
 	<meta name="description" content="Get a list of some of the best restaurants in USA with all the information and customer ratings. Choose your location and get the details of nearest restaurants.">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

@@ -187,7 +187,7 @@ jQuery(".chat_header").click(function (e) {
 for($i=0;$i<count($emoticons);$i++){
 $csm=explode(' ',$emoticons[$i]);
 if(isset($csm[1])){
-print '<img class="link" src="images/smilies/'.$csm[2].'" onmouseover="document.getElementById(\'sprv\').innerHTML=\''.$csm[0].'\'" onmouseout="document.getElementById(\'sprv\').innerHTML=\'\'" onclick="ad_emo(\''.$csm[0].'\')" alt="" data-smily="'.$csm[0].'" />'."\r\n";
+print '<img class="link" src="images/smilies/'.$csm[2].'" width="19" height="19" onmouseover="document.getElementById(\'sprv\').innerHTML=\''.$csm[0].'\'" onmouseout="document.getElementById(\'sprv\').innerHTML=\'\'" onclick="ad_emo(\''.$csm[0].'\')" alt="" data-smily="'.$csm[0].'" />'."\r\n";
 }}
 
 ?>

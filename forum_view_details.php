@@ -32,7 +32,7 @@ mysql_query("update forum_threads set total_views='".$total_views."' where id = 
 	<meta charset="utf-8">
 	<title>Forum | NRIs</title>
 	<meta name="description" content="NRIs">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

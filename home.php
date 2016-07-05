@@ -12,6 +12,7 @@
 	<title>Indian Website for Nris in USA | NRIS</title>
 	<meta name="description" content="An Indian community website for all NRI'S residing in United States. Get information on local real estate, Indian movies, restaurants, visiting spots etc.">
 	<meta name="author" content="NRIs">
+	<?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
@@ -124,7 +125,7 @@
 				$cache_file = 'map.php';
 				$cachedFile = 'map_cached.php';
 				$url = $siteUrlConstant.$cache_file;
-				if (file_exists($cachedFile) && (filemtime($cachedFile) > (time() - 60 * 500 ))) {
+				if (file_exists($cachedFile) && (filemtime($cachedFile) > (time() - 60 * 60 * 1200 ))) {
 						$file = file_get_contents($cachedFile);
 				} else {
 						$file = file_get_contents($url);

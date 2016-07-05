@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<title>About US | NRIS</title>
 	<meta name="description" content="Know about our services and features for non resident Indians in USA. Information on restaurants, visiting spots, jobs, Indian movies and visiting spots etc">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

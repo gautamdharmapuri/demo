@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<title>Grocery View | NRIs</title>
 	<meta name="description" content="NRIs">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

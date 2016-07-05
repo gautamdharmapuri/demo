@@ -11,7 +11,7 @@ $current_date = date('Y-m-d');
 	<meta charset="utf-8">
 	<title>Find Your Perfect Partner | My Partner | NRIS</title>
 	<meta name="description" content="Find the right partner of your match, whether you need a boyfriend or a girlfriend. Our portal has latest Ads on some of the perfect partners for you in USA.">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">

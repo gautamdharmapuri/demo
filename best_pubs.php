@@ -10,7 +10,7 @@
 	<meta charset="utf-8">
 	<title>Best Visiting Pubs and Bars in USA | NRIS</title>
 	<meta name="description" content="Looking for the best place for your party? Here you will find the best pubs and bars to enjoy your night parties in USA. Select your state and go for it!">
-	<meta name="author" content="NRIs">
+	<meta name="author" content="NRIs"><?php include_once('tracking.php');?>
 	
 	<!-- Mobile Specific Metas -->
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
