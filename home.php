@@ -20,22 +20,22 @@
 	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 	
 	<!-- Main Style -->
-	<link rel="stylesheet" href="css/style.css">
-	<link rel="stylesheet" href="css/responsive.css">
+	<link rel="stylesheet" href="css/style.css.gz">
+	<link rel="stylesheet" href="css/responsive.css.gz">
 	
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="img/favicon.png">
     
     <link href='css/font.css' rel='stylesheet' type='text/css'>
-    <script src="js/jquery.min.js"></script> 
-    <link rel="stylesheet" href="css/bootstrap.css">
+    <script src="js/jquery.min.js.gz"></script> 
+    <link rel="stylesheet" type="text/css" href="css/bootstrap.css.gz">
   	<link rel="stylesheet" href="css/base.css">
     <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
     	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
-	<script src="js/map-config.js" type="text/javascript"></script>
-            <script src="js/jquery.bxslider.js"></script>
+	<script src="js/map-config.js.gz" type="text/javascript"></script>
+            <script src="js/jquery.bxslider.js.gz"></script>
             <link rel="stylesheet" href="css/jquery.bxslider.css">
-            <script src="css/modal/bootstrap.min.js"></script>
+            <script src="js/bootstrap.min.js.gz"></script>
             <link href="widget/astrovisioncss.css" rel="stylesheet">
            
             <script type="text/javascript">
@@ -62,7 +62,7 @@
   
 </head>
 <body>
-
+<h1 style="display: none;">NRI Community – Comprehensive Behavioral Indian Forum Serving NRIs Worldwide</h1>
 <div class="loader"><div class="loader_html"></div></div>
 	<?php   include "config/menu_home.php" ;  ?>
 	
@@ -585,13 +585,8 @@
 <script src="js/tab/jquery-2.1.1.js"></script>
 <script src="js/tab/main.js"></script> <!-- Resource jQuery -->
 
-    <script src="calender/jquery-ui.js"></script>
-
+<script src="calender/jquery-ui.js"></script>
     <script src="widget/jquery.simpleWeather.min.js"></script>
-    <script src="widget/moment.js"></script>
-    <script src="widget/moment-timezone.js"></script>
-    <script src="widget/jstz.min.js"></script>
-    <script src="widget/jqIpLocation.js"></script>
     <script type="text/javascript">
 		
 		var widget = new avWidgetAstroCalendar('astro_widget_home');

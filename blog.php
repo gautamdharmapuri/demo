@@ -70,7 +70,7 @@
 </style>    
 </head>
 <body>
-
+<h1 style="display: none;">Read Latest Blogs and Updates of NRIs Community</h1>
 <div class="loader"><div class="loader_html"></div></div>
 
 

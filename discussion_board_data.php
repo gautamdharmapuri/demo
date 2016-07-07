@@ -169,7 +169,7 @@ if(isset($_POST['cmdsave']))
 	</style> 
 </head>
 <body>
-
+<h1 style="display: none;">Avail Effective Solutions Here!</h1>
 <div class="loader"><div class="loader_html"></div></div>
 
 

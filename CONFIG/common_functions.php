@@ -18,10 +18,10 @@ if(isset($_GET['State']) && $_GET['State'] != '') {
 $state = $defaultState = $_SESSION['state'];
 $serverName = $_SERVER['SERVER_NAME'];
 
-$pos = strpos($serverName, 'gautam.com');
+$pos = strpos($serverName, 'demo.com');
 if ($pos !== false) {
-		$originalName = 'gautam.com';
-		$originalNameUrl = '.gautam.com';
+		$originalName = 'demo.com';
+		$originalNameUrl = '.demo.com';
 } else{
 		$originalName = 'nris.com';
 		$originalNameUrl = '.nris.com';

@@ -4,26 +4,32 @@ $current_date = date('Y-m-d');
 $type = str_replace('-','/',$_GET['type']);
 		$category = urldecode($type);
 		$title = $description = 'National Jobs';
+		$h1Data = 'National Jobs';
 		if($category != '') {
 			switch($category) {
 				case 'Medical Jobs' :
 					$title = 'Post and Search Medical Jobs';
+					$h1Data = 'Search and Apply for Medical Jobs Near You';
 					$description = 'Looking for the medical jobs near you? NRIs is the perfect classified search engine for you to post or find the medical jobs from registered organisations.';
 					break;
 				case 'Accounting/Clerical' :
 					$title = 'Free Accounting and Clerical Jobs';
+					$h1Data = 'Accounting and Clerical Job Ads';
 					$description = 'NRIs offers several accounting jobs for those looking for career in this field. Visit us to find and post your free accounting job ads.';
 					break;
 				case 'IT Jobs' :
 					$title = 'Find or Post Free IT Employement';
+					$h1Data = 'Find or Post Free IT Employment';
 					$description = 'NRIs let you to kick off your search for jobs in IT field in a better way. Post your IT jobs ad free and find thousands of qualified professionals here.';
 					break;
 				case 'PartTime/ Hourly' :
 					$title = 'Free Hourly Jobs Ads';
+					$h1Data = 'Part Time/Hourly Jobs Near You';
 					$description = 'Browse for best part time job listings at NRIs. You can find or post your job easily here to accelerate your career with flexible hours. Visit us for more!';
 					break;
 				case 'HR/Management Jobs' :
 					$title = 'HR and Management Job Ads';
+					$h1Data = 'Apply for HR and Management Jobs';
 					$description = 'Post or find free HR and Management jobs ads with the expert advice from thousands of qualified professionals. NRIs welcomes you to browse the best level jobs here!';
 					break;
 				default :
@@ -177,7 +183,7 @@ $type = str_replace('-','/',$_GET['type']);
 	</style> 
 </head>
 <body>
-
+<h1 style="display: none;"><?php echo $h1Data;?></h1>
 <div class="loader"><div class="loader_html"></div></div>
 
 

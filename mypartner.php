@@ -146,7 +146,7 @@ $current_date = date('Y-m-d');
 	</style> 
 </head>
 <body>
-
+<h1 style="display: none;">Find The Right Partner For You</h1>
 <div class="loader"><div class="loader_html"></div></div>
 
 

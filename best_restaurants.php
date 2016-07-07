@@ -145,7 +145,7 @@
 	</style> 
 </head>
 <body>
-
+<h1 style="display: none;">Best Indian Restaurants in USA</h1>
 <div class="loader"><div class="loader_html"></div></div>
 
 

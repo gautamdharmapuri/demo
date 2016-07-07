@@ -1,31 +1,38 @@
 <?php  include"config/connection.php";
 
 		$category = $_GET['lang'];
+		$h1Data = 'Nri Movies and Videos';
 		$title = $description = 'Nri Movies, Movies';
 		if($category != '') {
 			switch($category) {
 				case 'Panjabi' :
 					$title = 'Panjabi Entertainment | Watch Punjabi Movies Online | NRIs';
+					$h1Data = 'Panjabi Movies- 24 Hours Fun & Entertainment';
 					$description = 'A movie of the day is here! Watch Panjabi movies in high-quality resolution anytime. Let the entertainment continues with latest hits of flash players.';
 					break;
 				case 'Tamil' :
 					$title = 'Full-on Entertainment | Tamil Movies Online | NRIs';
+					$h1Data = 'Watch Latest HD Tamil Movies Online';
 					$description = 'Watch latest Tamil movies, trailers of various genres like action, comedy, romance, family, drama, horror etc at NRIs. Browse big collection of fun here!';
 					break;
 				case 'Hindi' :
 					$title = 'Hindi Cinema Fun | NRIs';
+					$h1Data = 'Fun and Suspense with Latest Bollywood Movies';
 					$description = 'Watch the latest Bollywood movies only at NRIs. From romantic to action, comedy to drama, emotional to horror, children’s fun to animation, all entertainment is here.';
 					break;
 				case 'English' :
 					$title = 'Hollywood Theatre in HD | NRIs';
+					$h1Data = 'Hollywood World! Watch Your Favorite Movie Here';
 					$description = 'Don’t let the entertainment stop with latest Hollywood movies. Browse your favorite movies online for free streamed on flash players and enjoy watching.';
 					break;
 				case 'Telugu' :
 					$title = 'Desi Telugu Movies and Videos Online | NRIs';
+					$h1Data = 'Watch Desi Telugu Movies and Videos Online!';
 					$description = 'Let the fun begins! Watch desi movies and videos only at NRIs. Enjoy watching latest Telugu movies and trailers of various genres like action, comedy, romance, etc.';
 					break;
 				case 'kannada' :
 					$title = 'Watch Latest Kannada Movies Online | NRIs';
+					$h1Data = 'Enjoy Latest Kannada Movies Online';
 					$description = 'Watch Kannada movies online! Enjoy the latest Kannada movies, trailers of various genres like action, comedy, romance, family, drama, horror etc at NRIs.';
 					break;
 				default :
@@ -115,7 +122,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
 </style>    
 </head>
 <body>
-
+<h1 style="display: none;"><?php echo $h1Data;?></h1>
 <div class="loader"><div class="loader_html"></div></div>
 
 

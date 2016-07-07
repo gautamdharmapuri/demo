@@ -144,7 +144,8 @@
 	</style> 
 </head>
 <body>
-
+<h1 style="display: none;">Indian Temples in USA</h1>
+<h2 style="display: none;">Feel the love for Your Religion</h2>
 <div class="loader"><div class="loader_html"></div></div>
 
 

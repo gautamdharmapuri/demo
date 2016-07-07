@@ -145,7 +145,7 @@
 	</style> 
 </head>
 <body>
-
+<h1 style="display: none;">Best Pubs for NRIs to Visit</h1>
 <div class="loader"><div class="loader_html"></div></div>
 
 

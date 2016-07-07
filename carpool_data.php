@@ -2,11 +2,14 @@
 include"config/connection.php";
 
 $title = $description = 'Carpool';
+$h1Data = 'Carpool';
 if ($_GET['type'] == 'interstate') {
     $title = 'Find Your Perfect Carpool | Interstate | NRIs';
+    $h1Data = 'Find Your Perfect Carpool in UA';
     $description = "Look for commuters here who are already on the USA's biggest carpooling site. Find your perfect carpool to work or for any trip and save money on commuting!";
 } elseif ($_GET['type'] == 'international') {
     $title = 'Share Your Journey With NRIs | International Carpool Ads- NRIs';
+    $h1Data = 'NRIs- Carpooling the International Way';
     $description = "NRIs connects car owners and co-travellers to share city-to-city journeys through the largest carpool classified services in the world.";
 }
 ?>
@@ -155,6 +158,7 @@ if ($_GET['type'] == 'interstate') {
         </style> 
     </head>
     <body>
+        <h1 style="display: none;"><?php echo $h1Data;?></h1>
         <div class="loader"><div class="loader_html"></div></div>
         <?php include "config/menu.php"; ?>
         <div class="clearfix"></div>

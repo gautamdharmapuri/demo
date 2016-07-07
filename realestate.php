@@ -146,7 +146,7 @@ $current_date = date('Y-m-d');
 	</style> 
 </head>
 <body>
-
+<h1 style="display: none;">Find and Post your USA Real Estate Ads </h1>
 <div class="loader"><div class="loader_html"></div></div>
 
 
