@@ -139,7 +139,7 @@ var site_url = '<?php echo $siteUrlConstant;?>';
         <ul>
         <li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Top Rated Restaurants&code=<?php echo $defaultState;?>">Top Rated Restaurants </a></li>
 		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Indian Restaurants&code=<?php echo $defaultState;?>">Indian Restaurants</a></li>
-		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Indian Vegetarian Restaurants&code=<?php echo $defaultState;?>">Indian Vegetarian Restaurants</a></li>
+		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Indian Veg Restaurants&code=<?php echo $defaultState;?>">Indian Veg Restaurants</a></li>
 		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Halal Restaurants&code=<?php echo $defaultState;?>">Halal Restaurants </a></li>
 		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Thai Restaurants&code=<?php echo $defaultState;?>">Thai Restaurants </a></li>
 		<li><a href="<?php echo $siteUrlConstant;?>restaurants_inner?type=Chinese Restaurants&code=<?php echo $defaultState;?>">Chinese Restaurants </a></li>

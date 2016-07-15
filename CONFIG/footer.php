@@ -1,4 +1,9 @@
 <script src="js/webshim/minified/polyfiller.js"></script>
+<script> 
+	 webshim.activeLang('en');
+	 webshims.polyfill('forms');
+	 webshims.cfg.no$Switch = true;
+</script>
 <script type="text/javascript" src="js/common.js"></script>
 
 <footer id="footer">
@@ -197,5 +202,5 @@
 
 
 
-<link rel="stylesheet" href="css/common.css">
+<link rel="stylesheet" href="css/common.css.gz">
 

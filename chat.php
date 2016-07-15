@@ -34,7 +34,11 @@ $user=$_SESSION['Nris_session']['fname'];
 <script type="text/javascript">
 var user='<?php echo $user;?>'; 
 // Requesting to Database every 2 seconds
+//document.onmousemove = resetTimer;
+//document.onclick = resetTimer;
 var isInitial = true;
+var isActive = 0;
+
 var auto_refresh = setInterval(function ()
 {
   var last_id=jQuery(".shout_msg").last().attr("id");
@@ -42,7 +46,7 @@ var auto_refresh = setInterval(function ()
     last_id = 0;
   }
   var chat_topic = jQuery('#chat_topic option:selected').val();
-jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id+"&State=<?php echo $defaultState;?>&chat_topic="+chat_topic+"&isInitial="+isInitial,function(data)
+jQuery.getJSON(site_url+"chat_json.php?q="+user+"&id="+last_id+"&State=<?php echo $defaultState;?>&chat_topic="+chat_topic+"&isInitial="+isInitial+"&isActive="+isActive,function(data)
 {
 	if (data == -1) {
 		alert('your session has timed out');
@@ -61,11 +65,19 @@ jQuery('#shout_message').val('');
 });
 });
 isInitial = false;
+isActive = parseInt(isActive) + 1;
 }, 1000);
 
 // Inserting records into chat table
 jQuery(document).ready(function()
 {
+	
+	jQuery('body').mousemove(function(){
+		isActive = 0;
+	});
+	jQuery('body').click(function(){
+		isActive = 0;
+	});
 jQuery("#shout_message").keypress(function(evt) {
     if(evt.which == 13) {
       var s=jQuery('#shout_message').val();

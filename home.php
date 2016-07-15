@@ -26,17 +26,17 @@
 	<!-- Favicons -->
 	<link rel="shortcut icon" href="img/favicon.png">
     
-    <link href='css/font.css' rel='stylesheet' type='text/css'>
+    <link href='css/font.css.gz' rel='stylesheet' type='text/css'>
     <script src="js/jquery.min.js.gz"></script> 
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css.gz">
-  	<link rel="stylesheet" href="css/base.css">
-    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css">
+  	<link rel="stylesheet" href="css/base.css.gz">
+    <link rel="stylesheet" href="css/font-awesome/css/font-awesome.min.css.gz">
     	<link rel="stylesheet" href="css/tab/style.css"> <!-- Resource style -->
 	<script src="js/map-config.js.gz" type="text/javascript"></script>
             <script src="js/jquery.bxslider.js.gz"></script>
-            <link rel="stylesheet" href="css/jquery.bxslider.css">
+            <link rel="stylesheet" href="css/jquery.bxslider.css.gz">
             <script src="js/bootstrap.min.js.gz"></script>
-            <link href="widget/astrovisioncss.css" rel="stylesheet">
+            <link href="widget/astrovisioncss.css.gz" rel="stylesheet">
            
             <script type="text/javascript">
                 var j = jQuery.noConflict();

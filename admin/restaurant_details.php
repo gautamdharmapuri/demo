@@ -374,7 +374,7 @@ if(isset($_POST['submit']))
                                                          <option value="">- Select Restaurant Type -</option>
                                                          <option value="Top Rated Restaurants">Top Rated Restaurants</option>
                                                          <option value="Indian Restaurants">Indian Restaurants</option>
-                                                         <option value="Indian Vegetarian Restaurants">Indian Vegetarian Restaurants</option>
+                                                         <option value="Indian Veg Restaurants">Indian Veg Restaurants</option>
                                                          <option value="Halal Restaurants">Halal Restaurants</option>
                                                          <option value="Thai Restaurants">Thai Restaurants</option>
                                                          <option value="Chinese Restaurants">Chinese Restaurants</option>

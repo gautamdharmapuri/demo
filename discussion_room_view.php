@@ -175,7 +175,11 @@ mysql_query("update nris_talk set total_views='".$total_views."' where id = '".$
 
 
 
-	<?php   include "config/menu_inner_state.php" ;  ?>
+	<?php if(isset($defaultState) && $defaultState != '') { ?>
+		<?php include "config/menu_inner_state.php" ;  ?>
+	<?php } else { ?>
+		<?php include "config/menu.php" ;  ?>
+	<?php } ?>
 	
 	<div class="clearfix"></div>
 

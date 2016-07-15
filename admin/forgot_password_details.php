@@ -21,7 +21,7 @@ $to_row = mysql_fetch_array($to_result);
 
 
 
-DEFINE('BASE_PATH', 'http://angeldesigning.com/demo/admin/');
+DEFINE('BASE_PATH', 'http://www.nris.com/admin/');
 
 $email = trim(mysql_escape_string($_POST['email']));
 
@@ -85,7 +85,7 @@ $message .= '</td> </tr> </table>';
 
 
 //$to='angelwebsupport@gmail.com';
-$to = $to_row[0];
+$to = 'sudakbk@gmail.com';//$to_row[0];
 
 
 mail($to, $subject, $message, $headers);
