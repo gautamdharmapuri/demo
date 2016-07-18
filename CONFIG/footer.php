@@ -25,9 +25,9 @@
 						$disclaimer .= '?State='.$state; 
 					}
 			   ?>
-            	<a href="<?php echo $siteUrlConstant;?><?php echo $aboutus;?>" style="color:#FFFFFF;font-weight:bold;">About Us</a>&nbsp;|&nbsp;
+            	<a href="<?php echo $aboutus;?>" style="color:#FFFFFF;font-weight:bold;">About Us</a>&nbsp;|&nbsp;
                 <a href="javascript:;" onclick="popup('terms_conditions_popup');" style="color:#FFFFFF;font-weight:bold;">Terms &amp; Condition</a> &nbsp;|&nbsp;
-               <a href="<?php echo $siteUrlConstant;?><?php echo $disclaimer;?>"  style="color:#FFFFFF;font-weight:bold;">Disclaimer</a>
+               <a href="<?php echo $disclaimer;?>"  style="color:#FFFFFF;font-weight:bold;">Disclaimer</a>
          
           </div>         
          <div class="copyright-n">
@@ -104,8 +104,7 @@
 <!-- Modal  Switch State  End --> 
 	
 	<div id="terms_conditions_popup" style="display:none;">
-    <a style="float:right;cursor: pointer;" onClick="popup('terms_conditions_popup')">X</a>
-    	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
+    <!--<a style="float:right;cursor: pointer;" onClick="popup('terms_conditions_popup')">X</a>-->
        
 	 <h4 style="text-align: center;">Terms And Conditions!</h4>
 
@@ -167,9 +166,7 @@
 
 
 <div id="chat_terms_conditions_popup" style="display:none;">
-    <a style="float:right;cursor: pointer;" onClick="popup('chat_terms_conditions_popup')">X</a>
-    	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
-       
+   
 <h4 style="text-align: center;">Terms And Conditions!</h4>
 
                     

@@ -48,7 +48,7 @@
         <ul>
         <li><a href="<?php echo $siteUrlConstant;?>">Home</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>aboutus">About Us</a></li>
-        <li><a href="javascript:;" data-toggle="modal" data-target="#nri_post">NRI's talk</a></li>
+        <li><a href="javascript:;" data-toggle="modal" data-target="#change_state_nritalk">NRI's talk</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>discussion_board_data">Forum</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>realestate">National Real Estate</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>education">Education& Teaching</a></li>
@@ -99,7 +99,7 @@
         
 		<li><a href="<?php echo $siteUrlConstant;?>blog">Blog</a></li>
         <li>
-			  <a href="javascript:;"  data-toggle="modal" data-target="#student_talk">Student's Talk</a>
+			  <a href="javascript:;"  data-toggle="modal" data-target="#change_state_studenttalk">Student's Talk</a>
         </li>
         <li><a href="<?php echo $siteUrlConstant;?>advertising">Advertise </a></li>
         <li><a href="<?php echo $siteUrlConstant;?>contact">Contact </a></li>      

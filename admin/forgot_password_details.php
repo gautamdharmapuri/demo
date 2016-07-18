@@ -64,7 +64,7 @@ $email = trim(mysql_escape_string($_POST['email']));
 
 $subject = 'Activate Your Email';
 
-$headers = "From: kbknaidu@gmail.com \r\n";
+$headers = "From: mailnris@gmail.com \r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 $url= BASE_PATH . 'set_password.php?email=' . urlencode($email) . "&key=$hash";

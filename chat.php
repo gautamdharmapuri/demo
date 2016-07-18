@@ -205,7 +205,7 @@ print '<img class="link" src="images/smilies/'.$csm[2].'" width="19" height="19"
 ?>
 </div>
 <br style="clear:both" />
-<div class="title2 box_close_button" style="float:right">
+<div class="title2 box_close_button" style="float:right;display: none;">
 <span class="link_color">Close</span>
 </div>
 <script>

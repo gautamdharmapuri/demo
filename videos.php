@@ -321,7 +321,7 @@ color: #3c3c3c;;font-family: "Montserrat",sans-serif;font-size: 18px;font-weight
                 <div class="col-md-8" style="border: 10px solid transparent;border-image: url('images/border.png') 30 round;margin-top: 14px;">
 					<div class="col-md-12">
 					   <div class="col-md-12">
-						   <center><h3 style="margin-top: 10px;">Movie of the Day</h3></center>
+						   <center><h3 style="margin-top: 10px;">Movie of the Day <span style="font-size: 16px;">(<?php echo date('d-m-Y');?>)</span></h3></center>
 					   </div>
 					</div>
 					<?php

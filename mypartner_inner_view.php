@@ -144,7 +144,7 @@ if(isset($_POST['cmdcomment']))
 			$name = $result_user['fname'].' '.$result_user['lname'];
 			
 			$subject = 'Comment to your Post';
-			$headers = "From: kbknaidu@gmail.com \r\n";
+			$headers = "From: mailnris@gmail.com \r\n";
 			$headers .= "MIME-Version: 1.0\r\n";
 			$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 			$url = $siteUrlConstant . 'mypartner_inner_view?ViewId=' . md5($postId);

@@ -152,7 +152,7 @@ if(isset($_POST['cmdSubmit'])) {
 	
 	$subject = 'New University Added';
 
-	$email = 'kbknaidu@gmail.com';
+	$email = 'mailnris@gmail.com';
 	$headers = "From: ".$email_id." \r\n";
 	$headers .= "MIME-Version: 1.0\r\n";
 	$headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";

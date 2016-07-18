@@ -1010,7 +1010,7 @@ $current_date = date('Y-m-d');
                                 <div class="bord-cla">
                                  <ul style="padding-left:5px;padding-right:5px;">
 									<?php
-									$query = "SELECT DISTINCT  * FROM fam_restaurants
+									$query = "SELECT DISTINCT  fam_restaurants.* FROM fam_restaurants
 									LEFT OUTER JOIN rating_restaurant
 									ON fam_restaurants.id = rating_restaurant.res_id
 									WHERE fam_restaurants.state_code='".$state."'
@@ -1113,7 +1113,7 @@ $current_date = date('Y-m-d');
 				if($cnt%3==0){						
 				echo "<tr>";
 				}
-				$siteUrlConstant = $protocol . "://" .$fs_state['state'].$originalName.'/';
+				$siteUrlConstant = $protocol . "://" .$fs_state['state'].$originalNameUrl.'/';
 					?>
 
             <td style="vertical-align:middle;width:auto;text-align:left;padding-left:10px;">

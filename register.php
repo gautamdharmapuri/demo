@@ -224,14 +224,7 @@ $(".city").html(html);
 			return false;
 		}
 		
-		/*if (document.getElementById('Mobile').value=='')
-		{
-			alert('Please Enter your Mobile Number');			
-			document.getElementById('Mobile').focus();
-			return false;
-		}*/
-   
-   
+	
   		if (document.getElementById('DOB').value=='')
 		{
 			alert('Please Enter your Date of Birth');			
@@ -495,7 +488,7 @@ if(isset($_POST['Submit']))
 
 $subject = 'Activate Your Email';
 
-$headers = "From: kbknaidu@gmail.com \r\n";
+$headers = "From: mailnris@gmail.com \r\n";
 $headers .= "MIME-Version: 1.0\r\n";
 $headers .= "Content-Type: text/html; charset=ISO-8859-1\r\n";
 $url= $siteUrlConstant . '/verify?email=' . urlencode($c) . "&key=$hash";
@@ -768,10 +761,7 @@ if(true == $show_form)
 <!--POPUP-->        
     <div id="blanket" style="display:none;"></div>
 	<div id="popUpDiv" style="display:none;">
-    
-    	<a style="float:right;cursor: pointer;" onClick="popup('popUpDiv')">X</a>
-    	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
-       
+
 <center><h4>Terms And Conditions!</h4></center>
 
                     
@@ -836,8 +826,37 @@ if(true == $show_form)
     <script src="calender/jquery-1.10.2.js"></script>
     <script src="calender/jquery-ui.js"></script>
   
-  <script>
+  <script type="text/javascript">
   $(function() {
+	var word_count = 20;
+	$("#Firstname, #Lastname").on('input propertychange',function() {
+
+		var thisVal = $(this).val();
+		var words = parseInt(thisVal.length);
+		if (words >= word_count) {
+			var myVal = thisVal.substring(0,word_count);
+			$(this).val(myVal);
+		}
+	});
+	$("#Address").on('input propertychange',function() {
+
+		var thisVal = $(this).val();
+		var words = parseInt(thisVal.length);
+		if (words >= 40) {
+			var myVal = thisVal.substring(0,40);
+			$(this).val(myVal);
+		}
+	});
+	$("#Mobile").on('input propertychange',function() {
+
+		var thisVal = $(this).val();
+		var words = parseInt(thisVal.length);
+		if (words >= 12) {
+			var myVal = thisVal.substring(0,12);
+			$(this).val(myVal);
+		}
+	});
+	
     $( "#DOB" ).datepicker({
       changeMonth: true,
       changeYear: true,

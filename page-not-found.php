@@ -242,9 +242,6 @@ text-align:center;
     <div id="blanket" style="display:none;"></div>
 	<div id="popUpDiv" style="display:none;">
     
-    	<a style="float:right;cursor: pointer;" onClick="popup('popUpDiv')">X</a>
-    	<!--<a href="javascript:;" onClick="popup('popUpDiv')" >X</a>-->
-       
 <center><h4>Terms And Conditions!</h4></center>
 
                     
