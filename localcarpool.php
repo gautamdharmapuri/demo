@@ -243,11 +243,24 @@ if(isset($_SESSION['Nris_session']))
 		
 	$where = '';
 	if(isset($_GET['City1']) && $_GET['City1'] > 0 && isset($_GET['City2']) && $_GET['City2'] > 0) {
-		$where = ' AND (carpool.from_city = "'.$_GET['City1'].'" AND carpool.to_city = "'.$_GET['City2'].'")';
+		
+		$queryStateBanner = "select * from cities where city like '%".$_GET['Departure']."%'";
+		$resultStateBannerTemp = mysql_query($queryStateBanner);
+		while($resultStateBanner = mysql_fetch_array($resultStateBannerTemp)) {
+			$resultArr1[] = $resultStateBanner['id'];
+		}
+		
+		$queryStateBanner = "select * from cities where city like '%".$_GET['Arrival']."%'";
+		$resultStateBannerTemp = mysql_query($queryStateBanner);
+		while($resultStateBanner = mysql_fetch_array($resultStateBannerTemp)) {
+			$resultArr2[] = $resultStateBanner['id'];
+		}
+		$where = ' AND (carpool.from_city IN ('.implode(',',$resultArr1).') AND carpool.to_city IN ('.implode(',',$resultArr2).')) ';
 	}
 	$query1 = "SELECT carpool.*,c1.city as from_cityname,c2.city as to_cityname FROM carpool,cities c1, cities as c2
 				WHERE type = 'local'
 				AND c1.id = from_city AND c2.id = to_city $where";
+				//echo $query1;
 
 			$result = mysql_query($query1);
 			if(mysql_numrows($result) > 0) { ?>

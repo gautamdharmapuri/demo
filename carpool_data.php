@@ -198,14 +198,14 @@ if ($_GET['type'] == 'interstate') {
 
                             <div class="form-group">
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" id="city_auto1" placeholder="Enter From City" style="width:100%;" tabindex="1" required/>
+                                    <input type="text" class="form-control" id="city_auto1" placeholder="Enter From City" name="Departure" style="width:100%;" tabindex="1" required/>
                                     <input type="hidden" name="City1" id="City1">
                                 </div>
 
                                 <input type="hidden" name="type" value="<?php echo $_GET['type']; ?>">
 
                                 <div class="col-sm-3">
-                                    <input type="text" class="form-control" id="city_auto2" placeholder="Enter To City" style="width:100%;" tabindex="1" required/>
+                                    <input type="text" class="form-control" id="city_auto2" placeholder="Enter To City" name="Arrival"  style="width:100%;" tabindex="1" required/>
                                     <input type="hidden" name="City2" id="City2">
                                 </div>
 
@@ -225,7 +225,18 @@ if ($_GET['type'] == 'interstate') {
                                 <?php
                                 $where = '';
                                 if (isset($_GET['City1']) && $_GET['City1'] > 0 && isset($_GET['City2']) && $_GET['City2'] > 0) {
-                                    $where = ' AND (carpool.from_city = "' . $_GET['City1'] . '" AND carpool.to_city = "' . $_GET['City2'] . '")';
+                                    $queryStateBanner = "select * from cities where city like '%".$_GET['Departure']."%'";
+		$resultStateBannerTemp = mysql_query($queryStateBanner);
+		while($resultStateBanner = mysql_fetch_array($resultStateBannerTemp)) {
+			$resultArr1[] = $resultStateBanner['id'];
+		}
+		
+		$queryStateBanner = "select * from cities where city like '%".$_GET['Arrival']."%'";
+		$resultStateBannerTemp = mysql_query($queryStateBanner);
+		while($resultStateBanner = mysql_fetch_array($resultStateBannerTemp)) {
+			$resultArr2[] = $resultStateBanner['id'];
+		}
+		$where = ' AND (carpool.from_city IN ('.implode(',',$resultArr1).') AND carpool.to_city IN ('.implode(',',$resultArr2).')) ';
                                 }
                                 if ($_GET['type'] == 'interstate') {
                                     //$where .= "AND c1.state_code = '$state' AND c2.state_code = '$state'";
