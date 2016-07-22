@@ -8,7 +8,7 @@ if ($serverName != $originalName && $serverName != 'www.'.$originalName) {
 		$selectedState = str_replace($originalName,'',$serverName);
 		$selectedState = str_replace('.','',$selectedState);
 		#echo $selectedState;
-		if($selectedState == 'newmexico') {
+		/*if($selectedState == 'newmexico') {
 				$selectedState = 'New Mexico';
 		} elseif($selectedState == 'southdakota') {
 				$selectedState = 'South Dakota';
@@ -28,8 +28,7 @@ if ($serverName != $originalName && $serverName != 'www.'.$originalName) {
 				$selectedState = 'North Carolina';
 		} elseif($selectedState == 'newhampshire') {
 				$selectedState = 'New Hampshire';
-		}
-		
+		}*/
 		$queryState = "select state_code from states where state = '".$selectedState."'";
 		$stateRes = mysql_query($queryState);
 		$stateRes = mysql_fetch_array($stateRes);

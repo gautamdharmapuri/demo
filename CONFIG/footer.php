@@ -20,10 +20,6 @@
 			   <?php $state = $defaultState;
 					$aboutus = 'aboutus';
 					$disclaimer = 'disclaimer';
-					if($state != '') {
-						$aboutus .= '?State='.$state;
-						$disclaimer .= '?State='.$state; 
-					}
 			   ?>
             	<a href="<?php echo $aboutus;?>" style="color:#FFFFFF;font-weight:bold;">About Us</a>&nbsp;|&nbsp;
                 <a href="javascript:;" onclick="popup('terms_conditions_popup');" style="color:#FFFFFF;font-weight:bold;">Terms &amp; Condition</a> &nbsp;|&nbsp;

@@ -80,7 +80,7 @@ var site_url = '<?php echo $siteUrlConstant;?>';
         <ul>
 
             
-        <li><a href="<?php echo $siteUrlConstant;?>state?State=<?php echo $defaultState;?>">Home</a></li>
+        <li><a href="<?php echo $siteUrlConstant;?>">Home</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>yellowpages"><?php echo $defaultState;?> Desi Pages</a></li>
         <li><a href="<?php echo $siteUrlConstant;?>discussion_board">Forum</a></li>
        

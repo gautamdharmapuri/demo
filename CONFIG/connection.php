@@ -34,14 +34,13 @@ if (!$con) {
 }
 
 
-
+if(isset($_SERVER['HTTPS'])){
+	$protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
+}
+else{
+	$protocol = 'http';
+}
 if (!defined('$siteUrlConstant')) {
-	if(isset($_SERVER['HTTPS'])){
-        $protocol = ($_SERVER['HTTPS'] && $_SERVER['HTTPS'] != "off") ? "https" : "http";
-    }
-    else{
-        $protocol = 'http';
-    }
 	$siteUrlConstant = $protocol . "://" .$_SERVER['SERVER_NAME'].'/';
 	define('SITE_BASE_URL', $siteUrlConstant);
 	
@@ -49,6 +48,7 @@ if (!defined('$siteUrlConstant')) {
 		$siteUrlConstant = $siteUrlConstant. '/demo';
 	}
 }
+$siteUrlMain = $protocol.'://www.nris.com';
 if (!defined('BASE_PATH')) {
 	DEFINE('BASE_PATH', $siteUrlConstant);
 }
@@ -62,12 +62,11 @@ function createLoginSession($data = array()) {
 	return $_SESSION['Nris_session'];
 }
 
-if (session_id() != '' && is_array($_SESSION['Nris_session'])) {
+/*if (session_id() != '' && is_array($_SESSION['Nris_session'])) {
 $currentTime = strtotime(date('Y-m-d H:i:s'));
 $loggedInTime = strtotime($_SESSION['Nris_session']['loggedTime']);
 
-//echo $currentTime-$loggedInTime;
-if(($currentTime-$loggedInTime) > 15*60) {
+if(($currentTime-$loggedInTime) > 20*60) {
 	$email = $_SESSION['Nris_session']['email'];
 	mysql_query("UPDATE register SET login_status = 'N' where email ='".$email."' and isactive = 1");
 	
@@ -84,7 +83,7 @@ if(($currentTime-$loggedInTime) > 15*60) {
 	header('location:'.$siteUrlConstant);
 	exit;
 }
-}
+}*/
 
 include_once('common_functions.php');
 

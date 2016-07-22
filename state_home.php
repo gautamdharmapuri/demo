@@ -278,7 +278,7 @@ $current_date = date('Y-m-d');
                         </div>
                         
                         <div class="full-btn-orange">
-                        	<a href="<?php echo $siteUrlConstant;?>" style="padding: 5px 5px;">National NRIs Page</a>
+                        	<a href="<?php echo $siteUrlMain;?>" style="padding: 5px 5px;">National NRIs Page</a>
                         </div>
                         
                         <div class="movies">

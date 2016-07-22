@@ -508,8 +508,7 @@ mail($email, $subject, $message, $headers);
 
 
 
-                echo '<br><br><div class="sucess">A confirmation email
-has been sent to <b>'. $email.' </b><br>Please click on the Activate Button to Activate your account </div><br>';
+                echo '<br><br><div class="sucess">Confirmation email link has been sent to <b>'. $email.' </b>, it may take up to 10minutes to receive email in your inbox. <br>Click on the link to verify your account </div><br>';
 			} else {
 				echo '<div class="error">Please verify with captcha</div>';
 			}
@@ -674,6 +673,7 @@ if(true == $show_form)
 	<label for="inputPassword3" class="col-sm-2 control-label" style="text-align:left;font-weight:bold;">Captcha :*</label>
 	<div class="col-sm-8">
 		<div class="g-recaptcha" data-sitekey="6Lf4DR4TAAAAALfi4a1EjtaCVkZDKi9BzWHXJ83d"></div>
+		<span style="color:#FF0000;font-size:10px;">Click on Captcha to complete registration</span>
 	</div>
 </div>
 </div>
