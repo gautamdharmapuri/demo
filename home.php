@@ -625,9 +625,13 @@
 															if (imgUrl == '' || typeof(imgUrl) == 'undefined') {
                                                                 imgUrl = 'images/combo.png';
                                                             }
-															$("#astro_widget_home").css('background-image','url(' + imgUrl + ')');
-															$("#astro_widget_home").css('background-repeat','no-repeat');
-															$("#astro_widget_home").css('background-color','beige');
+															$("#astro_widget_home_content").css('background-image','url(' + imgUrl + ')');
+															$("#astro_widget_home_content").css('background-repeat','no-repeat');
+															$("#astro_widget_home_content").css('background-color','beige');
+															setTimeout(function(){
+																$("#map_cityName").text(locat);
+																},500);
+																	   
 												},
 												error: function(error) {
 												  $("#weather").html('<p>'+error+'</p>');
