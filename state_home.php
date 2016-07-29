@@ -1181,8 +1181,34 @@ $current_date = date('Y-m-d');
 			jQuery("#astro_widget").css('background-repeat','no-repeat');
 			jQuery("#astro_widget").css('background-color','beige');
 															
-			jQuery.get("http://ipinfo.io", function(response) {
-						jQuery.ajax({
+			$.get("http://ipinfo.io", function(response) {
+				if (response.city != '') {
+						var locat = response.city;
+						$.simpleWeather({
+												location: locat,
+												woeid: '',
+												unit: 'f',
+												success: function(weather) {
+															var imgUrl = weather.image;
+															if (imgUrl == '' || typeof(imgUrl) == 'undefined') {
+                                                                imgUrl = 'images/combo.png';
+                                                            }
+															$("#astro_widget_home_content").css('background-image','url(' + imgUrl + ')');
+															$("#astro_widget_home_content").css('background-repeat','no-repeat');
+															$("#astro_widget_home_content").css('background-color','beige');
+															$("#map_cityName").text(locat);
+															setTimeout(function(){
+																console.log(locat);
+																$("#map_cityName").text(locat);
+																},4000);
+																	   
+												},
+												error: function(error) {
+												  $("#weather").html('<p>'+error+'</p>');
+												}
+									});
+				} else {
+						$.ajax({
 									url : 'location.php',
 									type: 'POST',
 									data: {ip:response.ip},
@@ -1191,27 +1217,32 @@ $current_date = date('Y-m-d');
                                         } else {
 											locat =	data;
 										}
-										//console.log('============');
-										//console.log(locat);return false;
-										jQuery.simpleWeather({
+										$.simpleWeather({
 												location: locat,
 												woeid: '',
 												unit: 'f',
 												success: function(weather) {
 															var imgUrl = weather.image;
 															if (imgUrl == '' || typeof(imgUrl) == 'undefined') {
-                                                                imgUrl = 'https://s.yimg.com/zz/combo?a/i/us/nws/weather/gr/36d.png';
+                                                                imgUrl = 'images/combo.png';
                                                             }
-															jQuery("#astro_widget").css('background-image','url(' + imgUrl + ')');
-															jQuery("#astro_widget").css('background-repeat','no-repeat');
-															jQuery("#astro_widget").css('background-color','beige');
+															$("#astro_widget_home_content").css('background-image','url(' + imgUrl + ')');
+															$("#astro_widget_home_content").css('background-repeat','no-repeat');
+															$("#astro_widget_home_content").css('background-color','beige');
+															$("#map_cityName").text(locat);
+															setTimeout(function(){
+																console.log(locat);
+																$("#map_cityName").text(locat);
+																},4000);
+																	   
 												},
 												error: function(error) {
-												  jQuery("#weather").html('<p>'+error+'</p>');
+												  $("#weather").html('<p>'+error+'</p>');
 												}
 									});
 									}
-								});			
+								});
+				}
 			}, "jsonp");
 			
 

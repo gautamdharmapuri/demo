@@ -65,7 +65,8 @@ $query_verify_email = "SELECT * FROM register  WHERE email ='$email' and isactiv
 if (mysqli_num_rows($result_verify_email) == 1)
     {
     echo '<div class="success">Your Account already exists. Please <a href="javascript:;"  data-toggle="modal" data-target="#myModal">Login Here</a></div>';
-
+		echo "<script language='javascript' type='text/javascript'>document.location='".$siteUrlConstant."';</script>";
+		exit;
     }
 else
 {
@@ -79,11 +80,13 @@ if (isset($email) && isset($key))
     if (mysqli_affected_rows($con) == 1)
     {
     echo '<div class="success">Your Account has been activated. Please <a href="javascript:;"  data-toggle="modal" data-target="#myModal">Login Here</a></div>';
-
+		echo "<script language='javascript' type='text/javascript'>document.location='".$siteUrlConstant."';</script>";
+		exit;
     } else
     {
-        echo '<div class="error">Account couldnot be activated.</div>';
-
+        //echo '<div class="error">Account couldnot be activated.</div>';
+		echo "<script language='javascript' type='text/javascript'>document.location='".$siteUrlConstant."';</script>";
+		exit;
     }
 }
     mysqli_close($con);

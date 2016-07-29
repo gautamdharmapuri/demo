@@ -174,11 +174,7 @@
                                 <h3>National Events</h3>
                             </div>
 								<?php
-										$eventCatSelect = "SELECT category FROM national_events GROUP BY category ORDER BY id DESC LIMIT 3";
-										$eventCatResult = mysql_query($eventCatSelect);
-										while($tempRes = mysql_fetch_array($eventCatResult)) {
-												$eventCatArr[] = $tempRes['category'];
-										}
+										$eventCatArr = array('Religious','Cultural','Others');
 								?>
                               <div class="cd-tabs">
                                   <nav>
@@ -196,18 +192,21 @@
 										<li data-content="<?php echo $eventCat;?>" <?php if($catCnt++ == 0) { ?>class="selected"<?php } ?>>
 											<div class="content-tab">                                             
 											  <?php
-												  $query_Nation_evnts_Cul="select * from national_events where category='".$eventCat."' and edate>'".$current_date."' and status='Active' order by id desc limit 5";																
-												  $result_Events_cul=mysql_query($query_Nation_evnts_Cul);                                                
-												  if(mysql_num_rows($result_Events_cul) > 0) {
-												  while($rs_event1=mysql_fetch_array($result_Events_cul))
-												  {?>   
-												  <p><a href="<?php echo $siteUrlConstant;?>national_events?ViewId=<?php echo ucfirst($eventCat);?>"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
-												  <?php } } else {  ?>
-												  <h4>No Data Found.</h4>
-												  <?php } ?>
-												
+												$where = "category='".$eventCat."' and ";
+												if($eventCat == 'Others') {
+													$where = "category not in ('Religious','Cultural') and ";	
+												}
+												$query_Nation_evnts_Cul="select * from national_events where $where edate>'".$current_date."' and status='Active' order by id desc limit 5";
+												$result_Events_cul=mysql_query($query_Nation_evnts_Cul);                                                
+												if(mysql_num_rows($result_Events_cul) > 0) {
+												while($rs_event1=mysql_fetch_array($result_Events_cul))
+												{?>   
+												<p><a href="<?php echo $siteUrlConstant;?>national_events?ViewId=<?php echo ucfirst($eventCat);?>"><?php echo date("d M ",strtotime($rs_event1['date'])); ?><span>&nbsp; <?php echo ucwords($rs_event1['title']);?></span></a></p>
+												<?php } } else {  ?>
+												<h4>No Data Found.</h4>
+												<?php } ?>
 											</div>    
-											<a href="<?php echo $siteUrlConstant;?>national_events?ViewId=Cultural" class="read-btn-tab">View more</a>
+											<a href="<?php echo $siteUrlConstant;?>national_events?ViewId=<?php echo $eventCat;?>" class="read-btn-tab">View more</a>
 										</li>
                                       <?php } ?>
                                   </ul> <!-- cd-tabs-content ends -->
@@ -607,6 +606,32 @@
 			$("#astro_widget_home").css('background-color','beige');
 															
 			$.get("http://ipinfo.io", function(response) {
+				if (response.city != '') {
+						var locat = response.city;
+						$.simpleWeather({
+												location: locat,
+												woeid: '',
+												unit: 'f',
+												success: function(weather) {
+															var imgUrl = weather.image;
+															if (imgUrl == '' || typeof(imgUrl) == 'undefined') {
+                                                                imgUrl = 'images/combo.png';
+                                                            }
+															$("#astro_widget_home_content").css('background-image','url(' + imgUrl + ')');
+															$("#astro_widget_home_content").css('background-repeat','no-repeat');
+															$("#astro_widget_home_content").css('background-color','beige');
+															$("#map_cityName").text(locat);
+															setTimeout(function(){
+																console.log(locat);
+																$("#map_cityName").text(locat);
+																},4000);
+																	   
+												},
+												error: function(error) {
+												  $("#weather").html('<p>'+error+'</p>');
+												}
+									});
+				} else {
 						$.ajax({
 									url : 'location.php',
 									type: 'POST',
@@ -628,9 +653,11 @@
 															$("#astro_widget_home_content").css('background-image','url(' + imgUrl + ')');
 															$("#astro_widget_home_content").css('background-repeat','no-repeat');
 															$("#astro_widget_home_content").css('background-color','beige');
+															$("#map_cityName").text(locat);
 															setTimeout(function(){
+																console.log(locat);
 																$("#map_cityName").text(locat);
-																},500);
+																},4000);
 																	   
 												},
 												error: function(error) {
@@ -638,7 +665,8 @@
 												}
 									});
 									}
-								});			
+								});
+				}
 			}, "jsonp");
         });
     </script>

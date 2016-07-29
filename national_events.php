@@ -221,7 +221,11 @@ else
 	$targetpage = "national_events"; 	
 	$limit = 10; 
 	
-	$query = "SELECT COUNT(*) as num FROM $tableName where edate >= '".$current_date."' and category='".$_SESSION['ViewId']."' and status='Active' order by total_views desc";
+	$where = " and category='".$_SESSION['ViewId']."'";
+	if($_SESSION['ViewId'] == 'Others') {
+	  $where = " and category not in ('Religious','Cultural')";
+	}
+	$query = "SELECT COUNT(*) as num FROM $tableName where edate >= '".$current_date."' $where and status='Active' order by total_views desc";
 	$total_pages = mysql_fetch_array(mysql_query($query));
 	$total_pages = $total_pages[num];
 	
@@ -234,7 +238,7 @@ else
 		}	
 	
     // Get page data
-	$query1 = "SELECT * FROM $tableName where edate >= '".$current_date."' and category='".$_SESSION['ViewId']."' and status='Active'  order by total_views desc, sdate asc LIMIT $start, $limit";
+	$query1 = "SELECT * FROM $tableName where edate >= '".$current_date."' $where and status='Active'  order by total_views desc, sdate asc LIMIT $start, $limit";
 	$result = mysql_query($query1);
 	
 	// Initial page num setup
